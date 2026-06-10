@@ -3,11 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech, Rewinding the Tape — A field guide to the history of technology</title>
+<title>Things I'm figuring out — A personal learning space</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../shared/styles.css">
+<link rel="stylesheet" href="shared/styles.css">
+<style>
+  .tutorial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .tutorial-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 2.2rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.25s;
+    position: relative;
+  }
+
+  .tutorial-card:hover {
+    border-color: var(--rust);
+    background: var(--paper-darker);
+    transform: translateY(-2px);
+  }
+
+  .tutorial-card:hover .tutorial-card-arrow {
+    transform: translateX(8px);
+    color: var(--rust);
+  }
+
+  .tutorial-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .tutorial-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+  }
+
+  .status-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .status-badge.is-complete { color: var(--paper); background: var(--olive); }
+  .status-badge.is-progress { color: var(--paper); background: var(--rust); }
+  .status-badge.is-future   { color: var(--ink-faded); background: transparent; border: 1px solid var(--line); }
+
+  .tutorial-card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+  .tutorial-card h2 em { font-style: italic; color: var(--rust-deep); }
+
+  .tutorial-card-blurb {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 1.6rem;
+    flex: 1;
+  }
+
+  .tutorial-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .tutorial-langs {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+  }
+
+  .tutorial-card-arrow {
+    font-size: 1.4rem;
+    color: var(--ink-faded);
+    transition: all 0.25s;
+  }
+
+  .tutorial-card.is-add {
+    border-style: dashed;
+    border-color: var(--ink-faded);
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 220px;
+    cursor: default;
+  }
+  .tutorial-card.is-add:hover {
+    transform: none;
+    border-color: var(--rust);
+    background: transparent;
+  }
+  .tutorial-card.is-add .add-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .tutorial-card.is-add .add-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-faded);
+    line-height: 1.6;
+    max-width: 220px;
+  }
+
+  @media (max-width: 950px) {
+    .tutorial-grid { grid-template-columns: 1fr; }
+    .tutorial-card h2 { font-size: 1.7rem; }
+  }
+</style>
 </head>
 <body>
 
@@ -15,18 +156,8 @@
 
 <header class="site-header">
   <div class="site-header-inner">
-    <a href="index.html" class="site-logo">Tech, rewinding the tape <em>— a field guide</em></a>
+    <a href="index.html" class="site-logo">Things I'm figuring out</a>
     <nav class="site-nav">
-      <a href="../../index.html">Hub</a>
-      <a href="index.html" class="current">Home</a>
-      <a href="01-origins.html">01</a>
-      <a href="02-middle.html">02</a>
-      <a href="03-acceleration.html">03</a>
-      <a href="04-industrial.html">04</a>
-      <a href="05-electric.html">05</a>
-      <a href="06-digital.html">06</a>
-      <a href="07-ai.html">07</a>
-      <a href="08-synthesis.html">08</a>
       <div class="lang-toggle">
         <a href="index.html" class="active">EN</a>
         <span class="lang-divider">·</span>
@@ -39,130 +170,68 @@
 <main class="cover">
 
   <div class="cover-hero">
-    <div class="cover-eyebrow">A Field Guide · Edition One · June 2026</div>
-    <h1 class="cover-title">Tech,<br><em>rewinding the tape.</em></h1>
-    <p class="cover-lede">The history of technology, read through three lenses: what each invention did to money, what it did to power, and what it did to the texture of ordinary days.</p>
-    <div class="cover-meta">Eight chapters · ~6 hours reading · Built for the curious</div>
+    <div class="cover-eyebrow">A Personal Learning Space · Edition One · 2026</div>
+    <h1 class="cover-title">Things I'm<br><em>figuring out.</em></h1>
+    <p class="cover-lede">A shelf of long-form tutorials I write to teach myself things properly — and then leave here, in plain language, in case they help you too.</p>
+    <div class="cover-meta">Bilingual · English &amp; Greek · Built slowly, on purpose</div>
   </div>
 
   <div class="cover-intro">
-    <p>Most histories of technology are lists — this invention, then that one, ever upward. This one tries to be something else: a causal story. Each chapter takes a stretch of time and asks the same three questions of whatever got built in it.</p>
-    <p>What did it do to <em>money</em> — to how value was stored, moved, and captured? What did it do to <em>power</em> — to who could coerce, persuade, or escape whom? And what did it do to <em>daily life</em> — to the ordinary texture of waking up, working, eating, and dying? Read that way, a stone blade and a language model turn out to rhyme.</p>
-    <p>The chapters cover three million years in eight parts, from the first sharpened stone to the AI system you may be reading this on. They build on each other — the patterns established in Chapter 01 are still running in Chapter 08 — but each can also be read on its own.</p>
+    <p>I learn a subject best when I have to explain it from the ground up — no jargon I can hide behind, no steps quietly skipped. So that's what these are: each tutorial is a topic I wanted to genuinely understand, written out the long way, the way I wish someone had written it for me. They assume nothing. They build up. They have opinions.</p>
+    <p>Everything here is bilingual, because the people I most want to read these think in Greek. Pick a tutorial and start anywhere — though, like most things worth learning, they reward being read in order.</p>
   </div>
 
   <div class="chapters-grid">
-    <div class="chapters-label">The eight chapters</div>
+    <div class="chapters-label">The tutorials</div>
 
-    <a href="01-origins.html" class="chapter-card">
-      <div class="chapter-card-num">01</div>
-      <div class="chapter-card-content">
-        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">3M BC → 0 AD</div>
-        <h3><em>Origins</em></h3>
-        <p>From the first sharpened stone to classical Athens — fire, language, agriculture, metals, writing, and the first cities. Every pattern that follows is already visible here.</p>
-        <div class="chapter-card-meta">~40 min · 13 sections</div>
+    <div class="tutorial-grid">
+
+      <a href="tutorials/money-decoded/index.html" class="tutorial-card">
+        <div class="tutorial-card-top">
+          <span class="tutorial-num">Tutorial 01</span>
+          <span class="status-badge is-complete">Complete</span>
+        </div>
+        <h2>Money, <em>decoded</em></h2>
+        <p class="tutorial-card-blurb">A field guide to money, the economy, and investing — from the cotton paper in your pocket to the global system it represents, and how to put your share of it to work instead of watching it quietly disappear.</p>
+        <div class="tutorial-card-foot">
+          <span class="tutorial-langs">EN · ΕΛ · 4 chapters · ~3 hrs</span>
+          <span class="tutorial-card-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="tutorials/tech-evolution/index.html" class="tutorial-card">
+        <div class="tutorial-card-top">
+          <span class="tutorial-num">Tutorial 02</span>
+          <span class="status-badge is-complete">Complete</span>
+        </div>
+        <h2>Tech, <em>rewinding the tape</em></h2>
+        <p class="tutorial-card-blurb">The history of technology read through three lenses — what each invention did to money, power, and daily life. From the first stone tool to AI, in eight chapters that show why the present looks the way it does.</p>
+        <div class="tutorial-card-foot">
+          <span class="tutorial-langs">EN · ΕΛ · 8 chapters · ~6 hrs</span>
+          <span class="tutorial-card-arrow">→</span>
+        </div>
+      </a>
+
+      <div class="tutorial-card is-add">
+        <div class="add-mark">+</div>
+        <div class="add-text">Drop a folder in /tutorials/ and add a card here.</div>
       </div>
-      <div class="chapter-card-arrow">→</div>
-    </a>
 
-    <a href="02-middle.html" class="chapter-card">
-      <div class="chapter-card-num">02</div>
-      <div class="chapter-card-content">
-        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">0 → 1500</div>
-        <h3>The Long <em>Middle</em></h3>
-        <p>Fifteen centuries dismissed as darkness, quietly inventing the mechanical clock, the printing press, and the rational worldview that would power everything that followed.</p>
-        <div class="chapter-card-meta">~35 min · 13 sections</div>
-      </div>
-      <div class="chapter-card-arrow">→</div>
-    </a>
-
-    <a href="03-acceleration.html" class="chapter-card">
-      <div class="chapter-card-num">03</div>
-      <div class="chapter-card-content">
-        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">1500 → 1800</div>
-        <h3>First <em>Acceleration</em></h3>
-        <p>Ships, guns, the printing press, and double-entry bookkeeping — how a handful of small European states used technology to bootstrap the first global economy, and what it cost everyone else.</p>
-        <div class="chapter-card-meta">~38 min · 13 sections</div>
-      </div>
-      <div class="chapter-card-arrow">→</div>
-    </a>
-
-    <a href="04-industrial.html" class="chapter-card">
-      <div class="chapter-card-num">04</div>
-      <div class="chapter-card-content">
-        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">1800 → 1900</div>
-        <h3>The Industrial <em>Era</em></h3>
-        <p>Steam, steel, and the factory — when work left the home, cities swelled, human muscle became optional, and a new class conflict was born. Why Britain first, and what it cost the world.</p>
-        <div class="chapter-card-meta">~42 min · 13 sections</div>
-      </div>
-      <div class="chapter-card-arrow">→</div>
-    </a>
-
-    <a href="05-electric.html" class="chapter-card">
-      <div class="chapter-card-num">05</div>
-      <div class="chapter-card-content">
-        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">1900 → 1970</div>
-        <h3>The Electric &amp; Atomic <em>Century</em></h3>
-        <p>Light, flight, radio, the bomb, and the computer — seventy years that wired the world, killed a hundred million people, and accidentally built the machine that would change everything else.</p>
-        <div class="chapter-card-meta">~45 min · 13 sections</div>
-      </div>
-      <div class="chapter-card-arrow">→</div>
-    </a>
-
-    <a href="06-digital.html" class="chapter-card">
-      <div class="chapter-card-num">06</div>
-      <div class="chapter-card-content">
-        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">1970 → 2010</div>
-        <h3>The Digital <em>Era</em></h3>
-        <p>The microchip escaped the military, landed in garages, built a global network, and ate every industry it touched. The internet, the web, the smartphone, and the platform economy.</p>
-        <div class="chapter-card-meta">~44 min · 13 sections</div>
-      </div>
-      <div class="chapter-card-arrow">→</div>
-    </a>
-
-    <a href="07-ai.html" class="chapter-card">
-      <div class="chapter-card-num">07</div>
-      <div class="chapter-card-content">
-        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">2010 → today</div>
-        <h3>The <em>AI</em> Era</h3>
-        <p>A seventy-year-old idea that suddenly started working. What changed was the data, the compute, and the architecture. The transformer, ChatGPT, and the question of who controls it all.</p>
-        <div class="chapter-card-meta">~40 min · 13 sections</div>
-      </div>
-      <div class="chapter-card-arrow">→</div>
-    </a>
-
-    <a href="08-synthesis.html" class="chapter-card">
-      <div class="chapter-card-num">08</div>
-      <div class="chapter-card-content">
-        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">Across all eras</div>
-        <h3>Patterns &amp; <em>Implications</em></h3>
-        <p>The seven patterns that run through all eight chapters — and what they suggest about how to read any new technology, including the ones that don't exist yet.</p>
-        <div class="chapter-card-meta">~30 min · 13 sections</div>
-      </div>
-      <div class="chapter-card-arrow">→</div>
-    </a>
-
+    </div>
   </div>
 
   <div class="ornament">✦ ✦ ✦</div>
-
-  <div class="cover-intro" style="margin-bottom: 0;">
-    <h3 style="font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.4rem; margin-bottom: 1rem; font-style: italic; color: var(--rust-deep);">Why this exists</h3>
-    <p>I kept reaching for technology metaphors to explain other things — money, institutions, power, why the present feels the way it does — and realised I didn't actually have the history straight. Not the list of inventions and dates, but the causal story: why things happened when they did, who benefited, what conditions made them possible. So I wrote it down, the long way, to fix that. This is the result.</p>
-    <p>Start at Chapter 01 and read through, or jump in wherever the era interests you most. Either way works. The patterns become visible over the whole arc, but each chapter holds on its own.</p>
-    <a href="01-origins.html" style="display: inline-block; margin-top: 1.5rem; padding: 0.9rem 1.8rem; background: var(--ink); color: var(--paper); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 2px; transition: all 0.2s;">Begin with Chapter 01 →</a>
-  </div>
 
 </main>
 
 <footer class="site-footer">
   <div class="site-footer-inner">
-    <p>TECH, REWINDING THE TAPE · A FIELD GUIDE</p>
-    <p>EDITION ONE · JUNE 2026</p>
-    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+    <p>THINGS I'M FIGURING OUT · A PERSONAL LEARNING SPACE</p>
+    <p>EDITION ONE · 2026</p>
+    <p>WRITTEN TO BE UNDERSTOOD · NOT TO IMPRESS</p>
   </div>
 </footer>
 
-<script src="../../shared/script.js"></script>
+<script src="shared/script.js"></script>
 </body>
 </html>
