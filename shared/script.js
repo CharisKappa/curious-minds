@@ -197,5 +197,11 @@ document.addEventListener('DOMContentLoaded', () => {
     wrap.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
     document.addEventListener('click', (e) => { if (!nav.contains(e.target)) close(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+    // Auto-label the root hub link as "← Home" everywhere
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href="../../index.html"], a[href="../../index-el.html"]').forEach(function (el) {
+    if (el.classList.contains('site-logo')) return;
+    el.textContent = '← Home';
   });
 });
