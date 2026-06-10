@@ -3,154 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Πράγματα που προσπαθώ να καταλάβω — Ένας προσωπικός χώρος μάθησης</title>
+<title>Τεχνολογία, Ξετυλίγοντας την Κασέτα — Ένας οδηγός για την ιστορία της τεχνολογίας</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared/styles.css">
-<style>
-  /* Hub-only layout. Additive — uses the shared design tokens, overrides nothing. */
-  .tutorial-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .tutorial-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--paper-deep);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 2.2rem;
-    text-decoration: none;
-    color: var(--ink);
-    transition: all 0.25s;
-    position: relative;
-  }
-
-  .tutorial-card:hover {
-    border-color: var(--rust);
-    background: var(--paper-darker);
-    transform: translateY(-2px);
-  }
-
-  .tutorial-card:hover .tutorial-card-arrow {
-    transform: translateX(8px);
-    color: var(--rust);
-  }
-
-  .tutorial-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.4rem;
-  }
-
-  .tutorial-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-faded);
-  }
-
-  .status-badge {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    padding: 0.3rem 0.6rem;
-    border-radius: 2px;
-    font-weight: 600;
-  }
-  .status-badge.is-complete { color: var(--paper); background: var(--olive); }
-  .status-badge.is-progress { color: var(--paper); background: var(--rust); }
-  .status-badge.is-future   { color: var(--ink-faded); background: transparent; border: 1px solid var(--line); }
-
-  .tutorial-card h2 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: 2rem;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 0.8rem;
-  }
-  .tutorial-card h2 em { font-style: italic; color: var(--rust-deep); }
-
-  .tutorial-card-blurb {
-    font-size: 0.98rem;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin-bottom: 1.6rem;
-    flex: 1;
-  }
-
-  .tutorial-card-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--line);
-  }
-
-  .tutorial-langs {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faded);
-  }
-
-  .tutorial-card-arrow {
-    font-size: 1.4rem;
-    color: var(--ink-faded);
-    transition: all 0.25s;
-  }
-
-  /* Dashed "add new" placeholder */
-  .tutorial-card.is-add {
-    border-style: dashed;
-    border-color: var(--ink-faded);
-    background: transparent;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 220px;
-    cursor: default;
-  }
-  .tutorial-card.is-add:hover {
-    transform: none;
-    border-color: var(--rust);
-    background: transparent;
-  }
-  .tutorial-card.is-add .add-mark {
-    font-family: 'Fraunces', serif;
-    font-size: 2.6rem;
-    font-weight: 300;
-    color: var(--rust);
-    line-height: 1;
-    margin-bottom: 0.8rem;
-  }
-  .tutorial-card.is-add .add-text {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    color: var(--ink-faded);
-    line-height: 1.6;
-    max-width: 240px;
-  }
-
-  @media (max-width: 950px) {
-    .tutorial-grid { grid-template-columns: 1fr; }
-    .tutorial-card h2 { font-size: 1.7rem; }
-  }
-</style>
+<link rel="stylesheet" href="../../shared/styles.css">
 </head>
 <body>
 
@@ -158,8 +15,18 @@
 
 <header class="site-header">
   <div class="site-header-inner">
-    <a href="index-el.html" class="site-logo">Πράγματα που προσπαθώ να καταλάβω</a>
+    <a href="index-el.html" class="site-logo">Τεχνολογία, ξετυλίγοντας την κασέτα <em>— ένας οδηγός</em></a>
     <nav class="site-nav">
+      <a href="../../index-el.html">Κόμβος</a>
+      <a href="index-el.html" class="current">Αρχική</a>
+      <a href="01-origins-el.html">01</a>
+      <a href="02-middle-el.html">02</a>
+      <a href="03-acceleration-el.html">03</a>
+      <a href="04-industrial-el.html">04</a>
+      <a href="05-electric-el.html">05</a>
+      <a href="06-digital-el.html">06</a>
+      <a href="07-ai-el.html">07</a>
+      <a href="08-synthesis-el.html">08</a>
       <div class="lang-toggle">
         <a href="index.html">EN</a>
         <span class="lang-divider">·</span>
@@ -172,68 +39,130 @@
 <main class="cover">
 
   <div class="cover-hero">
-    <div class="cover-eyebrow">Ένας Προσωπικός Χώρος Μάθησης · Πρώτη Έκδοση · 2026</div>
-    <h1 class="cover-title">Πράγματα που<br><em>προσπαθώ να καταλάβω.</em></h1>
-    <p class="cover-lede">Ένα ράφι με εκτενείς οδηγούς που γράφω για να μάθω σωστά κάποια πράγματα — και μετά τους αφήνω εδώ, σε απλή γλώσσα, μήπως βοηθήσουν κι εσένα.</p>
-    <div class="cover-meta">Δίγλωσσο · Ελληνικά &amp; Αγγλικά · Φτιαγμένο αργά, επίτηδες</div>
+    <div class="cover-eyebrow">Πρακτικός Οδηγός · Πρώτη Έκδοση · Ιούνιος 2026</div>
+    <h1 class="cover-title">Τεχνολογία,<br><em>ξετυλίγοντας την κασέτα.</em></h1>
+    <p class="cover-lede">Η ιστορία της τεχνολογίας, ιδωμένη μέσα από τρεις φακούς: τι έκανε κάθε εφεύρεση στο χρήμα, τι έκανε στην εξουσία, και τι έκανε στην υφή των καθημερινών ημερών.</p>
+    <div class="cover-meta">Οκτώ κεφάλαια · ~6 ώρες ανάγνωση · Φτιαγμένος για τους περίεργους</div>
   </div>
 
   <div class="cover-intro">
-    <p>Μαθαίνω καλύτερα ένα θέμα όταν αναγκάζομαι να το εξηγήσω από την αρχή — χωρίς ορολογία να κρυφτώ από πίσω, χωρίς βήματα που παρακάμπτω στα κρυφά. Αυτό λοιπόν είναι κι αυτοί οι οδηγοί: καθένας είναι ένα θέμα που ήθελα πραγματικά να καταλάβω, γραμμένο με τον μακρύ τρόπο, έτσι όπως θα ήθελα να μου το είχε γράψει κάποιος. Δεν προϋποθέτουν τίποτα. Χτίζουν από κάτω. Έχουν άποψη.</p>
-    <p>Όλα εδώ είναι δίγλωσσα, γιατί οι άνθρωποι που πιο πολύ θέλω να τα διαβάσουν σκέφτονται στα ελληνικά. Διάλεξε έναν οδηγό και ξεκίνα από όπου θες — αν και, όπως τα περισσότερα πράγματα που αξίζει να μάθεις, ανταμείβουν το διάβασμα με τη σειρά.</p>
+    <p>Οι περισσότερες ιστορίες της τεχνολογίας είναι λίστες — αυτή η εφεύρεση, μετά εκείνη, όλο προς τα πάνω. Αυτή εδώ προσπαθεί να είναι κάτι άλλο: μια αιτιακή ιστορία. Κάθε κεφάλαιο παίρνει μια περίοδο και κάνει τις ίδιες τρεις ερωτήσεις για ό,τι φτιάχτηκε μέσα της.</p>
+    <p>Τι έκανε στο <em>χρήμα</em> — στο πώς αποθηκευόταν, μετακινούνταν και δεσμευόταν η αξία; Τι έκανε στην <em>εξουσία</em> — στο ποιος μπορούσε να εξαναγκάσει, να πείσει ή να ξεφύγει από ποιον; Και τι έκανε στην <em>καθημερινή ζωή</em> — στην υφή του να ξυπνάς, να δουλεύεις, να τρως και να πεθαίνεις; Διαβασμένα έτσι, μια πέτρινη λεπίδα κι ένα γλωσσικό μοντέλο αποδεικνύονται ότι ομοιοκαταληκτούν.</p>
+    <p>Τα κεφάλαια καλύπτουν τρία εκατομμύρια χρόνια σε οκτώ μέρη, από την πρώτη ακονισμένη πέτρα μέχρι το σύστημα ΤΝ που ίσως διαβάζεις αυτό. Χτίζουν το ένα πάνω στο άλλο — τα μοτίβα που καθιερώνονται στο Κεφάλαιο 01 τρέχουν ακόμα στο Κεφάλαιο 08 — αλλά το καθένα μπορεί να διαβαστεί και μόνο του.</p>
   </div>
 
   <div class="chapters-grid">
-    <div class="chapters-label">Οι οδηγοί</div>
+    <div class="chapters-label">Τα οκτώ κεφάλαια</div>
 
-    <div class="tutorial-grid">
-
-      <a href="tutorials/money-decoded/index-el.html" class="tutorial-card">
-        <div class="tutorial-card-top">
-          <span class="tutorial-num">Οδηγός 01</span>
-          <span class="status-badge is-complete">Ολοκληρωμένο</span>
-        </div>
-        <h2>Το Χρήμα, <em>Αποκωδικοποιημένο</em></h2>
-        <p class="tutorial-card-blurb">Ένας πρακτικός οδηγός για το χρήμα, την οικονομία και τις επενδύσεις — από το βαμβακερό χαρτί στην τσέπη σου μέχρι το παγκόσμιο σύστημα που αντιπροσωπεύει, και πώς να βάλεις το μερίδιό σου να δουλέψει αντί να το βλέπεις σιωπηλά να εξαφανίζεται.</p>
-        <div class="tutorial-card-foot">
-          <span class="tutorial-langs">EN · ΕΛ</span>
-          <span class="tutorial-card-arrow">→</span>
-        </div>
-      </a>
-
-      <a href="tutorials/tech-evolution/index-el.html" class="tutorial-card">
-        <div class="tutorial-card-top">
-          <span class="tutorial-num">Οδηγός 02</span>
-          <span class="status-badge is-progress">Σε εξέλιξη</span>
-        </div>
-        <h2>Τεχνολογία, <em>ξετυλίγοντας την κασέτα</em></h2>
-        <p class="tutorial-card-blurb">Πώς η τεχνολογία διαμόρφωσε το χρήμα, την εξουσία και την καθημερινή ζωή — από το πρώτο πέτρινο εργαλείο μέχρι σήμερα. Μια μεγάλη βόλτα μέσα από την ιστορία των πραγμάτων που έφτιαξε ο άνθρωπος, και τι αναδιάταξε σιωπηλά το καθένα.</p>
-        <div class="tutorial-card-foot">
-          <span class="tutorial-langs">EN · ΕΛ</span>
-          <span class="tutorial-card-arrow">→</span>
-        </div>
-      </a>
-
-      <div class="tutorial-card is-add">
-        <div class="add-mark">+</div>
-        <div class="add-text">Ρίξε έναν φάκελο στο /tutorials/ και πρόσθεσε μια κάρτα εδώ.</div>
+    <a href="01-origins-el.html" class="chapter-card">
+      <div class="chapter-card-num">01</div>
+      <div class="chapter-card-content">
+        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">3M π.Χ. → 0 μ.Χ.</div>
+        <h3><em>Καταγωγή</em></h3>
+        <p>Από την πρώτη ακονισμένη πέτρα μέχρι την κλασική Αθήνα — φωτιά, γλώσσα, γεωργία, μέταλλα, γραφή και οι πρώτες πόλεις. Κάθε μοτίβο που ακολουθεί είναι ήδη ορατό εδώ.</p>
+        <div class="chapter-card-meta">~40 λεπτά · 13 ενότητες</div>
       </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
 
-    </div>
+    <a href="02-middle-el.html" class="chapter-card">
+      <div class="chapter-card-num">02</div>
+      <div class="chapter-card-content">
+        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">0 → 1500</div>
+        <h3>Το μακρύ <em>ενδιάμεσο</em></h3>
+        <p>Δεκαπέντε αιώνες που απορρίπτονται ως σκοτάδι, ενώ σιωπηλά εφηύρισκαν το μηχανικό ρολόι, το τυπογραφείο και την ορθολογική κοσμοθεωρία που θα τροφοδοτούσε τα πάντα που ακολούθησαν.</p>
+        <div class="chapter-card-meta">~35 λεπτά · 13 ενότητες</div>
+      </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
+
+    <a href="03-acceleration-el.html" class="chapter-card">
+      <div class="chapter-card-num">03</div>
+      <div class="chapter-card-content">
+        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">1500 → 1800</div>
+        <h3>Η πρώτη <em>επιτάχυνση</em></h3>
+        <p>Καράβια, όπλα, τυπογραφείο και διπλογραφικά βιβλία — πώς μια χούφτα μικρών ευρωπαϊκών κρατών χρησιμοποίησε την τεχνολογία για να εκκινήσει την πρώτη παγκόσμια οικονομία, και τι κόστισε αυτό στους υπολοίπους.</p>
+        <div class="chapter-card-meta">~38 λεπτά · 13 ενότητες</div>
+      </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
+
+    <a href="04-industrial-el.html" class="chapter-card">
+      <div class="chapter-card-num">04</div>
+      <div class="chapter-card-content">
+        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">1800 → 1900</div>
+        <h3>Η βιομηχανική <em>εποχή</em></h3>
+        <p>Ατμός, χάλυβας και το εργοστάσιο — όταν η δουλειά έφυγε από το σπίτι, οι πόλεις φούσκωσαν, η ανθρώπινη μυϊκή δύναμη έγινε προαιρετική και γεννήθηκε μια νέα ταξική σύγκρουση.</p>
+        <div class="chapter-card-meta">~42 λεπτά · 13 ενότητες</div>
+      </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
+
+    <a href="05-electric-el.html" class="chapter-card">
+      <div class="chapter-card-num">05</div>
+      <div class="chapter-card-content">
+        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">1900 → 1970</div>
+        <h3>Ο ηλεκτρικός &amp; ατομικός <em>αιώνας</em></h3>
+        <p>Φως, πτήση, ραδιόφωνο, η βόμβα και ο υπολογιστής — εβδομήντα χρόνια που καλωδίωσαν τον κόσμο, σκότωσαν εκατό εκατομμύρια ανθρώπους και τυχαία έφτιαξαν τη μηχανή που θα άλλαζε τα υπόλοιπα.</p>
+        <div class="chapter-card-meta">~45 λεπτά · 13 ενότητες</div>
+      </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
+
+    <a href="06-digital-el.html" class="chapter-card">
+      <div class="chapter-card-num">06</div>
+      <div class="chapter-card-content">
+        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">1970 → 2010</div>
+        <h3>Η ψηφιακή <em>εποχή</em></h3>
+        <p>Το μικροτσίπ ξέφυγε από τον στρατό, προσγειώθηκε σε γκαράζ, έχτισε ένα παγκόσμιο δίκτυο και κατάφαγε κάθε βιομηχανία που άγγιξε. Το internet, ο ιστός, το smartphone και η οικονομία πλατφορμών.</p>
+        <div class="chapter-card-meta">~44 λεπτά · 13 ενότητες</div>
+      </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
+
+    <a href="07-ai-el.html" class="chapter-card">
+      <div class="chapter-card-num">07</div>
+      <div class="chapter-card-content">
+        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">2010 → σήμερα</div>
+        <h3>Η εποχή της <em>ΤΝ</em></h3>
+        <p>Μια εβδομηντάχρονη ιδέα που ξαφνικά άρχισε να λειτουργεί. Αυτό που άλλαξε ήταν τα δεδομένα, η υπολογιστική ισχύς και η αρχιτεκτονική. Ο transformer, το ChatGPT και το ερώτημα ποιος τα ελέγχει όλα αυτά.</p>
+        <div class="chapter-card-meta">~40 λεπτά · 13 ενότητες</div>
+      </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
+
+    <a href="08-synthesis-el.html" class="chapter-card">
+      <div class="chapter-card-num">08</div>
+      <div class="chapter-card-content">
+        <div class="chapter-card-meta" style="margin-bottom:0.5rem; color:var(--rust);">Σε όλες τις εποχές</div>
+        <h3>Μοτίβα &amp; <em>συνέπειες</em></h3>
+        <p>Τα επτά μοτίβα που διατρέχουν και τα οκτώ κεφάλαια — και τι υποδηλώνουν για το πώς να διαβάζεις οποιαδήποτε νέα τεχνολογία, συμπεριλαμβανομένων εκείνων που δεν υπάρχουν ακόμα.</p>
+        <div class="chapter-card-meta">~30 λεπτά · 13 ενότητες</div>
+      </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
+
   </div>
 
   <div class="ornament">✦ ✦ ✦</div>
+
+  <div class="cover-intro" style="margin-bottom: 0;">
+    <h3 style="font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.4rem; margin-bottom: 1rem; font-style: italic; color: var(--rust-deep);">Γιατί υπάρχει αυτό</h3>
+    <p>Συνέχεια έπιανα τον εαυτό μου να χρησιμοποιεί μεταφορές από την τεχνολογία για να εξηγήσει άλλα πράγματα — το χρήμα, τους θεσμούς, την εξουσία, γιατί το παρόν μοιάζει όπως μοιάζει — και συνειδητοποίησα ότι δεν είχα την ιστορία ξεκάθαρη. Όχι τη λίστα εφευρέσεων και χρονολογιών, αλλά την αιτιακή ιστορία: γιατί τα πράγματα συνέβαιναν όταν συνέβαιναν, ποιος ωφελήθηκε, τι συνθήκες τα έκαναν δυνατά. Οπότε τα έγραψα, με τον μακρύ τρόπο, για να το διορθώσω. Αυτός ο οδηγός είναι το αποτέλεσμα.</p>
+    <p>Ξεκίνα από το Κεφάλαιο 01 και διάβασε με τη σειρά, ή μπες όπου σε ενδιαφέρει περισσότερο η εποχή. Και οι δύο τρόποι λειτουργούν. Τα μοτίβα γίνονται ορατά σε ολόκληρο το τόξο, αλλά κάθε κεφάλαιο στέκεται και μόνο του.</p>
+    <a href="01-origins-el.html" style="display: inline-block; margin-top: 1.5rem; padding: 0.9rem 1.8rem; background: var(--ink); color: var(--paper); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 2px; transition: all 0.2s;">Ξεκίνα με το Κεφάλαιο 01 →</a>
+  </div>
 
 </main>
 
 <footer class="site-footer">
   <div class="site-footer-inner">
-    <p>ΠΡΑΓΜΑΤΑ ΠΟΥ ΠΡΟΣΠΑΘΩ ΝΑ ΚΑΤΑΛΑΒΩ · ΕΝΑΣ ΠΡΟΣΩΠΙΚΟΣ ΧΩΡΟΣ ΜΑΘΗΣΗΣ</p>
-    <p>ΠΡΩΤΗ ΕΚΔΟΣΗ · 2026</p>
-    <p>ΓΡΑΜΜΕΝΟ ΓΙΑ ΝΑ ΓΙΝΕΙ ΚΑΤΑΝΟΗΤΟ · ΟΧΙ ΓΙΑ ΕΝΤΥΠΩΣΙΑΣΜΟ</p>
+    <p>ΤΕΧΝΟΛΟΓΙΑ, ΞΕΤΥΛΙΓΟΝΤΑΣ ΤΗΝ ΚΑΣΕΤΑ · ΕΝΑΣ ΟΔΗΓΟΣ</p>
+    <p>ΠΡΩΤΗ ΕΚΔΟΣΗ · ΙΟΥΝΙΟΣ 2026</p>
+    <p>ΓΙΑ ΤΟΥΣ ΠΕΡΙΕΡΓΟΥΣ · ΓΡΑΜΜΕΝΟ ΓΙΑ ΝΑ ΓΙΝΕΙ ΚΑΤΑΝΟΗΤΟ</p>
   </div>
 </footer>
 
-<script src="shared/script.js"></script>
+<script src="../../shared/script.js"></script>
 </body>
 </html>

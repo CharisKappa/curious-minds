@@ -43,7 +43,21 @@
   <aside class="toc-sidebar" id="tocSidebar">
     <div class="toc-chapter-label">Chapter 07</div>
     <div class="toc-chapter-title">The AI Era</div>
-    <p style="font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-faded); letter-spacing:0.05em; line-height:1.7;">Content coming soon.</p>
+    <ul class="toc-list">
+      <li><a href="#not-new">AI is not new</a></li>
+      <li><a href="#winters">The AI winters</a></li>
+      <li><a href="#deep-learning">Deep learning: the breakthrough</a></li>
+      <li><a href="#imagenet">ImageNet and the proof of concept</a></li>
+      <li><a href="#data">Data: the new oil</a></li>
+      <li><a href="#gpu">The GPU that trained the world</a></li>
+      <li><a href="#transformer">The transformer changes everything</a></li>
+      <li><a href="#chatgpt">ChatGPT and the public awakening</a></li>
+      <li><a href="#what-ai-can-do">What AI can actually do</a></li>
+      <li><a href="#labour">AI and the labour question</a></li>
+      <li><a href="#power-concentration">Power concentration, again</a></li>
+      <li><a href="#greece-ai">Greece and AI</a></li>
+      <li><a href="#the-question">The question we keep avoiding</a></li>
+    </ul>
   </aside>
 
   <main class="chapter-content">
@@ -51,19 +65,176 @@
     <header class="chapter-cover">
       <div class="chapter-eyebrow">Chapter 07 · 2010 → today</div>
       <h1 class="chapter-title">The <em>AI</em> Era</h1>
-      <p class="chapter-lede">Coming soon — this chapter is being drafted.</p>
+      <p class="chapter-lede">Artificial intelligence is a seventy-year-old idea that suddenly started working. What changed was not the concept — it was the data, the compute, and the architecture. The consequences are still unfolding.</p>
       <div class="chapter-info">
-        <span>Coming soon</span>
-        <span>~40 min · 15 sections</span>
+        <span>~40 min read</span>
+        <span>13 sections</span>
         <span>2010 → today</span>
       </div>
     </header>
 
-    <section id="coming-soon">
+    <section id="not-new">
+      <h3>AI is not new</h3>
+      <p>The term "artificial intelligence" was coined in 1956, at a summer workshop at Dartmouth College organised by John McCarthy. The participants — including McCarthy, Marvin Minsky, Claude Shannon, and others who would become the founders of the field — were optimistic to the point of delusion. They predicted that "a machine as intelligent as a human being" could be built within a generation. It took seventy years.</p>
+
+      <p>The history of AI is a history of genuine breakthroughs followed by oversold expectations followed by disappointment followed by another breakthrough. This pattern repeated so reliably that it acquired a name: the AI hype cycle. Each cycle ended in an "AI winter" — a period of deflated expectations, reduced funding, and widespread scepticism — before the next generation of researchers tried again with new techniques.</p>
+
+      <p>What changed, beginning around 2012, was not the fundamental idea of machine learning — computers learning from data — but the combination of three things that had never previously been available simultaneously: enormous datasets, cheap computing power, and a specific architectural innovation called deep learning. These three things together produced a qualitative change in what machine learning could do, and the change has not stopped since.</p>
+
       <div class="insight">
-        <div class="insight-label">In progress · Content coming soon</div>
-        <p>This chapter is being drafted. It will land here when it's ready — and like the rest, it'll be worth reading in order.</p>
+        <div class="insight-label">Why this time is different</div>
+        <p>Every previous AI wave was driven by handcrafted rules or shallow statistical methods that hit hard ceilings. Deep learning doesn't hit the same ceilings — it scales. More data plus more compute equals better performance, reliably, across tasks. This scaling property is what makes the current wave structurally different from its predecessors. The question is not "will it stop working?" but "what does it do to everything else as it keeps working?"</p>
       </div>
+    </section>
+
+    <section id="winters">
+      <h3>The AI winters</h3>
+      <p>The first AI winter arrived in the mid-1970s. Early AI research had produced programs that could play checkers, prove mathematical theorems, and hold simple conversations. But they were brittle — they worked in narrow, controlled domains and fell apart outside them. The combinatorial explosion problem became apparent: the number of possible states in any real-world problem was too large for rule-based systems to navigate. The UK Lighthill Report of 1973 was scathing, and funding dried up.</p>
+
+      <p>A second wave came in the 1980s, based on "expert systems" — programs that encoded the knowledge of human experts in formal rules. They worked well enough in specific domains to attract commercial investment. Hundreds of millions were spent. Then the limitations appeared again: maintaining the rule bases was expensive, the systems were brittle outside their narrow domains, and the hardware to run them was still too slow for most applications. The second winter arrived in the early 1990s.</p>
+
+      <p>Through both winters, a small group of researchers continued working on neural networks — systems loosely inspired by the structure of biological brains, which learned from data rather than following hand-coded rules. The approach was theoretically promising but practically limited by the available data and computing power. Geoff Hinton at the University of Toronto, Yann LeCun at Bell Labs and later Facebook, and Yoshua Bengio at the University of Montreal kept the flame alive through decades of relative obscurity. They would eventually share the Turing Award — the Nobel Prize of computing — for their patience.</p>
+    </section>
+
+    <section id="deep-learning">
+      <h3>Deep learning: the breakthrough</h3>
+      <p>A neural network is, at its simplest, a system of mathematical functions arranged in layers. Each layer takes the output of the previous layer, applies a transformation, and passes the result to the next. The network "learns" by adjusting the strength of connections between nodes based on feedback about whether its outputs are correct. Given enough data and enough layers, these networks can learn to recognise patterns of extraordinary complexity.</p>
+
+      <p>"Deep" learning refers to networks with many layers — dozens or hundreds, rather than the two or three that were practical in the 1980s. The additional layers allow the network to learn hierarchical representations: early layers might learn to detect edges in an image, middle layers to detect shapes made of edges, later layers to detect objects made of shapes. This hierarchical learning turns out to be enormously powerful for tasks involving perception and language.</p>
+
+      <p>The practical barrier to deep learning was computational: training a deep network requires an enormous number of matrix multiplications, performed iteratively across the training data. In the 1990s and 2000s, this was prohibitively slow on standard CPUs. The crucial enabler was the GPU — originally designed for rendering video game graphics, which also involves massive parallel matrix operations. In 2009, Andrew Ng's group at Stanford showed that training neural networks on GPUs was 70 times faster than on CPUs. The barrier collapsed.</p>
+    </section>
+
+    <section id="imagenet">
+      <h3>ImageNet and the proof of concept</h3>
+      <p>ImageNet is a dataset of 14 million labelled images, assembled by Fei-Fei Li and her team at Princeton (later Stanford) beginning in 2007. Each image is labelled with its content — "cat," "fire truck," "banana" — by human annotators. The ImageNet Large Scale Visual Recognition Challenge, launched in 2010, asked competitors to build systems that could correctly classify images from the dataset.</p>
+
+      <p>In 2012, a team led by Geoff Hinton's PhD student Alex Krizhevsky entered a deep convolutional neural network called AlexNet. It reduced the error rate by 10 percentage points compared to the previous best — an improvement so large it was initially assumed to be a mistake. It was not a mistake. AlexNet trained on two NVIDIA GPUs for a week had learned to see better than any previous computer vision system.</p>
+
+      <p>The AI research community took the result as a starting gun. Deep learning papers multiplied exponentially. Every major technology company began building AI research teams. The GPT of today is AlexNet's direct descendant — larger, more capable, applied to language rather than images, but built on the same fundamental principles. ImageNet 2012 is, in retrospect, the moment the current AI era began.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2012</div>
+          <div class="timeline-content"><h5>AlexNet wins ImageNet</h5><p>Deep learning proves decisively superior to all previous methods on a benchmark visual recognition task. The AI research community pivots.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2016</div>
+          <div class="timeline-content"><h5>AlphaGo beats Lee Sedol</h5><p>DeepMind's AI defeats the world champion at Go, a game long considered beyond machine capability due to its complexity. The win comes a decade earlier than most experts predicted.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2017</div>
+          <div class="timeline-content"><h5>The Transformer is published</h5><p>Google researchers publish "Attention Is All You Need," introducing the transformer architecture. Every major language model since — GPT, BERT, Claude, Gemini — is built on this architecture.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-content"><h5>ChatGPT launches</h5><p>OpenAI's ChatGPT reaches 100 million users in two months — faster than any consumer product in history. AI enters mainstream public consciousness.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="data">
+      <h3>Data: the new oil</h3>
+      <p>The phrase "data is the new oil" became a cliché around 2017. Like most clichés, it contains truth and misleads simultaneously. The truth: in the machine learning era, data is the primary input into the most valuable production process — training AI systems. The company that has the most relevant data can train the best model for a given task, and the best model captures the market.</p>
+
+      <p>The reason Google, Facebook, and Amazon were so well positioned for the AI era is that decades of free consumer products had generated datasets of extraordinary scale and richness. Google had search queries and web content. Facebook had social graphs and personal communications. Amazon had purchase histories and product data. These datasets were not created to train AI — they were side effects of providing free services. But they turned out to be the most valuable AI training assets in existence.</p>
+
+      <p>The misleading part of the oil analogy: data, unlike oil, doesn't deplete when used. The same data can train multiple models. It can be combined with other data. It can be augmented synthetically. And unlike oil, whose value is inherent in the substance, the value of data depends entirely on what you do with it. A dataset is worthless without the algorithms, the compute, and the researchers to use it. The combination of all four is what produces AI capability — and the barriers to entry are formidable.</p>
+    </section>
+
+    <section id="gpu">
+      <h3>The GPU that trained the world</h3>
+      <p>NVIDIA was founded in 1993 to make graphics chips for video games. By 2024, it was briefly the most valuable company in the world, with a market capitalisation exceeding $3 trillion. The reason is that the GPUs designed for rendering game graphics turned out to be the ideal hardware for training neural networks.</p>
+
+      <p>Jensen Huang, NVIDIA's founder and CEO, made a bet in the late 2000s that scientific computing — and specifically, the kind of parallel computation needed for physics simulations — would be a large market for GPUs. He developed CUDA, a programming interface that allowed scientists to write code for GPU execution. Machine learning researchers discovered CUDA around 2009–2012 and adopted it rapidly. By the time AI demand exploded after 2022, NVIDIA had a near-monopoly on AI training hardware — not because of any deliberate AI strategy, but because of an earlier bet on parallel computing that happened to fit AI perfectly.</p>
+
+      <p>The geopolitics of AI chips became one of the most consequential policy areas of the 2020s. The United States restricted exports of advanced NVIDIA chips to China in 2022–23, concerned that Chinese AI capability would translate into military and economic competition. China accelerated its domestic chip development in response. The semiconductor supply chain — concentrated in Taiwan (manufacturing), the Netherlands (lithography equipment), and the United States (chip design) — became a central fault line in US-China competition.</p>
+    </section>
+
+    <section id="transformer">
+      <h3>The transformer changes everything</h3>
+      <p>In 2017, eight Google researchers published a paper called "Attention Is All You Need." It described a new neural network architecture called the transformer, built around a mechanism called self-attention that allowed the model to consider the relationship between every word in a text and every other word simultaneously, regardless of their distance from each other. Previous approaches had processed text sequentially — reading left to right, maintaining a "memory" of what had come before. The transformer read everything at once.</p>
+
+      <p>The transformer turned out to scale extraordinarily well: larger transformers trained on more data consistently produced better results, with no obvious ceiling in sight. GPT-1 (2018) had 117 million parameters. GPT-2 (2019) had 1.5 billion. GPT-3 (2020) had 175 billion. GPT-4 (2023) had an undisclosed but vastly larger number. At each scale increase, qualitatively new capabilities emerged — the models could do things smaller models couldn't do at all, not just do the same things better. This emergent capability at scale is what made large language models genuinely surprising, even to their creators.</p>
+
+      <div class="definition">
+        <span class="definition-term">Large Language Model (LLM)</span>
+        <div class="definition-text">A type of AI system trained on enormous quantities of text to predict the next token (roughly, word) given the preceding context. Through this simple training objective — predict the next word — LLMs learn grammar, facts, reasoning patterns, coding ability, and something that looks like common sense. The reason this works is deeply contested in AI research. The fact that it works is not. Models like GPT-4, Claude, and Gemini are LLMs.</div>
+      </div>
+    </section>
+
+    <section id="chatgpt">
+      <h3>ChatGPT and the public awakening</h3>
+      <p>OpenAI launched ChatGPT on 30 November 2022. It reached one million users in five days. One hundred million users in two months. It was the fastest consumer product adoption in history — faster than the iPhone, faster than Instagram, faster than anything. People who had never thought about AI were suddenly talking about it, using it, and arguing about it.</p>
+
+      <p>What made ChatGPT different from previous AI products was not primarily technical — GPT-4, released months later, was more capable — but presentational. It was a conversational interface that anyone could use without training, that responded fluently in natural language, and that could do a striking range of things: write essays, debug code, explain concepts, generate stories, summarise documents. It made AI capability legible to non-experts in a way that previous research demonstrations had not.</p>
+
+      <p>The two years that followed were the most intense period of AI development and deployment in history. Google, Microsoft, Meta, Amazon, and dozens of startups raced to build and deploy large models. Microsoft invested $13 billion in OpenAI and integrated its models into Word, Excel, and Outlook. Google launched Gemini. Meta open-sourced Llama. Anthropic — founded by former OpenAI researchers, with a focus on AI safety — launched Claude. The competitive dynamics of the software industry, which had produced the platform monopolies of the previous chapter, were now organising around AI capabilities as the defining competitive variable.</p>
+    </section>
+
+    <section id="what-ai-can-do">
+      <h3>What AI can actually do</h3>
+      <p>Separating genuine AI capability from hype is difficult because the capabilities are real, substantial, and genuinely surprising — and because the incentives to overclaim are enormous. Here is a sober accounting as of mid-2026.</p>
+
+      <p>AI systems can reliably perform tasks involving pattern recognition in large datasets: medical image analysis (detecting cancers in scans at accuracy exceeding most human radiologists), protein structure prediction (DeepMind's AlphaFold solved a 50-year problem in structural biology), translation, speech recognition, and code generation. These are not marginal improvements on previous methods — they are transformative step changes in what's possible.</p>
+
+      <p>AI language models can write coherently, answer questions accurately on a wide range of topics, summarise documents, translate languages, generate working code in most programming languages, and reason through multi-step problems — with caveats. They make confident factual errors. They can be manipulated into producing harmful content. Their reasoning, while often impressive, is inconsistent and unreliable in ways that human reasoning (though also imperfect) is not. They do not understand in the way humans understand — they produce outputs that are statistically consistent with understanding without necessarily having anything like a model of the world.</p>
+
+      <p>What AI cannot reliably do, as of 2026: operate autonomously over long horizons without human supervision, learn continuously from new experiences (they must be retrained), maintain consistent factual accuracy on all topics, or demonstrate robust reasoning in genuinely novel situations outside their training distribution. The gap between what AI can do in demos and what it can do reliably and safely at scale remains significant.</p>
+    </section>
+
+    <section id="labour">
+      <h3>AI and the labour question</h3>
+      <p>Every major general-purpose technology produces labour displacement — and AI will too. The question is which tasks, at what pace, and whether new tasks emerge to replace them. The historical record offers some comfort and some warning.</p>
+
+      <p>The comfort: every previous wave of automation — the spinning jenny, the railway, the computer — produced anxiety about mass unemployment that did not materialise at civilisational scale. New industries emerged. Tasks that machines couldn't do became more valuable. Real wages generally rose over multi-decade periods, though the distribution of gains was deeply unequal and the transition cost to displaced workers was real and serious.</p>
+
+      <p>The warning: AI is different from previous automation in that it targets cognitive tasks, not just physical or routine ones. Previous automation displaced factory workers and clerks. AI is displacing — or threatening to displace — writers, lawyers, programmers, radiologists, translators, and financial analysts. These are not low-wage jobs. The displacement of middle-class cognitive workers is a different political and social problem than the displacement of industrial workers, with less obvious precedent.</p>
+
+      <div class="story">
+        <div class="story-label">The 360° context</div>
+        <div class="story-title">Who is building AI and why</div>
+        <div class="story-date">Global · 2020–2026</div>
+        <p><strong>Geopolitical:</strong> AI is understood by major powers — primarily the US and China — as a strategic military and economic technology. Both are investing massively in national AI programmes. Export controls on chips are a form of technological warfare. Europe is a significant AI research centre but lacks comparable industrial champions.</p>
+        <p><strong>Economic:</strong> The investment in AI from 2020–2025 was approximately $300–500 billion globally. Most of it came from a small number of very large technology companies — Microsoft, Google, Amazon, Meta — with the financial scale to absorb the infrastructure costs. This concentrates AI capability in an even smaller number of hands than the previous generation of internet platforms.</p>
+        <p><strong>Human needs:</strong> The genuine demand driving AI adoption is productivity — the hope that AI tools will allow people and organisations to do more with less. This is real. A programmer using AI coding assistants can produce working code two to three times faster than without. A writer using AI drafting tools can produce first drafts much faster. The productivity gains are genuine; who captures them is a distributional question.</p>
+        <p><strong>Political:</strong> AI regulation was the defining technology policy question of 2023–2026. The EU's AI Act (2024) established the first comprehensive regulatory framework. The US moved more slowly. China imposed specific requirements on AI products serving Chinese consumers. The fundamental tension in all these frameworks is between enabling beneficial applications and preventing harmful ones — a tension that no jurisdiction has resolved.</p>
+      </div>
+    </section>
+
+    <section id="power-concentration">
+      <h3>Power concentration, again</h3>
+      <p>The pattern identified in Chapter 01 — every major technology creates a new bottleneck, and whoever controls the bottleneck captures the surplus — is running again, visibly, in real time.</p>
+
+      <p>The bottlenecks in AI are: training data (controlled by companies that accumulated it through decades of free consumer services), compute (dominated by NVIDIA's chips and the three major cloud providers), and model capability (concentrated in a handful of frontier labs — OpenAI, Anthropic, Google DeepMind, Meta AI). These three bottlenecks are controlled by perhaps ten organisations in total, all headquartered in the United States or closely allied with US interests.</p>
+
+      <p>The open-source AI movement — led by Meta's decision to release its Llama models publicly — represents an attempt to break the compute and model bottlenecks open, similar to how Linux broke open the server operating system market that Microsoft had dominated. Whether open-source AI will succeed in distributing AI capability more broadly, or whether the resource requirements for frontier models will maintain the dominance of large incumbents, is the defining question of AI's next phase.</p>
+    </section>
+
+    <section id="greece-ai">
+      <h3>Greece and AI</h3>
+      <p>Greece's position in the AI era reflects a general pattern for smaller European economies: significant research capability and talent, limited industrial scale, heavy dependence on American and increasingly Chinese AI platforms for actual deployment.</p>
+
+      <p>Greek researchers are present in the global AI literature — Greek-origin scientists work at major AI labs in the United States and across Europe. The National Centre for Scientific Research "Demokritos" in Athens maintains active AI research programmes. Several Greek universities have developed AI and machine learning curricula that have produced graduates employed across European tech companies.</p>
+
+      <p>At the business level, Greek companies adopted AI tools rapidly from 2023 onward, primarily in sectors where Greece has competitive strength: tourism (AI-driven personalisation and customer service), shipping (route optimisation and predictive maintenance), agriculture (precision farming and supply chain optimisation), and financial services (fraud detection and risk assessment). The adoption was largely through American platforms — Microsoft Copilot, Google's AI tools, AWS AI services — rather than domestically developed systems.</p>
+
+      <p>The deeper challenge for Greece, as for most of Europe, is that the value created by AI adoption flows primarily to the platform owners, not the adopters. A Greek hotel using an American AI platform to improve its booking process creates value for its customers and modest efficiency gains for itself — but the majority of the economic surplus created by that AI capability accrues to the platform provider. This is the same dynamic that characterised the internet platform economy, now applied to AI.</p>
+    </section>
+
+    <section id="the-question">
+      <h3>The question we keep avoiding</h3>
+      <p>Throughout this guide, we've asked three questions of every technology: what did it do to money, power, and daily life? For AI, the money and daily life questions are tractable, if uncertain. The power question is the one nobody wants to answer honestly.</p>
+
+      <p>AI is concentrating capability in fewer hands than any previous general-purpose technology. The printing press democratised publishing because the cost of a printing press was high but not prohibitive, and many people could own one. The internet democratised communication because bandwidth and servers became cheap. AI training is concentrating rather than democratising — the cost of training a frontier model is measured in hundreds of millions to billions of dollars, accessible only to a handful of organisations.</p>
+
+      <p>The question is not whether AI will be powerful. It will be. The question is whether that power will be governed in ways that distribute its benefits broadly or concentrate them narrowly — whether it will be used to enhance human capability or to substitute for it — whether it will strengthen or weaken the democratic institutions that have, imperfectly but genuinely, constrained the exercise of concentrated power in the past.</p>
+
+      <p>These questions are not technical. They are political, economic, and moral. They are the same questions that were asked — and mostly not answered satisfactorily — about the printing press, the steam engine, the telegraph, the factory system, and the internet. The technology changes. The question is always the same: who decides, who benefits, and who pays the cost?</p>
+
+      <div class="pullquote">"The question is not whether machines can think. The question is whether men can." <cite>— B.F. Skinner, adapted</cite></div>
+
+      <p>The final chapter steps back from the timeline and asks what patterns run through all eight chapters — what the long view of technological history tells us about where we are and where we might be going.</p>
     </section>
 
     <div class="chapter-end">
@@ -71,10 +242,10 @@
       <a href="08-synthesis.html" class="chapter-next-card">
         <div class="chapter-next-eyebrow">Chapter 08 · Across all eras</div>
         <div class="chapter-next-title">Patterns &amp; <em>Implications</em></div>
-        <p class="chapter-next-blurb">Stepping back from the timeline to ask what actually repeats — and what each leap did to money, power, and daily life.</p>
+        <p class="chapter-next-blurb">What the long view reveals — the patterns that run through every chapter, and what they suggest about where we go from here.</p>
         <div class="chapter-next-arrow">→</div>
       </a>
-      <div class="chapter-prev">← <a href="index.html">Back to tutorial home</a></div>
+      <div class="chapter-prev">← <a href="06-digital.html">Back to Chapter 06</a></div>
     </div>
 
   </main>
@@ -84,7 +255,7 @@
   <div class="site-footer-inner">
     <p>TECH, REWINDING THE TAPE · A FIELD GUIDE</p>
     <p>CHAPTER 07 OF 08 · THE AI ERA</p>
-    <p>IN PROGRESS · CONTENT BEING DRAFTED</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
   </div>
 </footer>
 
