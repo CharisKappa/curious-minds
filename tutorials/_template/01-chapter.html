@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     CHAPTER PAGE TEMPLATE
+     Copy/rename per chapter (e.g. 02-foo.html). Make a Greek twin too
+     (02-foo-el.html, lang="el", Greek strings, εσύ form).
+     Real content goes in the <section id="…"> blocks; add one TOC link
+     per section. Reusable content blocks live in ../../shared/styles.css:
+     .insight  .definition  .story  .trap  .pullquote  .timeline
+     .data-table  .calc  — copy markup for those from a Money Decoded
+     chapter (tutorials/money-decoded/01-history.html) when you need them.
+     ===================================================================== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CUSTOMIZE: page <title> -->
+<title>Chapter 01 · Chapter Title — Tutorial Name</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <!-- CUSTOMIZE: tutorial name -->
+    <a href="index.html" class="site-logo">Tutorial Name <em>— a field guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">Hub</a>
+      <a href="index.html">Home</a>
+      <!-- CUSTOMIZE: nav links — mark this chapter class="current" -->
+      <a href="01-chapter.html" class="current">01</a>
+      <div class="lang-toggle">
+        <!-- CUSTOMIZE: EN points to this file; ΕΛ points to its -el twin -->
+        <a href="01-chapter.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="01-chapter-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <!-- CUSTOMIZE: chapter label + title -->
+    <div class="toc-chapter-label">Chapter 01</div>
+    <div class="toc-chapter-title">Chapter title</div>
+    <!-- CUSTOMIZE: one <li><a href="#section-id">…</a></li> per section.
+         The href must match a <section id="…"> below; JS highlights the
+         active one on scroll automatically. -->
+    <ul class="toc-list">
+      <li><a href="#section-one">First section</a></li>
+      <li><a href="#section-two">Second section</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <!-- CUSTOMIZE: eyebrow, title, lede, info -->
+      <div class="chapter-eyebrow">Chapter 01 · Section theme</div>
+      <h1 class="chapter-title">Chapter <em>title</em></h1>
+      <p class="chapter-lede">A one-sentence framing of what this chapter does.</p>
+      <div class="chapter-info">
+        <span>~40 min read</span>
+        <span>15 sections</span>
+        <span>Optional third fact</span>
+      </div>
+    </header>
+
+    <!-- CUSTOMIZE: real content. One <section id> per TOC entry above. -->
+    <section id="section-one">
+      <h3>First section heading</h3>
+      <p>Body text in Lora. Use <strong>strong</strong> and <em>em</em> for emphasis.</p>
+    </section>
+
+    <section id="section-two">
+      <h3>Second section heading</h3>
+      <p>More body text.</p>
+    </section>
+
+    <!-- CUSTOMIZE: next-chapter card (or, on the last chapter, link Home) -->
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="02-chapter.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 02 · Next theme</div>
+        <div class="chapter-next-title">Next <em>chapter</em></div>
+        <p class="chapter-next-blurb">One sentence on what comes next.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="index.html">Back to tutorial home</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <!-- CUSTOMIZE: footer lines; "CHAPTER 01 OF NN · TITLE" -->
+    <p>TUTORIAL NAME · A FIELD GUIDE</p>
+    <p>CHAPTER 01 OF NN · CHAPTER TITLE</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

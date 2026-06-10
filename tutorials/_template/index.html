@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     TUTORIAL HUB TEMPLATE
+     Copy this whole folder to tutorials/<your-tutorial-slug>/ and rename.
+     Search for "CUSTOMIZE" and fill each one in. Make a Greek twin named
+     index-el.html (same structure, lang="el", Greek strings, εσύ form).
+     Do NOT edit ../../shared/styles.css — it is shared by every tutorial.
+     ===================================================================== -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CUSTOMIZE: page <title> -->
+<title>Tutorial Title — short description</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Shared design system — relative to tutorials/<slug>/. Leave as-is. -->
+<link rel="stylesheet" href="../../shared/styles.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <!-- CUSTOMIZE: tutorial name in the logo -->
+    <a href="index.html" class="site-logo">Tutorial Name <em>— a field guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">Hub</a>
+      <a href="index.html" class="current">Home</a>
+      <!-- CUSTOMIZE: one nav link per chapter (NN). Duplicate as needed. -->
+      <a href="01-chapter.html">01</a>
+      <div class="lang-toggle">
+        <a href="index.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="index-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="cover">
+
+  <div class="cover-hero">
+    <!-- CUSTOMIZE: eyebrow, e.g. "A Field Guide · Edition One · 2026" -->
+    <div class="cover-eyebrow">A Field Guide · Edition One · 2026</div>
+    <!-- CUSTOMIZE: big title. Wrap an accent word in <em>…</em>. -->
+    <h1 class="cover-title">Tutorial<br><em>Title.</em></h1>
+    <!-- CUSTOMIZE: one-sentence lede -->
+    <p class="cover-lede">A one-sentence promise of what the reader walks away understanding.</p>
+    <!-- CUSTOMIZE: meta line -->
+    <div class="cover-meta">N chapters · ~X hours reading · Built for the curious</div>
+  </div>
+
+  <div class="cover-intro">
+    <!-- CUSTOMIZE: 2–3 intro paragraphs. Opinionated, warm, direct. -->
+    <p>Why this tutorial exists and what it assumes about the reader.</p>
+    <p>What the reader will be able to do by the end.</p>
+  </div>
+
+  <div class="chapters-grid">
+    <div class="chapters-label">The chapters</div>
+
+    <!-- CUSTOMIZE: one card per chapter. Copy this <a> block per chapter. -->
+    <a href="01-chapter.html" class="chapter-card">
+      <div class="chapter-card-num">01</div>
+      <div class="chapter-card-content">
+        <h3>Chapter <em>title</em></h3>
+        <p>One-sentence blurb describing the chapter.</p>
+        <div class="chapter-card-meta">~40 min · 15 sections</div>
+      </div>
+      <div class="chapter-card-arrow">→</div>
+    </a>
+
+  </div>
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <!-- CUSTOMIZE: three footer lines (uppercase, in the house style) -->
+    <p>TUTORIAL NAME · A FIELD GUIDE</p>
+    <p>EDITION ONE · 2026</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

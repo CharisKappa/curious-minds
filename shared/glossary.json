@@ -1,0 +1,50 @@
+{
+  "diocletian": {
+    "en": {
+      "title": "Diocletian",
+      "category": "Historical figure",
+      "meta": "244–311 AD",
+      "body": "Roman emperor 284–305 AD. Restored stability after the Crisis of the Third Century. His Edict on Maximum Prices (301 AD) tried to halt runaway inflation by decree — the world's first wage-and-price control law. It failed within years.",
+      "related": ["roman-empire"]
+    },
+    "el": {
+      "title": "Διοκλητιανός",
+      "category": "Ιστορική φιγούρα",
+      "meta": "244–311 μ.Χ.",
+      "body": "Ρωμαίος αυτοκράτορας 284–305 μ.Χ. Αποκατέστησε τη σταθερότητα μετά την Κρίση του 3ου αιώνα. Το Διάταγμά του περί Ανώτατων Τιμών (301 μ.Χ.) προσπάθησε να σταματήσει τον πληθωρισμό με διάταγμα — ο πρώτος νόμος ελέγχου μισθών και τιμών στον κόσμο. Απέτυχε μέσα σε λίγα χρόνια.",
+      "related": ["roman-empire"]
+    }
+  },
+  "roman-empire": {
+    "en": {
+      "title": "Roman Empire",
+      "category": "Period",
+      "meta": "27 BC – 476 AD (Western) / 1453 AD (Eastern)",
+      "body": "The post-Republic Roman state, at its height spanning from Britain to Mesopotamia. Its monetary history is one of the longest case studies in coin debasement and the resulting inflation — a pattern that has repeated in every fiat era since.",
+      "related": ["diocletian"]
+    },
+    "el": {
+      "title": "Ρωμαϊκή Αυτοκρατορία",
+      "category": "Περίοδος",
+      "meta": "27 π.Χ. – 476 μ.Χ. (Δυτική) / 1453 μ.Χ. (Ανατολική)",
+      "body": "Το ρωμαϊκό κράτος μετά τη Δημοκρατία, στο απόγειό του εκτεινόμενο από τη Βρετανία ως τη Μεσοποταμία. Η νομισματική του ιστορία είναι μία από τις μακρύτερες μελέτες περίπτωσης υποτίμησης νομίσματος και του πληθωρισμού που προκύπτει — ένα μοτίβο που έχει επαναληφθεί σε κάθε εποχή παραστατικού χρήματος έκτοτε.",
+      "related": ["diocletian"]
+    }
+  },
+  "authoritarianism": {
+    "en": {
+      "title": "Authoritarianism",
+      "category": "Political concept",
+      "meta": null,
+      "body": "A system of government concentrating power in a single authority with limited political pluralism and constraints on civil liberties. Historically tends to emerge after periods of severe economic instability — the Weimar hyperinflation enabling 1930s German fascism is the textbook example.",
+      "related": []
+    },
+    "el": {
+      "title": "Αυταρχισμός",
+      "category": "Πολιτική έννοια",
+      "meta": null,
+      "body": "Σύστημα διακυβέρνησης που συγκεντρώνει την εξουσία σε μία αρχή με περιορισμένη πολιτική πολυφωνία και περιορισμούς στις πολιτικές ελευθερίες. Ιστορικά τείνει να εμφανίζεται μετά από περιόδους σοβαρής οικονομικής αστάθειας — ο υπερπληθωρισμός της Βαϊμάρης που επέτρεψε τον γερμανικό φασισμό της δεκαετίας του 1930 είναι το κλασικό παράδειγμα.",
+      "related": []
+    }
+  }
+}

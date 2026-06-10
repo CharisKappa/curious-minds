@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Πράγματα που προσπαθώ να καταλάβω — Ένας προσωπικός χώρος μάθησης</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/styles.css">
+<style>
+  /* Hub-only layout. Additive — uses the shared design tokens, overrides nothing. */
+  .tutorial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .tutorial-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--paper-deep);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 2.2rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.25s;
+    position: relative;
+  }
+
+  .tutorial-card:hover {
+    border-color: var(--rust);
+    background: var(--paper-darker);
+    transform: translateY(-2px);
+  }
+
+  .tutorial-card:hover .tutorial-card-arrow {
+    transform: translateX(8px);
+    color: var(--rust);
+  }
+
+  .tutorial-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .tutorial-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+  }
+
+  .status-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .status-badge.is-complete { color: var(--paper); background: var(--olive); }
+  .status-badge.is-progress { color: var(--paper); background: var(--rust); }
+  .status-badge.is-future   { color: var(--ink-faded); background: transparent; border: 1px solid var(--line); }
+
+  .tutorial-card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+  .tutorial-card h2 em { font-style: italic; color: var(--rust-deep); }
+
+  .tutorial-card-blurb {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 1.6rem;
+    flex: 1;
+  }
+
+  .tutorial-card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .tutorial-langs {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+  }
+
+  .tutorial-card-arrow {
+    font-size: 1.4rem;
+    color: var(--ink-faded);
+    transition: all 0.25s;
+  }
+
+  /* Dashed "add new" placeholder */
+  .tutorial-card.is-add {
+    border-style: dashed;
+    border-color: var(--ink-faded);
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 220px;
+    cursor: default;
+  }
+  .tutorial-card.is-add:hover {
+    transform: none;
+    border-color: var(--rust);
+    background: transparent;
+  }
+  .tutorial-card.is-add .add-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .tutorial-card.is-add .add-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-faded);
+    line-height: 1.6;
+    max-width: 240px;
+  }
+
+  @media (max-width: 950px) {
+    .tutorial-grid { grid-template-columns: 1fr; }
+    .tutorial-card h2 { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index-el.html" class="site-logo">Πράγματα που προσπαθώ να καταλάβω</a>
+    <nav class="site-nav">
+      <div class="lang-toggle">
+        <a href="index.html">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="index-el.html" class="active">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="cover">
+
+  <div class="cover-hero">
+    <div class="cover-eyebrow">Ένας Προσωπικός Χώρος Μάθησης · Πρώτη Έκδοση · 2026</div>
+    <h1 class="cover-title">Πράγματα που<br><em>προσπαθώ να καταλάβω.</em></h1>
+    <p class="cover-lede">Ένα ράφι με εκτενείς οδηγούς που γράφω για να μάθω σωστά κάποια πράγματα — και μετά τους αφήνω εδώ, σε απλή γλώσσα, μήπως βοηθήσουν κι εσένα.</p>
+    <div class="cover-meta">Δίγλωσσο · Ελληνικά &amp; Αγγλικά · Φτιαγμένο αργά, επίτηδες</div>
+  </div>
+
+  <div class="cover-intro">
+    <p>Μαθαίνω καλύτερα ένα θέμα όταν αναγκάζομαι να το εξηγήσω από την αρχή — χωρίς ορολογία να κρυφτώ από πίσω, χωρίς βήματα που παρακάμπτω στα κρυφά. Αυτό λοιπόν είναι κι αυτοί οι οδηγοί: καθένας είναι ένα θέμα που ήθελα πραγματικά να καταλάβω, γραμμένο με τον μακρύ τρόπο, έτσι όπως θα ήθελα να μου το είχε γράψει κάποιος. Δεν προϋποθέτουν τίποτα. Χτίζουν από κάτω. Έχουν άποψη.</p>
+    <p>Όλα εδώ είναι δίγλωσσα, γιατί οι άνθρωποι που πιο πολύ θέλω να τα διαβάσουν σκέφτονται στα ελληνικά. Διάλεξε έναν οδηγό και ξεκίνα από όπου θες — αν και, όπως τα περισσότερα πράγματα που αξίζει να μάθεις, ανταμείβουν το διάβασμα με τη σειρά.</p>
+  </div>
+
+  <div class="chapters-grid">
+    <div class="chapters-label">Οι οδηγοί</div>
+
+    <div class="tutorial-grid">
+
+      <a href="tutorials/money-decoded/index-el.html" class="tutorial-card">
+        <div class="tutorial-card-top">
+          <span class="tutorial-num">Οδηγός 01</span>
+          <span class="status-badge is-complete">Ολοκληρωμένο</span>
+        </div>
+        <h2>Το Χρήμα, <em>Αποκωδικοποιημένο</em></h2>
+        <p class="tutorial-card-blurb">Ένας πρακτικός οδηγός για το χρήμα, την οικονομία και τις επενδύσεις — από το βαμβακερό χαρτί στην τσέπη σου μέχρι το παγκόσμιο σύστημα που αντιπροσωπεύει, και πώς να βάλεις το μερίδιό σου να δουλέψει αντί να το βλέπεις σιωπηλά να εξαφανίζεται.</p>
+        <div class="tutorial-card-foot">
+          <span class="tutorial-langs">EN · ΕΛ</span>
+          <span class="tutorial-card-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="tutorials/tech-evolution/index-el.html" class="tutorial-card">
+        <div class="tutorial-card-top">
+          <span class="tutorial-num">Οδηγός 02</span>
+          <span class="status-badge is-progress">Σε εξέλιξη</span>
+        </div>
+        <h2>Τεχνολογία, <em>ξετυλίγοντας την κασέτα</em></h2>
+        <p class="tutorial-card-blurb">Πώς η τεχνολογία διαμόρφωσε το χρήμα, την εξουσία και την καθημερινή ζωή — από το πρώτο πέτρινο εργαλείο μέχρι σήμερα. Μια μεγάλη βόλτα μέσα από την ιστορία των πραγμάτων που έφτιαξε ο άνθρωπος, και τι αναδιάταξε σιωπηλά το καθένα.</p>
+        <div class="tutorial-card-foot">
+          <span class="tutorial-langs">EN · ΕΛ</span>
+          <span class="tutorial-card-arrow">→</span>
+        </div>
+      </a>
+
+      <div class="tutorial-card is-add">
+        <div class="add-mark">+</div>
+        <div class="add-text">Ρίξε έναν φάκελο στο /tutorials/ και πρόσθεσε μια κάρτα εδώ.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>ΠΡΑΓΜΑΤΑ ΠΟΥ ΠΡΟΣΠΑΘΩ ΝΑ ΚΑΤΑΛΑΒΩ · ΕΝΑΣ ΠΡΟΣΩΠΙΚΟΣ ΧΩΡΟΣ ΜΑΘΗΣΗΣ</p>
+    <p>ΠΡΩΤΗ ΕΚΔΟΣΗ · 2026</p>
+    <p>ΓΡΑΜΜΕΝΟ ΓΙΑ ΝΑ ΓΙΝΕΙ ΚΑΤΑΝΟΗΤΟ · ΟΧΙ ΓΙΑ ΕΝΤΥΠΩΣΙΑΣΜΟ</p>
+  </div>
+</footer>
+
+<script src="shared/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 04 · Practice & The Traps — Money, Decoded</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Money, Decoded <em>— a field guide</em></a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="01-history.html">01 · History</a>
+      <a href="02-economy.html">02 · Economy</a>
+      <a href="03-investments.html">03 · Investments</a>
+      <a href="04-practice.html" class="current">04 · Practice</a>
+      <div class="lang-toggle">
+        <a href="04-practice.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="04-practice-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 04</div>
+    <div class="toc-chapter-title">Practice & the traps</div>
+    <ul class="toc-list">
+      <li><a href="#before-you-start">Before you invest a euro</a></li>
+      <li><a href="#compound">The thing that makes it work</a></li>
+      <li><a href="#allocation">Asset allocation by life stage</a></li>
+      <li><a href="#sample-portfolios">Sample portfolios</a></li>
+      <li><a href="#european-specifics">The European specifics</a></li>
+      <li><a href="#greek-specifics">A note for Greek investors</a></li>
+      <li><a href="#traps-intro">The ten traps</a></li>
+      <li><a href="#trap-1">Trap 1 · The lottery ticket</a></li>
+      <li><a href="#trap-2">Trap 2 · The day trader dream</a></li>
+      <li><a href="#trap-3">Trap 3 · The leverage trap</a></li>
+      <li><a href="#trap-4">Trap 4 · The pump and dump</a></li>
+      <li><a href="#trap-5">Trap 5 · Hot fund chasing</a></li>
+      <li><a href="#trap-6">Trap 6 · The yield trap</a></li>
+      <li><a href="#trap-7">Trap 7 · Home bias</a></li>
+      <li><a href="#trap-8">Trap 8 · This time is different</a></li>
+      <li><a href="#trap-9">Trap 9 · Waiting for the dip</a></li>
+      <li><a href="#trap-10">Trap 10 · The influencer trap</a></li>
+      <li><a href="#discipline">The discipline of doing nothing</a></li>
+      <li><a href="#final">A final word</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 04 · The Application</div>
+      <h1 class="chapter-title">Practice & the <em>traps</em></h1>
+      <p class="chapter-lede">Knowing the menu is half the battle. The other half is not making the same ten mistakes everyone else makes. Each trap below has destroyed real wealth, in recent memory, of real people — including some who absolutely knew better.</p>
+      <div class="chapter-info">
+        <span>~45 min read</span>
+        <span>16 sections</span>
+        <span>10 traps, named</span>
+      </div>
+    </header>
+
+    <section id="before-you-start">
+      <h3>Before you invest a single euro</h3>
+      <p>The fundamentals first. Investing is what you do with money you don't need now. Before any money goes into markets, three things should already be true:</p>
+
+      <h4>1. Your high-interest debt is gone</h4>
+      <p>Credit card debt at 18–22%, consumer loans at 12–15%, payday loans at god-knows-what. Paying off an 18% debt is a guaranteed 18% return — beating any investment available to you. The order is: clear the high-interest debt first, then invest. Low-interest debt (mortgages at 3–4%) is more nuanced; you can reasonably invest while paying that down.</p>
+
+      <h4>2. You have an emergency fund</h4>
+      <p>Three to six months of essential living expenses, sitting in a high-yield savings account or a money market fund. The point isn't to earn returns on this money. The point is that when the boiler breaks, the car needs a new clutch, or you lose your job, you don't have to sell investments at a loss to cover it. This fund is insurance, and like insurance, you hope you never use it.</p>
+
+      <h4>3. You know what you're investing for</h4>
+      <p>"I want to make money" isn't a goal. "I want €X by age 65 to retire on" is a goal. "I want to buy a house in 10 years and need €40,000 for the down payment" is a goal. "I want my kid to have university fees covered in 17 years" is a goal. Different goals have different time horizons, and different time horizons demand different strategies.</p>
+
+      <p>Money you'll need in 1–2 years should mostly not be invested in volatile assets. Money you won't touch for 20 years can ride out anything.</p>
+    </section>
+
+    <section id="compound">
+      <h3>The thing that makes it all work</h3>
+      <p>Compounding — earning returns on your previous returns, year after year — is the engine of every successful long-term investment plan. The reason early starts beat large catch-up contributions is compounding. The reason a small but consistent monthly amount, invested over decades, can produce wealth, is compounding. The reason even small fees, applied annually, devastate long-term returns, is also compounding (working against you instead of for you).</p>
+
+      <div class="calc">
+        <div class="calc-title">The compounding calculator</div>
+        <div class="calc-input-row">
+          <div>
+            <label class="calc-label">Starting amount (€)</label>
+            <input type="number" id="comp-amount" value="5000">
+          </div>
+          <div>
+            <label class="calc-label">Monthly contribution (€)</label>
+            <input type="number" id="comp-monthly" value="300">
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div>
+            <label class="calc-label">Annual return (%)</label>
+            <input type="number" id="comp-rate" value="7" step="0.5">
+          </div>
+          <div>
+            <label class="calc-label">Years invested</label>
+            <input type="number" id="comp-years" value="30">
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-label">Portfolio at the end</div>
+          <div class="calc-result-value" id="comp-result">—</div>
+          <div class="calc-result-detail" id="comp-detail">Adjust the inputs above to see how compounding works in different scenarios.</div>
+        </div>
+      </div>
+
+      <p>Try the calculator with these defaults: €5,000 to start, €300 a month, 7% annual return, 30 years. The total you put in is €113,000. The portfolio at the end is approximately €435,000. Compounding contributed more than €320,000 — close to three times what you contributed.</p>
+
+      <p>Now shrink the time horizon to 15 years. You contribute €59,000. You end up with €119,000. Compounding contributed €60,000. About one-third of what you'd have in the 30-year scenario, even though you contributed more than half as much.</p>
+
+      <p>This is the lesson: <em>time matters more than amount</em>. Starting at 25 with €100/month beats starting at 45 with €500/month, comfortably. If you have one regret reading this guide, let it be that you didn't start sooner. The second-best time is now.</p>
+
+      <h4>The flip side: fees compound too</h4>
+
+      <div class="calc">
+        <div class="calc-title">The fee erosion calculator</div>
+        <div class="calc-input-row">
+          <div>
+            <label class="calc-label">Starting amount (€)</label>
+            <input type="number" id="fee-amount" value="100000">
+          </div>
+          <div>
+            <label class="calc-label">Annual return before fees (%)</label>
+            <input type="number" id="fee-rate" value="7" step="0.5">
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div>
+            <label class="calc-label">Low-cost fee (%)</label>
+            <input type="number" id="fee-low" value="0.2" step="0.1">
+          </div>
+          <div>
+            <label class="calc-label">High-cost fee (%)</label>
+            <input type="number" id="fee-high" value="1.5" step="0.1">
+          </div>
+        </div>
+        <div class="calc-input-row">
+          <div>
+            <label class="calc-label">Years invested</label>
+            <input type="number" id="fee-years" value="30">
+          </div>
+          <div></div>
+        </div>
+        <div class="calc-result" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+          <div>
+            <div class="calc-result-label">With 0.2% fees</div>
+            <div class="calc-result-value" id="fee-result-low">—</div>
+          </div>
+          <div>
+            <div class="calc-result-label">With 1.5% fees</div>
+            <div class="calc-result-value" id="fee-result-high">—</div>
+          </div>
+        </div>
+        <div class="calc-result-detail" id="fee-result-diff" style="margin-top: 1rem;"></div>
+      </div>
+
+      <p>The default scenario: €100,000 invested for 30 years at 7% gross return. With a 0.2% fee (a typical low-cost index ETF), you end up with about €712,000. With a 1.5% fee (a typical actively-managed mutual fund), you end up with about €498,000. The difference — over €200,000 — went to fund managers, distributors, and platforms. <em>For a service that, statistically, underperforms the cheap option.</em></p>
+
+      <p>Fees are not negotiable details. They are the most important controllable variable in your investing life. Watch them like a hawk.</p>
+    </section>
+
+    <section id="allocation">
+      <h3>Asset allocation: the single most important decision</h3>
+      <p>Decades of research suggests that 80–90% of a portfolio's long-term return variability comes from how you split between asset classes — stocks vs bonds vs cash vs other — not from which specific securities you pick within each class. Asset allocation is the lever; security selection is the screw.</p>
+
+      <p>The simplest sensible rule: roughly your age in safer assets, the rest in stocks. A 30-year-old might hold 70% stocks and 30% bonds. A 60-year-old, 40% stocks and 60% bonds. This isn't a rigid formula — it's a starting point that captures the basic insight that younger investors have more time to recover from drawdowns and should accept more equity risk.</p>
+
+      <p>More sophisticated frameworks consider:</p>
+      <ul>
+        <li><strong>Time horizon</strong>: when will you need this money? Money needed in 3 years should mostly not be in stocks. Money for retirement 30 years out can be almost entirely in stocks.</li>
+        <li><strong>Risk tolerance (the real kind)</strong>: how would you feel watching a portfolio fall 40%? Be honest. Many people overstate their risk tolerance until tested — they think they're long-term investors until the market drops 30% in a month and they panic-sell at the bottom. If a 30% drop would make you sell, you should hold less in stocks than your time horizon alone would suggest.</li>
+        <li><strong>Income stability</strong>: a tenured government employee can take more portfolio risk than a freelancer whose income drops in recessions.</li>
+        <li><strong>Other assets</strong>: if you own a home in your home country, you already have significant real estate exposure. Adding more REITs may not add much diversification.</li>
+        <li><strong>Goals</strong>: a portfolio funding retirement income looks different from one funding a near-term house purchase.</li>
+      </ul>
+
+      <p>Whatever allocation you choose, the most important thing is to <em>stick with it</em>. The investor who picks a perfectly sensible 70/30 portfolio and then panic-sells stocks during a 30% drawdown does worse than the investor who picks a too-conservative 40/60 portfolio and holds it through everything. Discipline beats optimization.</p>
+    </section>
+
+    <section id="sample-portfolios">
+      <h3>Three sample portfolios</h3>
+      <p>Not recommendations — illustrations of how the pieces can fit together at different stages.</p>
+
+      <h4>The young accumulator (age 25–35, 30+ year horizon)</h4>
+      <ul>
+        <li>80% global equity index ETF (e.g., MSCI ACWI or FTSE All-World tracker)</li>
+        <li>10% global bond index ETF</li>
+        <li>5% physical-backed gold ETF</li>
+        <li>5% cash/emergency cushion (separate from emergency fund)</li>
+      </ul>
+      <p>Aggressive but defensible. The 30-year horizon gives plenty of time to recover from any drawdown. Even Bitcoin advocates would probably allocate at most 1–3% here, financed by reducing the gold or cash slice if you choose to.</p>
+
+      <h4>The mid-career builder (age 40–50, 15–25 year horizon)</h4>
+      <ul>
+        <li>60% global equity index ETF</li>
+        <li>25% global bond index ETF (mix of government and investment-grade corporate)</li>
+        <li>5% REIT ETF (if you don't already own significant property)</li>
+        <li>5% physical-backed gold ETF</li>
+        <li>5% cash</li>
+      </ul>
+      <p>The classic balanced portfolio. Some inflation protection through gold and equities. The bond slice provides ballast during equity drawdowns and now generates real returns again.</p>
+
+      <h4>The approaching retiree (age 55–65, 5–15 year horizon)</h4>
+      <ul>
+        <li>40% global equity index ETF</li>
+        <li>40% global bond index ETF (heavier on shorter-duration to reduce interest rate risk)</li>
+        <li>5% inflation-linked bond ETF</li>
+        <li>5% REIT ETF</li>
+        <li>5% gold</li>
+        <li>5% cash/short-term deposits</li>
+      </ul>
+      <p>The shift is toward capital preservation. A 50% stock crash now is far more damaging than at 30, because there's less time to recover before you need to draw on the portfolio.</p>
+
+      <p>These are templates. Real portfolios should reflect your specific circumstances, goals, and tax situation. The mistake is not in which specific template you pick — it's in failing to follow any consistent template at all.</p>
+    </section>
+
+    <section id="european-specifics">
+      <h3>The European specifics</h3>
+      <p>If you're investing from inside the European Union, the playing field has its own contours:</p>
+
+      <h4>Brokers</h4>
+      <p>The major options for retail investors include Interactive Brokers (oldest, most professional, lowest fees for active traders, the most credible large platform), DEGIRO (Dutch, low-cost, simple), Trade Republic (German, neobroker, mobile-first, growing rapidly), Trading 212 (UK-based, simple, but be aware of how its CFD business is structured), Saxo Bank (Danish, full-service, more expensive), and traditional bank brokerages (typically the most expensive option).</p>
+
+      <p>For long-term index investing, fees matter most. The cheapest platforms charge €0–€5 per trade or even offer commission-free purchases on selected ETFs. Saving 1% per trade on every contribution adds up over decades.</p>
+
+      <p>One useful feature to look for: <strong>automatic savings plans</strong> (Sparplan in German, plan d'épargne in French). Several brokers let you automate monthly purchases of selected ETFs for €0 or near-€0 cost. This removes the friction of manual investing and enforces discipline.</p>
+
+      <h4>UCITS and what's available</h4>
+      <p>As covered in Chapter 3, most U.S.-listed ETFs aren't available to EU retail investors. The good news is that nearly every major U.S. ETF has a UCITS equivalent listed on European exchanges. The bad news is that fund names are messier — you'll need to learn to read ISIN codes and look at the actual underlying holdings rather than relying on familiar U.S. tickers.</p>
+
+      <h4>Accumulating vs distributing — for real</h4>
+      <p>In most EU jurisdictions (with some country-specific variations), accumulating ETFs are tax-simpler for long-term wealth building. You don't have to actively reinvest dividends. You don't pay tax on dividends each year (in some countries). The compounding happens automatically inside the fund. <strong>Verify the rules in your specific country</strong> — some places have rules about "deemed distributions" on accumulating funds that complicate this. Get a local tax advisor's view for significant portfolios.</p>
+
+      <h4>Currency considerations</h4>
+      <p>If you're a euro-based investor buying a global equity ETF, your returns will be affected by exchange rate movements. A strong euro reduces returns from foreign assets when converted back; a weak euro boosts them. Over very long periods, this tends to wash out. Some investors hedge currency exposure within their bond holdings (to keep bonds doing their stabilization job) but leave equities unhedged.</p>
+
+      <h4>Withholding taxes on dividends</h4>
+      <p>This sounds technical but matters over decades. When a U.S. company pays a dividend to a non-U.S. shareholder, the U.S. typically withholds 30% as tax. EU tax treaties reduce this to 15% in most cases — but only if the structure of your investment qualifies. Ireland-domiciled UCITS ETFs benefit from a 15% rate rather than 30% on U.S. dividends — a hidden ~0.3–0.5% annual edge that compounds significantly over decades. Most major European ETF providers (iShares, Vanguard, SPDR, Amundi) offer Ireland-domiciled funds for this reason.</p>
+    </section>
+
+    <section id="greek-specifics">
+      <h3>A note for Greek investors</h3>
+      <p>Greece has its own specific quirks worth knowing:</p>
+
+      <ul>
+        <li><strong>Capital gains on listed securities</strong>: generally taxed at 15%, but the situation is more nuanced for various instruments and holding periods. The rules have changed several times in the past decade.</li>
+        <li><strong>Dividend tax</strong>: 5% withholding on Greek-sourced dividends; foreign dividends taxed at higher rates depending on tax treaty status.</li>
+        <li><strong>Foreign brokerage accounts must be declared</strong> in your annual tax filing (E1, codes for foreign accounts). The penalties for failing to declare are severe. If you're investing through Interactive Brokers, Trade Republic, or any non-Greek platform, this applies to you.</li>
+        <li><strong>EU-domiciled accumulating ETFs are generally well-suited for Greek tax residents</strong> — no annual taxable distributions to handle, simpler accounting. But verify with a Greek tax advisor for your specific situation.</li>
+      </ul>
+
+      <p>The Greek financial system has been through enough trauma in the past 15 years that any sensible Greek investor maintains a healthy portion of wealth held outside Greece, in EU-regulated institutions, denominated in euros (which can't be unilaterally redenominated by Greek authorities). Capital controls, while now lifted, are within living memory. Diversification of where your money is held — not just what it's invested in — is itself a form of risk management.</p>
+
+      <div class="ornament">✦ ✦ ✦</div>
+    </section>
+
+    <section id="traps-intro">
+      <h3>The ten traps</h3>
+      <p>What follows are the ten most common, most expensive, and most preventable mistakes investors make. Each one is illustrated with a real, recent example — not a theoretical case study. Every trap below has cost real people real money in the past few years.</p>
+
+      <p>Reading these will not vaccinate you against them. The traps are powerful because they exploit deep features of human psychology — the same psychology you and I share with every other investor. Knowing about them helps, but only barely. What really helps is structure: rules you commit to in advance, before the emotional moment arrives.</p>
+
+      <p>Read these slowly. If you find yourself thinking "yeah but this doesn't apply to me," pause and reconsider.</p>
+    </section>
+
+    <section id="trap-1">
+      <div class="trap">
+        <div class="trap-label">Trap 01 of 10</div>
+        <h3 class="trap-title">The Lottery Ticket Trap</h3>
+        <p>This is the most common trap, especially for new investors. The story goes: <em>If I'd just bought Bitcoin in 2010, or Amazon in 1997, or Nvidia in 2015, I'd be rich. So I should look for the next one.</em></p>
+
+        <p>The trap is that for every Bitcoin (10,000× return from 2010 to 2025), every Amazon (2,000× from 1997 to 2024), every Nvidia (200× from 2015 to 2025), there are tens of thousands of failed stocks that went to zero — most of which looked just as exciting at the time. You don't read articles about them. They are not memorable. Survivorship bias has erased them from your awareness.</p>
+
+        <p>The math of betting on lottery tickets is brutal. Imagine a 1-in-100 chance of a 100× return. The expected return is breakeven — but the distribution is 99 zeros and 1 enormous winner. To actually capture the expected return, you need to make this bet 100 times in roughly the same conditions. Most people make it 1–3 times, with much of their savings, hoping to be the lucky one. Most aren't.</p>
+
+        <p>The 2020–2022 cycle was full of these stories. People who bought GameStop at $20 in early 2021 saw it briefly hit $480 — and the ones who didn't sell rode it back down to $30. People who bought obscure altcoins riding meme cycles saw them go up 50× in weeks — and then down 99%. The headlines focus on the winners. The casualties are invisible.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Cap "lottery ticket" allocations at no more than 5% of your investable assets, ideally less. Treat them as entertainment, not as a strategy. If you wouldn't buy a lottery ticket with 30% of your savings, don't buy obscure altcoins or meme stocks with 30% of your portfolio. The math is the same.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-2">
+      <div class="trap">
+        <div class="trap-label">Trap 02 of 10</div>
+        <h3 class="trap-title">The Day Trader Dream</h3>
+        <p>Robinhood, Trading 212, eToro, and a wave of European neobrokers built their businesses on a brilliant premise: make trading feel like a game. Bright colors. Confetti animations when you buy. Push notifications. Progress bars. Streaks. "Stocks are now on sale" alerts. Everything optimized to keep you trading.</p>
+
+        <p>The business model works because the more retail investors trade, the more the platform earns — through spreads, payment for order flow (in the U.S.), interest on margin loans, and CFD fees (in Europe). The platform's interests are diametrically opposed to yours. You make money by trading less; they make money when you trade more.</p>
+
+        <p>What the data actually shows about day traders: studies of Brazilian, Taiwanese, and U.S. retail day traders consistently find that <strong>70–95% lose money</strong> over a year. Of the few who profit, most don't profit enough to beat passive index investing. Of those who do, only a tiny fraction sustain it over multiple years. Day trading as a path to wealth is, statistically, a fantasy.</p>
+
+        <p>The viral GameStop episode of January 2021 is the perfect case study. Reddit's r/wallstreetbets community got into a coordinated trade that briefly squeezed hedge funds short the stock. A few people who got in early and sold near the peak got rich. Many more bought at the top (around $480) and lost most of their investment. Robinhood, the platform of choice, made huge revenues facilitating the frenzy. The big winners in the GameStop saga were not the retail traders — they were the brokerages and the smart institutional players who hedged correctly.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Delete the trading app from your phone. Put it on a desktop computer in a different room from where you sleep. Set a rule that you only place trades on the first Saturday of the month. The friction is the feature, not a bug. If you genuinely want to trade actively, accept that you're doing it as a hobby — fun, expensive, low-expected-return — not as a path to wealth.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-3">
+      <div class="trap">
+        <div class="trap-label">Trap 03 of 10</div>
+        <h3 class="trap-title">The Leverage Trap</h3>
+        <p>"Why buy €1,000 of Apple stock when you can control €10,000 of Apple exposure with the same money?" This pitch, in various forms, has destroyed more retail wealth in the last decade than perhaps any other.</p>
+
+        <p>European CFD providers are required to disclose, on every advertisement, what percentage of retail accounts lose money. Look at any of their websites. The numbers, displayed in fine print, range from 70% to 85%. <strong>This is not a typo. Most retail customers of these platforms lose money.</strong> The platforms know this. They publish it because regulators forced them to. They keep advertising anyway because new retail customers keep arriving.</p>
+
+        <p>The mechanics: leverage amplifies both gains and losses. With 10× leverage on a position, a 10% move against you wipes out your capital. With 20× leverage (common in CFDs and forex), a 5% adverse move is total loss. In normal market conditions, 5–10% moves happen all the time. Over a few months of trading, the probability of getting wiped out approaches certainty.</p>
+
+        <p>Add to this: most CFD platforms charge overnight financing costs on leveraged positions, slowly bleeding even positions that don't immediately get stopped out. Spreads (the gap between the buy and sell price) are wider than on direct stock purchases. The deck is stacked.</p>
+
+        <p>The 2022 cohort of crypto traders using leverage on platforms like Binance, FTX, and Bybit provides recent case studies. Liquidation events — where the exchange automatically closes losing leveraged positions — wiped out billions of dollars of retail capital during the 2022 crypto winter. Many traders had been profitable for months on leverage during the upturn; one bad day eliminated everything plus more.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Treat all leveraged products — CFDs, leveraged ETFs, options used speculatively, margin trading, leveraged crypto — as off-limits. The expected return is negative for individuals. The asymmetry (limited upside, unlimited downside) is the wrong shape for wealth building. There are no exceptions to this for ordinary investors. If a platform's main offering is leveraged trading, that platform is not for you.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-4">
+      <div class="trap">
+        <div class="trap-label">Trap 04 of 10</div>
+        <h3 class="trap-title">The Pump and Dump</h3>
+        <p>The pattern: someone (or a coordinated group) accumulates a position in a thinly-traded asset. They then promote it aggressively — through social media, Telegram groups, YouTube videos, "leaked" tips. As price rises on the hype, retail investors pile in fearing they'll miss out. Once the price is high enough, the promoters sell their accumulated position to the new buyers and disappear. The price collapses. Latecomers lose 80–99%.</p>
+
+        <p>This pattern is as old as financial markets and predates the internet by centuries. What's new is the scale and speed. A Telegram group of 50,000 people can move a small-cap stock or microcap crypto by 1,000% in hours, and crash it the next day.</p>
+
+        <p>The 2020–2021 era was full of these. Specific examples include the wave of "Squid Game" tokens (named after the Netflix show, with no connection to it) that went up 23 million percent over a few days before "rug pulling" — the developers cashed out their tokens and vanished, leaving holders with worthless coins. Many smaller-scale versions happened daily across crypto, penny stocks, and SPAC mergers.</p>
+
+        <p>The tip-off is almost always the same: an asset you've never heard of suddenly appearing in your social media feed, with charismatic spokespeople, "guaranteed" near-term moves, urgent timing ("buy now or miss out"), and credentials that don't quite check out. Real investment opportunities rarely require urgency. If something is genuinely worth buying tomorrow, it's worth buying next week after due diligence.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Distrust hype, particularly viral hype from anonymous accounts. Refuse to invest in any asset you can't explain to a friend in clear language without using the asset's own marketing slogans. Anything advertised with "guaranteed," "moonshot," "10× this month," or similar language is, by definition, not investment-grade. The amount you should "FOMO" into trending assets is zero.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-5">
+      <div class="trap">
+        <div class="trap-label">Trap 05 of 10</div>
+        <h3 class="trap-title">Hot Fund Chasing</h3>
+        <p>This trap catches sophisticated investors too. The financial press loves writing about fund managers who beat the market last year. Magazine covers. Best-fund rankings. Star manager profiles. The implicit message: invest with this manager, and you'll capture their performance going forward.</p>
+
+        <p>The data is, again, brutal. The single strongest predictor of poor future performance in mutual funds is strong recent performance. Funds that placed in the top 25% of their category over the past 3 years are slightly <em>more</em> likely than average to be in the bottom 25% over the next 3 years. This isn't random; it reflects the fact that "hot funds" tend to be those that took on more risk and got lucky, and that performance tends to mean-revert.</p>
+
+        <p>A specific recent example: the ARK Innovation ETF, managed by Cathie Wood, was the best-performing equity ETF of 2020 with returns of ~150%. It collected enormous inflows in late 2020 and early 2021 as investors chased the performance. Then it dropped about 80% from peak through late 2022. Most of the money invested in ARK had piled in near the top — meaning the average investor experienced something close to the worst possible return profile.</p>
+
+        <p>The same pattern happens at every level: hot hedge funds, top-performing emerging market funds, viral crypto "whale" accounts, even high-performing financial advisors. Strong recent performance is more likely to indicate elevated risk than enduring skill.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Ignore "best of" lists and recent-performance rankings entirely. Pick low-cost index funds based on what they hold and what they cost, not on past returns. The few cases where an active strategy genuinely has an edge are notoriously hard to identify in advance — and usually closed to new investors by the time they're famous. If you must chase performance, do so with no more than 10% of your portfolio, and accept that you're effectively gambling with that slice.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-6">
+      <div class="trap">
+        <div class="trap-label">Trap 06 of 10</div>
+        <h3 class="trap-title">The Yield Trap</h3>
+        <p>"Earn 12% guaranteed!" "Stable 10% APY!" "Risk-free 15% returns on your stablecoins!"</p>
+
+        <p>Any time someone promises a yield significantly higher than the prevailing risk-free rate (the rate on government bonds), one of three things is true:</p>
+        <ol>
+          <li>The risk is much higher than advertised</li>
+          <li>The yield is not actually being earned — it's being paid out of new investors' capital (i.e., it's a Ponzi)</li>
+          <li>The yield will collapse within months as the underlying mechanism fails</li>
+        </ol>
+
+        <p>There are no fourth options. The financial universe does not contain genuinely risk-free 12% returns. Every time it appears to, someone investigates and the structure turns out to fit category 1, 2, or 3.</p>
+
+        <p>The Madoff scandal (discovered in 2008) was the largest Ponzi scheme ever uncovered — about $65 billion. Madoff promised steady returns of 10–12% per year, year after year, regardless of market conditions. Sophisticated investors, charities, university endowments all believed him. The whole thing collapsed during the 2008 panic when new money couldn't cover redemptions. Many investors lost everything.</p>
+
+        <p>The 2022 collapse of Terra/Luna and the lending platform Celsius are recent examples. Celsius was offering 18% yields on "stablecoins" — claiming they could safely earn this by lending to institutional borrowers. The reality was much riskier crypto-lending strategies. When the crypto market turned in 2022, Celsius froze withdrawals (a clear red flag), and went bankrupt within weeks. Depositors lost billions.</p>
+
+        <p>Other patterns to watch: dividend yields on individual stocks that suddenly look "too good to be true" often reflect a market consensus that the dividend will be cut (the stock price has fallen, mechanically pushing yield up). Real estate crowdfunding platforms promising 8–10% yields often have hidden risks. "Structured notes" sold by banks promising "guaranteed minimum plus equity upside" almost always have hidden costs that erode returns.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Anchor your "normal" yield expectations to government bond yields. If the 10-year government bond is paying 3.5%, then anything promising 8% has roughly 4.5 percentage points of additional risk premium — and you should be able to identify the specific risk being compensated. If the marketing material can't clearly explain why the yield is higher than risk-free, walk away. "Guaranteed" and "stablecoin" both turn out to mean different things in fine print than in marketing. Read everything skeptically. When unsure, decline.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-7">
+      <div class="trap">
+        <div class="trap-label">Trap 07 of 10</div>
+        <h3 class="trap-title">Home Bias</h3>
+        <p>Investors everywhere systematically overweight their home country's stocks. American investors hold 80% of their equity portfolios in U.S. stocks. German investors overweight Germany. Greek investors overweight Greece. Japanese investors hold Japanese stocks far above the country's actual share of the global market.</p>
+
+        <p>This bias is psychological, not rational. The Greek stock market is about 0.05% of the global equity market. The German market is about 2%. The U.S. market is about 60%. A globally rational allocation would roughly match these proportions, perhaps with mild adjustments for currency considerations and home country bias toward your home currency for spending.</p>
+
+        <p>Why home bias hurts: it concentrates your portfolio in the exact economy whose problems would also hurt your career, your wages, your real estate value, and your government's solvency. If you live and work in Greece, your wage income is exposed to the Greek economy; your real estate is exposed to Greek property markets; your pension depends on Greek demographics; your government's debt is in euros. <em>The last thing you should also tie to Greek economic performance is your investment portfolio</em>.</p>
+
+        <p>This is especially clear in retrospect for investors in countries that had decades-long stagnations. Japanese investors who concentrated in Japanese stocks in 1990 had a 30-year period of going nowhere. Greek investors who concentrated locally in 2008 lived through the worst peacetime economic contraction in living memory. By contrast, globally diversified investors in those same eras did fine.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Buy global, not local. A single global equity index ETF holds thousands of stocks across dozens of countries in approximately market-cap weights. You'll have less exposure to your home country than feels natural, and that's the point. Your home is already a huge bet on your local economy through every other channel — don't pile your investments on top of it.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-8">
+      <div class="trap">
+        <div class="trap-label">Trap 08 of 10</div>
+        <h3 class="trap-title">"This Time Is Different"</h3>
+        <p>Carmen Reinhart and Kenneth Rogoff wrote a book by this title in 2009, summarizing 800 years of financial crises. Their finding was simple: each generation produces a class of investors and policymakers who become convinced that the rules have changed — that asset prices that historically would have indicated a bubble can now be justified by some new factor (innovation, productivity gains, financial sophistication, network effects, etc.).</p>
+
+        <p>The Japanese real estate market in 1989 was justified by the inherent uniqueness of Japan's land scarcity. The dot-com stocks of 1999 were justified by the new internet economy where traditional valuation metrics didn't apply. The U.S. housing market of 2006 was justified by securitization that had spread risk so widely it couldn't possibly fail. Tech stocks at 50× earnings in 2021 were justified by zero interest rates being permanent. NFTs at six figures were justified by the metaverse.</p>
+
+        <p>In each case, the post-mortem identified the same pattern: extreme valuations supported by narratives that, in retrospect, were not as bulletproof as believed. The "different" things always turned out, in the end, to be variations on themes that had played out before.</p>
+
+        <p>The skeptical position is uncomfortable. Telling people in 1999 that internet stocks were overvalued made you sound like a Luddite who didn't understand the new economy. Many serious analysts who flagged 2007 housing risks were dismissed as alarmists. Pointing to high valuations during a roaring bull market makes you sound like a permabear. The reward for being right too early often arrives only after years of looking foolish.</p>
+
+        <p>The trap is the opposite: getting swept up in the prevailing narrative of why current high prices are justified, and abandoning the discipline that says valuations matter eventually.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Maintain skepticism toward any thesis that requires "this time is different" to make sense of current prices. The new factor might be real — but if its only effect is to justify valuations that would otherwise be unreasonable, treat it as marketing rather than analysis. Diversify across asset classes specifically so that no single narrative needs to be right for your portfolio to survive.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-9">
+      <div class="trap">
+        <div class="trap-label">Trap 09 of 10</div>
+        <h3 class="trap-title">Waiting for the Dip</h3>
+        <p>The opposite of FOMO: an investor with cash to deploy decides to wait for "a better entry point." Markets feel high. Surely there will be a correction. Better to wait, deploy the cash after the drop, get in cheaper.</p>
+
+        <p>The trap is that "the dip" you're waiting for may not come, or may come from a much higher level. The S&P 500 from 2009 to 2021 had many short corrections but no major sustained drop — the bull market lasted 12 years. Investors who held cash from 2010 to 2020 waiting for "a better entry" missed a 250% rally.</p>
+
+        <p>Markets spend more time at all-time highs than people realize. Roughly 40% of trading days end at or near a recent high. If you're systematically reluctant to invest near highs, you're systematically reluctant to invest most of the time. The hesitation has a cost — the opportunity cost of cash sitting idle while markets march on.</p>
+
+        <p>The other version of this trap: after a market does drop, the investor waits for "confirmation" that the bottom is in before buying. By the time confirmation arrives, the market has typically already rallied substantially off the bottom. The investor buys back at prices higher than they sold or higher than where they could have bought when the drop happened.</p>
+
+        <p>This isn't an argument against ever holding cash — short-term needs justify cash reserves. It's an argument against treating "waiting for the right moment" as a strategy. There is no right moment that can be reliably identified in advance.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Use dollar-cost averaging: invest a fixed amount on a fixed schedule (e.g., €500 on the first of every month) regardless of market levels. You'll buy more shares when prices are low, fewer when high, automatically. This removes both the "waiting for the dip" trap and the FOMO trap. The cost is giving up the theoretical upside of perfectly-timed market entries — which essentially no one achieves anyway.
+        </div>
+      </div>
+    </section>
+
+    <section id="trap-10">
+      <div class="trap">
+        <div class="trap-label">Trap 10 of 10</div>
+        <h3 class="trap-title">The Influencer Trap</h3>
+        <p>Financial content is one of the largest categories on YouTube, TikTok, and Instagram. A new generation of "finance influencers" produces daily videos with titles like "How I Made €100K in 2024" and "The Stock That Will 10× by 2026." Many have hundreds of thousands of followers. Many are charismatic, well-spoken, and present polished, authoritative content.</p>
+
+        <p>The business model is rarely what they're advertising. Most influencers make their money from:</p>
+        <ul>
+          <li>Selling courses (typically €299–€999) on "how to invest like them"</li>
+          <li>Affiliate revenue from sign-ups to brokerages (often the ones with the worst incentive alignment, like CFD platforms)</li>
+          <li>Sponsored content for crypto projects (often the dubious ones)</li>
+          <li>"Mentorship" or "mastermind" programs at €5,000+ per year</li>
+          <li>Display ads, which scale with engagement, which scales with extreme claims</li>
+        </ul>
+
+        <p>Their incentive structure rewards making bold predictions, displaying conspicuous wealth (often rented Lamborghinis and Airbnb mansions), and creating fear-of-missing-out content. Whether their actual investment performance is good is, for their business, largely irrelevant. A loud failure is content. A quiet success would be boring.</p>
+
+        <p>The few finance influencers who provide genuine value tend to be more measured, less wealthy-looking, focused on basics rather than tips, and willing to admit uncertainty. They're also less viral, because boring content doesn't spread. Survivorship bias selects for the loudest, not the most accurate.</p>
+
+        <p>The most dangerous category: influencers who personally hold positions in the assets they pump. By the time their video reaches you, they've already accumulated. As you and others buy in based on their recommendation, they sell. This isn't theoretical — multiple high-profile crypto influencers have been charged with exactly this pattern by regulators in the past few years.</p>
+
+        <div class="trap-defense">
+          <strong>The defense</strong>
+          Treat financial content as entertainment, not advice. If something an influencer says strikes you as actionable, look for the same idea from a credentialed, fee-only fiduciary source before acting. Never buy a course on "how to invest" — the basics are available free from reputable sources (this guide, among many others). Never invest because an influencer told you to.
+        </div>
+      </div>
+    </section>
+
+    <section id="discipline">
+      <h3>The discipline of doing nothing</h3>
+      <p>Most of investing success, after the initial decisions, is the discipline to not change those decisions reactively. This is harder than it sounds.</p>
+
+      <p>When the market drops 30%, every fiber of your being will scream to do something — to sell, to "preserve capital," to wait for things to stabilize. When the market rises 50% and your friends are talking about how much they've made on a hot stock, every fiber will scream that you're missing out and need to adjust your strategy. Both impulses are wrong almost all of the time.</p>
+
+      <p>The most expensive thing a long-term investor can do is panic-sell during a crash. Investors who held through the 2008–2009 crash captured the full recovery and went on to enjoy a decade-long bull market. Investors who sold near the bottom locked in their losses and frequently never returned to stocks — missing perhaps the best decade of equity returns in history.</p>
+
+      <p>The second-most expensive thing is constant tinkering. Adjusting allocations, trying to time markets, chasing recently-strong sectors, periodically "improving" the portfolio. Each adjustment usually adds friction (taxes, fees, spreads) and rarely adds returns. Studies consistently show that the more frequently retail investors trade, the worse their returns.</p>
+
+      <p>The boring, mechanical, almost embarrassingly simple approach — picking a sensible allocation, executing it through broad index funds, contributing regularly, not changing it for years — beats almost everything else most of the time. It's also the hardest to actually do, because it's emotionally unrewarding. There's no story to tell at dinner parties. No moment of triumph from a brilliant trade. Just the slow, quiet accumulation of wealth through compounding.</p>
+
+      <div class="pullquote">"The stock market is a device for transferring money from the impatient to the patient." <cite>— Warren Buffett</cite></div>
+    </section>
+
+    <section id="final">
+      <h3>A final word</h3>
+      <p>You started this guide perhaps not knowing what money fundamentally is. You now know: a collective story we all agree on, backed by nothing physical since 1971, created mostly by commercial banks when they lend, periodically inflated away by the institutions managing it.</p>
+
+      <p>You know how the machine works: supply and demand, interest rates as the master variable, the credit cycle as the heartbeat, central banks as the conductors, governments as the largest single participants, inflation as the persistent gravitational pull.</p>
+
+      <p>You know what your options are: every form of lending money (bonds in all their varieties), every form of owning productive things (stocks, real estate, businesses), every wrapper around those (mutual funds, ETFs, alternatives), and the speculation layer above (derivatives, crypto, leverage) that mostly destroys retail wealth.</p>
+
+      <p>You know the traps — ten of them, named, with real recent examples. You know that knowing them won't save you, only structure will.</p>
+
+      <p>What's left is the doing. Not perfectly. Not with the optimal portfolio. Just to start — with whatever amount, in whatever sensibly-diversified low-cost vehicle, on whatever schedule you can maintain. The 25-year-old contributing €200 a month to a global index ETF will, statistically, end up wealthier than the 45-year-old who finally gets around to "doing it properly" with €2,000 a month.</p>
+
+      <p>The system is unfair in many ways — Chapter 1 made some of them visible. The asymmetry between labor and capital is increasing. The Cantillon effect benefits those closest to the money creation. The wealthy get the best access to investment opportunities. None of this changes what you, individually, can do. You can either own some part of the productive capital base of the world economy, or watch it drift further away from you. The choice between those two paths is what this guide has been about.</p>
+
+      <p>Go small if you must. Go consistently if you can. Stay calm when prices fall. Stay calm when prices rise. Read more later. Make mistakes — small ones. Compound the lessons along with the money.</p>
+
+      <p>That's enough. That's the whole thing.</p>
+
+      <div class="book-end">
+        <div class="book-end-mark">✦</div>
+        <div class="book-end-text">End of guide</div>
+      </div>
+
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Revisit any chapter</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+        <a href="01-history.html" style="display: block; padding: 1rem 1.2rem; background: var(--paper-deep); border: 1px solid var(--line); border-radius: 3px; color: var(--ink);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.3rem;">Chapter 01</div>
+          <div style="font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.05rem;">How we got here</div>
+        </a>
+        <a href="02-economy.html" style="display: block; padding: 1rem 1.2rem; background: var(--paper-deep); border: 1px solid var(--line); border-radius: 3px; color: var(--ink);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.3rem;">Chapter 02</div>
+          <div style="font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.05rem;">The machine</div>
+        </a>
+        <a href="03-investments.html" style="display: block; padding: 1rem 1.2rem; background: var(--paper-deep); border: 1px solid var(--line); border-radius: 3px; color: var(--ink);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.3rem;">Chapter 03</div>
+          <div style="font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.05rem;">Investment universe</div>
+        </a>
+        <a href="index.html" style="display: block; padding: 1rem 1.2rem; background: var(--paper-deep); border: 1px solid var(--line); border-radius: 3px; color: var(--ink);">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rust); margin-bottom: 0.3rem;">Home</div>
+          <div style="font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.05rem;">Table of contents</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>MONEY, DECODED · A FIELD GUIDE</p>
+    <p>CHAPTER 04 OF 04 · PRACTICE & THE TRAPS</p>
+    <p>FOR EDUCATIONAL PURPOSES · NOT FINANCIAL ADVICE</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+<script src="../../shared/glossary.js" defer></script>
+</body>
+</html>

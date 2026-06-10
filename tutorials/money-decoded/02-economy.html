@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 02 · The Machine — Money, Decoded</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Money, Decoded <em>— a field guide</em></a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="01-history.html">01 · History</a>
+      <a href="02-economy.html" class="current">02 · Economy</a>
+      <a href="03-investments.html">03 · Investments</a>
+      <a href="04-practice.html">04 · Practice</a>
+      <div class="lang-toggle">
+        <a href="02-economy.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="02-economy-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 02</div>
+    <div class="toc-chapter-title">The machine</div>
+    <ul class="toc-list">
+      <li><a href="#supply-demand">Supply & demand</a></li>
+      <li><a href="#money-creation">Where money comes from</a></li>
+      <li><a href="#central-banks">What central banks do</a></li>
+      <li><a href="#interest-rates">The master variable</a></li>
+      <li><a href="#inflation">Inflation, deeply</a></li>
+      <li><a href="#credit-cycle">The credit cycle</a></li>
+      <li><a href="#business-cycle">The business cycle</a></li>
+      <li><a href="#gdp-unemployment">GDP & jobs</a></li>
+      <li><a href="#government">The government's role</a></li>
+      <li><a href="#international">Currencies & trade</a></li>
+      <li><a href="#labor-capital">Labor vs capital</a></li>
+      <li><a href="#today">Where we are now</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 02 · The Mechanics</div>
+      <h1 class="chapter-title">The <em>machine</em></h1>
+      <p class="chapter-lede">If Chapter 1 was the story of how the system was built, this is the manual. How money comes into existence today. How credit flows. Why interest rates move every market on earth.</p>
+      <div class="chapter-info">
+        <span>~40 min read</span>
+        <span>12 sections</span>
+        <span>The mechanics, demystified</span>
+      </div>
+    </header>
+
+    <section id="supply-demand">
+      <h3>The one law of economics (and what it really means)</h3>
+      <p>If economics has anything like a natural law, it's supply and demand. When more people want a thing, its price rises. When less is available, its price rises. When fewer people want it, price falls. When more is available, price falls. Almost everything else in economics is an elaboration on this.</p>
+
+      <p>But the truly interesting thing about supply and demand is what it does over time — how prices send signals that reshape behavior. If apartments in Athens become expensive, more developers build apartments in Athens. If too many apartments get built, prices fall, fewer get built. The system corrects itself, with delays, oscillations, and overshooting along the way.</p>
+
+      <p>This self-correcting mechanism is also the deepest reason most central planning fails: a committee of bureaucrats cannot match the information processed by millions of buyers and sellers reacting to prices. It's why markets, for all their flaws, do a remarkable job of coordinating economic activity at scale.</p>
+
+      <p>It's also why interfering with prices — rent controls, fuel subsidies, food price caps — almost always backfires. The price isn't the problem; the price is the messenger. Shooting the messenger ("rents must not exceed €X") doesn't change the underlying supply and demand. It just hides the imbalance, causing shortages, queues, and black markets to appear instead. Every economist of every political stripe knows this. Politicians know it too, and override it for short-term reasons anyway.</p>
+    </section>
+
+    <section id="money-creation">
+      <h3>Where money actually comes from</h3>
+      <p>Here is one of the most counterintuitive facts in finance, and one that most people — including many financially literate ones — get wrong.</p>
+
+      <p><strong>Most money in the modern economy is not printed by central banks. It is created by commercial banks, out of thin air, when they make loans.</strong></p>
+
+      <p>This is not conspiracy theory. It's the official position of the Bank of England, the European Central Bank, and any introductory banking textbook. Let me walk through it because it's that important.</p>
+
+      <p>When you go to a bank for a €200,000 mortgage, the bank does <em>not</em> reach into a vault and hand you €200,000 in existing money. It also does not lend you €200,000 of other depositors' money in the way most people imagine. What it actually does is much stranger: it types €200,000 into your checking account. Simultaneously, it records on its own books that you owe it €200,000 plus interest.</p>
+
+      <p>That €200,000 in your account didn't exist five minutes ago. The bank created it by typing. The money supply just grew by €200,000.</p>
+
+      <p>When you spend that money — paying the seller of the house — it doesn't disappear; it just moves to the seller's bank account. When the loan is eventually repaid, the money is gradually destroyed: every time you make a mortgage payment, the bank reduces your loan balance, and that "money" effectively vanishes back into the void it came from.</p>
+
+      <div class="insight">
+        <div class="insight-label">The shocking truth</div>
+        <p>About 97% of all "money" in modern economies is not paper or coins. It exists only as numbers in bank computers — created when banks make loans, destroyed when those loans are repaid. The amount of money in the economy is therefore directly linked to the amount of borrowing. More lending = more money. Less lending = less money.</p>
+      </div>
+
+      <p>This system has two huge implications:</p>
+      <ol>
+        <li><strong>Money creation is fundamentally a private process</strong>, done by thousands of commercial banks, not by some central planner.</li>
+        <li><strong>The economy's money supply is therefore deeply linked to the willingness of banks to lend</strong> and the willingness of households and businesses to borrow. When both are willing, money expands and the economy heats up. When either gets scared, money contracts and the economy cools.</li>
+      </ol>
+
+      <p>What does the central bank do, then? It doesn't print most of the money directly. Instead, it influences how easy or hard it is for commercial banks to do their money creation. It does this primarily through interest rates and reserve requirements — which we'll get to.</p>
+
+      <p>The exceptions to all this are <strong>quantitative easing</strong> (QE), where the central bank does directly create new money by buying assets, and physical cash, which is also created by central banks. But these are minority players in the overall money supply.</p>
+    </section>
+
+    <section id="central-banks">
+      <h3>What central banks actually do</h3>
+      <p>A central bank is a strange institution. It's a bank, but its customers are other banks rather than people. It's a government agency, but in most countries it operates independently of politicians. It creates money, but its money creation rules are mostly indirect, working through the commercial banking system.</p>
+
+      <p>Most central banks have one or two stated objectives:</p>
+
+      <ul>
+        <li><strong>Price stability</strong> — keeping inflation low and predictable, usually around 2% per year. This is the primary mandate of the European Central Bank.</li>
+        <li><strong>Maximum employment</strong> — keeping unemployment as low as possible without causing inflation. This is part of the U.S. Federal Reserve's "dual mandate," along with price stability.</li>
+        <li><strong>Financial stability</strong> — preventing bank panics, providing emergency liquidity, supervising the financial system.</li>
+      </ul>
+
+      <p>To do these jobs, central banks have a small toolkit but use it with enormous consequence:</p>
+
+      <h4>1. Setting the policy rate</h4>
+      <p>The central bank sets the rate at which commercial banks can borrow from it overnight (or, equivalently, the rate at which they're paid for parking funds with it). Because every other interest rate in the economy is influenced by this rate, raising or lowering it ripples through everything: mortgages, business loans, bond yields, even stock prices and exchange rates.</p>
+
+      <h4>2. Open market operations</h4>
+      <p>The central bank buys and sells government bonds in the open market. Buying bonds pushes money into the banking system (the central bank pays for the bonds by creating reserves) and pushes long-term interest rates down. Selling bonds does the opposite. This is the main tool through which the policy rate is actually implemented.</p>
+
+      <h4>3. Quantitative easing (the unconventional tool)</h4>
+      <p>When the policy rate is already at zero and the economy still needs more stimulus, central banks turn to buying massive quantities of long-term bonds, often including mortgage-backed securities and corporate debt. The Fed expanded its balance sheet from $900 billion to $9 trillion between 2008 and 2022 doing this. The ECB now holds trillions of euros in assets it bought through QE.</p>
+
+      <h4>4. Lender of last resort</h4>
+      <p>In a banking panic, the central bank can lend unlimited amounts to solvent-but-illiquid banks, providing the safety net that prevents bank runs from collapsing the whole system. This was Walter Bagehot's principle (1873): lend freely, at penalty rates, against good collateral.</p>
+
+      <h4>5. Forward guidance</h4>
+      <p>Central bankers learned in the 1990s that they could move markets simply by telling them what they planned to do. A speech by the Fed chair can move trillions of dollars in markets globally. This is now a deliberate tool — central banks issue carefully calibrated statements designed to anchor expectations.</p>
+
+      <p>What central banks are <em>not</em> supposed to do — though the line has blurred since 2008 — is directly fund government spending. The idea is that an independent central bank is a check on politicians' inflationary instincts. Politicians want to spend now and worry about the bill later; an independent central bank, in theory, prevents them from just printing the money to pay for it.</p>
+
+      <p>In practice, when central banks engage in QE by buying massive amounts of government bonds — even if buying them on the secondary market from banks rather than directly from the government — the practical effect is similar. The boundary between fiscal policy (government spending) and monetary policy (central bank money creation) has gotten very fuzzy since 2008. Whether this matters is a major debate in economics today.</p>
+    </section>
+
+    <section id="interest-rates">
+      <h3>Interest rates: the master variable</h3>
+      <p>If you understand only one thing about how markets work, understand this: <strong>the interest rate is the price of money</strong>. And when the price of money changes, the price of everything else changes too.</p>
+
+      <p>An interest rate is the rent on money. Borrow €1,000 at 5% and you pay €50 per year for the privilege. Lend €1,000 at 5% and you earn €50 per year. Simple enough.</p>
+
+      <p>But interest rates are also the discount applied to the future. A euro a year from now is worth less than a euro today, because today's euro can earn interest in the meantime. When interest rates are 5%, a euro received in 10 years is worth about 61 cents today. When interest rates are 1%, that same euro is worth about 90 cents today.</p>
+
+      <p>This is why interest rates determine asset prices. <strong>An asset is worth the present value of its future cash flows</strong>. When interest rates fall, future cash flows are discounted less heavily, so present asset values rise. When interest rates rise, future cash flows are discounted more heavily, so present asset values fall.</p>
+
+      <p>This explains why:</p>
+      <ul>
+        <li>Stock prices rose dramatically during 2009–2021's near-zero interest rate era — companies' future earnings, discounted at near-zero rates, were worth almost their full nominal value.</li>
+        <li>Real estate prices boomed in the same period — rental income decades into the future was barely discounted at all.</li>
+        <li>Bond prices have an inverse relationship with interest rates — when rates rise, existing bonds (with their lower coupon payments) become less attractive than new bonds, so their prices fall.</li>
+        <li>Technology stocks — whose value comes from earnings projected far in the future — are particularly sensitive to interest rate changes. They rocketed when rates fell and crashed when rates rose in 2022.</li>
+        <li>Tech stocks fell hard in 2022 when the Fed raised rates rapidly — the same future earnings were now worth a lot less in present-value terms.</li>
+      </ul>
+
+      <div class="story">
+        <div class="story-label">The relationship in action</div>
+        <div class="story-title">The 2022 reckoning</div>
+        <div class="story-date">January 2022 – October 2022</div>
+        <p>In early 2022, the U.S. Federal Reserve, finally accepting that inflation was no longer "transitory," began raising rates at the fastest pace in 40 years — from 0.25% in March 2022 to 4.5% by year-end. The consequences for asset markets were brutal and immediate.</p>
+        <p>The S&P 500 fell about 25% over the year. The tech-heavy Nasdaq fell 33%. Bonds — supposedly the safe alternative to stocks — had their worst year in over a century, with the Bloomberg U.S. Aggregate Bond Index losing 13%. Bitcoin lost 65%. Real estate, which moves more slowly, would feel the pain through 2023–2024 as mortgage rates priced buyers out.</p>
+        <p>For most investors, 2022 was the worst year in living memory because <em>both stocks and bonds fell together</em>. The classic "60/40 portfolio" (60% stocks, 40% bonds) — designed so that bonds would cushion stock losses — had its worst year in living memory. Why? Because both stocks and bonds had been propped up by zero interest rates, and now that the support was being removed, both crashed.</p>
+        <p>If you remember nothing else: interest rates move first, asset prices follow.</p>
+      </div>
+
+      <p>Watching interest rate decisions by major central banks — the Fed, the ECB, the Bank of England — should be your single most important macro habit. They are scheduled. They are announced. They are the most predictable major market-moving events on the calendar.</p>
+    </section>
+
+    <section id="inflation">
+      <h3>Inflation: a closer look</h3>
+      <p>You already met inflation in the previous chapter. Here are the details that matter.</p>
+
+      <h4>What's actually measured</h4>
+      <p>Official inflation statistics are calculated from a basket of goods and services that an average household supposedly buys. The CPI (Consumer Price Index) in most countries includes housing, food, energy, transport, healthcare, communications, education, recreation, clothing. Each country's exact methodology differs slightly.</p>
+
+      <p>Critically, the basket is updated periodically, and changes in product quality are adjusted for. If smartphones get more powerful at the same price, that's recorded as a hidden price decrease ("hedonic adjustment"). This is reasonable but contested — critics argue it understates inflation, particularly for people who don't actually upgrade their phones every year.</p>
+
+      <p>Your personal inflation rate is almost certainly different from the official one. If you spend much of your income on housing in a hot market, your real inflation might be 5–6% even when the official rate is 2–3%. If you spend a lot on tech and discretionary goods that have gotten cheaper, your personal inflation might be lower.</p>
+
+      <h4>Cost-push vs demand-pull</h4>
+      <p>Economists distinguish two flavors of inflation, with different causes and different remedies:</p>
+      <ul>
+        <li><strong>Demand-pull inflation</strong>: too much money/spending chasing the same goods. The classic monetary inflation. Cured by raising interest rates to cool demand.</li>
+        <li><strong>Cost-push inflation</strong>: rising input costs (oil, raw materials, wages) feeding through to higher prices. Harder to cure with monetary policy; raising rates makes things worse for businesses already squeezed.</li>
+      </ul>
+
+      <p>The 2022 inflation was a mix of both: enormous monetary stimulus from 2020–2021 (demand-pull) plus the Ukraine war's effect on energy and food prices (cost-push). The Fed and ECB raised rates anyway because that's the only tool they have, even though it doesn't fix supply-side problems.</p>
+
+      <h4>The expectations problem</h4>
+      <p>The truly dangerous thing about inflation is that it can become self-fulfilling. If workers expect prices to rise 8% next year, they demand 8% wage increases. Employers, knowing they'll pay 8% more in wages, raise prices 8%. The expectation becomes the reality. This is the wage-price spiral that turned 1970s inflation into a decade-long disaster.</p>
+
+      <p>This is why central bankers are obsessed with "anchoring inflation expectations." They want everyone to believe inflation will be 2%, because that belief tends to make 2% the outcome. When confidence in the anchor is lost — as happened in the 1970s — getting it back is incredibly expensive.</p>
+
+      <h4>Inflation as a hidden tax</h4>
+      <p>Inflation is, in effect, a tax on money holders. The government, through the central bank, creates new money and spends it. This dilutes the value of existing money, which means everyone holding euros effectively pays a small tax to whoever got the new money first. This is called the <strong>Cantillon Effect</strong>, named after the 18th-century Irish economist who first described it.</p>
+
+      <p>Who gets the new money first? Typically, banks (which can borrow at the cheapest rates), the government (which can issue bonds the central bank then buys), and major asset holders (whose assets are bid up by new money flooding the system). Who pays the tax? Anyone holding cash or earning a fixed salary that hasn't yet adjusted. The distributional effects of inflation are generally regressive — they hit working-class and middle-class savers harder than wealthy asset owners.</p>
+    </section>
+
+    <section id="credit-cycle">
+      <h3>The credit cycle: the heartbeat of the economy</h3>
+      <p>Because money in modern economies is created by lending, the willingness of banks to lend and of borrowers to borrow drives almost everything. This rises and falls in a long, repeating cycle that economists call the <strong>credit cycle</strong>.</p>
+
+      <p>The cycle has four phases:</p>
+
+      <ol>
+        <li><strong>Expansion</strong>. The economy is recovering from a downturn. Interest rates are low. Banks have cleaned up their balance sheets and are eager to lend. Borrowers see good times ahead and want to borrow to invest. Lending grows. Money supply grows. Asset prices rise. Confidence builds.</li>
+
+        <li><strong>Boom</strong>. The expansion accelerates. Lending standards loosen — banks are competing for borrowers, and the recent track record of borrowers has been good. Riskier borrowers get loans. Asset prices rise faster than fundamentals justify. Speculation builds. Everyone wants in.</li>
+
+        <li><strong>Stress</strong>. Something goes wrong. A few borrowers can't repay. Asset prices stop rising. Banks tighten lending. Marginal borrowers can no longer refinance. Defaults begin to cluster. Asset prices start falling.</li>
+
+        <li><strong>Bust</strong>. Defaults cascade. Banks, scared of their own losses, sharply restrict new lending. The money supply contracts. Borrowers can't get refinancing. Asset prices crash. Recession sets in. Bad debts are written off. Eventually, the system stabilizes at a lower level and the cycle begins again.</li>
+      </ol>
+
+      <p>The full credit cycle typically takes 7–10 years. There's also a longer cycle — sometimes called a "long-term debt cycle" — that takes 50–75 years, where the total amount of debt in the economy reaches unsustainable levels and has to be restructured through some combination of default, inflation, devaluation, or wealth transfer. Many observers believe we are late in such a long-term cycle now.</p>
+
+      <p>The Ray Dalio framework (popularized in his book and YouTube videos) is the best accessible introduction to thinking about this. It's not the only model, but it's a useful one for orientation.</p>
+    </section>
+
+    <section id="business-cycle">
+      <h3>The business cycle: boom, bust, repeat</h3>
+      <p>Closely related to the credit cycle, but not identical, is the business cycle — the wave-like pattern of expansion and recession that economies have followed for as long as we've had data on them.</p>
+
+      <p>The classic stages of a business cycle:</p>
+
+      <ul>
+        <li><strong>Early cycle</strong> (recovery): coming out of recession. Unemployment falling. Stocks rising fast. Cyclical sectors (consumer discretionary, industrials, financials) lead.</li>
+        <li><strong>Mid cycle</strong> (expansion): steady growth, healthy job market, moderate inflation. Stocks rise more steadily. Technology and growth sectors often lead.</li>
+        <li><strong>Late cycle</strong> (peak): unemployment at lows, inflation rising, central banks tightening. Commodities and inflation-beneficiaries lead. Defensive sectors (healthcare, utilities, consumer staples) start outperforming.</li>
+        <li><strong>Recession</strong> (contraction): GDP shrinks, unemployment rises, central banks cut rates. Bonds rally. Defensive stocks outperform; cyclicals get hammered.</li>
+      </ul>
+
+      <p>Recessions, defined technically as two consecutive quarters of negative GDP growth, have happened in the U.S. every 5–7 years on average since World War II. In Europe, they've been roughly as frequent though often more severe and prolonged.</p>
+
+      <p>Predicting recessions in advance is notoriously hard. The most reliable indicator historically has been the <strong>yield curve inversion</strong> — when short-term interest rates rise above long-term rates, indicating investors expect rates to be lower in the future, which usually happens because they expect a recession. This indicator has correctly predicted every U.S. recession of the past 50 years (with a lead time of 6–18 months) — but it has also given some false positives, and the future may differ.</p>
+    </section>
+
+    <section id="gdp-unemployment">
+      <h3>GDP and unemployment: the headline numbers</h3>
+      <p>If you're trying to understand the news, four numbers explain 80% of what financial journalists are talking about:</p>
+
+      <h4>GDP (Gross Domestic Product)</h4>
+      <p>The total value of all goods and services produced in a country in a year. Growth in GDP roughly corresponds to growth in living standards over the long run. When GDP shrinks, we call it a recession.</p>
+
+      <p>GDP has well-known flaws as a measure of welfare. It doesn't count unpaid work (raising children, caring for elderly parents). It treats environmental destruction as growth (cutting down a forest counts as positive GDP). It says nothing about distribution — a country with one billionaire and a million peasants might have the same GDP as a country with a million middle-class families. But despite these flaws, no better headline number has been invented.</p>
+
+      <h4>Unemployment rate</h4>
+      <p>The percentage of the labor force without a job but actively looking. The "labor force" excludes retirees, students, and people who've stopped looking for work — which is why the unemployment rate can fall not because more people have jobs but because more have given up looking. The "labor force participation rate" tells you what fraction of working-age people are even in the labor market.</p>
+
+      <p>An unemployment rate below about 4% is generally considered "full employment" — the irreducible minimum given that people are always between jobs, returning to the workforce, etc.</p>
+
+      <h4>Inflation rate</h4>
+      <p>Discussed already. The 2% target is what most developed-economy central banks aim for.</p>
+
+      <h4>Interest rate</h4>
+      <p>The central bank's policy rate, discussed already. Watch this above all.</p>
+
+      <p>If you understand these four numbers and roughly where each is trending, you understand the macro picture better than 90% of people. The rest is detail.</p>
+    </section>
+
+    <section id="government">
+      <h3>The government's role: taxes, spending, debt</h3>
+      <p>Governments in modern economies typically spend about 30–55% of GDP (lower end in the U.S., higher in much of Europe, particularly the Nordic countries). They raise this money through some combination of taxes (income, consumption/VAT, corporate, property, capital gains) and borrowing (selling government bonds).</p>
+
+      <p>When a government spends more than it taxes, the difference is the <strong>fiscal deficit</strong>. The accumulated total of all past deficits, minus surpluses, is the <strong>national debt</strong>.</p>
+
+      <h4>Is government debt a problem?</h4>
+      <p>This is a contested question that splits economists. Some viewpoints:</p>
+
+      <ul>
+        <li><strong>Conservative view</strong>: government debt crowds out private investment, raises interest rates, and saddles future generations with obligations they didn't choose. Persistent deficits are signs of fiscal irresponsibility.</li>
+        <li><strong>Keynesian view</strong>: government debt is a useful tool. During recessions, governments should borrow and spend to support demand; during booms, they should run surpluses to pay it down.</li>
+        <li><strong>Modern Monetary Theory (MMT)</strong>: a country that issues its own currency and borrows in that currency can never go bankrupt — it can always create more money to pay its debts. The real constraint isn't financial; it's inflation. This view, controversial among mainstream economists, has nonetheless influenced policy discussions, particularly since 2020.</li>
+      </ul>
+
+      <p>The empirical record is mixed. Japan has run debt-to-GDP ratios over 200% for decades without crisis (so far). Greece blew up at 130%. The U.S. has run deficits almost continuously since 1970 with no apparent consequence. Argentina has defaulted nine times since independence. Context matters enormously.</p>
+
+      <p>One robust historical pattern: countries that owe debt in their own currency rarely "default" in the traditional sense; instead, they inflate it away. Countries that owe debt in foreign currencies (most emerging markets historically, eurozone members today since they can't print euros) can and do default.</p>
+
+      <h4>Fiscal vs monetary policy</h4>
+      <p>Government tax-and-spend decisions are <em>fiscal policy</em>. Central bank rate-and-money-supply decisions are <em>monetary policy</em>. They interact constantly but are nominally separate.</p>
+
+      <p>In recent decades, monetary policy has done most of the heavy lifting in managing economic cycles, partly because politicians find it hard to agree on fiscal action. The 2020 COVID response was unusual in that fiscal and monetary policy worked together at unprecedented scale — direct cash payments to households, expanded unemployment, business loans, and massive central bank money creation, all at once.</p>
+    </section>
+
+    <section id="international">
+      <h3>Currencies, trade, and capital flows</h3>
+      <p>If economies were closed systems, the picture above would be enough. But they're not. Money, goods, and investment flow across borders constantly, and the resulting interactions create their own dynamics.</p>
+
+      <h4>Exchange rates</h4>
+      <p>Every major currency floats against every other one. The exchange rate between, say, the euro and the U.S. dollar is determined by supply and demand for each currency in foreign exchange markets — which trade about $7 trillion per day.</p>
+
+      <p>What moves exchange rates? Many things, but the dominant factor in the short and medium term is <strong>relative interest rates</strong>. Money flows toward currencies offering higher returns. When the Fed raises rates while the ECB doesn't, the dollar tends to strengthen against the euro because investors move money to dollar-denominated assets to capture the higher yield.</p>
+
+      <p>Over longer horizons, exchange rates tend to reflect <strong>purchasing power parity</strong> — currencies adjust so that the same basket of goods costs roughly the same across countries when converted at market rates. This rarely holds precisely, but it's the underlying pull.</p>
+
+      <h4>The dollar's "exorbitant privilege"</h4>
+      <p>The U.S. dollar is the world's reserve currency. About 60% of global central bank reserves are held in dollars. About 50% of international trade is invoiced in dollars. About 90% of foreign exchange trades involve dollars on one side.</p>
+
+      <p>This gives the U.S. a privilege that no other country enjoys: it can borrow in the currency it prints, run massive trade deficits without crisis, and impose financial sanctions on adversaries by cutting them off from the dollar system. The euro is the second-most-important reserve currency (about 20% of reserves), the British pound third, the Japanese yen fourth, the Chinese yuan rising slowly.</p>
+
+      <p>Whether the dollar will retain this privilege is one of the great geopolitical questions of our era. The trend in the past few years — sanctions, weaponization of the SWIFT system, BRICS attempts at alternative arrangements, Chinese moves to settle trade in yuan — suggest the privilege may erode. But the alternatives have their own problems, and "the dollar's death" has been predicted regularly for 50 years without happening.</p>
+
+      <h4>Capital flows</h4>
+      <p>Money also flows across borders for investment purposes. European investors buy U.S. tech stocks. Asian central banks buy U.S. Treasury bonds. American funds buy European real estate. These flows can be enormous — trillions of dollars per year — and can dwarf trade flows.</p>
+
+      <p>Sudden reversals of capital flows are how many emerging-market crises start. When the U.S. raises interest rates, capital often flows out of riskier emerging markets back to the U.S., crushing their currencies and forcing crises. Turkey 2018. Argentina 2018, 2023, 2024. Many such examples.</p>
+    </section>
+
+    <section id="labor-capital">
+      <h3>Who gets what: labor vs capital</h3>
+      <p>One of the most important — and least discussed — facts about the modern economy is how the spoils get divided between workers and asset owners.</p>
+
+      <p>The economic output of a country can be split into two big pieces: the wages and salaries paid to workers (the <strong>labor share</strong>) and the profits, dividends, rents, and interest paid to capital owners (the <strong>capital share</strong>). Across the developed world, the labor share has been falling for about 40 years. In the U.S., the labor share dropped from about 65% in 1980 to about 56% in 2024. Similar trends elsewhere.</p>
+
+      <p>This is one of the underlying causes of rising inequality. If a smaller share of national income goes to wages, and most people earn most of their income from wages, then most people see their incomes grow slowly even as the economy grows. Meanwhile, capital owners — those who own stocks, bonds, real estate, businesses — capture an increasing share of the gains.</p>
+
+      <p>Why has the labor share fallen? Possible reasons include globalization (cheaper labor abroad weakens domestic workers' bargaining power), technology (machines substituting for workers in many tasks), declining union membership, market concentration (a few dominant firms in each industry can suppress wages), and the rise of intangible-intensive businesses (where most of the value comes from intellectual property, not labor).</p>
+
+      <p>The practical investing implication: <em>if labor's share keeps falling and capital's share keeps rising, owning capital becomes increasingly important relative to selling your labor</em>. This isn't an endorsement of the trend — many people consider it a serious problem — but it's a description of the world you have to invest into. The asymmetry between earning income from work versus owning productive assets is, as of 2026, the most important wealth distinction in the developed world.</p>
+
+      <div class="pullquote">"In the long run, owning capital has beaten selling labor. Most people are not on the winning side of this trade — by default."</div>
+
+      <p>This is the single biggest reason why you want to be an owner, even of small amounts, of productive assets. Not because the system is unfair (though many think it is). Because the system is structured this way, and you can either participate in capital's gains or watch it disappear over the horizon.</p>
+    </section>
+
+    <section id="today">
+      <h3>The 2026 picture in one paragraph</h3>
+      <p>After the post-2008 era of zero interest rates ended in 2022, the major economies are now in an awkward transition. Central banks have brought inflation down from 2022 peaks but it remains stickier than they'd like — around 3% in much of the developed world rather than the 2% target. Interest rates are higher than they've been in 15 years (4–5% range in the U.S. and U.K., 2–3% in the eurozone). Asset prices, after the 2022 drawdown, have largely recovered, but the easy-money tailwind is gone. Government debt levels are at peacetime highs. Geopolitical fragmentation is reshaping trade flows. AI is transforming the labor market in ways no one yet understands. The next decade is unlikely to look like the previous one.</p>
+
+      <p>None of this means you shouldn't invest. It means the investing environment is more like the historical norm than like 2009–2021. Returns will probably be lower than the past decade. Diversification will matter more. Bonds, after a brutal 2022, are once again offering real returns. Inflation hedges deserve more thought than they did. The mechanical "buy and hold the S&P 500" playbook will probably still work over 30 years, but the path will be more interesting than it was.</p>
+
+      <p>With the mechanics now in hand, you're ready for the part you came for: what to do with money. The next chapter is the full investment menu — every asset class, every fund type, every option, deeply.</p>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="03-investments.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 03 · The Options</div>
+        <div class="chapter-next-title">The investment <em>universe</em></div>
+        <p class="chapter-next-blurb">The full menu. Cash. Government and corporate bonds. Individual stocks and the styles within them. ETFs and mutual funds — every flavor. Real estate and REITs. Commodities and gold. Crypto. Derivatives. Alternatives. How they work, what they really return, who they're for.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="01-history.html">Previous: How we got here</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>MONEY, DECODED · A FIELD GUIDE</p>
+    <p>CHAPTER 02 OF 04 · THE MACHINE</p>
+    <p>FOR EDUCATIONAL PURPOSES · NOT FINANCIAL ADVICE</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+<script src="../../shared/glossary.js" defer></script>
+</body>
+</html>
