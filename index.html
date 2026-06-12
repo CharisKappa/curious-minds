@@ -3,410 +3,329 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Energy Decoded — Fire to Fusion | Curious Minds</title>
-<link rel="stylesheet" href="../../shared/styles.css">
+<title>Curious Minds — A Self-Directed Learning Library</title>
+<link rel="stylesheet" href="shared/styles.css">
 <style>
-  .hub-hero {
-    background: linear-gradient(160deg, #0d0800 0%, #2a1200 35%, #1a0a30 70%, #0a1a00 100%);
-    color: #fff8ec;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Lora', serif; background: var(--paper, #faf7f2); color: var(--ink, #2c1a0e); }
+
+  /* HEADER */
+  .site-header {
+    background: var(--ink, #2c1a0e);
+    color: #faf7f2;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+  .site-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #faf7f2;
+    text-decoration: none;
+  }
+  .site-logo span { color: var(--rust, #b5451b); }
+  .lang-toggle a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: #faf7f2;
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .lang-toggle a:hover { background: var(--rust, #b5451b); border-color: var(--rust, #b5451b); }
+
+  /* HERO */
+  .site-hero {
+    background: linear-gradient(135deg, #1a0e05 0%, #2c1a0e 60%, #3d2612 100%);
+    color: #faf7f2;
     padding: 100px 40px 80px;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
-  .hub-hero::before {
+  .site-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse at 20% 30%, rgba(255,160,20,0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, rgba(80,60,255,0.12) 0%, transparent 50%);
+    background: radial-gradient(ellipse at 50% 60%, rgba(181,69,27,0.2) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hub-eyebrow {
+  .hero-eyebrow {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #ffa020;
+    color: var(--rust, #b5451b);
     margin-bottom: 20px;
     display: block;
   }
-  .hub-hero h1 {
+  .hero-title {
     font-family: 'Fraunces', serif;
-    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 900;
-    line-height: 1.05;
+    line-height: 1.1;
     margin-bottom: 24px;
-    color: #fff8ec;
+    color: #faf7f2;
   }
-  .hub-hero h1 span {
-    display: block;
-    font-size: 0.55em;
-    font-weight: 400;
-    color: #ffd080;
-    letter-spacing: 0.05em;
-    margin-top: 8px;
-  }
-  .hub-hero p {
+  .hero-subtitle {
     font-family: 'Lora', serif;
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    color: #ffd4a0;
-    max-width: 620px;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #d4c4b0;
+    max-width: 640px;
     margin: 0 auto 40px;
     line-height: 1.7;
   }
-  .hub-meta {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-    margin-bottom: 48px;
-  }
-  .hub-meta span {
+  .hero-meta {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
-    color: #ffa020;
+    color: #a08060;
     letter-spacing: 0.08em;
-    padding: 6px 16px;
-    border: 1px solid rgba(255,160,32,0.4);
-    border-radius: 20px;
   }
-  .lang-toggle {
-    display: inline-flex;
-    gap: 0;
-    border: 1.5px solid rgba(255,255,255,0.3);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .lang-toggle a {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    padding: 8px 18px;
-    text-decoration: none;
-    color: rgba(255,255,255,0.6);
-    transition: all 0.2s;
-  }
-  .lang-toggle a.active, .lang-toggle a:hover {
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-  }
-  .hub-body {
-    max-width: 900px;
+
+  /* CATALOGUE */
+  .catalogue-section {
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 80px 24px 100px;
+    padding: 80px 40px 100px;
   }
-  .hub-intro {
-    font-family: 'Lora', serif;
-    font-size: 1.1rem;
-    line-height: 1.85;
-    color: var(--ink, #2c1a0e);
-    margin-bottom: 60px;
-    max-width: 680px;
-  }
-  .hub-intro h2 {
-    font-family: 'Fraunces', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--ink, #2c1a0e);
-    margin-bottom: 20px;
-  }
-  .chapters-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-light, #6b5e4e);
-    margin-bottom: 24px;
-    display: block;
-  }
-  .chapters-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2px;
-  }
-  .chapter-card {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding: 24px 28px;
-    background: var(--paper-deep, #f5f0e8);
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s;
-    border-left: 3px solid transparent;
-    position: relative;
-  }
-  .chapter-card:hover {
-    background: #fffaf4;
-    border-left-color: var(--rust, #b5451b);
-    transform: translateX(4px);
-  }
-  .chapter-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--ink-light, #6b5e4e);
-    letter-spacing: 0.1em;
-    min-width: 32px;
-    flex-shrink: 0;
-  }
-  .chapter-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-    width: 40px;
-    text-align: center;
-  }
-  .chapter-card-body { flex: 1; }
-  .chapter-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--ink, #2c1a0e);
-    margin-bottom: 4px;
-  }
-  .chapter-desc {
-    font-family: 'Lora', serif;
-    font-size: 0.88rem;
-    color: var(--ink-light, #6b5e4e);
-    line-height: 1.5;
-  }
-  .chapter-time {
+  .section-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    color: var(--ink-light, #6b5e4e);
-    letter-spacing: 0.08em;
-    flex-shrink: 0;
-  }
-  .chapter-arrow {
-    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     color: var(--rust, #b5451b);
-    opacity: 0;
-    transition: opacity 0.2s;
-    flex-shrink: 0;
-  }
-  .chapter-card:hover .chapter-arrow { opacity: 1; }
-  .hub-footer-nav {
-    margin-top: 80px;
-    padding-top: 40px;
-    border-top: 2px solid var(--paper-deep, #f5f0e8);
+    margin-bottom: 40px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     gap: 16px;
   }
-  .hub-footer-nav a {
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--paper-deep, #f0ebe0);
+  }
+  .catalogue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  /* TUTORIAL CARD */
+  .tutorial-card {
+    background: #fff;
+    border: 1.5px solid var(--paper-deep, #f0ebe0);
+    border-radius: 12px;
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .tutorial-card:hover {
+    box-shadow: 0 8px 32px rgba(44,26,14,0.10);
+    transform: translateY(-2px);
+  }
+  .card-number {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #a08060;
+  }
+  .card-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust, #b5451b);
+    background: #fff5f0;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    border: 1px solid #ffd4c4;
+    margin-bottom: 4px;
+  }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink, #2c1a0e);
+    line-height: 1.25;
+  }
+  .card-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 0.92rem;
+    color: #6b5e4e;
+    font-style: italic;
+  }
+  .card-description {
+    font-family: 'Lora', serif;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #5a4a3a;
+    flex: 1;
+  }
+  .card-meta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .card-meta span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: #8a7a6a;
+  }
+  .card-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 2px;
+  }
+  .status-live { background: #e8f8ee; color: #1a7a3a; border: 1px solid #c0e8cc; }
+  .status-soon { background: #f5f5f5; color: #888; border: 1px solid #ddd; }
+  .card-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
     color: var(--rust, #b5451b);
     text-decoration: none;
-    letter-spacing: 0.05em;
     padding: 10px 20px;
     border: 1.5px solid var(--rust, #b5451b);
     border-radius: 6px;
     transition: all 0.2s;
+    align-self: flex-start;
   }
-  .hub-footer-nav a:hover { background: var(--rust, #b5451b); color: #fff; }
-  .theme-bar {
-    background: var(--paper-deep, #f5f0e8);
-    padding: 48px 24px;
-    margin: 0;
-  }
-  .theme-bar-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 24px;
-  }
-  .theme-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-  .theme-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
-  .theme-text strong {
-    display: block;
+  .card-link:hover { background: var(--rust, #b5451b); color: #fff; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--ink, #2c1a0e);
+    color: #8a7a6a;
+    padding: 40px;
+    text-align: center;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--rust, #b5451b);
-    margin-bottom: 4px;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
   }
-  .theme-text p {
-    font-family: 'Lora', serif;
-    font-size: 0.88rem;
-    color: var(--ink, #2c1a0e);
-    line-height: 1.5;
-    margin: 0;
-  }
+  .site-footer a { color: var(--rust, #b5451b); text-decoration: none; }
+
   @media (max-width: 600px) {
-    .hub-hero { padding: 70px 20px 50px; }
-    .hub-body { padding: 50px 20px 80px; }
-    .chapter-card { flex-wrap: wrap; gap: 12px; }
-    .chapter-time, .chapter-arrow { display: none; }
+    .site-header { padding: 16px 20px; }
+    .site-hero { padding: 70px 20px 60px; }
+    .catalogue-section { padding: 60px 20px 80px; }
   }
 </style>
 </head>
 <body>
 
-<nav style="background:var(--paper-deep,#f5f0e8);border-bottom:2px solid var(--rust,#b5451b);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;">
-  <a href="../../index.html" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--rust,#b5451b);text-decoration:none;letter-spacing:0.05em;">← Home</a>
+<header class="site-header">
+  <a href="index.html" class="site-logo">Curious<span>Minds</span></a>
   <div class="lang-toggle">
-    <a href="index.html" class="active">EN</a>
     <a href="index-el.html">ΕΛ</a>
-  </div>
-</nav>
-
-<header class="hub-hero">
-  <span class="hub-eyebrow">Tutorial 03 · Science &amp; Discovery</span>
-  <h1>Energy Decoded
-    <span>Fire to Fusion: The Full Story</span>
-  </h1>
-  <p>From the first campfire to solar panels and nuclear reactors — a 400,000-year journey through the force that built every civilisation, powered every war, and now defines the biggest challenge our species has ever faced.</p>
-  <div class="hub-meta">
-    <span>⏱ ~60 min</span>
-    <span>8 chapters</span>
-    <span>EN + ΕΛ</span>
-    <span>✅ Live</span>
   </div>
 </header>
 
-<div class="theme-bar">
-  <div class="theme-bar-inner">
-    <div class="theme-item">
-      <div class="theme-icon">🔥</div>
-      <div class="theme-text">
-        <strong>360° Context</strong>
-        <p>Every chapter explores geopolitical, economic, and human dimensions — not just the science</p>
+<section class="site-hero">
+  <span class="hero-eyebrow">A Self-Directed Learning Library</span>
+  <h1 class="hero-title">Understand the world.<br>Not just the facts.</h1>
+  <p class="hero-subtitle">Every tutorial here is built around one idea: nothing happens in isolation. History, economics, politics, human need — it all connects. We call it 360° learning.</p>
+  <p class="hero-meta">Long-form · Bilingual EN / ΕΛ · No ads · No distractions</p>
+</section>
+
+<main class="catalogue-section">
+  <div class="section-label">Tutorial Catalogue</div>
+  <div class="catalogue-grid">
+
+    <!-- TUTORIAL 01 -->
+    <div class="tutorial-card">
+      <div class="card-number">Tutorial 01</div>
+      <div class="card-category">Money &amp; Economics</div>
+      <h2 class="card-title">Money, Decoded</h2>
+      <p class="card-subtitle">The History of Money</p>
+      <p class="card-description">From cowrie shells to Bitcoin — the complete story of how money was invented, reinvented, weaponised, and why the system we have today is stranger than most people realise.</p>
+      <div class="card-meta">
+        <span>~40 min</span>
+        <span>4 chapters</span>
+        <span>EN · ΕΛ</span>
       </div>
+      <span class="card-status status-live">✓ Live</span>
+      <a href="tutorials/money-decoded/index.html" class="card-link">Start Reading →</a>
     </div>
-    <div class="theme-item">
-      <div class="theme-icon">🌍</div>
-      <div class="theme-text">
-        <strong>Greek &amp; European lens</strong>
-        <p>Real stories from Greece, the Mediterranean, and Europe woven throughout</p>
+
+    <!-- TUTORIAL 02 -->
+    <div class="tutorial-card">
+      <div class="card-number">Tutorial 02</div>
+      <div class="card-category">Technology &amp; The Web</div>
+      <h2 class="card-title">Tech, Rewinding the Tape</h2>
+      <p class="card-subtitle">The History of Technology</p>
+      <p class="card-description">From the printing press to the smartphone — how each technological revolution reshaped power, work, culture, and what it means to be human.</p>
+      <div class="card-meta">
+        <span>~60 min</span>
+        <span>8 chapters</span>
+        <span>EN · ΕΛ</span>
       </div>
+      <span class="card-status status-live">✓ Live</span>
+      <a href="tutorials/tech-evolution/index.html" class="card-link">Start Reading →</a>
     </div>
-    <div class="theme-item">
-      <div class="theme-icon">⚡</div>
-      <div class="theme-text">
-        <strong>From past to present</strong>
-        <p>400,000 years of energy history, ending with where we stand today</p>
+
+    <!-- TUTORIAL 03 -->
+    <div class="tutorial-card">
+      <div class="card-number">Tutorial 03</div>
+      <div class="card-category">Science &amp; Discovery</div>
+      <h2 class="card-title">Energy Decoded</h2>
+      <p class="card-subtitle">Fire to Fusion</p>
+      <p class="card-description">From the first campfire to nuclear reactors and solar panels — the complete story of how humanity learned to harness energy, and why every energy choice is also a political, economic, and civilisational one.</p>
+      <div class="card-meta">
+        <span>~60 min</span>
+        <span>8 chapters</span>
+        <span>EN · ΕΛ</span>
       </div>
+      <span class="card-status status-live">✓ Live</span>
+      <a href="tutorials/energy-decoded/index.html" class="card-link">Start Reading →</a>
     </div>
-    <div class="theme-item">
-      <div class="theme-icon">🧠</div>
-      <div class="theme-text">
-        <strong>Why it matters now</strong>
-        <p>The energy transition is the defining story of the 21st century</p>
+
+    <!-- MORE COMING -->
+    <div class="tutorial-card" style="opacity:0.6;">
+      <div class="card-number">Tutorial 04</div>
+      <div class="card-category">Power &amp; Geopolitics</div>
+      <h2 class="card-title">More Coming</h2>
+      <p class="card-subtitle">In development</p>
+      <p class="card-description">New tutorials are being built. Each one follows the same 360° approach — history, economics, geopolitics, science, and human need, all woven together.</p>
+      <div class="card-meta">
+        <span>Coming soon</span>
       </div>
+      <span class="card-status status-soon">Coming Soon</span>
     </div>
+
   </div>
-</div>
-
-<main class="hub-body">
-
-  <div class="hub-intro">
-    <h2>What this tutorial covers</h2>
-    <p>Energy is not a side story in human history — it <em>is</em> human history. Every empire, every war, every economic revolution, every cultural shift can ultimately be traced to a single question: where does the energy come from, and who controls it?</p>
-    <p>This tutorial traces that question from the first deliberate fire in prehistoric Africa to the solar panels going up on rooftops right now. Along the way, we meet the people who controlled energy, the wars fought over it, the economics it created, and the crisis it has brought us to.</p>
-  </div>
-
-  <span class="chapters-label">All 8 chapters</span>
-
-  <div class="chapters-grid">
-    <a class="chapter-card" href="01-fire.html">
-      <span class="chapter-num">01</span>
-      <div class="chapter-icon">🔥</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Fire — The First Energy Revolution</div>
-        <div class="chapter-desc">400,000 years ago, early humans crouched around a deliberate flame. Nothing would ever be the same.</div>
-      </div>
-      <span class="chapter-time">~8 min</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-    <a class="chapter-card" href="02-coal.html">
-      <span class="chapter-num">02</span>
-      <div class="chapter-icon">⬛</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Coal — The Dark Power</div>
-        <div class="chapter-desc">Buried sunshine compressed over 300 million years. When we dug it up, we changed what it meant to be human.</div>
-      </div>
-      <span class="chapter-time">~8 min</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-    <a class="chapter-card" href="03-oil.html">
-      <span class="chapter-num">03</span>
-      <div class="chapter-icon">🛢️</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Oil — The Century of Black Gold</div>
-        <div class="chapter-desc">It moved armies, built empires, drove wars, and fuelled a way of life that billions consider normal.</div>
-      </div>
-      <span class="chapter-time">~8 min</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-    <a class="chapter-card" href="04-electricity.html">
-      <span class="chapter-num">04</span>
-      <div class="chapter-icon">⚡</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Electricity — The Invisible River</div>
-        <div class="chapter-desc">Not a fuel but a form. The battle over how to generate, distribute, and own it has never really ended.</div>
-      </div>
-      <span class="chapter-time">~7 min</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-    <a class="chapter-card" href="05-nuclear.html">
-      <span class="chapter-num">05</span>
-      <div class="chapter-icon">☢️</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Nuclear — The Fire Inside the Atom</div>
-        <div class="chapter-desc">The most concentrated energy source ever discovered. Also the most feared. The gap between those two facts is the story.</div>
-      </div>
-      <span class="chapter-time">~7 min</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-    <a class="chapter-card" href="06-renewables.html">
-      <span class="chapter-num">06</span>
-      <div class="chapter-icon">☀️</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Renewables — The Sun Always Rises</div>
-        <div class="chapter-desc">The cheapest energy source in human history is falling from the sky. Almost nobody saw it coming.</div>
-      </div>
-      <span class="chapter-time">~8 min</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-    <a class="chapter-card" href="07-climate.html">
-      <span class="chapter-num">07</span>
-      <div class="chapter-icon">🌊</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Climate — The Bill Comes Due</div>
-        <div class="chapter-desc">Every energy choice since the Industrial Revolution has been accumulating in the atmosphere. We live inside the consequences.</div>
-      </div>
-      <span class="chapter-time">~7 min</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-    <a class="chapter-card" href="08-future.html">
-      <span class="chapter-num">08</span>
-      <div class="chapter-icon">🔭</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">The Future — What Comes After Fire</div>
-        <div class="chapter-desc">The third great energy transition is happening right now, faster than most people realise. Where does it lead?</div>
-      </div>
-      <span class="chapter-time">~8 min</span>
-      <span class="chapter-arrow">→</span>
-    </a>
-  </div>
-
-  <div class="hub-footer-nav">
-    <a href="../../index.html">← All Tutorials</a>
-    <a href="01-fire.html">Start Reading →</a>
-  </div>
-
 </main>
 
-<script src="../../shared/script.js"></script>
+<footer class="site-footer">
+  <p>Curious Minds · Self-directed learning for curious people · <a href="index-el.html">Ελληνικά</a></p>
+</footer>
+
+<script src="shared/script.js"></script>
 </body>
 </html>

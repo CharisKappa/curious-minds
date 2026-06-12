@@ -3,195 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ενέργεια Αποκωδικοποιημένη — Από τη Φωτιά στη Σύντηξη | Curious Minds</title>
-<link rel="stylesheet" href="../../shared/styles.css">
+<title>Curious Minds — Μια Βιβλιοθήκη Αυτοκατευθυνόμενης Μάθησης</title>
+<link rel="stylesheet" href="shared/styles.css">
 <style>
-  /* Styles identical to index.html — abbreviated for shell */
-  .hub-hero { background:linear-gradient(160deg,#0d0800 0%,#2a1200 35%,#1a0a30 70%,#0a1a00 100%); color:#fff8ec; padding:100px 40px 80px; text-align:center; position:relative; overflow:hidden; }
-  .hub-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 30%,rgba(255,160,20,0.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(80,60,255,0.12) 0%,transparent 50%); pointer-events:none; }
-  .hub-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:#ffa020; margin-bottom:20px; display:block; }
-  .hub-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2.5rem,7vw,5rem); font-weight:900; line-height:1.05; margin-bottom:24px; color:#fff8ec; }
-  .hub-hero h1 span { display:block; font-size:0.55em; font-weight:400; color:#ffd080; letter-spacing:0.05em; margin-top:8px; }
-  .hub-hero p { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.3rem); color:#ffd4a0; max-width:620px; margin:0 auto 40px; line-height:1.7; }
-  .hub-meta { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin-bottom:48px; }
-  .hub-meta span { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#ffa020; letter-spacing:0.08em; padding:6px 16px; border:1px solid rgba(255,160,32,0.4); border-radius:20px; }
-  .lang-toggle { display:inline-flex; gap:0; border:1.5px solid rgba(255,255,255,0.3); border-radius:8px; overflow:hidden; }
-  .lang-toggle a { font-family:'JetBrains Mono',monospace; font-size:0.78rem; letter-spacing:0.1em; padding:8px 18px; text-decoration:none; color:rgba(255,255,255,0.6); transition:all 0.2s; }
-  .lang-toggle a.active,.lang-toggle a:hover { background:rgba(255,255,255,0.15); color:#fff; }
-  .hub-body { max-width:900px; margin:0 auto; padding:80px 24px 100px; }
-  .hub-intro { font-family:'Lora',serif; font-size:1.1rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:60px; max-width:680px; }
-  .hub-intro h2 { font-family:'Fraunces',serif; font-size:1.8rem; font-weight:700; color:var(--ink,#2c1a0e); margin-bottom:20px; }
-  .chapters-label { font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-light,#6b5e4e); margin-bottom:24px; display:block; }
-  .chapters-grid { display:grid; grid-template-columns:1fr; gap:2px; }
-  .chapter-card { display:flex; align-items:center; gap:24px; padding:24px 28px; background:var(--paper-deep,#f5f0e8); text-decoration:none; color:inherit; transition:all 0.2s; border-left:3px solid transparent; }
-  .chapter-card:hover { background:#fffaf4; border-left-color:var(--rust,#b5451b); transform:translateX(4px); }
-  .chapter-num { font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.1em; min-width:32px; flex-shrink:0; }
-  .chapter-icon { font-size:1.5rem; flex-shrink:0; width:40px; text-align:center; }
-  .chapter-card-body { flex:1; }
-  .chapter-title { font-family:'Fraunces',serif; font-size:1.15rem; font-weight:700; color:var(--ink,#2c1a0e); margin-bottom:4px; }
-  .chapter-desc { font-family:'Lora',serif; font-size:0.88rem; color:var(--ink-light,#6b5e4e); line-height:1.5; }
-  .chapter-time { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; flex-shrink:0; }
-  .hub-footer-nav { margin-top:80px; padding-top:40px; border-top:2px solid var(--paper-deep,#f5f0e8); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-  .hub-footer-nav a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
-  .hub-footer-nav a:hover { background:var(--rust,#b5451b); color:#fff; }
-  .theme-bar { background:var(--paper-deep,#f5f0e8); padding:48px 24px; }
-  .theme-bar-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; }
-  .theme-item { display:flex; gap:14px; align-items:flex-start; }
-  .theme-icon { font-size:1.5rem; flex-shrink:0; margin-top:2px; }
-  .theme-text strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--rust,#b5451b); margin-bottom:4px; }
-  .theme-text p { font-family:'Lora',serif; font-size:0.88rem; color:var(--ink,#2c1a0e); line-height:1.5; margin:0; }
-  @media(max-width:600px){ .hub-hero{padding:70px 20px 50px;} .hub-body{padding:50px 20px 80px;} }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Lora', serif; background: var(--paper, #faf7f2); color: var(--ink, #2c1a0e); }
+  .site-header { background:var(--ink,#2c1a0e); color:#faf7f2; padding:20px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; position:sticky; top:0; z-index:200; }
+  .site-logo { font-family:'Fraunces',serif; font-size:1.35rem; font-weight:800; letter-spacing:-0.01em; color:#faf7f2; text-decoration:none; }
+  .site-logo span { color:var(--rust,#b5451b); }
+  .lang-toggle a { font-family:'JetBrains Mono',monospace; font-size:0.78rem; letter-spacing:0.1em; color:#faf7f2; text-decoration:none; padding:6px 14px; border:1px solid rgba(255,255,255,0.3); border-radius:4px; transition:all 0.2s; }
+  .lang-toggle a:hover { background:var(--rust,#b5451b); border-color:var(--rust,#b5451b); }
+  .site-hero { background:linear-gradient(135deg,#1a0e05 0%,#2c1a0e 60%,#3d2612 100%); color:#faf7f2; padding:100px 40px 80px; text-align:center; position:relative; overflow:hidden; }
+  .site-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 60%,rgba(181,69,27,0.2) 0%,transparent 70%); pointer-events:none; }
+  .hero-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rust,#b5451b); margin-bottom:20px; display:block; }
+  .hero-title { font-family:'Fraunces',serif; font-size:clamp(2.5rem,6vw,4.5rem); font-weight:900; line-height:1.1; margin-bottom:24px; color:#faf7f2; }
+  .hero-subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.25rem); color:#d4c4b0; max-width:640px; margin:0 auto 40px; line-height:1.7; }
+  .hero-meta { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#a08060; letter-spacing:0.08em; }
+  .catalogue-section { max-width:1100px; margin:0 auto; padding:80px 40px 100px; }
+  .section-label { font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rust,#b5451b); margin-bottom:40px; display:flex; align-items:center; gap:16px; }
+  .section-label::after { content:''; flex:1; height:1px; background:var(--paper-deep,#f0ebe0); }
+  .catalogue-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:28px; }
+  .tutorial-card { background:#fff; border:1.5px solid var(--paper-deep,#f0ebe0); border-radius:12px; padding:32px 28px 28px; display:flex; flex-direction:column; gap:12px; transition:box-shadow 0.2s,transform 0.2s; position:relative; overflow:hidden; }
+  .tutorial-card:hover { box-shadow:0 8px 32px rgba(44,26,14,0.10); transform:translateY(-2px); }
+  .card-number { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:#a08060; }
+  .card-category { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--rust,#b5451b); background:#fff5f0; display:inline-block; padding:3px 10px; border-radius:3px; border:1px solid #ffd4c4; margin-bottom:4px; }
+  .card-title { font-family:'Fraunces',serif; font-size:1.4rem; font-weight:700; color:var(--ink,#2c1a0e); line-height:1.25; }
+  .card-subtitle { font-family:'Lora',serif; font-size:0.92rem; color:#6b5e4e; font-style:italic; }
+  .card-description { font-family:'Lora',serif; font-size:0.92rem; line-height:1.65; color:#5a4a3a; flex:1; }
+  .card-meta { display:flex; gap:14px; flex-wrap:wrap; margin-top:4px; }
+  .card-meta span { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.06em; color:#8a7a6a; }
+  .card-status { font-family:'JetBrains Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:3px 8px; border-radius:3px; display:inline-block; margin-top:2px; }
+  .status-live { background:#e8f8ee; color:#1a7a3a; border:1px solid #c0e8cc; }
+  .status-soon { background:#f5f5f5; color:#888; border:1px solid #ddd; }
+  .card-link { display:inline-block; margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:0.78rem; letter-spacing:0.06em; color:var(--rust,#b5451b); text-decoration:none; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; align-self:flex-start; }
+  .card-link:hover { background:var(--rust,#b5451b); color:#fff; }
+  .site-footer { background:var(--ink,#2c1a0e); color:#8a7a6a; padding:40px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.06em; }
+  .site-footer a { color:var(--rust,#b5451b); text-decoration:none; }
+  @media(max-width:600px){ .site-header{padding:16px 20px;} .site-hero{padding:70px 20px 60px;} .catalogue-section{padding:60px 20px 80px;} }
 </style>
 </head>
 <body>
 
-<nav style="background:var(--paper-deep,#f5f0e8);border-bottom:2px solid var(--rust,#b5451b);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;">
-  <a href="../../index-el.html" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--rust,#b5451b);text-decoration:none;letter-spacing:0.05em;">← Αρχική</a>
+<header class="site-header">
+  <a href="index-el.html" class="site-logo">Curious<span>Minds</span></a>
   <div class="lang-toggle">
     <a href="index.html">EN</a>
-    <a href="index-el.html" class="active">ΕΛ</a>
-  </div>
-</nav>
-
-<header class="hub-hero">
-  <span class="hub-eyebrow">Tutorial 03 · Επιστήμη &amp; Ανακάλυψη</span>
-  <h1>Ενέργεια Αποκωδικοποιημένη
-    <span>Από τη Φωτιά στη Σύντηξη: Η Πλήρης Ιστορία</span>
-  </h1>
-  <p>Από την πρώτη σκόπιμη φωτιά μέχρι τα ηλιακά πάνελ — ένα ταξίδι 400.000 χρόνων μέσα από τη δύναμη που έχτισε κάθε πολιτισμό, τροφοδότησε κάθε πόλεμο, και ορίζει τώρα τη μεγαλύτερη πρόκληση που έχει αντιμετωπίσει ποτέ το είδος μας.</p>
-  <div class="hub-meta">
-    <span>⏱ ~60 λεπτά</span>
-    <span>8 κεφάλαια</span>
-    <span>ΕΛ + EN</span>
-    <span>✅ Διαθέσιμο</span>
   </div>
 </header>
 
-<div class="theme-bar">
-  <div class="theme-bar-inner">
-    <div class="theme-item">
-      <div class="theme-icon">🔥</div>
-      <div class="theme-text">
-        <strong>360° Πλαίσιο</strong>
-        <p>Κάθε κεφάλαιο εξερευνά γεωπολιτικές, οικονομικές και ανθρώπινες διαστάσεις</p>
+<section class="site-hero">
+  <span class="hero-eyebrow">Βιβλιοθήκη Αυτοκατευθυνόμενης Μάθησης</span>
+  <h1 class="hero-title">Κατανόησε τον κόσμο.<br>Όχι απλώς τα γεγονότα.</h1>
+  <p class="hero-subtitle">Κάθε tutorial εδώ χτίστηκε γύρω από μια ιδέα: τίποτα δεν συμβαίνει στο κενό. Ιστορία, οικονομία, πολιτική, ανθρώπινη ανάγκη — όλα συνδέονται. Το ονομάζουμε 360° μάθηση.</p>
+  <p class="hero-meta">Εκτενή κείμενα · Δίγλωσσα ΕΛ / EN · Χωρίς διαφημίσεις</p>
+</section>
+
+<main class="catalogue-section">
+  <div class="section-label">Κατάλογος Tutorials</div>
+  <div class="catalogue-grid">
+
+    <!-- TUTORIAL 01 -->
+    <div class="tutorial-card">
+      <div class="card-number">Tutorial 01</div>
+      <div class="card-category">Χρήμα &amp; Οικονομία</div>
+      <h2 class="card-title">Χρήμα Αποκωδικοποιημένο</h2>
+      <p class="card-subtitle">Η Ιστορία του Χρήματος</p>
+      <p class="card-description">Από τα κοχύλια καούρι μέχρι το Bitcoin — η πλήρης ιστορία του πώς το χρήμα εφευρέθηκε, επανεφευρέθηκε και εξελίχθηκε σε αυτό το περίεργο σύστημα που έχουμε σήμερα.</p>
+      <div class="card-meta">
+        <span>~40 λεπτά</span>
+        <span>4 κεφάλαια</span>
+        <span>ΕΛ · EN</span>
       </div>
+      <span class="card-status status-live">✓ Διαθέσιμο</span>
+      <a href="tutorials/money-decoded/index-el.html" class="card-link">Ξεκίνα →</a>
     </div>
-    <div class="theme-item">
-      <div class="theme-icon">🌍</div>
-      <div class="theme-text">
-        <strong>Ελληνική ματιά</strong>
-        <p>Πραγματικές ιστορίες από την Ελλάδα και τη Μεσόγειο σε κάθε κεφάλαιο</p>
+
+    <!-- TUTORIAL 02 -->
+    <div class="tutorial-card">
+      <div class="card-number">Tutorial 02</div>
+      <div class="card-category">Τεχνολογία &amp; Διαδίκτυο</div>
+      <h2 class="card-title">Τεχνολογία: Ξετυλίγοντας την Ταινία</h2>
+      <p class="card-subtitle">Η Ιστορία της Τεχνολογίας</p>
+      <p class="card-description">Από τον τυπογραφικό τύπο μέχρι το smartphone — πώς κάθε τεχνολογική επανάσταση αναδιαμόρφωσε την εξουσία, την εργασία, τον πολιτισμό και την ανθρώπινη ύπαρξη.</p>
+      <div class="card-meta">
+        <span>~60 λεπτά</span>
+        <span>8 κεφάλαια</span>
+        <span>ΕΛ · EN</span>
       </div>
+      <span class="card-status status-live">✓ Διαθέσιμο</span>
+      <a href="tutorials/tech-evolution/index-el.html" class="card-link">Ξεκίνα →</a>
     </div>
-    <div class="theme-item">
-      <div class="theme-icon">⚡</div>
-      <div class="theme-text">
-        <strong>Από το παρελθόν στο παρόν</strong>
-        <p>400.000 χρόνια ιστορίας ενέργειας, μέχρι σήμερα</p>
+
+    <!-- TUTORIAL 03 -->
+    <div class="tutorial-card">
+      <div class="card-number">Tutorial 03</div>
+      <div class="card-category">Επιστήμη &amp; Ανακαλύψεις</div>
+      <h2 class="card-title">Ενέργεια Αποκωδικοποιημένη</h2>
+      <p class="card-subtitle">Από τη Φωτιά στη Σύντηξη</p>
+      <p class="card-description">Από την πρώτη φωτιά μέχρι τους πυρηνικούς αντιδραστήρες και τα ηλιακά πάνελ — η πλήρης ιστορία του πώς η ανθρωπότητα έμαθε να αξιοποιεί την ενέργεια, και γιατί κάθε ενεργειακή επιλογή είναι ταυτόχρονα πολιτική, οικονομική και πολιτισμική.</p>
+      <div class="card-meta">
+        <span>~60 λεπτά</span>
+        <span>8 κεφάλαια</span>
+        <span>ΕΛ · EN</span>
       </div>
+      <span class="card-status status-live">✓ Διαθέσιμο</span>
+      <a href="tutorials/energy-decoded/index-el.html" class="card-link">Ξεκίνα →</a>
     </div>
-    <div class="theme-item">
-      <div class="theme-icon">🧠</div>
-      <div class="theme-text">
-        <strong>Γιατί μας αφορά τώρα</strong>
-        <p>Η ενεργειακή μετάβαση είναι η κεντρική ιστορία του 21ου αιώνα</p>
+
+    <!-- MORE COMING -->
+    <div class="tutorial-card" style="opacity:0.6;">
+      <div class="card-number">Tutorial 04</div>
+      <div class="card-category">Εξουσία &amp; Γεωπολιτική</div>
+      <h2 class="card-title">Έρχεται Σύντομα</h2>
+      <p class="card-subtitle">Σε ανάπτυξη</p>
+      <p class="card-description">Νέα tutorials είναι σε εξέλιξη. Το καθένα ακολουθεί την ίδια 360° προσέγγιση — ιστορία, οικονομία, γεωπολιτική, επιστήμη και ανθρώπινη ανάγκη, όλα πλεγμένα μαζί.</p>
+      <div class="card-meta">
+        <span>Σύντομα</span>
       </div>
+      <span class="card-status status-soon">Σύντομα</span>
     </div>
+
   </div>
-</div>
-
-<main class="hub-body">
-
-  <div class="hub-intro">
-    <h2>Τι καλύπτει αυτό το tutorial</h2>
-    <p>Η ενέργεια δεν είναι μια πλευρική ιστορία στην ανθρώπινη ιστορία — <em>είναι</em> η ίδια η ανθρώπινη ιστορία. Κάθε αυτοκρατορία, κάθε πόλεμος, κάθε οικονομική επανάσταση μπορεί τελικά να αναχθεί σε ένα ερώτημα: από πού έρχεται η ενέργεια και ποιος την ελέγχει;</p>
-    <p>Αυτό το tutorial ακολουθεί αυτό το ερώτημα από την πρώτη σκόπιμη φωτιά στην προϊστορική Αφρική μέχρι τα ηλιακά πάνελ που τοποθετούνται τώρα σε στέγες σε όλο τον κόσμο.</p>
-  </div>
-
-  <span class="chapters-label">Και τα 8 κεφάλαια</span>
-
-  <div class="chapters-grid">
-    <a class="chapter-card" href="01-fire-el.html">
-      <span class="chapter-num">01</span>
-      <div class="chapter-icon">🔥</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Φωτιά — Η Πρώτη Ενεργειακή Επανάσταση</div>
-        <div class="chapter-desc">Πριν από 400.000 χρόνια, πρώτοι άνθρωποι ζέσταιναν τα χέρια τους γύρω από μια σκόπιμη φλόγα. Τίποτα δεν θα ήταν ποτέ ξανά το ίδιο.</div>
-      </div>
-      <span class="chapter-time">~8 λεπτά</span>
-    </a>
-    <a class="chapter-card" href="02-coal-el.html">
-      <span class="chapter-num">02</span>
-      <div class="chapter-icon">⬛</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Άνθρακας — Η Σκοτεινή Δύναμη</div>
-        <div class="chapter-desc">Θαμμένη ηλιακή ενέργεια συμπιεσμένη για 300 εκατομμύρια χρόνια. Όταν την εξορύξαμε, αλλάξαμε το τι σήμαινε να είσαι άνθρωπος.</div>
-      </div>
-      <span class="chapter-time">~8 λεπτά</span>
-    </a>
-    <a class="chapter-card" href="03-oil-el.html">
-      <span class="chapter-num">03</span>
-      <div class="chapter-icon">🛢️</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Πετρέλαιο — Ο Αιώνας του Μαύρου Χρυσού</div>
-        <div class="chapter-desc">Κινούσε στρατούς, έχτιζε αυτοκρατορίες, οδηγούσε πολέμους και τροφοδοτούσε έναν τρόπο ζωής που δισεκατομμύρια θεωρούν φυσιολογικό.</div>
-      </div>
-      <span class="chapter-time">~8 λεπτά</span>
-    </a>
-    <a class="chapter-card" href="04-electricity-el.html">
-      <span class="chapter-num">04</span>
-      <div class="chapter-icon">⚡</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Ηλεκτρισμός — Το Αόρατο Ποτάμι</div>
-        <div class="chapter-desc">Δεν είναι καύσιμο, είναι μορφή. Η μάχη για το ποιος θα το παράγει, διανέμει και ελέγχει δεν έχει τελειώσει ποτέ.</div>
-      </div>
-      <span class="chapter-time">~7 λεπτά</span>
-    </a>
-    <a class="chapter-card" href="05-nuclear-el.html">
-      <span class="chapter-num">05</span>
-      <div class="chapter-icon">☢️</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Πυρηνική Ενέργεια — Η Φωτιά Μέσα στο Άτομο</div>
-        <div class="chapter-desc">Η πιο συμπυκνωμένη πηγή ενέργειας που ανακαλύφθηκε ποτέ. Και η πιο τρομακτική. Η απόσταση ανάμεσα σε αυτά τα δύο είναι η ιστορία.</div>
-      </div>
-      <span class="chapter-time">~7 λεπτά</span>
-    </a>
-    <a class="chapter-card" href="06-renewables-el.html">
-      <span class="chapter-num">06</span>
-      <div class="chapter-icon">☀️</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Ανανεώσιμες — Ο Ήλιος Πάντα Ανατέλλει</div>
-        <div class="chapter-desc">Η φθηνότερη πηγή ενέργειας στην ανθρώπινη ιστορία πέφτει από τον ουρανό. Σχεδόν κανείς δεν το είχε δει να έρχεται.</div>
-      </div>
-      <span class="chapter-time">~8 λεπτά</span>
-    </a>
-    <a class="chapter-card" href="07-climate-el.html">
-      <span class="chapter-num">07</span>
-      <div class="chapter-icon">🌊</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Κλίμα — Ο Λογαριασμός Φτάνει</div>
-        <div class="chapter-desc">Κάθε ενεργειακή επιλογή από τη Βιομηχανική Επανάσταση έχει συσσωρευτεί στην ατμόσφαιρα. Ζούμε μέσα στις συνέπειες.</div>
-      </div>
-      <span class="chapter-time">~7 λεπτά</span>
-    </a>
-    <a class="chapter-card" href="08-future-el.html">
-      <span class="chapter-num">08</span>
-      <div class="chapter-icon">🔭</div>
-      <div class="chapter-card-body">
-        <div class="chapter-title">Το Μέλλον — Τι Έρχεται Μετά τη Φωτιά</div>
-        <div class="chapter-desc">Η τρίτη μεγάλη ενεργειακή μετάβαση συμβαίνει τώρα, πιο γρήγορα από ό,τι συνειδητοποιούν οι περισσότεροι άνθρωποι.</div>
-      </div>
-      <span class="chapter-time">~8 λεπτά</span>
-    </a>
-  </div>
-
-  <div class="hub-footer-nav">
-    <a href="../../index-el.html">← Όλα τα Tutorials</a>
-    <a href="01-fire-el.html">Ξεκίνα να Διαβάζεις →</a>
-  </div>
-
 </main>
 
-<script src="../../shared/script.js"></script>
+<footer class="site-footer">
+  <p>Curious Minds · Αυτοκατευθυνόμενη μάθηση για περίεργους ανθρώπους · <a href="index.html">English</a></p>
+</footer>
+
+<script src="shared/script.js"></script>
 </body>
 </html>
