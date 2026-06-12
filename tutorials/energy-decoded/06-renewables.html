@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 06: Renewables — The Sun Always Rises | Energy Decoded | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero {
+    background: linear-gradient(135deg, #1a1200 0%, #3d2d00 50%, #7a5a00 100%);
+    color: #fffae8;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 30%, rgba(255,220,60,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .chapter-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#ffd43b; margin-bottom:16px; display:block; }
+  .chapter-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; margin-bottom:20px; color:#fffae8; }
+  .chapter-hero .subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.25rem); color:#ffe680; max-width:600px; margin:0 auto 32px; line-height:1.6; }
+  .chapter-nav-bar { background:var(--paper-deep,#f5f0e8); border-bottom:2px solid var(--rust,#b5451b); padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:100; }
+  .chapter-nav-bar a { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; }
+  .chapter-nav-bar a:hover { text-decoration:underline; }
+  .chapter-progress { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .chapter-body { max-width:740px; margin:0 auto; padding:60px 24px 100px; }
+  .chapter-body h2 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; color:var(--ink,#2c1a0e); margin:56px 0 20px; }
+  .chapter-body h3 { font-family:'Fraunces',serif; font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:600; color:var(--ink,#2c1a0e); margin-bottom:14px; }
+  .chapter-body p { font-family:'Lora',serif; font-size:1.05rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:22px; }
+  .insight { background:#fffbe6; border-left:4px solid #f0b429; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#7a5a00; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#1a1200; color:#fffae8; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#ffd43b; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#ffd43b; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#fffae8; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #f0b429; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#f0b429; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#7a5a00; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #f0b429; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#7a5a00; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index.html">← Hub: Energy Decoded</a>
+  <span class="chapter-progress">Chapter 06 of 08 · Renewables</span>
+  <a href="07-climate.html">Next: Climate →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Energy Decoded · Chapter 06</span>
+  <h1>Renewables<br>The Sun Always Rises</h1>
+  <p class="subtitle">In 2010, solar power was a niche technology for enthusiasts and off-grid idealists. By 2024, it was the cheapest source of electricity in history. What happened in between is one of the most remarkable economic stories ever told.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>In 2010, the International Energy Agency — the world's leading energy forecasting body — projected that solar photovoltaic power would provide about 3% of global electricity by 2040. By 2023, solar was already generating more than 5% of global electricity. The IEA's 30-year forecast had been surpassed in 13 years.</p>
+
+  <p>This is not a story about forecasters being wrong. It is a story about something genuinely unprecedented happening in the history of energy technology: a learning curve so steep, a cost reduction so rapid, and a deployment so explosive that virtually every model, projection, and policy framework built on historical energy assumptions became obsolete almost as soon as it was published.</p>
+
+  <p>Renewable energy — primarily solar and wind, though also hydro, geothermal, and others — is now the fastest-growing energy sector in history. More new electrical generating capacity was added from renewables globally in 2023 than from all other sources combined. The question is no longer whether renewables will replace fossil fuels. The question is how fast, at what cost, and with what consequences for the political economies built on the old energy system.</p>
+
+  <h2>What Renewables Actually Are</h2>
+
+  <div class="definition">
+    <strong>Definition — Renewable Energy</strong>
+    <p>Renewable energy comes from sources that are naturally replenished on human timescales — sunlight, wind, flowing water, geothermal heat, and tidal forces. Unlike fossil fuels (ancient solar energy, accumulated over millions of years and finite in quantity) or nuclear fuel (uranium, mined from limited deposits), renewable sources are continuously available as long as the sun shines and the earth rotates. The key distinction is not "clean" versus "dirty" — it is sustainable versus depletable. Renewables are not zero-impact: they require land, materials, and manufacturing. But they do not consume their fuel source, which means they can, in principle, power human civilisation indefinitely.</p>
+  </div>
+
+  <p>Renewable energy is also not new. Windmills have ground grain since at least the 7th century in Persia. Waterwheels powered mills in ancient Rome. Sailing ships ran entirely on wind power for centuries. Hydroelectric dams have generated electricity since the 1880s. What is new is the application of industrial manufacturing economics to solar panels and wind turbines — and the results have been extraordinary.</p>
+
+  <h2>The Learning Curve: Why Solar Got 90% Cheaper</h2>
+
+  <p>Between 2010 and 2023, the cost of solar photovoltaic electricity fell by approximately 90%. The cost of onshore wind fell by around 70%. Lithium-ion battery storage costs fell by over 90%. These are not incremental improvements. They are civilisational-scale cost reductions, happening within a single generation.</p>
+
+  <p>The mechanism is something economists call Wright's Law, or the learning curve effect: for many manufactured goods, every time cumulative production doubles, costs fall by a consistent percentage — typically 15–25%. This is because manufacturing at scale drives process improvements, supply chain efficiency, design refinements, and worker expertise. The key insight is that the learning curve compounds: if costs fall 20% each time production doubles, a thousand-fold increase in production reduces costs to about 12% of the original. That is almost exactly what happened to solar panels between 1976 and 2023.</p>
+
+  <div class="insight">
+    <strong>Insight — The China Factor</strong>
+    <p>The solar cost revolution was significantly accelerated by Chinese industrial policy. Starting in the early 2010s, China made a strategic decision to dominate the solar manufacturing supply chain — from polysilicon production through wafers, cells, and panels. By 2023, China was producing more than 80% of global solar panels and had built manufacturing capacity several times larger than global annual installation rates. This drove prices to levels no other country could match. The geopolitical consequences are significant: the clean energy transition increasingly runs through Chinese supply chains, creating dependencies that importing nations are now trying — with limited success — to reduce. The energy security argument against renewables is not that they depend on unstable oil-producing countries. It is that they depend on Chinese manufacturing. Different dependency, different vulnerabilities, same structural challenge.</p>
+  </div>
+
+  <h2>The 360° Context: Why Renewables Won</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">💰 Economics</span>
+      <p>By the early 2020s, solar and wind were the cheapest ways to generate new electricity in most parts of the world. Not cheapest with subsidies — cheapest at all. This made the transition economically self-reinforcing: investors chose renewables because they were profitable, not because they were green.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🌍 Geopolitics</span>
+      <p>The 2022 Russian invasion of Ukraine sent European gas prices to ten times their previous level. For European governments that had built dependence on Russian fossil fuels, renewables suddenly looked not just cheap but strategically essential. Energy security and climate goals suddenly aligned.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🏭 Manufacturing</span>
+      <p>Unlike nuclear or hydro, solar and wind can be deployed in modular increments — a single rooftop, a small wind farm, or a utility-scale array. This scalability, combined with standardised manufacturing, enabled mass deployment in ways large centralised power plants never could.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🌱 Climate</span>
+      <p>The growing urgency of climate science created policy pressure — carbon taxes, renewable portfolio standards, net-zero commitments — that accelerated investment. Policy didn't cause the cost revolution; Chinese manufacturing did. But policy created the initial markets that started the learning curve rolling.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚡ Storage Revolution</span>
+      <p>The same learning curve that drove down solar costs also drove down battery costs. Grid-scale battery storage — unthinkably expensive in 2010 — became commercially viable by the early 2020s. The intermittency problem that had limited renewables began to have a technological answer.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🏘️ Democratisation</span>
+      <p>For the first time in energy history, ordinary individuals, communities, and small businesses could become energy producers, not just consumers. Rooftop solar, community wind projects, and electric vehicles feeding back into the grid began to dissolve the century-old distinction between energy producer and consumer.</p>
+    </div>
+  </div>
+
+  <h2>The Greek Solar Boom, Bust, and Recovery</h2>
+
+  <p>Greece's relationship with solar energy is an extraordinary case study in how energy policy can simultaneously do almost everything right and almost everything wrong — and what the consequences look like when good intentions collide with financial reality.</p>
+
+  <div class="story">
+    <strong>Real Story — The Greek Solar Gold Rush and the Feed-In Tariff Disaster</strong>
+    <p>Greece is one of the sunniest countries in Europe, with more peak solar hours per year than Germany — where solar had already become a major industry. When the Greek government introduced generous feed-in tariffs for solar power in 2009 and 2010 — guaranteed prices for solar electricity well above market rates — it triggered a gold rush. Farms, rooftops, and hillsides across the country were rapidly covered in solar panels. German and Italian investors poured money in. Installation rates were among the highest in Europe.</p>
+    <p>Then came the financial crisis. Greece needed to cut government spending as a condition of its international bailout. The feed-in tariffs — paid through a levy on electricity consumers — were slashed retroactively. Investors who had committed capital based on guaranteed returns found those guarantees broken mid-contract. International arbitration cases followed. The solar industry collapsed almost as rapidly as it had risen. By 2013, new installations had fallen 95% from their 2011 peak.</p>
+    <p>The recovery took years and required a complete restructuring of the market design. But by the early 2020s, Greece had rebuilt its solar sector on sounder economics. By 2023, renewables were regularly generating more than 50% of Greek electricity in sunny, windy months. In April 2024, Greece ran on 100% renewable electricity for brief periods — something almost unimaginable in 2013. The Greek solar story is a cautionary tale about market design and policy stability, but it is also, ultimately, a story about a country finding its natural energy advantage.</p>
+  </div>
+
+  <h2>The Wind Revolution: Offshore and Beyond</h2>
+
+  <p>Solar's extraordinary cost reduction has dominated the renewable story, but wind has run a parallel revolution. Onshore wind is now the cheapest source of electricity in most of Northern Europe. Offshore wind — turbines installed in shallow coastal waters — has followed its own rapid learning curve, reaching costs that would have seemed absurdly optimistic ten years ago.</p>
+
+  <p>The physics of offshore wind are compelling: wind is stronger and more consistent at sea than on land. Turbines can be larger — blades more than 100 metres long, towers rising 150 metres above the waterline — because there are no noise or visual constraints. The North Sea, the Irish Sea, the Baltic, and the US Atlantic coast are emerging as global centres of offshore wind development. Denmark, which pioneered offshore wind in the 1990s, now generates more than half its electricity from wind. On some days, it generates more electricity than it consumes, exporting the surplus to Germany and Sweden.</p>
+
+  <div class="pullquote">
+    <p>"For a century, the countries that controlled energy controlled the world. Solar and wind grow everywhere. The energy map is being redrawn from scratch."</p>
+    <cite>— Energy transition paraphrase, multiple analysts</cite>
+  </div>
+
+  <h2>The Challenges That Remain</h2>
+
+  <p>The renewable revolution is real, but it is incomplete. Three major challenges remain unsolved at scale.</p>
+
+  <h3>The intermittency problem</h3>
+  <p>The sun doesn't shine at night. The wind doesn't always blow when demand peaks. As renewables reach higher shares of total generation, grid operators face increasing challenges in matching supply and demand. Battery storage helps at short time scales (hours). Long-duration storage — seasonal storage to carry summer solar surplus into winter — remains expensive and immature. Long-distance interconnectors can help by linking regions where the sun or wind is always shining somewhere. But all of these solutions add cost and complexity.</p>
+
+  <h3>The materials problem</h3>
+  <p>Solar panels need silicon and silver. Wind turbines need steel, copper, and rare earth magnets. Batteries need lithium, cobalt, nickel, and manganese. The clean energy transition requires mining these materials at scales the industry has never approached. In some cases, the transition from fossil fuel dependency to mineral dependency creates analogous geopolitical vulnerabilities — but with different geography. The Democratic Republic of Congo produces 70% of the world's cobalt. China processes 60% of global lithium. Replacing oil dependence with mineral dependence is not obviously a geopolitical improvement.</p>
+
+  <h3>The hard-to-abate problem</h3>
+  <p>Electrification is easy for some sectors — cars, heating, many industrial processes. It is genuinely difficult for others: long-haul aviation, shipping, steelmaking, cement production, and some chemical processes. These "hard-to-abate" sectors represent roughly 25–30% of global emissions. Green hydrogen — hydrogen produced using renewable electricity to split water — is the leading candidate for decarbonising these sectors, but remains expensive and technically challenging to produce, transport, and store at scale.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">1839</div>
+      <p>Alexandre Edmond Becquerel discovers the photovoltaic effect — light generating electricity in a material. The scientific basis for solar panels is established, 135 years before they become commercially relevant.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1888</div>
+      <p>Charles Brush builds the first large windmill for electricity generation, in Cleveland, Ohio.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1954</div>
+      <p>Bell Labs produces the first practical silicon solar cell at 6% efficiency. Used in satellites — too expensive for terrestrial applications.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1991</div>
+      <div class="year">1991</div>
+      <p>World's first offshore wind farm opens at Vindeby, Denmark. The offshore wind industry begins.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2009–11</div>
+      <p>Greece's solar feed-in tariff boom. Rapid installation followed by retroactive tariff cuts and market collapse.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2013</div>
+      <p>Solar reaches "grid parity" in several southern European markets — cheaper than retail electricity without subsidies.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2022</div>
+      <p>US Inflation Reduction Act — $369 billion in clean energy subsidies. The largest climate investment in history. Triggers competitive responses from EU, UK, Japan, and others.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2023–24</div>
+      <p>Greece regularly runs 50%+ renewable electricity. Records broken monthly. The Mediterranean model for solar-rich transition begins to take shape.</p>
+    </div>
+  </div>
+
+  <h2>The Energy Transition Is Also a Power Transition</h2>
+
+  <p>As we have seen in every previous energy transition — wood to coal, coal to oil — changing the energy system also changes who has power. Coal created industrial workers. Oil created petrostates. The renewable transition is creating technology companies, battery manufacturers, and grid operators as the new power brokers.</p>
+
+  <p>It is also potentially redistributing geopolitical power. Countries with abundant sun and wind — which includes much of Africa, the Middle East, Southern Europe, and South America — could become net energy exporters for the first time. Countries whose power rested on fossil fuel reserves — Russia, Saudi Arabia, the Gulf states — face an uncertain future as demand for their core export declines. The energy map of the 21st century will look very different from the 20th century. Who wins and who loses from that redrawing is one of the central geopolitical questions of our era.</p>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="05-nuclear.html">← Chapter 05: Nuclear</a>
+    <a href="07-climate.html">Chapter 07: Climate →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

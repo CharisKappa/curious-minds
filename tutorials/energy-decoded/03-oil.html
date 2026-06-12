@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 03: Oil — The Century of Black Gold | Energy Decoded | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero {
+    background: linear-gradient(135deg, #1a0800 0%, #3d1500 50%, #6b2800 100%);
+    color: #fff4e6;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(220,80,0,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .chapter-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ff8c42;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .chapter-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #fff4e6;
+  }
+  .chapter-hero .subtitle {
+    font-family: 'Lora', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #ffc89a;
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+  .chapter-nav-bar {
+    background: var(--paper-deep, #f5f0e8);
+    border-bottom: 2px solid var(--rust, #b5451b);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .chapter-nav-bar a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--rust, #b5451b);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .chapter-nav-bar a:hover { text-decoration: underline; }
+  .chapter-progress {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-light, #6b5e4e);
+    letter-spacing: 0.08em;
+  }
+  .chapter-body {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+  .chapter-body h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ink, #2c1a0e);
+    margin: 56px 0 20px;
+  }
+  .chapter-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-weight: 600;
+    color: var(--ink, #2c1a0e);
+    margin-bottom: 14px;
+  }
+  .chapter-body p {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink, #2c1a0e);
+    margin-bottom: 22px;
+  }
+  .insight { background:#fff4ec; border-left:4px solid #ff8c42; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#b5451b; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#1a0800; color:#fff4e6; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#ff8c42; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#ff8c42; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#fff4e6; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #ff8c42; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#ff8c42; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#b5451b; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #ff8c42; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#b5451b; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index.html">← Hub: Energy Decoded</a>
+  <span class="chapter-progress">Chapter 03 of 08 · Oil</span>
+  <a href="04-electricity.html">Next: Electricity →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Energy Decoded · Chapter 03</span>
+  <h1>Oil<br>The Century of Black Gold</h1>
+  <p class="subtitle">It was supposed to be a cleaner replacement for whale oil. Instead, it became the most politically explosive substance in human history.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>In August 1859, a former railroad conductor named Edwin Drake supervised the drilling of a hole in the muddy ground of Titusville, Pennsylvania. The hole was 21 metres deep. When his drill bit broke through a rock formation and the crew came back the next morning, they found the casing full of black, viscous liquid seeping up from below.</p>
+
+  <p>Drake was looking for oil to sell as lamp fuel — a substitute for expensive, increasingly scarce whale oil. He found that, but he found vastly more. He had accidentally punched through the floor of the industrial age and struck something that would reshape every war, every economy, every city, and every daily life on earth for the next 165 years.</p>
+
+  <p>Oil is, in one sense, just another fossil fuel — ancient organic matter compressed over millions of years into liquid form. But as an energy source it had qualities that coal could never match: it was liquid, which meant it could flow through pipes and be pumped. It was energy-dense, carrying more power per kilogram than coal. It could be refined into different products — kerosene for lamps, gasoline for engines, heavy fuel oil for ships. And crucially, it was located under some of the most geopolitically sensitive real estate on the planet.</p>
+
+  <h2>What Oil Actually Is</h2>
+
+  <div class="definition">
+    <strong>Definition — Petroleum</strong>
+    <p>Petroleum (from Latin: petra + oleum, "rock oil") is a naturally occurring liquid hydrocarbon formed from the remains of ancient marine organisms — algae and zooplankton — buried under sediment over millions of years. Heat and pressure transform this organic matter into crude oil. Crude oil is not one thing but a complex mixture of thousands of hydrocarbon compounds, which is why a refinery can produce dozens of distinct products from the same raw material: petrol, diesel, jet fuel, kerosene, plastics, fertilisers, and pharmaceuticals. It is, in every practical sense, the blood of the modern economy.</p>
+  </div>
+
+  <p>Unlike coal, which required enormous fixed infrastructure — mines, railways, smelting works — oil could be discovered in a single well and transported in a tanker ship across the world within days. This portability made it uniquely suited to the key energy demand of the 20th century: mobile power. Ships. Aircraft. Tanks. Cars. Everything that needed to move under its own power came, eventually, to run on oil.</p>
+
+  <h2>The 360° Context: The World in 1859</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">🌍 Geopolitical</span>
+      <p>The British Empire was at its height. The US was about to tear itself apart in civil war. The Ottoman Empire was in slow decline. Russia was industrialising but agrarian. The geopolitical order of 1859 bore no relationship to the one oil would eventually produce.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🐋 Energy Crisis</span>
+      <p>Whale populations were collapsing from industrial hunting. Whale oil, the primary lamp fuel of the era, was becoming scarce and expensive. Cities needed illumination. The industrial world was functionally running out of lighting fuel.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">💰 Economic</span>
+      <p>The US economy was exploding westward. Capital was accumulating at unprecedented rates. Risk-taking investors were everywhere. The Pennsylvania oil rush of the 1860s was structured identically to the California gold rush of the 1840s — it drew the same speculative energy.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚙️ Technology</span>
+      <p>The internal combustion engine was being developed in parallel. Karl Benz's petrol car was still 27 years away. But the refinement of kerosene — cleaner than whale oil, cheaper, available — created the first mass market for petroleum before the automobile even existed.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🧠 Human Needs</span>
+      <p>Light after dark was not a luxury — it was a social revolution. Cities that could light their streets and homes after sunset could work longer, entertain, study, and organise. The demand for illuminating fuel was essentially the demand for more hours in the day.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚔️ Conflict</span>
+      <p>The American Civil War (1861–65), which began two years after Drake's well, would be partly fought over the industrial and energy supremacy of the Union North. The South had cotton. The North had coal, iron, and soon, Pennsylvania oil.</p>
+    </div>
+  </div>
+
+  <h2>Rockefeller and the Birth of Corporate Power</h2>
+
+  <p>The Pennsylvania oil rush was initially chaotic — thousands of wildcat drillers, boom towns, collapsed prices. Into this chaos stepped a 24-year-old Cleveland businessman named John D. Rockefeller, who understood something crucial: the real money was not in finding oil, but in controlling the infrastructure through which oil flowed.</p>
+
+  <p>By 1870, Rockefeller had founded Standard Oil. By 1880, Standard Oil controlled roughly 90% of US refining capacity. It achieved this not through superior drilling but through control of the railroads that shipped crude oil to refineries. Standard Oil negotiated secret rebates from railroad companies — Standard would guarantee them high volumes, and in return they would charge Standard's competitors more. It was, in essence, the first modern monopoly, and it created the template for corporate dominance of energy infrastructure that has persisted ever since.</p>
+
+  <div class="story">
+    <strong>Real Story — Ida Tarbell and the Investigative Reckoning</strong>
+    <p>Standard Oil's dominance was so complete, and its methods so ruthless, that it provoked one of the most consequential pieces of journalism in American history. Ida Tarbell — whose father's independent oil business had been destroyed by Standard Oil's practices — spent three years investigating the company for McClure's Magazine. Her 19-part series, published between 1902 and 1904, documented in meticulous detail how Standard Oil used railroad rebates, industrial espionage, and below-cost pricing to drive competitors out of business.</p>
+    <p>The articles caused a national sensation. They led directly to the Supreme Court's 1911 order to break Standard Oil into 34 separate companies. Those 34 companies included the ancestors of ExxonMobil, Chevron, BP, and several others — meaning that Standard Oil's breakup created the modern oil industry as we know it. Ida Tarbell, a woman working in a profession that barely acknowledged women existed, had changed the shape of global energy.</p>
+  </div>
+
+  <h2>Oil Becomes Geopolitical: The 20th Century Scramble</h2>
+
+  <p>As the 20th century opened, two developments transformed oil from a commercial commodity into a strategic national asset. First, navies began converting from coal to oil — oil-powered warships were faster, had greater range, and required smaller crews. Second, the automobile began its explosive spread. By 1920, there were 8 million cars in the United States alone.</p>
+
+  <p>The combination of military dependency and mass civilian demand turned oil reserves from economic assets into national security imperatives. The country that controlled oil could power its military. The country that didn't would lose wars.</p>
+
+  <div class="insight">
+    <strong>Insight — Churchill's Wager</strong>
+    <p>In 1911, Winston Churchill, then First Lord of the Admiralty, made one of the most consequential decisions in military history: he ordered the Royal Navy to convert its ships from coal to oil. This gave Britain a decisive tactical advantage — oil-powered ships were significantly faster than coal-powered German ships. But it also created a strategic vulnerability: Britain had vast coal reserves and no significant domestic oil. It had, in Churchill's phrase, made a wager on the Middle East. That wager shaped British foreign policy — and ultimately led to British involvement in Iran, Iraq, and the Arabian Peninsula — for the next century.</p>
+  </div>
+
+  <h2>Two World Wars, Fought on Oil</h2>
+
+  <p>If coal powered the Industrial Revolution, oil powered the wars that defined the 20th century. This is not metaphor — it is mechanism.</p>
+
+  <p>In World War I, the Allies had significantly better access to oil than Germany. British forces in the Middle East were partly fighting to secure Mesopotamian oil fields. The German failure at the Battle of the Marne in 1914 was partly a logistics failure — horses, not trucks, and insufficient fuel for sustained mechanised advance.</p>
+
+  <p>In World War II, the oil dimension was even more explicit. Hitler's Operation Barbarossa — the invasion of the Soviet Union — had a declared secondary objective beyond Moscow: reaching the Caucasus oilfields at Baku. German tanks in North Africa were perpetually running short of fuel. The Japanese attack on Pearl Harbor was partly triggered by the US oil embargo imposed after Japan's invasion of China — Japan had no domestic oil and imported 80% from the United States. When that supply was cut, Japan gambled everything on a military grab for Southeast Asian oil fields. It lost.</p>
+
+  <div class="story">
+    <strong>Real Story — The Battle of Kursk and Petrol Logistics</strong>
+    <p>The largest tank battle in history, at Kursk in July 1943, was partly an oil logistics story. Germany launched Operation Citadel hoping for a quick, decisive breakthrough. But the delay in launching the offensive — partly to wait for new Tiger and Panther tanks — gave Soviet forces time to build extraordinary defensive lines. When German armoured columns finally advanced, they burned fuel at rates that couldn't be sustained by supply lines under constant Soviet air and partisan attack. Within ten days, the offensive had stalled. The German army never launched a major offensive on the Eastern Front again. Oil — its supply, its consumption, its absence — had helped decide the war.</p>
+  </div>
+
+  <h2>OPEC and the Revenge of the Producing Nations</h2>
+
+  <p>From the 1860s through the 1950s, the global oil industry was controlled by a cartel of Western companies known as the Seven Sisters — Standard Oil's heirs, Royal Dutch Shell, and BP. These companies negotiated concessions with oil-producing nations (typically at rates that heavily favoured the companies), extracted the oil, refined it, and sold it. The producing nations — often newly decolonised, economically fragile, and politically weak — received a minority share of the revenues from their own natural resources.</p>
+
+  <p>The counter-movement began in the 1950s. Venezuela had long pushed for a 50/50 profit split with oil companies. In 1951, Iran's Prime Minister Mohammad Mosaddegh nationalised the Anglo-Iranian Oil Company (now BP). He was overthrown in a 1953 CIA and MI6-backed coup — the first major Cold War intervention explicitly designed to protect oil interests.</p>
+
+  <p>In 1960, OPEC was founded — initially by Venezuela, Saudi Arabia, Iran, Iraq, and Kuwait. It was a cartel of producing nations, designed to do to Western oil companies what Standard Oil had done to competitors: control supply to control price.</p>
+
+  <div class="pullquote">
+    <p>"The oil weapon was not discovered in 1973. It was forged over decades of exploitation, and 1973 was simply the moment it was first used."</p>
+    <cite>— Paraphrase of energy historian Daniel Yergin, The Prize (1991)</cite>
+  </div>
+
+  <h2>1973: The Shock That Changed Everything</h2>
+
+  <p>On 6 October 1973 — Yom Kippur, the holiest day in the Jewish calendar — Egypt and Syria launched a surprise attack on Israel. The US and other Western nations supported Israel militarily. In response, Arab members of OPEC imposed an oil embargo on the United States and other Israeli supporters, and simultaneously cut production.</p>
+
+  <p>Within three months, the price of oil had quadrupled. In the United States, motorists queued for hours at petrol stations. The speed limit was cut to 55 mph. Congress passed the Emergency Petroleum Allocation Act. In Europe, the Netherlands — a major oil transit hub that had explicitly supported Israel — faced a complete Arab oil embargo. Sunday driving was banned. The Dutch economy, one of Europe's most advanced, ground to a near halt.</p>
+
+  <p>The 1973 shock was the moment the world discovered something it had suppressed: modern industrial civilisation was completely, vulnerably dependent on a liquid that came from a small number of politically unstable countries controlled by governments that had their own interests, which did not always align with Western ones.</p>
+
+  <div class="story">
+    <strong>Real Story — Greece, the Junta, and the Oil Shock</strong>
+    <p>Greece in 1973 was under a military dictatorship — the Regime of the Colonels, which had seized power in 1967. The oil shock hit Greece with particular force: the country had no significant domestic oil production and depended on Middle Eastern imports for most of its energy. The junta's economic policy had relied on cheap energy for rapid industrialisation. When oil quadrupled in price, those plans collapsed.</p>
+    <p>The economic crisis accelerated the junta's loss of legitimacy. A disastrous intervention in Cyprus in 1974 — where the junta backed a coup that triggered a Turkish military response — finally brought the regime down. Greece returned to democracy in July 1974 under Konstantinos Karamanlis. The oil crisis had not directly caused the junta's fall, but it had hollowed out the economic rationale that sustained it. Energy vulnerability had become political vulnerability. In response, Greece began investing heavily in domestic lignite (brown coal) production — an energy decision whose consequences would echo for decades.</p>
+  </div>
+
+  <h2>The Resource Curse: When Oil Becomes a Prison</h2>
+
+  <p>You might think that finding oil under your country's soil is the best possible luck. History suggests it is often the opposite. Economists call it the "resource curse" — the paradox that countries with large natural resource endowments frequently perform worse economically, politically, and socially than comparable countries without those resources.</p>
+
+  <p>Nigeria. Venezuela. Libya. Saudi Arabia. Iran. All have vast oil wealth. All have experienced prolonged periods of inequality, authoritarianism, or conflict that correlate directly with their oil dependence. The mechanism is not mysterious: when a government can fund itself from oil revenues without taxing its citizens, it has no incentive to respond to citizens' demands. The accountability link between government and governed — enforced, in most countries, by the government's need for tax revenue — is broken. Oil revenues fund armies and palaces without needing consent.</p>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">🛢️ The Rentier State</span>
+      <p>A state that derives its revenue from "rents" — payments for natural resources — rather than from taxation of productive economic activity is called a rentier state. Citizens of rentier states often receive government services without paying taxes, which removes the most powerful mechanism citizens have for holding governments accountable.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">💱 Dutch Disease</span>
+      <p>When oil exports boost a nation's currency, other exports become uncompetitively expensive. The non-oil economy withers. When oil revenues eventually decline, the country has no alternative industrial base to fall back on. Named after the Netherlands' experience after discovering North Sea gas in the 1960s.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚔️ Conflict Premium</span>
+      <p>Oil-rich regions attract violent competition. The Niger Delta, South Sudan, Kurdish northern Iraq, Libya — everywhere that oil is found, it tends to intensify existing conflicts or create new ones. Control of oil revenues is worth fighting for in ways that control of agricultural land or factory output rarely is.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🌐 External Interference</span>
+      <p>Oil-producing nations face constant external pressure — covert interference, sanctions, proxy wars — from countries whose economies depend on that oil. Iran 1953, Iraq 2003, Libya 2011. The pattern is consistent: oil wealth attracts external intervention that shapes political outcomes regardless of what citizens want.</p>
+    </div>
+  </div>
+
+  <h2>Oil and Daily Life: The Invisible Revolution</h2>
+
+  <p>Here is what we rarely discuss: oil didn't just power cars and heat homes. It became the material substrate of modern life. Plastics are petroleum products. Fertilisers are made from natural gas (which travels with oil). Synthetic fabrics, pharmaceuticals, cosmetics, packaging — all derived from petrochemicals. The food on your supermarket shelf was grown with petroleum-derived fertiliser, harvested by petroleum-powered machinery, transported in petroleum-fuelled trucks, and packaged in petroleum-derived plastic.</p>
+
+  <p>When we talk about "getting off oil," we are not just talking about changing our cars. We are talking about redesigning the material basis of modern civilisation. The clothes on your back. The aspirin in your medicine cabinet. The tyres on every vehicle. The insulation in every building. These are all oil. That is not an argument against transition — it is an argument for understanding how enormous the task genuinely is.</p>
+
+  <div class="insight">
+    <strong>Insight — The Fertiliser Connection</strong>
+    <p>The global population roughly quadrupled in the 20th century, from 1.6 billion in 1900 to 6 billion by 2000. This was not primarily a medical achievement — it was an agricultural one, made possible by synthetic nitrogen fertilisers. The Haber-Bosch process (1913) turns atmospheric nitrogen into ammonia using natural gas as a feedstock. Today, roughly half the nitrogen in the proteins in the average human body comes from synthetic fertiliser. Remove oil and gas from the equation, and the current global food supply would collapse, feeding perhaps half the existing population. This is what "energy transition" means at its deepest level: not just changing fuel sources, but redesigning the entire system that feeds humanity.</p>
+  </div>
+
+  <h2>The Petrodollar System: Oil and the Dollar's Global Dominance</h2>
+
+  <p>After the 1973 oil shock, US Secretary of State Henry Kissinger negotiated a remarkable agreement with Saudi Arabia: the Saudis would price their oil exports exclusively in US dollars, and in return the United States would provide military protection and sell weapons to Saudi Arabia. Other OPEC nations followed.</p>
+
+  <p>This "petrodollar" arrangement gave the US dollar its unique global status. Any country that wanted to buy oil — which meant every country — needed to hold US dollars. This gave the United States an enormous structural advantage: it could run trade deficits and issue debt at low interest rates because the entire world needed its currency. The dollar's status as the world's reserve currency is, fundamentally, an oil story. It is also a story about how energy intersects with monetary policy, geopolitics, and the design of the global financial system.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">1859</div>
+      <p>Drake strikes oil in Pennsylvania. The petroleum age begins.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1882</div>
+      <p>Standard Oil Trust formed. The world's first great oil monopoly controls 90% of US refining.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1908</div>
+      <p>Anglo-Persian Oil (now BP) strikes oil in Iran. Britain's strategic dependency on Middle Eastern oil begins.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1911</div>
+      <p>Churchill converts the Royal Navy to oil. Military demand reshapes geopolitics.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1942–43</div>
+      <p>German Operation Blue aims at Caucasus oilfields. Failure proves decisive in World War II.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1960</div>
+      <p>OPEC founded. Producing nations begin organising against Western company control.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1973</div>
+      <p>Arab oil embargo. Price quadruples in three months. Every industrial economy is shocked into recognising energy vulnerability.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1974</div>
+      <p>Petrodollar agreement between the US and Saudi Arabia. The dollar's global dominance is underwritten by oil.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1991 / 2003</div>
+      <p>Gulf War and Iraq War. Oil security drives two major US-led military interventions.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2014–16</div>
+      <p>US shale revolution collapses oil prices. OPEC's dominance is challenged by a new American energy superpower.</p>
+    </div>
+  </div>
+
+  <h2>The Pattern, Once More</h2>
+
+  <p>Oil followed the same arc as wood and coal: discovery, exploitation, institutionalisation of control, overuse, environmental damage, geopolitical conflict, and the beginning of a search for a replacement. But oil's scale of impact — on warfare, on global finance, on daily material life, on the very politics of democracy and authoritarianism — dwarfed anything that came before.</p>
+
+  <p>What comes alongside oil, however, is something different in kind: not a new combustible fuel, but a new way of moving energy entirely. In the next chapter, we turn to electricity — the invisible river that first ran alongside the fossil fuel age and is now becoming its replacement.</p>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="02-coal.html">← Chapter 02: Coal</a>
+    <a href="04-electricity.html">Chapter 04: Electricity →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

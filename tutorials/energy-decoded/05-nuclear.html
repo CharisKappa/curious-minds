@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 05: Nuclear — The Fire Inside the Atom | Energy Decoded | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero {
+    background: linear-gradient(135deg, #001a00 0%, #003310 50%, #005520 100%);
+    color: #e8ffe8;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(80,255,120,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .chapter-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#66ff88; margin-bottom:16px; display:block; }
+  .chapter-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; margin-bottom:20px; color:#e8ffe8; }
+  .chapter-hero .subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.25rem); color:#a8ffb8; max-width:600px; margin:0 auto 32px; line-height:1.6; }
+  .chapter-nav-bar { background:var(--paper-deep,#f5f0e8); border-bottom:2px solid var(--rust,#b5451b); padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:100; }
+  .chapter-nav-bar a { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; }
+  .chapter-nav-bar a:hover { text-decoration:underline; }
+  .chapter-progress { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .chapter-body { max-width:740px; margin:0 auto; padding:60px 24px 100px; }
+  .chapter-body h2 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; color:var(--ink,#2c1a0e); margin:56px 0 20px; }
+  .chapter-body h3 { font-family:'Fraunces',serif; font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:600; color:var(--ink,#2c1a0e); margin-bottom:14px; }
+  .chapter-body p { font-family:'Lora',serif; font-size:1.05rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:22px; }
+  .insight { background:#eeffee; border-left:4px solid #339933; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#226622; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#001a00; color:#e8ffe8; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#66ff88; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#66ff88; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#e8ffe8; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #339933; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#339933; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#226622; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #339933; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#226622; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index.html">← Hub: Energy Decoded</a>
+  <span class="chapter-progress">Chapter 05 of 08 · Nuclear</span>
+  <a href="06-renewables.html">Next: Renewables →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Energy Decoded · Chapter 05</span>
+  <h1>Nuclear<br>The Fire Inside the Atom</h1>
+  <p class="subtitle">It promised electricity too cheap to meter. It delivered the most politically radioactive technology ever invented. The story of nuclear power is a story about fear, physics, and the politics of energy.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>On the morning of 16 July 1945, the world's first nuclear device — a plutonium implosion bomb code-named "The Gadget" — was detonated at the Trinity test site in the New Mexico desert. The blast was equivalent to roughly 20,000 tonnes of TNT. It created a crater 1.5 metres deep and 330 metres wide. It turned the desert sand into a greenish glass called trinitite. It was, in the most literal sense, a new kind of fire — not chemical combustion releasing electrons between atoms, but nuclear fission releasing energy from the atomic nucleus itself.</p>
+
+  <p>Robert Oppenheimer, watching the fireball rise, later recalled thinking of a line from the Bhagavad Gita: "Now I am become Death, the destroyer of worlds." The observation was apt. Three weeks later, two atomic bombs ended a war, killed around 200,000 people in two cities, and permanently restructured the geopolitical order. Nuclear energy arrived not as a gift but as a weapon — and that original context has haunted every civilian application ever since.</p>
+
+  <h2>What Nuclear Fission Actually Is</h2>
+
+  <div class="definition">
+    <strong>Definition — Nuclear Fission</strong>
+    <p>Nuclear fission is the process by which the nucleus of a heavy atom — uranium-235 or plutonium-239 — is struck by a neutron and splits into two smaller nuclei, releasing a large amount of energy (as heat and radiation) and two or three additional neutrons. Those neutrons can strike other uranium nuclei, causing further fissions — a chain reaction. In a bomb, this chain reaction is uncontrolled and completes in microseconds. In a reactor, it is controlled by materials that absorb excess neutrons, so the reaction proceeds at a steady rate producing continuous heat. That heat boils water. The steam drives a turbine. The turbine generates electricity. A nuclear power station is, at its core, a very sophisticated — and very expensive — kettle.</p>
+  </div>
+
+  <p>The energy density of nuclear fuel is staggering. One kilogram of uranium-235 can produce as much energy as roughly 1,500 tonnes of coal. A commercial nuclear power plant operates for 18–24 months between refuelling stops. The entire annual fuel consumption of a large reactor — enough to power a million homes — would fit in the back of a single truck. This extraordinary density is what makes nuclear power attractive. The challenge is everything else: the capital cost, the safety systems, the waste, and above all, the politics.</p>
+
+  <h2>The 360° Context: Atoms and the Cold War</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">⚔️ Military-Energy Entanglement</span>
+      <p>Nuclear power was not developed for energy. It was developed for bombs. The civilian reactor programme was an afterthought — partly a public relations effort to demonstrate that the Manhattan Project's destructive force could be turned to peaceful use. The phrase "Atoms for Peace" (Eisenhower, 1953) was explicitly designed to make the public feel better about the nuclear age.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🌍 Cold War Geopolitics</span>
+      <p>The US and USSR competed fiercely in civilian nuclear development as a proxy contest for technological superiority. The first commercial reactor to generate electricity (EBR-I, Idaho, 1951) and the first civilian nuclear power plant (Obninsk, USSR, 1954) were both statements of national prestige as much as energy policy.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">💡 Energy Optimism</span>
+      <p>The 1950s were an era of unbounded techno-optimism. Lewis Strauss, chairman of the US Atomic Energy Commission, infamously predicted in 1954 that nuclear would produce electricity "too cheap to meter." This overconfidence shaped investment decisions, safety culture, and public expectations for a generation.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🏭 Industrial Scale</span>
+      <p>By the 1970s, nuclear power stations were massive pieces of infrastructure — multi-billion-dollar capital projects requiring decades to build and decommission. This scale created powerful commercial and political constituencies that have both promoted and hindered nuclear energy ever since.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">😨 Fear and Perception</span>
+      <p>The association between nuclear power and nuclear weapons, reinforced by Cold War anxiety and later by Three Mile Island (1979), Chernobyl (1986), and Fukushima (2011), created a public fear response that bears no statistical relationship to nuclear power's actual safety record. More people die from air pollution from a single large coal plant in a year than have died from all civilian nuclear accidents in history.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">♻️ Waste Problem</span>
+      <p>Nuclear fission produces highly radioactive waste products that remain dangerous for thousands of years. No country in the world has yet opened a permanent deep geological repository for high-level nuclear waste. Sweden and Finland are the furthest advanced. The waste problem is technically manageable but politically nearly impossible — no community wants a nuclear dump, however safe, beneath their territory.</p>
+    </div>
+  </div>
+
+  <h2>Chernobyl: When the Atom Became a Political Force</h2>
+
+  <p>On 26 April 1986, reactor number 4 at the Chernobyl Nuclear Power Plant in Soviet Ukraine exploded during a safety test. The explosion — caused by a flawed reactor design combined with operator errors during an incompetently supervised test — blew the reactor roof off and exposed the burning graphite core directly to the atmosphere.</p>
+
+  <p>The immediate death toll was 31 people. The long-term health consequences — elevated cancer rates in highly exposed populations — are contested but real. But the political consequences were far more dramatic than the health consequences. The Chernobyl disaster confirmed every fear the anti-nuclear movement had ever articulated. It demonstrated that Soviet claims of safety were lies. And it accelerated the dissolution of the Soviet Union itself — a point Mikhail Gorbachev has repeatedly made. Chernobyl cost credibility the Soviet system could not afford to lose.</p>
+
+  <p>In Western Europe, the political fallout was immediate. Germany began phasing out its nuclear programme. Sweden held a referendum that voted for eventual nuclear phase-out. Austria had already refused to start its completed Zwentendorf nuclear power plant in a 1978 referendum — the only finished nuclear plant never to operate. Nuclear had become politically toxic in much of Europe, regardless of the physics.</p>
+
+  <div class="story">
+    <strong>Real Story — Greece's Abandoned Nuclear Programme</strong>
+    <p>Very few people know that Greece once seriously considered nuclear power. In the 1970s — motivated partly by the 1973 oil shock, partly by the desire to reduce energy dependency — Greece approved plans for a nuclear power plant at Lavrio, on the southeastern coast of Attica. The Greek Atomic Energy Commission was established. Preliminary site surveys were conducted.</p>
+    <p>The project was never built. Political instability in the late 1970s and the Chernobyl disaster in 1986 effectively ended the conversation. Greece remained dependent on imported oil and its own low-grade lignite coal for electricity generation. The decision had long-term consequences: Greece entered the 21st century with an energy mix heavily weighted toward carbon-intensive fuels, requiring rapid and expensive transition as EU climate targets tightened. The abandoned nuclear programme is a small illustration of a larger pattern: decisions not made — non-events — can shape energy futures as powerfully as decisions that are made.</p>
+  </div>
+
+  <h2>The Numbers Nobody Wants to Hear</h2>
+
+  <p>Here is a fact that consistently surprises people: nuclear power has the lowest death rate per unit of energy of any major power source, including wind and solar. Studies by Our World in Data and the journal Nature Energy, drawing on comprehensive mortality data, consistently find that nuclear power kills fewer people per terawatt-hour generated than coal, oil, gas, or even biomass — and roughly comparable to wind and solar when all causes (including construction accidents) are included.</p>
+
+  <p>Coal-fired power generation causes millions of deaths per year through air pollution — particulate matter, nitrogen oxides, and sulphur dioxide that cause respiratory and cardiovascular disease. This mortality is invisible because it happens one person at a time, without dramatic events. Chernobyl killed dozens in acute radiation deaths and perhaps thousands through elevated cancer rates. A large coal plant kills similar numbers every few years, quietly, without news coverage, through the air it pollutes.</p>
+
+  <div class="insight">
+    <strong>Insight — Why Perception and Reality Diverge So Sharply</strong>
+    <p>Psychologists call the nuclear fear response "dread risk" — the tendency to fear catastrophic, involuntary, invisible, poorly understood risks disproportionately, even when they are statistically less dangerous than mundane risks we accept without concern. We drive cars (which kill 1.35 million people per year globally) without particular anxiety. We eat food contaminated by agricultural pesticides without protest. But a nuclear accident that kills dozens triggers a civilisational-level response. The asymmetry is not irrational — dramatic, concentrated harm is qualitatively different from diffuse, invisible harm. But it does mean that energy policy decisions driven primarily by public fear of nuclear power may systematically underweight the very real, very large harms of the alternatives.</p>
+  </div>
+
+  <h2>The Nuclear Renaissance That Wasn't — and Then Was</h2>
+
+  <p>In the early 2000s, climate change changed the nuclear conversation. If fossil fuels needed to be replaced, and renewable energy was still expensive and intermittent, nuclear offered a low-carbon baseload power source that could run 24/7 regardless of weather. Energy analysts began talking about a "nuclear renaissance."</p>
+
+  <p>Then Fukushima happened in March 2011. An earthquake and tsunami knocked out the cooling systems at three reactors at the Fukushima Daiichi plant in Japan. The reactors melted down. Hydrogen explosions released radioactive material. About 154,000 people were evacuated from a 20km exclusion zone. There were no immediate radiation deaths — the evacuation and stress caused more mortality than the radiation — but the political response was swift and sweeping. Germany announced it would close all its nuclear plants by 2022. Japan shut down its entire 50-reactor fleet overnight.</p>
+
+  <p>By the early 2020s, however, the conversation had shifted again. The climate crisis was becoming undeniable. The Russian invasion of Ukraine in 2022 made European energy security suddenly urgent. Renewable energy was cost-competitive but still intermittent. Several countries — including France, the UK, the Netherlands, Poland, and Finland — announced new nuclear build programmes or extensions of existing plants. The EU controversially classified nuclear power as a "green" investment in its sustainable finance taxonomy. Greece — still without nuclear plants — found itself buying electricity from France's nuclear-heavy grid through interconnectors, making the theoretical choice a practical reality anyway.</p>
+
+  <div class="pullquote">
+    <p>"The problem with nuclear power is not that it's dangerous. The problem is that it's complicated — technically, politically, financially, and emotionally. And we are not good at complicated things."</p>
+    <cite>— Energy analyst paraphrase, multiple sources</cite>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">1938</div>
+      <p>Otto Hahn and Lise Meitner demonstrate nuclear fission. The theoretical basis for both bombs and reactors is established.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1945</div>
+      <p>Trinity test. Hiroshima and Nagasaki. Nuclear energy arrives as a weapon.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1953</div>
+      <p>Eisenhower's "Atoms for Peace" speech. The civilian nuclear programme is launched as a geopolitical signal.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1956</div>
+      <p>Calder Hall, UK — first commercial nuclear power station opens. The nuclear age begins generating electricity.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1970s</div>
+      <p>Greece considers Lavrio nuclear plant. 1973 oil shock drives energy diversification thinking globally.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1979</div>
+      <p>Three Mile Island partial meltdown, USA. First major civilian nuclear accident. Public confidence collapses.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1986</div>
+      <p>Chernobyl. The defining nuclear accident. Greece's nuclear plans abandoned definitively.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2011</div>
+      <p>Fukushima. Germany closes nuclear plants. Japan shuts entire fleet. Second major collapse of nuclear expansion.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2022–2024</div>
+      <p>Energy crisis, climate pressure, and AI data centre demand revive nuclear interest globally. Small modular reactors (SMRs) enter serious commercial development.</p>
+    </div>
+  </div>
+
+  <h2>The Fusion Horizon</h2>
+
+  <p>There is a second kind of nuclear energy: fusion — the reaction that powers the sun, combining light atoms (hydrogen isotopes) rather than splitting heavy ones. Fusion produces no long-lived radioactive waste, uses fuels available in essentially unlimited quantities from seawater, and cannot melt down. It has been "thirty years away" for about seventy years. But in December 2022, the National Ignition Facility in California achieved something historic: for the first time, a fusion reaction produced more energy than the laser energy used to ignite it. "Ignition" — the threshold for a self-sustaining fusion reaction — had been reached. The engineering challenge of turning this into a practical power plant remains enormous. But it is no longer clearly impossible.</p>
+
+  <p>In the next chapter, we turn to the energy sources that are already transforming the grid today — wind and solar — and explore why the greatest energy revolution in human history is currently happening faster than almost anyone predicted.</p>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="04-electricity.html">← Chapter 04: Electricity</a>
+    <a href="06-renewables.html">Chapter 06: Renewables →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

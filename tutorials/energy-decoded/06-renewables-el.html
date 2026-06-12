@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Κεφάλαιο 06: Ανανεώσιμες — Ο Ήλιος Πάντα Ανατέλλει | Ενέργεια Αποκωδικοποιημένη | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero { background:linear-gradient(135deg,#1a1200 0%,#3d2d00 50%,#7a5a00 100%); color:#fffae8; padding:80px 40px 60px; text-align:center; position:relative; overflow:hidden; }
+  .chapter-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 60% 30%,rgba(255,220,60,0.18) 0%,transparent 70%); pointer-events:none; }
+  .chapter-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#ffd43b; margin-bottom:16px; display:block; }
+  .chapter-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; margin-bottom:20px; color:#fffae8; }
+  .chapter-hero .subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.25rem); color:#ffe680; max-width:600px; margin:0 auto 32px; line-height:1.6; }
+  .chapter-nav-bar { background:var(--paper-deep,#f5f0e8); border-bottom:2px solid var(--rust,#b5451b); padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:100; }
+  .chapter-nav-bar a { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; }
+  .chapter-nav-bar a:hover { text-decoration:underline; }
+  .chapter-progress { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .chapter-body { max-width:740px; margin:0 auto; padding:60px 24px 100px; }
+  .chapter-body h2 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; color:var(--ink,#2c1a0e); margin:56px 0 20px; }
+  .chapter-body h3 { font-family:'Fraunces',serif; font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:600; color:var(--ink,#2c1a0e); margin-bottom:14px; }
+  .chapter-body p { font-family:'Lora',serif; font-size:1.05rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:22px; }
+  .insight { background:#fffbe6; border-left:4px solid #f0b429; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#7a5a00; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#1a1200; color:#fffae8; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#ffd43b; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#ffd43b; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#fffae8; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #f0b429; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#f0b429; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#7a5a00; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #f0b429; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#7a5a00; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index-el.html">← Hub: Ενέργεια Αποκωδικοποιημένη</a>
+  <span class="chapter-progress">Κεφάλαιο 06 από 08 · Ανανεώσιμες</span>
+  <a href="07-climate-el.html">Επόμενο: Κλίμα →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Ενέργεια Αποκωδικοποιημένη · Κεφάλαιο 06</span>
+  <h1>Ανανεώσιμες Πηγές<br>Ο Ήλιος Πάντα Ανατέλλει</h1>
+  <p class="subtitle">Το 2010, η ηλιακή ενέργεια ήταν μια τεχνολογία για ενθουσιώδεις. Το 2024, ήταν η φθηνότερη πηγή ηλεκτρισμού στην ιστορία. Αυτό που συνέβη ανάμεσα είναι μια από τις πιο αξιοσημείωτες οικονομικές ιστορίες που έχουν ποτέ αφηγηθεί.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>Το 2010, η Διεθνής Υπηρεσία Ενέργειας — ο κορυφαίος φορέας πρόβλεψης ενέργειας του κόσμου — προέβλεπε ότι η ηλιακή φωτοβολταϊκή ενέργεια θα παρείχε περίπου 3% της παγκόσμιας ηλεκτροπαραγωγής μέχρι το 2040. Μέχρι το 2023, η ηλιακή ενέργεια παρήγαγε ήδη πάνω από 5% της παγκόσμιας ηλεκτροπαραγωγής. Η 30ετής πρόβλεψη της ΔΥΕ ξεπεράστηκε σε 13 χρόνια.</p>
+
+  <p>Αυτή δεν είναι ιστορία για λανθασμένες προβλέψεις. Είναι ιστορία για κάτι πραγματικά πρωτοφανές που συνέβη στην ιστορία της τεχνολογίας ενέργειας: μια καμπύλη μάθησης τόσο απότομη, μια μείωση κόστους τόσο ραγδαία, και μια ανάπτυξη τόσο εκρηκτική, που σχεδόν κάθε μοντέλο, πρόβλεψη και πολιτικό πλαίσιο που χτίστηκε σε ιστορικές παραδοχές ενέργειας έγινε απαρχαιωμένο σχεδόν μόλις δημοσιεύτηκε.</p>
+
+  <h2>Η Ελληνική Ηλιακή Άνθηση, Κατάρρευση και Ανάκαμψη</h2>
+
+  <p>Η σχέση της Ελλάδας με την ηλιακή ενέργεια είναι ένα εξαιρετικό παράδειγμα για το πώς η ενεργειακή πολιτική μπορεί ταυτόχρονα να κάνει σχεδόν τα πάντα σωστά και σχεδόν τα πάντα λάθος — και ποιες είναι οι συνέπειες όταν οι καλές προθέσεις συγκρούονται με τη χρηματοοικονομική πραγματικότητα.</p>
+
+  <div class="story">
+    <strong>Αληθινή Ιστορία — Η Ελληνική Ηλιακή Χρυσοθηρία και η Καταστροφή της Ρήτρας Feed-In</strong>
+    <p>Η Ελλάδα είναι μια από τις πιο ηλιόλουστες χώρες στην Ευρώπη, με περισσότερες ώρες ηλιακής κορύφωσης ετησίως από τη Γερμανία — όπου η ηλιακή ενέργεια είχε ήδη γίνει σημαντική βιομηχανία. Όταν η ελληνική κυβέρνηση εισήγαγε γενναιόδωρες τιμές feed-in για ηλιακή ενέργεια το 2009 και 2010, πυροδότησε μια χρυσοθηρία. Αγροτικές εκτάσεις, στέγες και λόφοι σε ολόκληρη τη χώρα καλύφθηκαν γρήγορα με ηλιακά πάνελ. Γερμανοί και Ιταλοί επενδυτές έχυσαν χρήματα. Τα ποσοστά εγκατάστασης ήταν μεταξύ των υψηλότερων στην Ευρώπη.</p>
+    <p>Έπειτα ήρθε η οικονομική κρίση. Η Ελλάδα χρειαζόταν να μειώσει τις κρατικές δαπάνες ως προϋπόθεση για τη διεθνή της διάσωση. Οι τιμές feed-in — που καταβάλλονταν μέσω εισφοράς στους λογαριασμούς ηλεκτρισμού των καταναλωτών — μειώθηκαν αναδρομικά. Επενδυτές που είχαν δεσμεύσει κεφάλαια βασισμένοι σε εγγυημένες αποδόσεις βρήκαν αυτές τις εγγυήσεις να παραβιάζονται κατά τη διάρκεια της σύμβασης. Ακολούθησαν υποθέσεις διεθνούς διαιτησίας. Η ηλιακή βιομηχανία κατέρρευσε σχεδόν εξίσου ραγδαία όσο είχε ανθίσει. Μέχρι το 2013, οι νέες εγκαταστάσεις είχαν μειωθεί 95% από την κορύφωση του 2011.</p>
+    <p>Η ανάκαμψη πήρε χρόνια και απαίτησε πλήρη αναδιάρθρωση του σχεδιασμού της αγοράς. Αλλά στις αρχές της δεκαετίας του 2020, η Ελλάδα είχε ανοικοδομήσει τον ηλιακό τομέα της σε πιο στέρεες οικονομικές βάσεις. Μέχρι το 2023, οι ανανεώσιμες πηγές παρήγαγαν τακτικά πάνω από 50% του ελληνικού ηλεκτρισμού τους ηλιόλουστους, ανεμώδεις μήνες. Τον Απρίλιο του 2024, η Ελλάδα λειτούργησε με 100% ανανεώσιμη ηλεκτρική ενέργεια για σύντομες περιόδους — κάτι σχεδόν αδιανόητο το 2013.</p>
+  </div>
+
+  <h2>Γιατί Κέρδισαν οι Ανανεώσιμες: Το 360° Πλαίσιο</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">💰 Οικονομικά</span>
+      <p>Στις αρχές της δεκαετίας του 2020, η ηλιακή και αιολική ενέργεια ήταν ο φθηνότερος τρόπος παραγωγής νέου ηλεκτρισμού στα περισσότερα μέρη του κόσμου. Αυτό έκανε τη μετάβαση οικονομικά αυτοενισχυόμενη: οι επενδυτές επέλεγαν ανανεώσιμες επειδή ήταν κερδοφόρες, όχι επειδή ήταν πράσινες.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🌍 Γεωπολιτικά</span>
+      <p>Η ρωσική εισβολή στην Ουκρανία το 2022 εκτόξευσε τις ευρωπαϊκές τιμές αερίου σε δεκαπλάσια επίπεδα. Για ευρωπαϊκές κυβερνήσεις που είχαν χτίσει εξάρτηση από ρωσικά ορυκτά καύσιμα, οι ανανεώσιμες φάνηκαν ξαφνικά όχι μόνο φτηνές αλλά στρατηγικά απαραίτητες.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🏭 Κατασκευή</span>
+      <p>Σε αντίθεση με την πυρηνική ή υδροηλεκτρική, η ηλιακή και αιολική μπορεί να αναπτυχθεί σε αρθρωτές αυξήσεις — μια μονή στέγη, ένα μικρό αιολικό πάρκο, ή ένα μεγάλης κλίμακας πάρκο. Αυτή η επεκτασιμότητα, σε συνδυασμό με τυποποιημένη κατασκευή, επέτρεψε μαζική ανάπτυξη.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🏘️ Εκδημοκρατισμός</span>
+      <p>Για πρώτη φορά στην ενεργειακή ιστορία, απλά άτομα, κοινότητες και μικρές επιχειρήσεις μπορούν να γίνουν παραγωγοί ενέργειας και όχι απλώς καταναλωτές. Η στέγη σου, οι βάσεις δεδομένων σου, το αυτοκίνητό σου — όλα μπορούν να τροφοδοτούν το δίκτυο.</p>
+    </div>
+  </div>
+
+  <h2>Οι Προκλήσεις που Παραμένουν</h2>
+
+  <p>Η επανάσταση των ανανεώσιμων είναι πραγματική, αλλά ατελής. Τρεις μεγάλες προκλήσεις παραμένουν άλυτες σε κλίμακα.</p>
+
+  <h3>Το πρόβλημα της διαλείπουσας παραγωγής</h3>
+  <p>Ο ήλιος δεν λάμπει τη νύχτα. Ο άνεμος δεν φυσάει πάντα τις ώρες αιχμής. Καθώς οι ανανεώσιμες φτάνουν σε μεγαλύτερο μερίδιο της συνολικής παραγωγής, οι διαχειριστές δικτύου αντιμετωπίζουν αυξανόμενες προκλήσεις για την εξισορρόπηση προσφοράς και ζήτησης. Η αποθήκευση σε μπαταρίες βοηθά σε βραχυπρόθεσμες κλίμακες. Η αποθήκευση μακράς διάρκειας — εποχιακή αποθήκευση — παραμένει ακριβή και ανώριμη.</p>
+
+  <h3>Το πρόβλημα των υλικών</h3>
+  <p>Τα ηλιακά πάνελ χρειάζονται πυρίτιο και άργυρο. Οι ανεμογεννήτριες χρειάζονται χάλυβα, χαλκό και μαγνήτες σπανίων γαιών. Οι μπαταρίες χρειάζονται λίθιο, κοβάλτιο, νικέλιο και μαγγάνιο. Η μετάβαση απαιτεί εξόρυξη αυτών των υλικών σε κλίμακες που ο κλάδος δεν έχει ποτέ πλησιάσει. Σε ορισμένες περιπτώσεις, η μετάβαση από εξάρτηση σε ορυκτά καύσιμα σε εξάρτηση σε ορυκτά δημιουργεί ανάλογες γεωπολιτικές ευπάθειες.</p>
+
+  <h3>Τα δύσκολα προς απανθρακοποίηση τομέα</h3>
+  <p>Η ηλεκτροδότηση είναι εύκολη για ορισμένους τομείς. Είναι πραγματικά δύσκολη για άλλους: μεγάλης απόστασης αεροπορία, ναυτιλία, παραγωγή χάλυβα, παραγωγή τσιμέντου. Αυτοί οι «δύσκολα προς απανθρακοποίηση» τομείς αντιπροσωπεύουν περίπου 25–30% των παγκόσμιων εκπομπών.</p>
+
+  <div class="pullquote">
+    <p>«Για έναν αιώνα, οι χώρες που έλεγχαν την ενέργεια έλεγχαν τον κόσμο. Η ηλιακή και αιολική ενέργεια αναπτύσσονται παντού. Ο ενεργειακός χάρτης ξαναγράφεται από την αρχή.»</p>
+    <cite>— Παράφραση αναλυτών ενεργειακής μετάβασης</cite>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">2009–11</div>
+      <p>Ελληνική ηλιακή άνθηση βάσει feed-in tariff. Ταχεία εγκατάσταση ακολουθούμενη από αναδρομικές περικοπές και κατάρρευση της αγοράς.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2013</div>
+      <p>Η ηλιακή ενέργεια φτάνει «ισοτιμία δικτύου» σε αρκετές νοτιοευρωπαϊκές αγορές — φθηνότερη από το λιανικό ηλεκτρισμό χωρίς επιδοτήσεις.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2022</div>
+      <p>Αμερικανικός νόμος IRA — 369 δισ. δολάρια σε επενδύσεις καθαρής ενέργειας. Η μεγαλύτερη κλιματική επένδυση στην ιστορία.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2023–24</div>
+      <p>Η Ελλάδα λειτουργεί τακτικά με 50%+ ανανεώσιμη ηλεκτρική ενέργεια. Τον Απρίλιο 2024, επιτυγχάνεται 100% ανανεώσιμη παραγωγή για σύντομες περιόδους.</p>
+    </div>
+  </div>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="05-nuclear-el.html">← Κεφάλαιο 05: Πυρηνική</a>
+    <a href="07-climate-el.html">Κεφάλαιο 07: Κλίμα →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

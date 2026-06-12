@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Κεφάλαιο 03: Πετρέλαιο — Ο Αιώνας του Μαύρου Χρυσού | Ενέργεια Αποκωδικοποιημένη | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero { background:linear-gradient(135deg,#1a0800 0%,#3d1500 50%,#6b2800 100%); color:#fff4e6; padding:80px 40px 60px; text-align:center; position:relative; overflow:hidden; }
+  .chapter-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 60%,rgba(220,80,0,0.18) 0%,transparent 70%); pointer-events:none; }
+  .chapter-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#ff8c42; margin-bottom:16px; display:block; }
+  .chapter-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; margin-bottom:20px; color:#fff4e6; }
+  .chapter-hero .subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.25rem); color:#ffc89a; max-width:600px; margin:0 auto 32px; line-height:1.6; }
+  .chapter-nav-bar { background:var(--paper-deep,#f5f0e8); border-bottom:2px solid var(--rust,#b5451b); padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:100; }
+  .chapter-nav-bar a { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; }
+  .chapter-nav-bar a:hover { text-decoration:underline; }
+  .chapter-progress { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .chapter-body { max-width:740px; margin:0 auto; padding:60px 24px 100px; }
+  .chapter-body h2 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; color:var(--ink,#2c1a0e); margin:56px 0 20px; }
+  .chapter-body h3 { font-family:'Fraunces',serif; font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:600; color:var(--ink,#2c1a0e); margin-bottom:14px; }
+  .chapter-body p { font-family:'Lora',serif; font-size:1.05rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:22px; }
+  .insight { background:#fff4ec; border-left:4px solid #ff8c42; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#b5451b; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#1a0800; color:#fff4e6; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#ff8c42; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#ff8c42; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#fff4e6; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #ff8c42; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#ff8c42; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#b5451b; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #ff8c42; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#b5451b; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index-el.html">← Hub: Ενέργεια Αποκωδικοποιημένη</a>
+  <span class="chapter-progress">Κεφάλαιο 03 από 08 · Πετρέλαιο</span>
+  <a href="04-electricity-el.html">Επόμενο: Ηλεκτρισμός →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Ενέργεια Αποκωδικοποιημένη · Κεφάλαιο 03</span>
+  <h1>Πετρέλαιο<br>Ο Αιώνας του Μαύρου Χρυσού</h1>
+  <p class="subtitle">Αρχικά ήταν υποκατάστατο για το λάδι φάλαινας. Κατέληξε να γίνει η πιο εκρηκτική πολιτικά ουσία στην ανθρώπινη ιστορία.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>Τον Αύγουστο του 1859, ένας πρώην σιδηροδρομικός αγωγός με το όνομα Edwin Drake επόπτευε τη διάτρηση μιας τρύπας στο λασπωμένο έδαφος του Titusville της Πενσυλβάνια. Η τρύπα ήταν 21 μέτρα βαθιά. Όταν το τρυπάνι του έσπασε σε ένα βραχώδη σχηματισμό και το πλήρωμα επέστρεψε την επόμενη μέρα, βρήκε την κάσα γεμάτη με μαύρο, ιξώδες υγρό να ανεβαίνει από κάτω.</p>
+
+  <p>Ο Drake έψαχνε πετρέλαιο για να το πουλήσει ως καύσιμο λυχνιών — υποκατάστατο για το ακριβό, όλο και πιο σπάνιο λάδι φάλαινας. Το βρήκε αυτό, αλλά βρήκε και πολύ περισσότερα. Είχε τυχαία διαπεράσει το πάτωμα της βιομηχανικής εποχής και ανακάλυψε κάτι που θα αναδιαμόρφωνε κάθε πόλεμο, κάθε οικονομία, κάθε πόλη και κάθε καθημερινή ζωή στη γη για τα επόμενα 165 χρόνια.</p>
+
+  <h2>Το 360° Πλαίσιο: Ο Κόσμος το 1859</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">🌍 Γεωπολιτικό</span>
+      <p>Η Βρετανική Αυτοκρατορία ήταν στο αποκορύφωμά της. Οι ΗΠΑ ήταν έτοιμες να σκιστούν στον Εμφύλιο Πόλεμο. Η Οθωμανική Αυτοκρατορία ήταν σε αργή παρακμή. Η γεωπολιτική τάξη του 1859 δεν έμοιαζε σε τίποτα με αυτή που θα παρήγαγε τελικά το πετρέλαιο.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🐋 Ενεργειακή Κρίση</span>
+      <p>Οι πληθυσμοί φαλαινών κατέρρεαν από βιομηχανικό κυνήγι. Το λάδι φάλαινας, το κύριο καύσιμο φωτισμού της εποχής, γινόταν σπάνιο και ακριβό. Οι πόλεις χρειάζονταν φωτισμό. Ο βιομηχανικός κόσμος έτρεχε ουσιαστικά σε έλλειψη καυσίμου φωτισμού.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">💰 Οικονομικό</span>
+      <p>Η αμερικανική οικονομία εκρηγνυόταν προς τα δυτικά. Τα κεφάλαια συσσωρεύονταν σε πρωτοφανείς ρυθμούς. Η χρυσοθηρία πετρελαίου στην Πενσυλβάνια της δεκαετίας 1860 είχε ακριβώς την ίδια δομή με τη χρυσοθηρία της Καλιφόρνια της δεκαετίας 1840.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚙️ Τεχνολογία</span>
+      <p>Ο κινητήρας εσωτερικής καύσης αναπτυσσόταν παράλληλα. Το πετρελαιοκίνητο αυτοκίνητο του Benz ήταν ακόμα 27 χρόνια μακριά. Αλλά η κηροζίνη — καθαρότερη από το λάδι φάλαινας, φθηνότερη, διαθέσιμη — δημιούργησε την πρώτη μαζική αγορά πετρελαίου πριν καν υπάρξει αυτοκίνητο.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🧠 Ανθρώπινες Ανάγκες</span>
+      <p>Το φως μετά το σκοτάδι δεν ήταν πολυτέλεια — ήταν κοινωνική επανάσταση. Πόλεις που μπορούσαν να φωτίσουν τους δρόμους και τα σπίτια τους μετά τη δύση μπορούσαν να δουλεύουν περισσότερο, να ψυχαγωγούνται, να σπουδάζουν. Η ζήτηση για καύσιμο φωτισμού ήταν ουσιαστικά ζήτηση για περισσότερες ώρες μέσα στη μέρα.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚔️ Σύγκρουση</span>
+      <p>Ο Αμερικανικός Εμφύλιος Πόλεμος (1861–65) που ξεκίνησε δύο χρόνια μετά το πηγάδι Drake αφορούσε εν μέρει τη βιομηχανική και ενεργειακή υπεροχή του Βορρά. Ο Νότος είχε βαμβάκι. Ο Βορράς είχε κάρβουνο, σίδηρο και σύντομα πετρέλαιο Πενσυλβάνια.</p>
+    </div>
+  </div>
+
+  <h2>1973: Το Σοκ που Άλλαξε τα Πάντα</h2>
+
+  <p>Στις 6 Οκτωβρίου 1973 — Γιομ Κιπούρ, η πιο ιερή μέρα του εβραϊκού ημερολογίου — Αίγυπτος και Συρία εξαπέλυσαν αιφνιδιαστική επίθεση κατά του Ισραήλ. Οι ΗΠΑ και άλλες δυτικές χώρες υποστήριξαν στρατιωτικά το Ισραήλ. Σε απάντηση, τα αραβικά μέλη του ΟΠΕΚ επέβαλαν εμπάργκο πετρελαίου στις ΗΠΑ και άλλους υποστηρικτές του Ισραήλ, ενώ ταυτόχρονα μείωσαν την παραγωγή.</p>
+
+  <p>Μέσα σε τρεις μήνες, η τιμή του πετρελαίου τετραπλασιάστηκε. Στις ΗΠΑ, οι οδηγοί παρατάσσονταν για ώρες σε βενζινάδικα. Στην Ολλανδία — έναν σημαντικό κόμβο διαμετακόμισης πετρελαίου που είχε ρητά υποστηρίξει το Ισραήλ — επιβλήθηκε πλήρες αραβικό εμπάργκο. Απαγορεύτηκε η κυκλοφορία αυτοκινήτων τις Κυριακές. Η ολλανδική οικονομία, μία από τις πιο ανεπτυγμένες της Ευρώπης, παραλύθηκε σχεδόν τελείως.</p>
+
+  <div class="story">
+    <strong>Αληθινή Ιστορία — Η Ελλάδα, η Χούντα και το Πετρελαϊκό Σοκ</strong>
+    <p>Η Ελλάδα το 1973 βρισκόταν υπό στρατιωτική δικτατορία — το Καθεστώς των Συνταγματαρχών, που είχε κατακτήσει την εξουσία το 1967. Το πετρελαϊκό σοκ χτύπησε την Ελλάδα με ιδιαίτερη σφοδρότητα: η χώρα δεν είχε σημαντική εγχώρια παραγωγή πετρελαίου και εξαρτιόταν από εισαγωγές Μέσης Ανατολής για το μεγαλύτερο μέρος της ενέργειάς της. Η οικονομική πολιτική της χούντας είχε βασιστεί σε φτηνή ενέργεια για ταχεία εκβιομηχάνιση. Όταν το πετρέλαιο τετραπλασιάστηκε σε τιμή, αυτά τα σχέδια κατέρρευσαν.</p>
+    <p>Η οικονομική κρίση επιτάχυνε την απώλεια νομιμότητας της χούντας. Μια καταστροφική επέμβαση στην Κύπρο το 1974 — όπου η χούντα υποστήριξε πραξικόπημα που πυροδότησε τουρκική στρατιωτική εισβολή — έφερε τελικά το καθεστώς στο τέλος του. Η Ελλάδα επέστρεψε στη δημοκρατία τον Ιούλιο του 1974 υπό τον Κωνσταντίνο Καραμανλή. Η πετρελαϊκή κρίση δεν προκάλεσε απευθείας την πτώση της χούντας, αλλά κατεδάφισε την οικονομική λογική που τη συντηρούσε. Ενεργειακή ευπάθεια είχε γίνει πολιτική ευπάθεια. Ως απάντηση, η Ελλάδα άρχισε να επενδύει βαριά στην εγχώρια παραγωγή λιγνίτη — μια ενεργειακή απόφαση της οποίας οι συνέπειες θα ηχούσαν για δεκαετίες.</p>
+  </div>
+
+  <h2>Η Κατάρα των Πόρων</h2>
+
+  <p>Ίσως να νομίζεις ότι το να βρεις πετρέλαιο κάτω από το έδαφος της χώρας σου είναι η καλύτερη δυνατή τύχη. Η ιστορία υποδηλώνει ότι συχνά είναι το αντίθετο. Οι οικονομολόγοι την ονομάζουν «κατάρα των πόρων» — το παράδοξο ότι χώρες με μεγάλα αποθέματα φυσικών πόρων αποδίδουν συχνά χειρότερα οικονομικά, πολιτικά και κοινωνικά από παρόμοιες χώρες χωρίς τέτοιους πόρους.</p>
+
+  <p>Νιγηρία. Βενεζουέλα. Λιβύη. Σαουδική Αραβία. Ιράν. Όλες έχουν τεράστιο πλούτο σε πετρέλαιο. Όλες έχουν βιώσει παρατεταμένες περιόδους ανισότητας, αυταρχισμού ή σύγκρουσης που συσχετίζεται άμεσα με την πετρελαϊκή τους εξάρτηση. Ο μηχανισμός δεν είναι μυστηριώδης: όταν μια κυβέρνηση μπορεί να χρηματοδοτηθεί από έσοδα πετρελαίου χωρίς να φορολογεί τους πολίτες, δεν έχει κανένα κίνητρο να ανταποκρίνεται στις απαιτήσεις τους.</p>
+
+  <div class="pullquote">
+    <p>«Η κατάρα των πόρων είναι πολιτική κατάρα. Το πετρέλαιο δεν σε κάνει πλούσιο. Κάνει όσους ελέγχουν το πετρέλαιο ισχυρούς — πράγμα πολύ διαφορετικό.»</p>
+    <cite>— Παράφραση του οικονομολόγου Moisés Naím</cite>
+  </div>
+
+  <h2>Το Πετρέλαιο και η Καθημερινή Ζωή: Η Αόρατη Επανάσταση</h2>
+
+  <p>Να τι σπάνια συζητάμε: το πετρέλαιο δεν τροφοδοτούσε απλώς αυτοκίνητα και θέρμαινε σπίτια. Έγινε το υλικό υπόστρωμα της σύγχρονης ζωής. Τα πλαστικά είναι παράγωγα πετρελαίου. Τα λιπάσματα παράγονται από φυσικό αέριο. Συνθετικά υφάσματα, φαρμακευτικά προϊόντα, καλλυντικά, συσκευασίες — όλα παράγωγα πετροχημικών. Το φαγητό στο ράφι του σούπερ μάρκετ σου καλλιεργήθηκε με λίπασμα προερχόμενο από πετρέλαιο, συγκομίστηκε με μηχανήματα κινούμενα από πετρέλαιο, μεταφέρθηκε με φορτηγά τροφοδοτούμενα από πετρέλαιο, και συσκευάστηκε σε πλαστικό παράγωγο πετρελαίου.</p>
+
+  <p>Όταν μιλάμε για «απεξάρτηση από το πετρέλαιο», δεν μιλάμε απλώς για αλλαγή στα αυτοκίνητά μας. Μιλάμε για επανασχεδιασμό της υλικής βάσης του σύγχρονου πολιτισμού. Αυτό δεν είναι αδύνατο. Αλλά είναι ένα πολύ μεγαλύτερο έργο από όσο οι περισσότερες συζητήσεις για «ενεργειακή μετάβαση» παραδέχονται.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">1859</div>
+      <p>Ο Drake χτυπά πετρέλαιο στην Πενσυλβάνια. Αρχίζει η εποχή πετρελαίου.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1882</div>
+      <p>Ιδρύεται το Standard Oil Trust. Το πρώτο μεγάλο μονοπώλιο πετρελαίου στον κόσμο.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1908</div>
+      <p>Η Anglo-Persian Oil βρίσκει πετρέλαιο στο Ιράν. Αρχίζει η στρατηγική εξάρτηση της Βρετανίας από την Μέση Ανατολή.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1960</div>
+      <p>Ιδρύεται ο OPEC. Οι παραγωγές χώρες αρχίζουν να οργανώνονται εναντίον του ελέγχου των δυτικών εταιρειών.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1973</div>
+      <p>Αραβικό εμπάργκο πετρελαίου. Η τιμή τετραπλασιάζεται σε τρεις μήνες. Η Ελλάδα βιώνει οικονομικό σοκ· η χούντα χάνει νομιμότητα.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1974</div>
+      <p>Συμφωνία πετροδολαρίου ΗΠΑ–Σαουδικής Αραβίας. Η παγκόσμια κυριαρχία του δολαρίου υπογραμμίζεται από πετρέλαιο.</p>
+    </div>
+  </div>
+
+  <h2>Το Μοτίβο, Άλλη Μια Φορά</h2>
+
+  <p>Το πετρέλαιο ακολούθησε την ίδια τροχιά με το ξύλο και τον άνθρακα: ανακάλυψη, εκμετάλλευση, θεσμοθέτηση του ελέγχου, υπερχρήση, περιβαλλοντικές ζημίες, γεωπολιτική σύγκρουση, και η αρχή της αναζήτησης ενός υποκατάστατου. Αλλά η κλίμακα επίδρασης του πετρελαίου — στον πόλεμο, στα παγκόσμια οικονομικά, στην καθημερινή υλική ζωή, στην ίδια την πολιτική δημοκρατίας και αυταρχισμού — ξεπέρασε τα πάντα που είχαν προηγηθεί.</p>
+
+  <p>Στο επόμενο κεφάλαιο, στρεφόμαστε στον ηλεκτρισμό — τον αόρατο ποταμό που έτρεξε δίπλα στην εποχή ορυκτών καυσίμων και γίνεται τώρα το όχημα μέσω του οποίου η ανθρωπότητα μπορεί τελικά να τα αφήσει πίσω.</p>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="02-coal-el.html">← Κεφάλαιο 02: Κάρβουνο</a>
+    <a href="04-electricity-el.html">Κεφάλαιο 04: Ηλεκτρισμός →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

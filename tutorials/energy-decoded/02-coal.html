@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 02: Coal — The Dark Power | Energy Decoded | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1c1c2e 50%, #2d2d3f 100%);
+    color: #e8e8f0;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 40% 60%, rgba(100,120,255,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .chapter-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8090ff;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .chapter-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #f0f0ff;
+  }
+  .chapter-hero .subtitle {
+    font-family: 'Lora', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #b8b8d8;
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+  .chapter-nav-bar {
+    background: var(--paper-deep, #f5f0e8);
+    border-bottom: 2px solid var(--rust, #b5451b);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .chapter-nav-bar a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--rust, #b5451b);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .chapter-nav-bar a:hover { text-decoration: underline; }
+  .chapter-progress {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-light, #6b5e4e);
+    letter-spacing: 0.08em;
+  }
+  .chapter-body {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+  .chapter-body h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ink, #2c1a0e);
+    margin: 56px 0 20px;
+    line-height: 1.25;
+  }
+  .chapter-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--rust, #b5451b);
+    margin: 36px 0 14px;
+  }
+  .chapter-body p {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink, #2c1a0e);
+    margin-bottom: 22px;
+  }
+  .insight { background:#fff8f0; border-left:4px solid #ff9a40; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#b5451b; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#0d0d0d; color:#e8e8f0; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#8090ff; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#8090ff; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#e8e8f0; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #8090ff; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#8090ff; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#3a5ccc; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #8090ff; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#3a5ccc; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index.html">← Hub: Energy Decoded</a>
+  <span class="chapter-progress">Chapter 02 of 08 · Coal</span>
+  <a href="03-oil.html">Next: Oil →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Energy Decoded · Chapter 02</span>
+  <h1>Coal<br>The Dark Power</h1>
+  <p class="subtitle">Buried sunshine, compressed over 300 million years. When we dug it up, we didn't just change how we worked — we changed what it meant to be human.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>In 1712, a blacksmith's assistant named Thomas Newcomen erected a squat, ugly machine in a coalmine in Staffordshire, England. It wheezed. It shuddered. It consumed enormous quantities of coal to pump water out of the mine so that more coal could be extracted. It was inefficient by every modern measure. And it was one of the most consequential machines ever built.</p>
+
+  <p>The Newcomen engine was the first practical steam engine. Powered by coal, it solved a coal problem. And in solving that problem, it accidentally unlocked the Industrial Revolution — the single most transformative shift in human energy use since fire.</p>
+
+  <p>But coal's story doesn't begin in 18th-century England. It begins 300 million years ago, in the vast swamp forests of the Carboniferous period, when the bodies of dead trees fell into oxygen-poor water and were slowly, over geological time, compressed into the dense black rock we eventually burned to build the modern world.</p>
+
+  <h2>What Coal Actually Is</h2>
+
+  <div class="definition">
+    <strong>Definition — Coal</strong>
+    <p>Coal is fossilised plant matter — the compressed remains of ancient forests, primarily from the Carboniferous period (360–300 million years ago). Over millions of years, heat and pressure transformed dead organic material into increasingly carbon-dense rock. Lignite (brown coal) is the youngest and least energy-dense. Anthracite is the oldest, hardest, and most energy-rich. All of it is, essentially, ancient solar energy stored in solid form.</p>
+  </div>
+
+  <p>When you burn coal, you are releasing solar energy that was captured by photosynthesis roughly 300 million years ago. The trees of the Carboniferous absorbed sunlight, grew, died, and were compressed. We dig them up, burn them, and use that ancient sunlight to power our cities. It is, if you think about it, a form of time travel — dragging stored energy from the deep past into the present.</p>
+
+  <h2>The 360° Context: Britain, 1700s</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">🌍 Geopolitical</span>
+      <p>Britain was a small island nation with imperial ambitions. The Dutch had dominated global trade for a century. France was the continental superpower. Britain needed an economic edge — and found it underground.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚡ Energy Crisis</span>
+      <p>Wood — the primary fuel — was running out. Britain's forests had been consumed by shipbuilding, charcoal for iron smelting, and household heating. Coal had been used superficially since Roman times, but the scale of need had not justified deep mining. Until now.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">💰 Economic</span>
+      <p>The wool trade was declining. Britain needed a new export engine. Cheap, abundant energy would make British manufactured goods cheaper than anyone else's — a trade advantage that could reshape the world economy.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚔️ Conflict</span>
+      <p>Britain was locked in near-constant warfare with France throughout the 18th century. Wars required iron — for cannons, ships, tools. Iron required charcoal (and later coke from coal). Military demand accelerated industrial energy development.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🔬 Scientific</span>
+      <p>The Enlightenment was reshaping how Europeans thought about nature and mechanism. The idea that the physical world could be understood, measured, and improved was new and explosive. Engineers like Watt and Newcomen were empiricists — they tinkered until something worked.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🧠 Human Needs</span>
+      <p>Population was growing. Cities were filling up. The basic question — how do we feed and warm and employ millions of people who are no longer farming — demanded a new energy answer.</p>
+    </div>
+  </div>
+
+  <h2>The Wood Crisis That Created Coal Demand</h2>
+
+  <p>Here is something history books underemphasise: the Industrial Revolution happened in Britain partly because Britain ran out of wood first.</p>
+
+  <p>By 1700, large-scale charcoal iron production in Britain was constrained by timber scarcity. The navy alone required thousands of mature oak trees per ship. Heating a house through an English winter consumed staggering quantities of wood. Glassmakers, bakers, brewers, and smiths all competed for the same dwindling forest resource.</p>
+
+  <p>Coal had been used for centuries — Roman soldiers stationed at Hadrian's Wall burned surface coal for heat. But deep mining was another matter: as you dig deeper, water floods in. You need a pump. The pump needs power. In a pre-steam world, the only available power sources were humans, horses, wind, and water — all limited, seasonal, or expensive.</p>
+
+  <p>The Newcomen engine solved this in a single brutal stroke: use coal to power a pump to drain a mine to extract more coal. The energy source funded its own extraction. It was a self-reinforcing cycle that, once started, proved almost impossible to stop.</p>
+
+  <h2>James Watt and the Efficiency Revolution</h2>
+
+  <p>Newcomen's engine worked, but it was spectacularly wasteful. It wasted about 99% of the heat energy it consumed. Enter James Watt, a Scottish instrument maker at the University of Glasgow, who in 1765 realised that Newcomen's fundamental design flaw was that the same cylinder was alternately heated and cooled — you had to waste energy reheating it each cycle.</p>
+
+  <p>Watt's solution — a separate condenser — seems simple in retrospect. But it doubled and eventually tripled efficiency. And crucially, Watt's improved engine wasn't just a pump. It could be made to produce rotary motion — the turning of a wheel. Once you have rotary motion from steam, you can drive almost any machine imaginable: looms, mills, lathes, hammers, and eventually locomotives.</p>
+
+  <div class="story">
+    <strong>Real Story — Matthew Boulton's Gamble</strong>
+    <p>James Watt was a brilliant engineer but a terrible businessman. His partnership with Birmingham manufacturer Matthew Boulton changed everything. Boulton didn't just finance the engine's development — he grasped its revolutionary implications. When Watt, always cautious, worried about whether there would be enough demand, Boulton reportedly told him: "I sell here, sir, what all the world desires to have — Power."</p>
+    <p>Boulton and Watt sold their engines not for a fixed price but on a royalty model: customers paid a share of the fuel savings their Watt engine produced compared to the old Newcomen engine. It was, arguably, the first performance-based energy contract. By the time their patent expired in 1800, there were roughly 500 Boulton & Watt engines operating across Britain.</p>
+  </div>
+
+  <h2>The Social Earthquake</h2>
+
+  <p>The Industrial Revolution is often described as an economic transformation. It was that. But it was first and foremost a social transformation powered by a new energy source.</p>
+
+  <h3>The birth of the working class</h3>
+  <p>Before coal and steam, most manufactured goods were made in homes and small workshops. The spinning jenny, the power loom, the steam hammer — these were machines that required central power sources, which meant factories, which meant you had to come to the machine rather than bringing the machine to you. Millions of rural workers, dispossessed of their agricultural livelihoods by enclosure acts and mechanised farming, flooded into cities to work for wages. The working class — people who own nothing but their labour — was a creation of coal.</p>
+
+  <h3>Urbanisation at speed</h3>
+  <p>Manchester, the world's first industrial city, had a population of around 25,000 in 1772. By 1850, it had 300,000. That kind of growth — twelve-fold in eighty years — had never happened before in human history. Coal-powered factories drove it. Coal-heated homes enabled it. And coal-fired locomotive railways connected these new industrial cities to each other and to the ports that shipped their products around the world.</p>
+
+  <div class="insight">
+    <strong>Insight — Coal and the Time Economy</strong>
+    <p>Steam-powered machinery didn't just produce more goods — it changed the relationship between humans and time. A handloom weaver working at home could set their own pace, stop for meals, tend a garden, and work seasonally. A factory worker operating a steam-powered loom was tethered to the machine's schedule. The factory whistle and the time clock were coal inventions as much as the steam engine itself. Coal didn't just change what people did — it changed how they experienced time.</p>
+  </div>
+
+  <h2>Coal Goes Global: The Geopolitics of Black Rock</h2>
+
+  <p>Here is where the 360° view becomes essential. Coal didn't just transform Britain — it reorganised global power.</p>
+
+  <p>Access to coal deposits, and the ability to industrialise them, became the defining factor in which nations rose to global power in the 19th century. Britain first, obviously. Then Germany and Belgium, both sitting on massive coal seams in the Ruhr and Liège basins. France had coal but concentrated in fewer regions. The United States had seemingly unlimited coal in Appalachia and the Ohio Valley.</p>
+
+  <p>Nations without accessible coal — China (which had coal but couldn't industrialise it quickly enough), India (under British colonial control and therefore forbidden to industrialise competitively), and most of Africa and Latin America — fell behind. The industrial gap that opened in the 19th century was largely an energy gap. And the consequences of that gap — in wealth, military power, and colonial domination — shaped the 20th century in ways we are still living with.</p>
+
+  <div class="story">
+    <strong>Real Story — The Greek Coal Question</strong>
+    <p>Greece presents a fascinating case study in what happens when a nation industrialises late and without coal. During the 19th century, as Britain, France, and Germany were building coal-powered industrial empires, newly independent Greece (which achieved independence from the Ottoman Empire in 1832) had no significant coal deposits and limited capital to import technology.</p>
+    <p>Greek economic development instead leaned heavily on shipping — the maritime tradition was centuries old and required no coal infrastructure. Greek merchant families in Odessa, London, and Alexandria built international trading networks rather than factories. The famous Greek diaspora of the 19th century was partly a coal story: the absence of domestic energy for industrialisation pushed commercial talent outward rather than channelling it into domestic manufacturing. Greece didn't industrialise the way Britain did. It globalised instead.</p>
+  </div>
+
+  <h2>The Labour Wars: Coal as Political Battlefield</h2>
+
+  <p>Coal created not just an industrial economy but an industrial politics. The miners — who went underground in conditions of extraordinary danger and discomfort to extract the fuel that powered everything — were the first workers to organise in powerful ways.</p>
+
+  <p>The British miners' strikes of 1842, 1889, 1912, 1926, and 1984–85 were not just labour disputes. They were tests of who controlled the nation's energy supply. In 1926, the general strike triggered by the miners' lockout nearly paralysed the British economy. In 1974, striking miners brought down the Heath government. In 1984, Margaret Thatcher's confrontation with the NUM (National Union of Mineworkers) was, at its core, a battle over who would control energy infrastructure — the state and the market, or organised labour.</p>
+
+  <p>The energy question was always also the power question. Coal miners understood this intuitively. They were not just workers. They were gatekeepers of the fuel that everything else depended on. And when that gatekeeper role was stripped away — by natural gas, nuclear power, and eventually the deliberate closure of the pits — entire communities collapsed. The deindustrialisation of mining communities in Wales, Yorkshire, and Silesia wasn't just economic. It was cultural annihilation.</p>
+
+  <div class="pullquote">
+    <p>"Coal is not just a fuel. It is politics compressed into rock."</p>
+    <cite>— Adapted from energy historian Timothy Mitchell, Carbon Democracy (2011)</cite>
+  </div>
+
+  <h2>Coal and Climate: The Bill Arrives</h2>
+
+  <p>By the early 20th century, scientists were beginning to notice something. Swedish chemist Svante Arrhenius had calculated as early as 1896 that doubling atmospheric CO₂ would raise global temperatures by several degrees. He thought it would take thousands of years of coal burning to get there. He was wrong — not about the physics, but about the pace.</p>
+
+  <p>The Industrial Revolution didn't just burn coal. It burned a geological stockpile that had taken 300 million years to accumulate — at first slowly, then at a rate that accelerated with every generation. By 2023, atmospheric CO₂ had reached 420 parts per million — higher than at any point in the past 3 million years. The bill for 300 years of coal burning had arrived, and it was being charged not to the 18th-century industrialists who built the system, but to everyone alive today.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">1712</div>
+      <p>Newcomen's steam engine begins pumping water from British coalmines.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1769</div>
+      <p>James Watt patents the separate condenser, dramatically improving steam efficiency.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1830</div>
+      <p>Liverpool–Manchester Railway opens. Coal-powered locomotion connects industrial cities.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1850s–1900s</div>
+      <p>Industrial Revolution spreads to Germany, Belgium, France, USA. Coal becomes the geopolitical commodity of the century.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1896</div>
+      <p>Svante Arrhenius calculates the greenhouse effect of CO₂. The first climate warning.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1984–85</div>
+      <p>British miners' strike — the last great political battle over coal's role in the national energy system.</p>
+    </div>
+  </div>
+
+  <h2>The Pattern Repeating</h2>
+
+  <p>Notice again the cycle we identified in Chapter 01. Coal solved the wood crisis. It enabled an unprecedented population surge and economic expansion. Institutions — companies, unions, states, empires — formed to control it. It was overexploited, creating environmental damage and social disruption. And by the mid-20th century, something more powerful and portable had been found to replace it, at least partially.</p>
+
+  <p>That replacement was oil. And oil didn't just change energy. It changed war, diplomacy, daily life, and the very geography of global power in ways that coal never managed.</p>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="01-fire.html">← Chapter 01: Fire</a>
+    <a href="03-oil.html">Chapter 03: Oil →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 07: Climate — The Bill Comes Due | Energy Decoded | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero {
+    background: linear-gradient(135deg, #001a1a 0%, #003333 50%, #005555 100%);
+    color: #e8ffff;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(80,220,220,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .chapter-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#40e0e0; margin-bottom:16px; display:block; }
+  .chapter-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; margin-bottom:20px; color:#e8ffff; }
+  .chapter-hero .subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.25rem); color:#a0e8e8; max-width:600px; margin:0 auto 32px; line-height:1.6; }
+  .chapter-nav-bar { background:var(--paper-deep,#f5f0e8); border-bottom:2px solid var(--rust,#b5451b); padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:100; }
+  .chapter-nav-bar a { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; }
+  .chapter-nav-bar a:hover { text-decoration:underline; }
+  .chapter-progress { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .chapter-body { max-width:740px; margin:0 auto; padding:60px 24px 100px; }
+  .chapter-body h2 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; color:var(--ink,#2c1a0e); margin:56px 0 20px; }
+  .chapter-body h3 { font-family:'Fraunces',serif; font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:600; color:var(--ink,#2c1a0e); margin-bottom:14px; }
+  .chapter-body p { font-family:'Lora',serif; font-size:1.05rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:22px; }
+  .insight { background:#e8ffff; border-left:4px solid #20b2b2; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#005555; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#001a1a; color:#e8ffff; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#40e0e0; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#40e0e0; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#e8ffff; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #20b2b2; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#20b2b2; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#005555; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #20b2b2; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#005555; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index.html">← Hub: Energy Decoded</a>
+  <span class="chapter-progress">Chapter 07 of 08 · Climate</span>
+  <a href="08-future.html">Next: The Future →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Energy Decoded · Chapter 07</span>
+  <h1>Climate<br>The Bill Comes Due</h1>
+  <p class="subtitle">Every joule of energy humans have ever burned has had consequences. For most of history, those consequences were local and manageable. Then they became planetary, and the accounting changed everything.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>In 1958, a 29-year-old geochemist named Charles David Keeling set up a measurement station on the Mauna Loa volcano in Hawaii, at 3,400 metres altitude, far from any industrial pollution sources. He began measuring atmospheric CO₂ concentrations with a precision nobody had previously attempted. The readings started at around 315 parts per million.</p>
+
+  <p>Keeling kept measuring. Year after year, decade after decade, the readings climbed. In 1974: 330 ppm. In 1990: 355 ppm. In 2005: 380 ppm. In 2013: 400 ppm — a threshold that had not been crossed in at least 3 million years of Earth's history. In 2024: 426 ppm. The Keeling Curve, as the graph of his measurements became known, is one of the most consequential scientific datasets in human history — a continuous record of humanity burning its way through the planet's carbon budget, year by year, ppm by ppm.</p>
+
+  <p>This chapter is about what the accumulation of all that energy use has cost the planet, who is paying that bill, and what it means for the future of every energy decision we make.</p>
+
+  <h2>How the Greenhouse Effect Works</h2>
+
+  <div class="definition">
+    <strong>Definition — The Greenhouse Effect</strong>
+    <p>The greenhouse effect is a natural phenomenon: certain atmospheric gases (primarily water vapour, CO₂, methane, and nitrous oxide) absorb infrared radiation emitted by the Earth's surface and re-radiate it in all directions, including back towards the surface, warming it. Without any greenhouse effect, Earth's average surface temperature would be around -18°C — a frozen planet. With the natural greenhouse effect, it is about 15°C. The problem is the enhanced greenhouse effect: human activities — primarily burning fossil fuels and deforestation — have added CO₂ and other greenhouse gases to the atmosphere faster than natural systems can absorb them, intensifying the warming beyond what is natural. The atmosphere now traps more heat than it did 200 years ago. That extra heat has to go somewhere: into the oceans, into the air, into the ice caps. All of those processes are changing the climate.</p>
+  </div>
+
+  <p>The basic physics was worked out in the 19th century. In 1859, John Tyndall demonstrated in laboratory experiments that CO₂ absorbs infrared radiation. In 1896, Svante Arrhenius calculated that doubling atmospheric CO₂ would raise global temperatures by 5–6°C. He was approximately right, though modern estimates are slightly lower (1.5–4.5°C for a CO₂ doubling). None of this is new science. What is new is the speed at which we have confirmed it experimentally by burning 170 years' worth of fossil fuels.</p>
+
+  <h2>Who Caused It — and Who Is Paying</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">📊 Historical Emissions</span>
+      <p>The United States has emitted more cumulative CO₂ than any other country. The EU is second. China, though now the world's largest annual emitter, has far lower cumulative (historical) emissions because its industrialisation came later. The countries that industrialised earliest bear the greatest historical responsibility.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🌡️ Who Suffers</span>
+      <p>Climate change impacts fall most heavily on tropical and subtropical regions — the Global South — which are generally poorer, less able to adapt, and have contributed least to emissions. Bangladesh, the Sahel, the Pacific Islands, and sub-Saharan Africa face existential threats from sea level rise, drought, and extreme heat despite minimal historical contribution to the problem.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⏱️ Time Lag</span>
+      <p>The CO₂ we emit today won't fully express its warming potential for decades, because the oceans absorb heat slowly. This means we are currently experiencing the consequences of emissions from the 1980s and 1990s. The emissions we produce today are mortgaging the climate of the 2050s and 2060s.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">💸 The Loss and Damage Question</span>
+      <p>At the COP27 climate summit in 2022, developed nations agreed for the first time to create a "loss and damage" fund to compensate vulnerable nations for climate impacts they cannot prevent. The principle — that those who caused the problem should compensate those who bear its consequences — is simple. The political difficulty of operationalising it is vast.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🏭 Current Emitters</span>
+      <p>China (29%), USA (14%), EU (7%), India (7%), Russia (5%) account for the majority of current annual emissions. China's per-capita emissions are now close to the EU average. India's remain far below. The politics of who must cut fastest and deepest are fiercely contested at every international climate negotiation.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🔥 Feedback Loops</span>
+      <p>Climate change can accelerate itself through feedbacks: warming melts Arctic permafrost, releasing stored methane (a potent greenhouse gas). Warming reduces sea ice, reducing the Earth's reflectivity (albedo), causing further warming. These feedbacks mean the relationship between emissions and warming is not linear — it can tip.</p>
+    </div>
+  </div>
+
+  <h2>The Mediterranean Is Already On Fire</h2>
+
+  <p>If you want to understand what climate change means in practice, look at the Mediterranean basin. Climate scientists have identified the Mediterranean as one of the world's most acute climate hotspots — warming approximately 20% faster than the global average, experiencing more extreme heatwaves, longer droughts, reduced precipitation, and increasing wildfire risk.</p>
+
+  <p>The summer of 2021 brought Greece's worst wildfires in recorded history. Evia, Greece's second-largest island, burned for almost two weeks. Over 50,000 hectares were destroyed — forests, villages, agricultural land. The fires burned while Europe watched, and while the Greek government mobilised fire-fighting resources that proved inadequate for the scale of the disaster.</p>
+
+  <div class="story">
+    <strong>Real Story — The 2023 Evros Fires: The Largest Wildfire in EU History</strong>
+    <p>The summer of 2023 rewrote the record books. In the Evros region of northeastern Greece, a wildfire ignited in late August and burned for 16 days — ultimately consuming approximately 730,000 hectares of forest. It was the largest single wildfire ever recorded in European Union history, surpassing all previous records by an enormous margin. The fire burned through protected Natura 2000 forest habitats, killed wildlife in quantities that may take decades to recover, and caused the evacuation of several villages.</p>
+    <p>The scale of the 2023 fires was not simply bad luck. Climate analysis attributed the conditions — prolonged drought, record heat, low humidity, and strong winds — directly to climate change. The region had experienced its driest summer in decades. The fire was not a natural disaster in the traditional sense of an act of God; it was a climate disaster in the precise sense of an extreme weather event made more likely and more severe by anthropogenic warming. Greece had contributed minimally to the global emissions that caused it. But Greece was on the front lines of paying the price.</p>
+  </div>
+
+  <h2>The 1.5°C Threshold: What It Means</h2>
+
+  <p>The 2015 Paris Agreement established a political target: limit global warming to 1.5°C above pre-industrial levels, with 2°C as a maximum. These numbers were not chosen arbitrarily. Extensive scientific analysis had identified 1.5°C as a threshold below which most climate impacts, while serious, remain manageable for most human societies. Above 2°C, the risk of irreversible impacts — glacial collapse, coral reef die-off, major sea level rise, ecosystem collapse — rises dramatically.</p>
+
+  <p>In 2023, for the first time, the global average temperature crossed 1.5°C above pre-industrial levels for an entire calendar year. This does not mean the Paris target has been "broken" — the target refers to long-term averages over decades, not single years. But it was a vivid demonstration of the trajectory we are on. At current emission trends, the world is heading for approximately 2.5–3°C of warming by 2100.</p>
+
+  <div class="insight">
+    <strong>Insight — What Does 2°C Actually Feel Like?</strong>
+    <p>The difference between 1.5°C and 2°C of global average warming sounds trivially small — less than a degree on a thermometer. But global averages conceal enormous local variation. At 2°C of average warming, the Arctic may warm by 6–8°C. Heat extremes that currently occur once every 50 years would occur once every 5 years. Coral reefs, which are already severely stressed at current temperatures, would face near-total bleaching. Sea levels would rise by an additional 10 centimetres compared to 1.5°C, threatening low-lying coastal cities. The difference between the targets represents hundreds of millions of people facing water stress, hundreds of thousands of square kilometres of agricultural land rendered marginal, and ecosystems pushed past tipping points from which they cannot recover.</p>
+  </div>
+
+  <h2>Carbon Pricing: The Economic Tool Nobody Wants</h2>
+
+  <p>Economists have broadly agreed for decades on the most efficient policy response to climate change: put a price on carbon emissions. If burning fossil fuels costs money — through a carbon tax or a cap-and-trade system where emission permits must be purchased — the incentive structure changes. Every economic decision that currently ignores the climate cost of carbon emissions would start to incorporate that cost. Renewables, energy efficiency, and low-carbon alternatives would become more competitive without specific subsidies.</p>
+
+  <p>The EU Emissions Trading System (ETS), established in 2005, is the world's largest carbon market. By 2023, the carbon price in the EU had risen to around €80–100 per tonne of CO₂ — high enough to make coal-fired electricity economically uncompetitive with gas and renewables in most circumstances. This contributed to a significant shift in the European electricity mix away from coal. But the ETS covers only part of the EU economy, and carbon pricing globally remains fragmentary and insufficient.</p>
+
+  <div class="story">
+    <strong>Real Story — Greece's Just Transition Challenge</strong>
+    <p>Western Macedonia in northern Greece was built around lignite coal. The mines and the power plants they fed employed tens of thousands of people and powered a regional economy for generations. When the EU's Green Deal and rising carbon prices made those power plants economically unviable in the early 2020s, Greece faced a classic "just transition" problem: how do you close a fossil fuel industry in a way that doesn't devastate the communities that depended on it?</p>
+    <p>Greece received EU Just Transition Fund support to manage the closure of its lignite plants and the transition of Western Macedonian workers and communities to new economic activities — renewable energy manufacturing, tourism, and services. The programme has had mixed results: some workers retrained successfully, others faced prolonged unemployment. The regional economy remains fragile. The "just" in just transition is harder to achieve than the "transition" itself. It is a challenge being repeated across every coal region in the world — the Ruhr in Germany, Silesia in Poland, Appalachia in the US — each with its own politics, history, and degree of success or failure.</p>
+  </div>
+
+  <h2>The Politics of Denial, Delay, and Transition</h2>
+
+  <p>The history of climate policy is also a history of organised obstruction. For decades, oil and gas companies — most notably ExxonMobil, as detailed in extensive investigative reporting — knew from their own internal research that their products were causing dangerous climate change, while simultaneously funding think tanks and campaigns designed to create public doubt about that science.</p>
+
+  <p>This is not conspiracy; it is documented history. The strategy was borrowed almost directly from the tobacco industry's playbook: fund uncertainty rather than denial. You don't need to prove smoking is safe — you just need to make the science seem contested, so that action seems premature. The same strategy delayed effective climate policy by approximately two to three decades. Those decades of delay are now locked into the atmosphere as additional CO₂ that will heat the planet for centuries.</p>
+
+  <div class="pullquote">
+    <p>"The climate crisis is not a failure of science. It is a failure of politics — and of the economic interests that shaped those politics for half a century."</p>
+    <cite>— Climate policy paraphrase, multiple sources</cite>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">1896</div>
+      <p>Svante Arrhenius calculates the greenhouse effect of CO₂. The physics is understood before the industrial age reaches full speed.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1958</div>
+      <p>Keeling begins measuring atmospheric CO₂ at Mauna Loa. The continuous record of human impact on the atmosphere begins.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1988</div>
+      <p>James Hansen testifies to the US Congress that global warming is underway and human-caused. Climate change enters mainstream political consciousness.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1992</div>
+      <p>UN Framework Convention on Climate Change signed at Rio. The international climate negotiation framework is established.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1997</div>
+      <p>Kyoto Protocol adopted. First binding international emissions reduction targets — but the US never ratifies.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2015</div>
+      <p>Paris Agreement. 196 countries commit to limiting warming to 1.5–2°C. No enforcement mechanism.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2021</div>
+      <p>Evia fires, Greece. 50,000 hectares destroyed in Greece's worst recorded wildfire summer.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2023</div>
+      <p>Evros fires — largest EU wildfire in recorded history (730,000 ha). Annual global temperature exceeds 1.5°C above pre-industrial levels for the first time.</p>
+    </div>
+  </div>
+
+  <h2>The Path Still Available</h2>
+
+  <p>It would be easy, at this point in the story, to conclude that the situation is hopeless. It is not. The scientific consensus is that catastrophic climate change — warming of 4°C or more — is still avoidable if emissions are reduced rapidly. The renewable revolution described in the previous chapter is real and accelerating. The cost of clean energy has fallen faster than anyone predicted. Electric vehicles are displacing petrol cars faster than most forecasts projected.</p>
+
+  <p>The window for limiting warming to 1.5°C is almost certainly closed. But the window for 2°C, and more importantly for limiting overshoot and eventual stabilisation, remains open. Every fraction of a degree of warming avoided matters. Every year of faster transition reduces the harm. The bill has come due, but how large it ultimately is depends on decisions being made right now, in boardrooms and parliaments and living rooms around the world.</p>
+
+  <p>In the final chapter, we look forward — at the energy technologies and systems that might define the next fifty years, and at the choices that will determine what kind of energy future humanity actually builds.</p>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="06-renewables.html">← Chapter 06: Renewables</a>
+    <a href="08-future.html">Chapter 08: The Future →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

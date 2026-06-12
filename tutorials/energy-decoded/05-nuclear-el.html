@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Κεφάλαιο 05: Πυρηνική — Η Φωτιά Μέσα στο Άτομο | Ενέργεια Αποκωδικοποιημένη | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero { background:linear-gradient(135deg,#001a00 0%,#003310 50%,#005520 100%); color:#e8ffe8; padding:80px 40px 60px; text-align:center; position:relative; overflow:hidden; }
+  .chapter-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%,rgba(80,255,120,0.12) 0%,transparent 70%); pointer-events:none; }
+  .chapter-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#66ff88; margin-bottom:16px; display:block; }
+  .chapter-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; margin-bottom:20px; color:#e8ffe8; }
+  .chapter-hero .subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.25rem); color:#a8ffb8; max-width:600px; margin:0 auto 32px; line-height:1.6; }
+  .chapter-nav-bar { background:var(--paper-deep,#f5f0e8); border-bottom:2px solid var(--rust,#b5451b); padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:100; }
+  .chapter-nav-bar a { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; }
+  .chapter-nav-bar a:hover { text-decoration:underline; }
+  .chapter-progress { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .chapter-body { max-width:740px; margin:0 auto; padding:60px 24px 100px; }
+  .chapter-body h2 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; color:var(--ink,#2c1a0e); margin:56px 0 20px; }
+  .chapter-body h3 { font-family:'Fraunces',serif; font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:600; color:var(--ink,#2c1a0e); margin-bottom:14px; }
+  .chapter-body p { font-family:'Lora',serif; font-size:1.05rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:22px; }
+  .insight { background:#eeffee; border-left:4px solid #339933; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#226622; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#001a00; color:#e8ffe8; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#66ff88; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#66ff88; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#e8ffe8; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #339933; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#339933; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#226622; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #339933; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#226622; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index-el.html">← Hub: Ενέργεια Αποκωδικοποιημένη</a>
+  <span class="chapter-progress">Κεφάλαιο 05 από 08 · Πυρηνική</span>
+  <a href="06-renewables-el.html">Επόμενο: Ανανεώσιμες →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Ενέργεια Αποκωδικοποιημένη · Κεφάλαιο 05</span>
+  <h1>Πυρηνική Ενέργεια<br>Η Φωτιά Μέσα στο Άτομο</h1>
+  <p class="subtitle">Υποσχέθηκε ηλεκτρισμό τόσο φτηνό ώστε να μην αξίζει τον κόπο να μετράς. Παρέδωσε την πιο πολιτικά «ραδιενεργή» τεχνολογία που έχει επινοηθεί ποτέ. Η ιστορία της πυρηνικής ενέργειας είναι μια ιστορία φόβου, φυσικής και της πολιτικής της ενέργειας.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>Το πρωί της 16ης Ιουλίου 1945, η πρώτη πυρηνική συσκευή του κόσμου — μια πλουτώνιο-βόμβα αντίκρουσης κωδικονομαζόμενη «The Gadget» — πυροδοτήθηκε στην τοποθεσία δοκιμής Trinity στην έρημο του Νέου Μεξικό. Η έκρηξη ήταν ισοδύναμη περίπου με 20.000 τόνους TNT. Δημιούργησε κρατήρα 1,5 μέτρου βάθους και 330 μέτρων πλάτους. Μετέτρεψε την άμμο της ερήμου σε πρασινωπό γυαλί που ονομάστηκε τρινιτίτης. Ήταν, με την πιο κυριολεκτική έννοια, ένα νέο είδος φωτιάς.</p>
+
+  <p>Ο Robert Oppenheimer, παρακολουθώντας τη φλόγα να ανεβαίνει, ανέκαλε αργότερα ότι σκέφτηκε μια γραμμή από τη Bhagavad Gita: «Τώρα έγινα ο Θάνατος, ο καταστροφέας των κόσμων.» Τρεις εβδομάδες αργότερα, δύο ατομικές βόμβες τερμάτισαν έναν πόλεμο, σκότωσαν περίπου 200.000 ανθρώπους σε δύο πόλεις, και αναδιάρθρωσαν μόνιμα τη γεωπολιτική τάξη. Η πυρηνική ενέργεια έφτασε όχι ως δώρο αλλά ως όπλο — και αυτό το αρχικό πλαίσιο κατεδίωξε κάθε πολιτική εφαρμογή από τότε.</p>
+
+  <h2>Η Ελλάδα και το Εγκαταλελειμμένο Πυρηνικό Πρόγραμμα</h2>
+
+  <p>Πολύ λίγοι γνωρίζουν ότι η Ελλάδα κάποτε σκέφτηκε σοβαρά την πυρηνική ενέργεια. Στη δεκαετία του 1970 — εν μέρει παρακινούμενη από το πετρελαϊκό σοκ του 1973, εν μέρει από την επιθυμία να μειώσει την ενεργειακή εξάρτηση — η Ελλάδα ενέκρινε σχέδια για ένα πυρηνικό εργοστάσιο στο Λαύριο, στη νοτιοανατολική ακτή της Αττικής. Ιδρύθηκε η Ελληνική Επιτροπή Ατομικής Ενέργειας. Πραγματοποιήθηκαν προκαταρκτικές έρευνες τοποθεσίας.</p>
+
+  <div class="story">
+    <strong>Αληθινή Ιστορία — Το Λαύριο που Δεν Χτίστηκε Ποτέ</strong>
+    <p>Το έργο δεν κατασκευάστηκε ποτέ. Η πολιτική αστάθεια στα τέλη της δεκαετίας του 1970 και η καταστροφή του Τσερνόμπιλ το 1986 έκλεισαν ουσιαστικά τη συζήτηση. Η Ελλάδα παρέμεινε εξαρτημένη από εισαγόμενο πετρέλαιο και τον δικό της λιγνίτη χαμηλής ποιότητας για παραγωγή ηλεκτρισμού. Η απόφαση είχε μακροχρόνιες συνέπειες: η Ελλάδα εισήλθε στον 21ο αιώνα με ενεργειακό μείγμα βαριά φορτωμένο σε ανθρακούχα καύσιμα, απαιτώντας ταχεία και δαπανηρή μεταβολή καθώς αυστηροποιήθηκαν οι κλιματικοί στόχοι της ΕΕ. Το εγκαταλελειμμένο πυρηνικό πρόγραμμα είναι μια μικρή απεικόνιση ενός μεγαλύτερου μοτίβου: αποφάσεις που δεν λαμβάνονται — μη-γεγονότα — μπορούν να διαμορφώσουν το ενεργειακό μέλλον εξίσου ισχυρά με αποφάσεις που λαμβάνονται.</p>
+    <p>Σήμερα, παράδοξα, η Ελλάδα εισάγει σημαντικές ποσότητες ηλεκτρισμού από τη Γαλλία — η οποία παράγει περίπου 70% του ηλεκτρισμού της από πυρηνική ενέργεια. Η θεωρητική επιλογή έγινε πρακτική πραγματικότητα ούτως ή άλλως, μέσω διασυνδετήριων.</p>
+  </div>
+
+  <h2>Οι Αριθμοί που Κανείς Δεν Θέλει να Ακούσει</h2>
+
+  <p>Να ένα γεγονός που εκπλήσσει συνεχώς τον κόσμο: η πυρηνική ενέργεια έχει τον χαμηλότερο δείκτη θανάτων ανά μονάδα ενέργειας από κάθε μεγάλη πηγή ισχύος, συμπεριλαμβανομένης της αιολικής και ηλιακής. Μελέτες βρίσκουν με συνέπεια ότι η πυρηνική ενέργεια σκοτώνει λιγότερους ανθρώπους ανά terawatt-hour που παράγεται από τον άνθρακα, το πετρέλαιο, το αέριο ή ακόμα και τη βιομάζα — και περίπου συγκρίσιμα με αιολικά και ηλιακά.</p>
+
+  <p>Η ηλεκτροπαραγωγή από λιθάνθρακα προκαλεί εκατομμύρια θανάτους ετησίως λόγω ατμοσφαιρικής ρύπανσης. Αυτή η θνητότητα είναι αόρατη γιατί συμβαίνει ένα άτομο τη φορά, χωρίς δραματικά γεγονότα. Το Τσερνόμπιλ σκότωσε δεκάδες σε άμεσους θανάτους από ακτινοβολία και ίσως χιλιάδες μέσω αυξημένων ποσοστών καρκίνου. Ένα μεγάλο εργοστάσιο λιθάνθρακα σκοτώνει παρόμοιους αριθμούς κάθε λίγα χρόνια, αθόρυβα, χωρίς ειδησεογραφική κάλυψη, μέσω του αέρα που ρυπαίνει.</p>
+
+  <div class="insight">
+    <strong>Ιδέα — Γιατί Η Αντίληψη και η Πραγματικότητα Αποκλίνουν Τόσο Πολύ</strong>
+    <p>Οι ψυχολόγοι ονομάζουν την πυρηνική αντίδραση φόβου «κίνδυνο τρόμου» — την τάση να φοβόμαστε δυσανάλογα τους καταστροφικούς, ακούσιους, αόρατους, κακώς κατανοητούς κινδύνους, ακόμα και όταν είναι στατιστικά λιγότερο επικίνδυνοι από τους κοινότοπους κινδύνους που αποδεχόμαστε χωρίς ανησυχία. Οδηγάμε αυτοκίνητα χωρίς ιδιαίτερο άγχος. Τρώμε τρόφιμα μολυσμένα από γεωργικά φάρμακα χωρίς διαμαρτυρία. Αλλά ένα πυρηνικό ατύχημα που σκοτώνει δεκάδες προκαλεί αντίδραση επιπέδου πολιτισμού. Η ασυμμετρία δεν είναι παράλογη — η δραματική, συγκεντρωμένη βλάβη είναι ποιοτικά διαφορετική από τη διάχυτη, αόρατη βλάβη. Αλλά σημαίνει ότι οι αποφάσεις ενεργειακής πολιτικής που βασίζονται κυρίως στον δημόσιο φόβο της πυρηνικής ενέργειας μπορεί να υποτιμούν συστηματικά τις πολύ πραγματικές, πολύ μεγάλες βλάβες των εναλλακτικών.</p>
+  </div>
+
+  <div class="pullquote">
+    <p>«Το πρόβλημα με την πυρηνική ενέργεια δεν είναι ότι είναι επικίνδυνη. Το πρόβλημα είναι ότι είναι περίπλοκη — τεχνικά, πολιτικά, οικονομικά και συναισθηματικά. Και εμείς δεν είμαστε καλοί στα περίπλοκα.»</p>
+    <cite>— Παράφραση αναλυτή ενέργειας, πολλαπλές πηγές</cite>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">1938</div>
+      <p>Ο Otto Hahn και η Lise Meitner αποδεικνύουν τη διάσπαση πυρήνα. Η θεωρητική βάση για βόμβες και αντιδραστήρες εδραιώνεται.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1945</div>
+      <p>Δοκιμή Trinity. Χιροσίμα και Ναγκασάκι. Η πυρηνική ενέργεια φτάνει ως όπλο.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1970s</div>
+      <p>Η Ελλάδα εξετάζει πυρηνικό εργοστάσιο στο Λαύριο. Το πετρελαϊκό σοκ του 1973 ωθεί παγκοσμίως σε διαφοροποίηση ενέργειας.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">1986</div>
+      <p>Τσερνόμπιλ. Το καθοριστικό πυρηνικό ατύχημα. Τα πυρηνικά σχέδια της Ελλάδας εγκαταλείπονται οριστικά.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2011</div>
+      <p>Φουκουσίμα. Η Γερμανία κλείνει πυρηνικά εργοστάσια. Η Ιαπωνία κλείνει ολόκληρο τον στόλο 50 αντιδραστήρων.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">2022–2024</div>
+      <p>Ενεργειακή κρίση, κλιματική πίεση και ζήτηση κέντρων δεδομένων AI αναζωπυρώνουν παγκοσμίως το ενδιαφέρον για την πυρηνική.</p>
+    </div>
+  </div>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="04-electricity-el.html">← Κεφάλαιο 04: Ηλεκτρισμός</a>
+    <a href="06-renewables-el.html">Κεφάλαιο 06: Ανανεώσιμες →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

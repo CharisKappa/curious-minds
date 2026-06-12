@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 01: Fire — The First Energy Revolution | Energy Decoded | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero {
+    background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 50%, #7a3500 100%);
+    color: #fff8f0;
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(255,120,20,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .chapter-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ff9a40;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .chapter-hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #fff8f0;
+  }
+  .chapter-hero .subtitle {
+    font-family: 'Lora', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #ffd4a8;
+    max-width: 600px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+  .chapter-nav-bar {
+    background: var(--paper-deep, #f5f0e8);
+    border-bottom: 2px solid var(--rust, #b5451b);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .chapter-nav-bar a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--rust, #b5451b);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .chapter-nav-bar a:hover { text-decoration: underline; }
+  .chapter-progress {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-light, #6b5e4e);
+    letter-spacing: 0.08em;
+  }
+  .chapter-body {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+  .chapter-body h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ink, #2c1a0e);
+    margin: 56px 0 20px;
+    line-height: 1.25;
+  }
+  .chapter-body h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--rust, #b5451b);
+    margin: 36px 0 14px;
+  }
+  .chapter-body p {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink, #2c1a0e);
+    margin-bottom: 22px;
+  }
+  .insight {
+    background: #fff8f0;
+    border-left: 4px solid #ff9a40;
+    padding: 20px 24px;
+    margin: 32px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .insight strong {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b5451b;
+    margin-bottom: 8px;
+  }
+  .insight p { margin: 0; font-size: 0.98rem; }
+  .definition {
+    background: #f0f4ff;
+    border: 1px solid #b8c8ff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 28px 0;
+  }
+  .definition strong {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3a5ccc;
+    margin-bottom: 8px;
+  }
+  .definition p { margin: 0; font-size: 0.98rem; }
+  .story {
+    background: #1a0a00;
+    color: #fff0d8;
+    border-radius: 10px;
+    padding: 28px 30px;
+    margin: 36px 0;
+    position: relative;
+  }
+  .story::before {
+    content: '◈';
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 1.4rem;
+    color: #ff9a40;
+    opacity: 0.5;
+  }
+  .story strong {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ff9a40;
+    margin-bottom: 10px;
+  }
+  .story p { margin: 0 0 12px; font-size: 0.98rem; line-height: 1.75; color: #fff0d8; }
+  .story p:last-child { margin-bottom: 0; }
+  .pullquote {
+    margin: 40px 0;
+    padding: 0 0 0 28px;
+    border-left: 4px solid var(--rust, #b5451b);
+  }
+  .pullquote p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+    font-style: italic;
+    color: var(--ink, #2c1a0e);
+    line-height: 1.5;
+    margin: 0 0 10px;
+  }
+  .pullquote cite {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-light, #6b5e4e);
+    letter-spacing: 0.08em;
+  }
+  .timeline {
+    border-left: 3px solid #ff9a40;
+    padding: 0 0 0 28px;
+    margin: 36px 0;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: #ff9a40;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  .timeline-item .year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: #b5451b;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+  .timeline-item p { margin: 0; font-size: 0.95rem; }
+  .context-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .context-card {
+    background: var(--paper-deep, #f5f0e8);
+    border-radius: 8px;
+    padding: 16px 18px;
+    border-top: 3px solid #ff9a40;
+  }
+  .context-card .ctx-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #b5451b;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .context-card p { margin: 0; font-size: 0.88rem; line-height: 1.5; }
+  .chapter-footer {
+    border-top: 2px solid var(--paper-deep, #f5f0e8);
+    margin-top: 80px;
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .chapter-footer a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--rust, #b5451b);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    padding: 10px 20px;
+    border: 1.5px solid var(--rust, #b5451b);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .chapter-footer a:hover { background: var(--rust, #b5451b); color: #fff; }
+  @media (max-width: 600px) {
+    .chapter-hero { padding: 60px 20px 40px; }
+    .chapter-nav-bar { padding: 12px 20px; }
+    .chapter-body { padding: 40px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index.html">← Hub: Energy Decoded</a>
+  <span class="chapter-progress">Chapter 01 of 08 · Fire</span>
+  <a href="02-coal.html">Next: Coal →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Energy Decoded · Chapter 01</span>
+  <h1>Fire<br>The First Energy Revolution</h1>
+  <p class="subtitle">One species learned to hold a spark. Nothing would ever be the same.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>Somewhere in Africa, roughly 400,000 years ago, a small group of early humans crouched around something no other animal had ever controlled: a deliberate, sustained fire. They hadn't stumbled on it. They had made it. And in that moment — knuckles warm against the dark, meat sizzling on a stone — the entire trajectory of our species quietly pivoted.</p>
+
+  <p>Energy is the story of everything. It's not a side chapter in the history of human civilisation — it <em>is</em> that history. Every empire, every war, every economic revolution, every cultural shift can ultimately be traced back to a single question: where does the energy come from, and who controls it?</p>
+
+  <p>We start at the beginning. Not with coal or oil or electricity. We start with fire.</p>
+
+  <h2>The World Before Fire Control</h2>
+
+  <p>To understand what fire meant, you first have to appreciate how brutally constrained early human life was without it. Our ancestors in the Pleistocene epoch — roughly 2.6 million to 11,700 years ago — lived in a world of radical scarcity. The day ended when the sun went down. Predators owned the dark. Food had to be eaten quickly before it rotted or was stolen. The body had to burn enormous amounts of its own calories just to stay warm through cold nights.</p>
+
+  <p>In that world, every human being was essentially a biological machine running on raw, unprocessed sunlight — in the form of plants and animals they consumed. They had no leverage. No stored energy. No way to extend the productive hours of the day or protect themselves from the cold with anything other than fur and body heat.</p>
+
+  <div class="definition">
+    <strong>Definition — Energy Leverage</strong>
+    <p>Leverage, in energy terms, means getting more useful output from the same biological input. A person digging with a stick has low leverage. A person using fire to harden a digging tool has higher leverage. The history of civilisation is largely the history of humans finding increasingly powerful forms of energy leverage.</p>
+  </div>
+
+  <h2>The 360° Context: What Kind of World Was This?</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">🌍 Geopolitical</span>
+      <p>No nations. No borders. Small bands of 20–80 humans competed over territory, food sources, and water. Power was raw and personal — the strongest bodies, the fastest runners, the best hunters.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚡ Energy</span>
+      <p>100% biological. Every calorie that powered human activity came directly from food. No stored energy. No amplification. If you didn't eat, you couldn't work, fight, or reproduce.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">💰 Economic</span>
+      <p>No economy in any recognisable sense. Survival was the only currency. Sharing food within a band was insurance, not generosity — you might need their help tomorrow.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚔️ Conflict</span>
+      <p>Conflict was immediate and personal — over food, mates, and territory. No armies, no strategy, no logistics. Violence was face-to-face and finite.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🔬 Science</span>
+      <p>No formal science, but intense practical intelligence. Early humans understood seasons, animal behaviour, plant cycles, and stone properties better than most modern people. Survival demanded it.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🧠 Human Needs</span>
+      <p>The hierarchy was stripped to basics: food, warmth, safety, reproduction. Everything else was luxury. Darkness was danger. Cold was death. Fire addressed both in a single stroke.</p>
+    </div>
+  </div>
+
+  <h2>How It Actually Happened</h2>
+
+  <p>The archaeological evidence is frustratingly incomplete, but we have some anchor points. The site of Wonderwerk Cave in South Africa contains what appears to be the oldest evidence of controlled fire use — burned bone and plant ash dating to roughly one million years ago. By 400,000 years ago, fire use was widespread across Africa, Europe, and parts of Asia.</p>
+
+  <p>The key word is "controlled." Lightning starts fires. Volcanic eruptions start fires. Early hominids almost certainly encountered and used opportunistic fire — grabbing burning wood from a natural fire to carry warmth and light. The leap was learning to <em>create</em> fire intentionally, on demand, from friction or percussion.</p>
+
+  <div class="story">
+    <strong>Real Story — The Neanderthals of Europe</strong>
+    <p>For a long time, scientists assumed Neanderthals — our closest evolutionary cousins, who occupied Europe and western Asia for roughly 300,000 years — either couldn't make fire or only used it occasionally. Then came a series of discoveries at sites across France and Germany.</p>
+    <p>Neanderthal hearths. Not just ash, but structured hearths — deliberately constructed fireplaces, used repeatedly over generations, positioned near cave entrances to maximise ventilation and light. And crucially, at some sites, traces of manganese dioxide — a substance that dramatically lowers the ignition temperature of wood when struck with flint. They weren't just using fire. They were chemically optimising it.</p>
+    <p>The Neanderthals of Europe were sophisticated fire-makers who survived brutal Ice Age winters partly because of their mastery of combustion. When <em>Homo sapiens</em> arrived in Europe around 45,000 years ago, they were moving into a landscape where fire management was already an established technology.</p>
+  </div>
+
+  <h2>What Fire Actually Changed</h2>
+
+  <p>The impact of fire control was not one thing. It was a cascade — each benefit enabling the next, compounding over thousands of generations.</p>
+
+  <h3>Cooking unlocked the body</h3>
+  <p>This is the one most people overlook. Cooked food delivers more usable calories per gram than raw food. The heat breaks down cell walls and denatures proteins, making nutrients far more bioavailable. Anthropologist Richard Wrangham has argued — controversially but compellingly — that cooking effectively gave early humans a "second stomach." Our guts became shorter, our brains became larger, and our bodies redirected energy from digestion to cognition. Fire may literally be the reason we are intelligent.</p>
+
+  <h3>Light extended the day</h3>
+  <p>With fire, the productive hours of the day effectively doubled. Crafting, storytelling, planning, social bonding — all of this could happen after sunset. The campfire became the world's first social technology. The ideas that got shared and refined around evening fires became the cultural inheritance that one generation passed to the next.</p>
+
+  <h3>Heat expanded the range</h3>
+  <p>Without fire, the northern latitudes were essentially uninhabitable for naked-skinned primates. With it, humans could push into Europe, Central Asia, and eventually the Arctic. Fire didn't just warm bodies — it enabled geographic expansion that no other primate has ever achieved.</p>
+
+  <h3>Fear turned around</h3>
+  <p>For most of evolutionary history, humans were not apex predators. We were medium-sized, slow, and fragile. Wolves, lions, bears, cave hyenas — all were threats. Fire reversed this equation almost overnight. Animals fear fire instinctively. A firelit camp was a protected camp. For the first time, the dark was safer <em>with</em> us than without us.</p>
+
+  <div class="pullquote">
+    <p>"We are the only animals that cook our food, and it is this, more than any other single thing, that separates us from the rest of the animal kingdom."</p>
+    <cite>— Richard Wrangham, primatologist, Harvard University</cite>
+  </div>
+
+  <h2>Fire as the First Energy Economy</h2>
+
+  <p>Here's the part that usually gets skipped: fire created the first energy economy.</p>
+
+  <p>Before fire, there was no meaningful difference between one campsite and another, energy-wise. After fire, there was an enormous difference between groups that could reliably make fire and those that couldn't. The ability to produce fire became a form of wealth — something that could be maintained, traded, protected, and lost.</p>
+
+  <p>Early human groups almost certainly guarded their fire-making knowledge fiercely. Knowing how to create fire from friction — the technique, the right wood combinations, the exact motion — was strategic intelligence. Groups that lost this knowledge in a harsh winter were at existential risk. Those who could teach it, trade it, or carry it had a survival advantage.</p>
+
+  <div class="insight">
+    <strong>Insight — The First Energy Monopoly</strong>
+    <p>The shaman or fire-keeper in early human societies was not just a spiritual figure — they were an energy infrastructure manager. Control over fire-making knowledge was the first instance of a pattern that would repeat across all of human history: whoever controls the energy source controls the power. The Mesopotamian oil ministers, the 20th-century OPEC cartel, the nuclear states — all are echoes of the Pleistocene fire-keeper.</p>
+  </div>
+
+  <h2>The Agricultural Pivot: Fire Meets Soil</h2>
+
+  <p>The really dramatic transformation came about 12,000 years ago, when something called the Holocene began — the remarkably stable warm period that followed the last Ice Age. Temperatures stabilised. Rainfall patterns became predictable. And in several places around the world — the Fertile Crescent, the Yangtze River valley, the highlands of Mexico — humans stopped moving.</p>
+
+  <p>They began farming. And fire was the critical tool that made farming possible at scale.</p>
+
+  <p>Slash-and-burn agriculture — clearing forest with fire to create fertile, ash-enriched planting ground — was the dominant land-management technology for millennia. It's still used today in parts of the Amazon and Southeast Asia. Fire converted dense, unusable forest into productive farmland. It recycled nutrients from dead biomass back into the soil. It drove away insects and pests. It was simultaneously a clearing tool, a fertiliser, and a pest-control system.</p>
+
+  <div class="story">
+    <strong>Real Story — The Fertile Crescent</strong>
+    <p>Around 10,000 BCE, the region we now call the Fertile Crescent — stretching from modern-day Iraq through Syria, Lebanon, Jordan, and Israel — was the site of humanity's first agricultural revolution. The people of this region, the Proto-Neolithic inhabitants, had access to wild wheat, barley, lentils, and livestock. But the land was heavily wooded in places, and the soil was often locked up in dead organic matter.</p>
+    <p>Fire was the key that unlocked it. Systematic burning of woodland created open fields. Ash improved soil fertility. And crucially, burning could be timed to the season — burning in dry months, planting after the first rains. The energy stored in wood was converted into agricultural productivity. The surplus fed more people, who could specialise — not everyone needed to farm. And specialisation was the first step toward civilisation.</p>
+  </div>
+
+  <h2>A Greek and Mediterranean Lens</h2>
+
+  <p>In ancient Greek culture, fire wasn't just technology — it was theology. The myth of Prometheus is one of the most telling energy stories ever told. Prometheus, a Titan, steals fire from the gods on Mount Olympus and gives it to humanity. Zeus punishes him for eternity — chained to a rock, his liver eaten daily by an eagle.</p>
+
+  <p>Why such a severe punishment? Because the Greek cultural memory understood, at some level, that fire wasn't just warmth and cooking. Fire was power. It was the ability to smelt metal, build navies, forge weapons. Fire was the energy that would allow humans to challenge divine-scale forces. No wonder the gods didn't want us to have it.</p>
+
+  <p>In practical terms, the Mediterranean world was built on fire in the most literal sense. Greek and Phoenician civilisations were maritime powers — their ships were built from timber, dried and shaped using controlled heat. Their bronze weapons and tools were smelted with charcoal. Their pottery — the backbone of Mediterranean trade — was fired in kilns. Fire was the energy substrate of an entire trade-based civilisation that would eventually become the foundation of Western culture.</p>
+
+  <div class="insight">
+    <strong>Insight — Deforestation as the First Energy Crisis</strong>
+    <p>By the classical period (around 500–300 BCE), large parts of the Mediterranean had been significantly deforested. Greece, which had once been heavily wooded, was losing its forests to fuel demand — charcoal for smelting, timber for shipbuilding, wood for heating and cooking. Plato himself, writing in the 4th century BCE, described Attica (the region around Athens) as a skeleton from which the soil had been washed away after deforestation. The ancient world's first energy crisis was a wood crisis. Sound familiar?</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">~1,000,000 BCE</div>
+      <p>Earliest evidence of controlled fire use at Wonderwerk Cave, South Africa.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~400,000 BCE</div>
+      <p>Fire use widespread across Africa, Europe, and Asia. Neanderthal hearths appear in Europe.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~12,000 BCE</div>
+      <p>Agricultural revolution begins. Slash-and-burn farming emerges across multiple continents.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~5,000 BCE</div>
+      <p>Charcoal smelting enables copper and bronze metallurgy. Fire becomes an industrial tool.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~500 BCE</div>
+      <p>Mediterranean deforestation accelerates as Greek and Phoenician civilisations industrialise fire use at scale.</p>
+    </div>
+  </div>
+
+  <h2>The Deep Pattern</h2>
+
+  <p>Before we move on to coal and the next revolution, notice the pattern that fire established — because it will repeat, with different fuels, for the next 12,000 years.</p>
+
+  <p>First: a new energy source becomes available — not necessarily new in nature, but newly accessible or controllable by humans. Second: that energy source enables a population surge and an economic leap, because more people can be fed and more work can be done. Third: institutions form around controlling the new energy — monopolies, priesthoods, guilds, states. Fourth: the energy source gets overexploited, creating scarcity and conflict. Fifth: the search for the next energy source begins.</p>
+
+  <p>Fire → wood shortage → charcoal → deforestation → the need for a new fuel. The story of coal begins exactly where this story ends.</p>
+
+  <div class="pullquote">
+    <p>"Energy is the only universal currency: one of its many forms must be transformed to get anything done."</p>
+    <cite>— Vaclav Smil, energy historian</cite>
+  </div>
+
+  <h2>Closing Thought: What We Carry</h2>
+
+  <p>Every time you turn on a gas stove or strike a match, you're participating in a 400,000-year-old human tradition. The chemistry is different. The scale is incomprehensible by Pleistocene standards. But the fundamental act — deliberately releasing stored chemical energy as heat and light — is exactly what our ancestors did in the caves of South Africa and the forests of Ice Age Europe.</p>
+
+  <p>Fire didn't just warm us. It made us. It extended our days, cooked our food, expanded our territory, and gave us the leverage to build every civilisation that followed. Without it, we are just another large primate, cold in the dark.</p>
+
+  <p>The question that haunted every generation after the first fire-makers is still the same one we're asking today: how do we keep the fire burning without burning everything else down?</p>
+
+  <p>In the next chapter, we'll see what happens when humanity finds a new fire — one buried deep underground, compressed over 300 million years, and powerful enough to reshape the entire planet.</p>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="index.html">← Hub</a>
+    <a href="02-coal.html">Chapter 02: Coal →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>
