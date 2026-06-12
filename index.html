@@ -3,235 +3,410 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Things I'm figuring out — A personal learning space</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared/styles.css">
+<title>Energy Decoded — Fire to Fusion | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
 <style>
-  .tutorial-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .tutorial-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--paper-deep);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 2.2rem;
-    text-decoration: none;
-    color: var(--ink);
-    transition: all 0.25s;
+  .hub-hero {
+    background: linear-gradient(160deg, #0d0800 0%, #2a1200 35%, #1a0a30 70%, #0a1a00 100%);
+    color: #fff8ec;
+    padding: 100px 40px 80px;
+    text-align: center;
     position: relative;
+    overflow: hidden;
   }
-
-  .tutorial-card:hover {
-    border-color: var(--rust);
-    background: var(--paper-darker);
-    transform: translateY(-2px);
+  .hub-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(255,160,20,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(80,60,255,0.12) 0%, transparent 50%);
+    pointer-events: none;
   }
-
-  .tutorial-card:hover .tutorial-card-arrow {
-    transform: translateX(8px);
-    color: var(--rust);
-  }
-
-  .tutorial-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.4rem;
-  }
-
-  .tutorial-num {
+  .hub-eyebrow {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--ink-faded);
+    color: #ffa020;
+    margin-bottom: 20px;
+    display: block;
   }
-
-  .status-badge {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    padding: 0.3rem 0.6rem;
-    border-radius: 2px;
-    font-weight: 600;
-  }
-  .status-badge.is-complete { color: var(--paper); background: var(--olive); }
-  .status-badge.is-progress { color: var(--paper); background: var(--rust); }
-  .status-badge.is-future   { color: var(--ink-faded); background: transparent; border: 1px solid var(--line); }
-
-  .tutorial-card h2 {
+  .hub-hero h1 {
     font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: 2rem;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 900;
     line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 0.8rem;
+    margin-bottom: 24px;
+    color: #fff8ec;
   }
-  .tutorial-card h2 em { font-style: italic; color: var(--rust-deep); }
-
-  .tutorial-card-blurb {
-    font-size: 0.98rem;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin-bottom: 1.6rem;
-    flex: 1;
+  .hub-hero h1 span {
+    display: block;
+    font-size: 0.55em;
+    font-weight: 400;
+    color: #ffd080;
+    letter-spacing: 0.05em;
+    margin-top: 8px;
   }
-
-  .tutorial-card-foot {
+  .hub-hero p {
+    font-family: 'Lora', serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: #ffd4a0;
+    max-width: 620px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+  .hub-meta {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--line);
-  }
-
-  .tutorial-langs {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faded);
-  }
-
-  .tutorial-card-arrow {
-    font-size: 1.4rem;
-    color: var(--ink-faded);
-    transition: all 0.25s;
-  }
-
-  .tutorial-card.is-add {
-    border-style: dashed;
-    border-color: var(--ink-faded);
-    background: transparent;
-    align-items: center;
     justify-content: center;
-    text-align: center;
-    min-height: 220px;
-    cursor: default;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
   }
-  .tutorial-card.is-add:hover {
-    transform: none;
-    border-color: var(--rust);
-    background: transparent;
+  .hub-meta span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: #ffa020;
+    letter-spacing: 0.08em;
+    padding: 6px 16px;
+    border: 1px solid rgba(255,160,32,0.4);
+    border-radius: 20px;
   }
-  .tutorial-card.is-add .add-mark {
+  .lang-toggle {
+    display: inline-flex;
+    gap: 0;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .lang-toggle a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    padding: 8px 18px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    transition: all 0.2s;
+  }
+  .lang-toggle a.active, .lang-toggle a:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+  }
+  .hub-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px 100px;
+  }
+  .hub-intro {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--ink, #2c1a0e);
+    margin-bottom: 60px;
+    max-width: 680px;
+  }
+  .hub-intro h2 {
     font-family: 'Fraunces', serif;
-    font-size: 2.6rem;
-    font-weight: 300;
-    color: var(--rust);
-    line-height: 1;
-    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ink, #2c1a0e);
+    margin-bottom: 20px;
   }
-  .tutorial-card.is-add .add-text {
+  .chapters-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    color: var(--ink-faded);
-    line-height: 1.6;
-    max-width: 220px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light, #6b5e4e);
+    margin-bottom: 24px;
+    display: block;
   }
-
-  @media (max-width: 950px) {
-    .tutorial-grid { grid-template-columns: 1fr; }
-    .tutorial-card h2 { font-size: 1.7rem; }
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .chapter-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 28px;
+    background: var(--paper-deep, #f5f0e8);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    position: relative;
+  }
+  .chapter-card:hover {
+    background: #fffaf4;
+    border-left-color: var(--rust, #b5451b);
+    transform: translateX(4px);
+  }
+  .chapter-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-light, #6b5e4e);
+    letter-spacing: 0.1em;
+    min-width: 32px;
+    flex-shrink: 0;
+  }
+  .chapter-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+  }
+  .chapter-card-body { flex: 1; }
+  .chapter-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink, #2c1a0e);
+    margin-bottom: 4px;
+  }
+  .chapter-desc {
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    color: var(--ink-light, #6b5e4e);
+    line-height: 1.5;
+  }
+  .chapter-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink-light, #6b5e4e);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+  .chapter-arrow {
+    font-size: 1rem;
+    color: var(--rust, #b5451b);
+    opacity: 0;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  .chapter-card:hover .chapter-arrow { opacity: 1; }
+  .hub-footer-nav {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 2px solid var(--paper-deep, #f5f0e8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .hub-footer-nav a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--rust, #b5451b);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    padding: 10px 20px;
+    border: 1.5px solid var(--rust, #b5451b);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .hub-footer-nav a:hover { background: var(--rust, #b5451b); color: #fff; }
+  .theme-bar {
+    background: var(--paper-deep, #f5f0e8);
+    padding: 48px 24px;
+    margin: 0;
+  }
+  .theme-bar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .theme-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .theme-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+  .theme-text strong {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rust, #b5451b);
+    margin-bottom: 4px;
+  }
+  .theme-text p {
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    color: var(--ink, #2c1a0e);
+    line-height: 1.5;
+    margin: 0;
+  }
+  @media (max-width: 600px) {
+    .hub-hero { padding: 70px 20px 50px; }
+    .hub-body { padding: 50px 20px 80px; }
+    .chapter-card { flex-wrap: wrap; gap: 12px; }
+    .chapter-time, .chapter-arrow { display: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="progress-bar" id="progressBar"></div>
+<nav style="background:var(--paper-deep,#f5f0e8);border-bottom:2px solid var(--rust,#b5451b);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;">
+  <a href="../../index.html" style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--rust,#b5451b);text-decoration:none;letter-spacing:0.05em;">← Home</a>
+  <div class="lang-toggle">
+    <a href="index.html" class="active">EN</a>
+    <a href="index-el.html">ΕΛ</a>
+  </div>
+</nav>
 
-<header class="site-header">
-  <div class="site-header-inner">
-    <a href="index.html" class="site-logo">Things I'm figuring out</a>
-    <nav class="site-nav">
-      <div class="lang-toggle">
-        <a href="index.html" class="active">EN</a>
-        <span class="lang-divider">·</span>
-        <a href="index-el.html">ΕΛ</a>
-      </div>
-    </nav>
+<header class="hub-hero">
+  <span class="hub-eyebrow">Tutorial 03 · Science &amp; Discovery</span>
+  <h1>Energy Decoded
+    <span>Fire to Fusion: The Full Story</span>
+  </h1>
+  <p>From the first campfire to solar panels and nuclear reactors — a 400,000-year journey through the force that built every civilisation, powered every war, and now defines the biggest challenge our species has ever faced.</p>
+  <div class="hub-meta">
+    <span>⏱ ~60 min</span>
+    <span>8 chapters</span>
+    <span>EN + ΕΛ</span>
+    <span>✅ Live</span>
   </div>
 </header>
 
-<main class="cover">
-
-  <div class="cover-hero">
-    <div class="cover-eyebrow">A Personal Learning Space · Edition One · 2026</div>
-    <h1 class="cover-title">Things I'm<br><em>figuring out.</em></h1>
-    <p class="cover-lede">A shelf of long-form tutorials I write to teach myself things properly — and then leave here, in plain language, in case they help you too.</p>
-    <div class="cover-meta">Bilingual · English &amp; Greek · Built slowly, on purpose</div>
-  </div>
-
-  <div class="cover-intro">
-    <p>I learn a subject best when I have to explain it from the ground up — no jargon I can hide behind, no steps quietly skipped. So that's what these are: each tutorial is a topic I wanted to genuinely understand, written out the long way, the way I wish someone had written it for me. They assume nothing. They build up. They have opinions.</p>
-    <p>Everything here is bilingual, because the people I most want to read these think in Greek. Pick a tutorial and start anywhere — though, like most things worth learning, they reward being read in order.</p>
-  </div>
-
-  <div class="chapters-grid">
-    <div class="chapters-label">The tutorials</div>
-
-    <div class="tutorial-grid">
-
-      <a href="tutorials/money-decoded/index.html" class="tutorial-card">
-        <div class="tutorial-card-top">
-          <span class="tutorial-num">Tutorial 01</span>
-          <span class="status-badge is-complete">Complete</span>
-        </div>
-        <h2>Money, <em>decoded</em></h2>
-        <p class="tutorial-card-blurb">A field guide to money, the economy, and investing — from the cotton paper in your pocket to the global system it represents, and how to put your share of it to work instead of watching it quietly disappear.</p>
-        <div class="tutorial-card-foot">
-          <span class="tutorial-langs">EN · ΕΛ · 4 chapters · ~3 hrs</span>
-          <span class="tutorial-card-arrow">→</span>
-        </div>
-      </a>
-
-      <a href="tutorials/tech-evolution/index.html" class="tutorial-card">
-        <div class="tutorial-card-top">
-          <span class="tutorial-num">Tutorial 02</span>
-          <span class="status-badge is-complete">Complete</span>
-        </div>
-        <h2>Tech, <em>rewinding the tape</em></h2>
-        <p class="tutorial-card-blurb">The history of technology read through three lenses — what each invention did to money, power, and daily life. From the first stone tool to AI, in eight chapters that show why the present looks the way it does.</p>
-        <div class="tutorial-card-foot">
-          <span class="tutorial-langs">EN · ΕΛ · 8 chapters · ~6 hrs</span>
-          <span class="tutorial-card-arrow">→</span>
-        </div>
-      </a>
-
-      <div class="tutorial-card is-add">
-        <div class="add-mark">+</div>
-        <div class="add-text">Drop a folder in /tutorials/ and add a card here.</div>
+<div class="theme-bar">
+  <div class="theme-bar-inner">
+    <div class="theme-item">
+      <div class="theme-icon">🔥</div>
+      <div class="theme-text">
+        <strong>360° Context</strong>
+        <p>Every chapter explores geopolitical, economic, and human dimensions — not just the science</p>
       </div>
-
+    </div>
+    <div class="theme-item">
+      <div class="theme-icon">🌍</div>
+      <div class="theme-text">
+        <strong>Greek &amp; European lens</strong>
+        <p>Real stories from Greece, the Mediterranean, and Europe woven throughout</p>
+      </div>
+    </div>
+    <div class="theme-item">
+      <div class="theme-icon">⚡</div>
+      <div class="theme-text">
+        <strong>From past to present</strong>
+        <p>400,000 years of energy history, ending with where we stand today</p>
+      </div>
+    </div>
+    <div class="theme-item">
+      <div class="theme-icon">🧠</div>
+      <div class="theme-text">
+        <strong>Why it matters now</strong>
+        <p>The energy transition is the defining story of the 21st century</p>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="ornament">✦ ✦ ✦</div>
+<main class="hub-body">
+
+  <div class="hub-intro">
+    <h2>What this tutorial covers</h2>
+    <p>Energy is not a side story in human history — it <em>is</em> human history. Every empire, every war, every economic revolution, every cultural shift can ultimately be traced to a single question: where does the energy come from, and who controls it?</p>
+    <p>This tutorial traces that question from the first deliberate fire in prehistoric Africa to the solar panels going up on rooftops right now. Along the way, we meet the people who controlled energy, the wars fought over it, the economics it created, and the crisis it has brought us to.</p>
+  </div>
+
+  <span class="chapters-label">All 8 chapters</span>
+
+  <div class="chapters-grid">
+    <a class="chapter-card" href="01-fire.html">
+      <span class="chapter-num">01</span>
+      <div class="chapter-icon">🔥</div>
+      <div class="chapter-card-body">
+        <div class="chapter-title">Fire — The First Energy Revolution</div>
+        <div class="chapter-desc">400,000 years ago, early humans crouched around a deliberate flame. Nothing would ever be the same.</div>
+      </div>
+      <span class="chapter-time">~8 min</span>
+      <span class="chapter-arrow">→</span>
+    </a>
+    <a class="chapter-card" href="02-coal.html">
+      <span class="chapter-num">02</span>
+      <div class="chapter-icon">⬛</div>
+      <div class="chapter-card-body">
+        <div class="chapter-title">Coal — The Dark Power</div>
+        <div class="chapter-desc">Buried sunshine compressed over 300 million years. When we dug it up, we changed what it meant to be human.</div>
+      </div>
+      <span class="chapter-time">~8 min</span>
+      <span class="chapter-arrow">→</span>
+    </a>
+    <a class="chapter-card" href="03-oil.html">
+      <span class="chapter-num">03</span>
+      <div class="chapter-icon">🛢️</div>
+      <div class="chapter-card-body">
+        <div class="chapter-title">Oil — The Century of Black Gold</div>
+        <div class="chapter-desc">It moved armies, built empires, drove wars, and fuelled a way of life that billions consider normal.</div>
+      </div>
+      <span class="chapter-time">~8 min</span>
+      <span class="chapter-arrow">→</span>
+    </a>
+    <a class="chapter-card" href="04-electricity.html">
+      <span class="chapter-num">04</span>
+      <div class="chapter-icon">⚡</div>
+      <div class="chapter-card-body">
+        <div class="chapter-title">Electricity — The Invisible River</div>
+        <div class="chapter-desc">Not a fuel but a form. The battle over how to generate, distribute, and own it has never really ended.</div>
+      </div>
+      <span class="chapter-time">~7 min</span>
+      <span class="chapter-arrow">→</span>
+    </a>
+    <a class="chapter-card" href="05-nuclear.html">
+      <span class="chapter-num">05</span>
+      <div class="chapter-icon">☢️</div>
+      <div class="chapter-card-body">
+        <div class="chapter-title">Nuclear — The Fire Inside the Atom</div>
+        <div class="chapter-desc">The most concentrated energy source ever discovered. Also the most feared. The gap between those two facts is the story.</div>
+      </div>
+      <span class="chapter-time">~7 min</span>
+      <span class="chapter-arrow">→</span>
+    </a>
+    <a class="chapter-card" href="06-renewables.html">
+      <span class="chapter-num">06</span>
+      <div class="chapter-icon">☀️</div>
+      <div class="chapter-card-body">
+        <div class="chapter-title">Renewables — The Sun Always Rises</div>
+        <div class="chapter-desc">The cheapest energy source in human history is falling from the sky. Almost nobody saw it coming.</div>
+      </div>
+      <span class="chapter-time">~8 min</span>
+      <span class="chapter-arrow">→</span>
+    </a>
+    <a class="chapter-card" href="07-climate.html">
+      <span class="chapter-num">07</span>
+      <div class="chapter-icon">🌊</div>
+      <div class="chapter-card-body">
+        <div class="chapter-title">Climate — The Bill Comes Due</div>
+        <div class="chapter-desc">Every energy choice since the Industrial Revolution has been accumulating in the atmosphere. We live inside the consequences.</div>
+      </div>
+      <span class="chapter-time">~7 min</span>
+      <span class="chapter-arrow">→</span>
+    </a>
+    <a class="chapter-card" href="08-future.html">
+      <span class="chapter-num">08</span>
+      <div class="chapter-icon">🔭</div>
+      <div class="chapter-card-body">
+        <div class="chapter-title">The Future — What Comes After Fire</div>
+        <div class="chapter-desc">The third great energy transition is happening right now, faster than most people realise. Where does it lead?</div>
+      </div>
+      <span class="chapter-time">~8 min</span>
+      <span class="chapter-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="hub-footer-nav">
+    <a href="../../index.html">← All Tutorials</a>
+    <a href="01-fire.html">Start Reading →</a>
+  </div>
 
 </main>
 
-<footer class="site-footer">
-  <div class="site-footer-inner">
-    <p>THINGS I'M FIGURING OUT · A PERSONAL LEARNING SPACE</p>
-    <p>EDITION ONE · 2026</p>
-    <p>WRITTEN TO BE UNDERSTOOD · NOT TO IMPRESS</p>
-  </div>
-</footer>
-
-<script src="shared/script.js"></script>
+<script src="../../shared/script.js"></script>
 </body>
 </html>
