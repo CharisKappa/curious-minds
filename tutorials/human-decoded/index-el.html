@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ο Άνθρωπος Αποκωδικοποιημένος — Συμπεριφορά, Εξέλιξη & Νους | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Lora',serif; background:var(--paper,#faf7f2); color:var(--ink,#2c1a0e); }
+  .hub-header { background:var(--ink,#2c1a0e); color:#faf7f2; padding:18px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .hub-header a { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#faf7f2; text-decoration:none; letter-spacing:0.08em; }
+  .hub-header a:hover { color:var(--rust,#b5451b); }
+  .hub-lang { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#faf7f2; padding:5px 12px; border:1px solid rgba(255,255,255,0.3); border-radius:4px; text-decoration:none; }
+  .hub-lang:hover { background:var(--rust,#b5451b); border-color:var(--rust,#b5451b); color:#fff !important; }
+  .hub-hero { background:linear-gradient(135deg,#1a0a0a 0%,#2d1010 50%,#4a1a00 100%); color:#fff0e8; padding:90px 40px 70px; text-align:center; position:relative; overflow:hidden; }
+  .hub-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 60%,rgba(200,80,20,0.18) 0%,transparent 70%); pointer-events:none; }
+  .hub-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:#ff8040; margin-bottom:18px; display:block; }
+  .hub-title { font-family:'Fraunces',serif; font-size:clamp(2.4rem,6vw,4rem); font-weight:900; line-height:1.1; margin-bottom:22px; color:#fff0e8; }
+  .hub-subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.2rem); color:#ffc8a0; max-width:620px; margin:0 auto 36px; line-height:1.7; }
+  .hub-meta { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:#a08060; letter-spacing:0.1em; }
+  .hub-body { max-width:900px; margin:0 auto; padding:70px 40px 100px; }
+  .section-label { font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rust,#b5451b); margin-bottom:36px; display:flex; align-items:center; gap:16px; }
+  .section-label::after { content:''; flex:1; height:1px; background:var(--paper-deep,#f0ebe0); }
+  .chapters-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+  .chapter-card { background:#fff; border:1.5px solid var(--paper-deep,#f0ebe0); border-radius:10px; padding:24px 22px; display:flex; flex-direction:column; gap:10px; transition:box-shadow 0.2s,transform 0.2s; text-decoration:none; color:inherit; }
+  .chapter-card:hover { box-shadow:0 6px 24px rgba(44,26,14,0.10); transform:translateY(-2px); }
+  .chapter-num { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:#a08060; }
+  .chapter-title { font-family:'Fraunces',serif; font-size:1.15rem; font-weight:700; color:var(--ink,#2c1a0e); line-height:1.3; }
+  .chapter-desc { font-family:'Lora',serif; font-size:0.88rem; line-height:1.6; color:#6b5e4e; flex:1; }
+  .chapter-arrow { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--rust,#b5451b); margin-top:4px; }
+  .hub-intro { font-family:'Lora',serif; font-size:1.05rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:56px; max-width:680px; }
+  @media(max-width:600px){ .hub-hero{padding:70px 20px 50px;} .hub-header{padding:14px 20px;} .hub-body{padding:50px 20px 80px;} }
+</style>
+</head>
+<body>
+
+<header class="hub-header">
+  <a href="../../index-el.html">← Curious Minds</a>
+  <a href="index.html" class="hub-lang">EN</a>
+</header>
+
+<section class="hub-hero">
+  <span class="hub-eyebrow">Tutorial 04 · Ο Άνθρωπος Αποκωδικοποιημένος</span>
+  <h1 class="hub-title">Συμπεριφορά, Εξέλιξη<br>&amp; Νους</h1>
+  <p class="hub-subtitle">Από τις απαρχές του πρωτεύοντος μέχρι τη χειραγώγηση με ΤΝ: η πλήρης ιστορία του ανθρώπινου εγκεφάλου, τι έχτισε η εξέλιξη μέσα του, και πώς αυτή η αρχιτεκτονική εκμεταλλεύτηκε — από την πρώτη φωτιά μέχρι το smartphone.</p>
+  <p class="hub-meta">8 κεφάλαια · ~60 λεπτά · ΕΛ · EN</p>
+</section>
+
+<main class="hub-body">
+
+  <p class="hub-intro">Αυτό το tutorial ρωτά το ερώτημα που βρίσκεται κάτω από όλα τα άλλα: τι είδους ζώο είμαστε; Η κατανόηση ενέργειας, χρήματος, τεχνολογίας και πολιτικής γίνεται ευκολότερη μόλις καταλάβεις τον εγκέφαλο πρωτεύοντος που τρέχει την παράσταση — τις φυλετικές αφοσιώσεις του, τα άγχη κοινωνικής θέσης, την υποταγή του στην αυθεντία και την εξαιρετική ευαισθησία του σε οποιονδήποτε πάρει τον κόπο να καταλάβει πώς λειτουργεί.</p>
+
+  <div class="section-label">8 Κεφάλαια</div>
+
+  <div class="chapters-grid">
+
+    <a href="01-animal-el.html" class="chapter-card">
+      <div class="chapter-num">Κεφάλαιο 01</div>
+      <div class="chapter-title">Το Ζώο που Είμαστε</div>
+      <div class="chapter-desc">Εξελικτικές απαρχές, η υπόθεση κοινωνικού εγκεφάλου, ο φυλετισμός ως λειτουργικό σύστημα, γνωστικές προκαταλήψεις και η αναντιστοιχία μεταξύ εξελιγμένης ψυχολογίας και σύγχρονου κόσμου.</div>
+      <div class="chapter-arrow">Διάβασε →</div>
+    </a>
+
+    <a href="02-social-brain-el.html" class="chapter-card">
+      <div class="chapter-num">Κεφάλαιο 02</div>
+      <div class="chapter-title">Φωτιά, Εργαλεία &amp; ο Κοινωνικός Εγκέφαλος</div>
+      <div class="chapter-desc">Πώς η φωτιά, τα εργαλεία και η γλώσσα επαναπρογράμματισαν τη νόηση. Η φωτιά της παρέας ως κοινωνικό μέσο. Η ελληνική πόλη ως πρώτο πείραμα διαχείρισης μεγαλο-ομαδικής κοινωνικής ψυχολογίας.</div>
+      <div class="chapter-arrow">Διάβασε →</div>
+    </a>
+
+    <a href="03-hierarchy-el.html" class="chapter-card">
+      <div class="chapter-num">Κεφάλαιο 03</div>
+      <div class="chapter-title">Γεωργία &amp; Ιεραρχία</div>
+      <div class="chapter-desc">Πλεόνασμα, ανισότητα και η ψυχολογία της κοινωνικής θέσης. Πώς η θρησκεία εξυγίανε την ιεραρχία. Η ελληνική μυθολογία ως εγχειρίδιο διαχείρισης κοινωνικού άγχους και ο ρόλος του ματιού στην Ελλάδα.</div>
+      <div class="chapter-arrow">Διάβασε →</div>
+    </a>
+
+    <a href="04-manipulation-el.html" class="chapter-card">
+      <div class="chapter-num">Κεφάλαιο 04</div>
+      <div class="chapter-title">Γραφή, Πόλεις &amp; Μαζική Χειραγώγηση</div>
+      <div class="chapter-desc">Η εφεύρεση της προπαγάνδας. Η στρατηγική εικόνας του Αλεξάνδρου. Βυζαντινός έλεγχος πληροφοριών. Η γέννηση της διαφήμισης στην αρχαία Πομπηία και η προκατάληψη αυθεντίας σε δράση.</div>
+      <div class="chapter-arrow">Διάβασε →</div>
+    </a>
+
+    <a href="05-industrial-mind-el.html" class="chapter-card">
+      <div class="chapter-num">Κεφάλαιο 05</div>
+      <div class="chapter-title">Ο Βιομηχανικός Νους</div>
+      <div class="chapter-desc">Το ρολόι και η αποικιοκρατία του χρόνου. Αποξένωση. Ο Edward Bernays και η μηχανική συναίνεσης. Μαζικά μέσα, εθνικισμός και η ελληνική διασπορά υπό πίεση ταυτότητας.</div>
+      <div class="chapter-arrow">Διάβασε →</div>
+    </a>
+
+    <a href="06-digital-brain-el.html" class="chapter-card">
+      <div class="chapter-num">Κεφάλαιο 06</div>
+      <div class="chapter-title">Ο Ψηφιακός Εγκέφαλος</div>
+      <div class="chapter-desc">Βρόχοι ντοπαμίνης, κουλουβάχατα και αρχιτεκτονική social media. Η οικονομία της προσοχής. Φούσκες φίλτρου. Η Ελλάδα το 2015: πώς τα social media μετέτρεψαν μια οικονομική κρίση σε επιστημολογικό πόλεμο.</div>
+      <div class="chapter-arrow">Διάβασε →</div>
+    </a>
+
+    <a href="07-mass-manipulation-el.html" class="chapter-card">
+      <div class="chapter-num">Κεφάλαιο 07</div>
+      <div class="chapter-title">Μαζική Χειραγώγηση Σήμερα</div>
+      <div class="chapter-desc">Cambridge Analytica, ψυχογραφική στόχευση και ο πλήρης σωρός χειραγώγησης. Παραπληροφόρηση που δημιουργείται από ΤΝ. Ρωσικές επιχειρήσεις στην Ελλάδα. Πώς να διαβάζεις χειραγώγηση σε πραγματικό χρόνο.</div>
+      <div class="chapter-arrow">Διάβασε →</div>
+    </a>
+
+    <a href="08-future-human-el.html" class="chapter-card">
+      <div class="chapter-num">Κεφάλαιο 08</div>
+      <div class="chapter-title">Ο Μελλοντικός Άνθρωπος</div>
+      <div class="chapter-desc">Νευροπλαστικότητα και ο επαναπρογραμματισμένος εγκέφαλος. Γνωστική ενίσχυση. Διεπαφές εγκεφάλου-υπολογιστή. Ανθρωποειδή ρομπότ και η παγίδα ενσυναίσθησης. Τρία σενάρια για την ανθρώπινη νόηση το 2050.</div>
+      <div class="chapter-arrow">Διάβασε →</div>
+    </a>
+
+  </div>
+
+</main>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 01: The Animal We Are | Human Decoded | Curious Minds</title>
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .chapter-hero { background:linear-gradient(135deg,#1a0a0a 0%,#2d1010 50%,#4a1a00 100%); color:#fff0e8; padding:80px 40px 60px; text-align:center; position:relative; overflow:hidden; }
+  .chapter-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%,rgba(200,80,20,0.18) 0%,transparent 70%); pointer-events:none; }
+  .chapter-eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#ff8040; margin-bottom:16px; display:block; }
+  .chapter-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.15; margin-bottom:20px; color:#fff0e8; }
+  .chapter-hero .subtitle { font-family:'Lora',serif; font-size:clamp(1rem,2vw,1.25rem); color:#ffc8a0; max-width:600px; margin:0 auto 32px; line-height:1.6; }
+  .chapter-nav-bar { background:var(--paper-deep,#f5f0e8); border-bottom:2px solid var(--rust,#b5451b); padding:14px 40px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:100; }
+  .chapter-nav-bar a { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; }
+  .chapter-nav-bar a:hover { text-decoration:underline; }
+  .chapter-progress { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .chapter-body { max-width:740px; margin:0 auto; padding:60px 24px 100px; }
+  .chapter-body h2 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,3vw,2rem); font-weight:700; color:var(--ink,#2c1a0e); margin:56px 0 20px; }
+  .chapter-body h3 { font-family:'Fraunces',serif; font-size:clamp(1.1rem,2.2vw,1.4rem); font-weight:600; color:var(--rust,#b5451b); margin:36px 0 14px; }
+  .chapter-body p { font-family:'Lora',serif; font-size:1.05rem; line-height:1.85; color:var(--ink,#2c1a0e); margin-bottom:22px; }
+  .insight { background:#fff4ee; border-left:4px solid #ff8040; padding:20px 24px; margin:32px 0; border-radius:0 8px 8px 0; }
+  .insight strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#b5451b; margin-bottom:8px; }
+  .insight p { margin:0; font-size:0.98rem; }
+  .definition { background:#f0f4ff; border:1px solid #b8c8ff; border-radius:8px; padding:20px 24px; margin:28px 0; }
+  .definition strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#3a5ccc; margin-bottom:8px; }
+  .definition p { margin:0; font-size:0.98rem; }
+  .story { background:#1a0a0a; color:#fff0e8; border-radius:10px; padding:28px 30px; margin:36px 0; position:relative; }
+  .story::before { content:'◈'; position:absolute; top:16px; right:20px; font-size:1.4rem; color:#ff8040; opacity:0.5; }
+  .story strong { display:block; font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:#ff8040; margin-bottom:10px; }
+  .story p { margin:0 0 12px; font-size:0.98rem; line-height:1.75; color:#fff0e8; }
+  .story p:last-child { margin-bottom:0; }
+  .pullquote { margin:40px 0; padding:0 0 0 28px; border-left:4px solid var(--rust,#b5451b); }
+  .pullquote p { font-family:'Fraunces',serif; font-size:clamp(1.2rem,2.5vw,1.55rem); font-style:italic; color:var(--ink,#2c1a0e); line-height:1.5; margin:0 0 10px; }
+  .pullquote cite { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-light,#6b5e4e); letter-spacing:0.08em; }
+  .timeline { border-left:3px solid #ff8040; padding:0 0 0 28px; margin:36px 0; }
+  .timeline-item { position:relative; margin-bottom:24px; }
+  .timeline-item::before { content:''; position:absolute; left:-35px; top:6px; width:10px; height:10px; background:#ff8040; border-radius:50%; border:2px solid #fff; }
+  .timeline-item .year { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#b5451b; letter-spacing:0.1em; margin-bottom:4px; }
+  .timeline-item p { margin:0; font-size:0.95rem; }
+  .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:32px 0; }
+  .context-card { background:var(--paper-deep,#f5f0e8); border-radius:8px; padding:16px 18px; border-top:3px solid #ff8040; }
+  .context-card .ctx-label { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#b5451b; margin-bottom:6px; display:block; }
+  .context-card p { margin:0; font-size:0.88rem; line-height:1.5; }
+  .chapter-footer { border-top:2px solid var(--paper-deep,#f5f0e8); margin-top:80px; padding-top:40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .chapter-footer a { font-family:'JetBrains Mono',monospace; font-size:0.82rem; color:var(--rust,#b5451b); text-decoration:none; letter-spacing:0.05em; padding:10px 20px; border:1.5px solid var(--rust,#b5451b); border-radius:6px; transition:all 0.2s; }
+  .chapter-footer a:hover { background:var(--rust,#b5451b); color:#fff; }
+  @media(max-width:600px){ .chapter-hero{padding:60px 20px 40px;} .chapter-nav-bar{padding:12px 20px;} .chapter-body{padding:40px 20px 80px;} }
+</style>
+</head>
+<body>
+<nav class="chapter-nav-bar">
+  <a href="index.html">← Hub: Human Decoded</a>
+  <span class="chapter-progress">Chapter 01 of 08 · The Animal We Are</span>
+  <a href="02-social-brain.html">Next: Social Brain →</a>
+</nav>
+
+<header class="chapter-hero">
+  <span class="chapter-eyebrow">Human Decoded · Chapter 01</span>
+  <h1>The Animal We Are<br></h1>
+  <p class="subtitle">Before we had language, cities, or gods, evolution had already written the operating system that still runs inside every one of us. You didn't choose it. You can't fully escape it. But you can learn to read it.</p>
+</header>
+
+<main class="chapter-body">
+
+  <p>You are reading this sentence because, roughly 300,000 years ago, a species of primate developed a brain large enough to process symbols, plan across time, and imagine things that don't yet exist. That species was anatomically modern <em>Homo sapiens</em>. But the emotional, social, and cognitive architecture underlying those words — the anxiety you feel when you sense disapproval, the pleasure you take in gossip, the instinctive trust you extend to people who look like you — that architecture is far older. Some of it is 50 million years old.</p>
+
+  <p>We spend enormous amounts of time and money trying to understand human behaviour: in psychology clinics, political campaigns, marketing departments, courtrooms, and schools. But most of these attempts miss the most fundamental level of explanation. Human behaviour is not primarily cultural, not primarily rational, and not primarily individual. It is primarily evolutionary — the accumulated output of billions of years of selection pressure operating on a social primate.</p>
+
+  <p>This tutorial is about understanding that architecture from the inside. Not to excuse behaviour, but to explain it. Not to make you cynical, but to make you genuinely literate about what drives you, what drives the people around you, and what drives the systems of power and manipulation that shape every human society.</p>
+
+  <h2>The 360° Context: The World That Built Us</h2>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <span class="ctx-label">🌍 Environment</span>
+      <p>Our ancestors evolved primarily in East African savanna — open grassland with scattered trees, seasonal rainfall, predators, competing primate bands. The brain's threat-detection systems are calibrated for this world, not the one we inhabit.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">👥 Social</span>
+      <p>For almost all of human prehistory, we lived in bands of 20–150 people. Everyone you'd ever know. Reputation was survival. Exclusion from the band was death. The social anxiety that haunts modern people is the same system.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚡ Energy</span>
+      <p>Calories were scarce and uncertain. The brain — which consumes 20% of our energy despite being 2% of body mass — was an expensive organ. Evolution only expanded it because the social and cognitive benefits outweighed the metabolic cost.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">⚔️ Conflict</span>
+      <p>Intergroup violence was common throughout human prehistory. Archaeological evidence shows that organised warfare has been a feature of human society for at least 10,000 years, and probably longer. We are a species shaped by both cooperation and violence.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🧠 Cognition</span>
+      <p>The ancestral environment had no writing, no maths, no maps, no abstract systems. The cognitive tools that evolved — pattern recognition, narrative thinking, social modelling — were built for a world of faces, plants, animals, and weather.</p>
+    </div>
+    <div class="context-card">
+      <span class="ctx-label">🏛️ Political</span>
+      <p>No states. No laws. No police. Social order was maintained by reputation, reciprocity, and the threat of collective punishment. The moral intuitions humans share across cultures are remnants of this stateless social contract.</p>
+    </div>
+  </div>
+
+  <h2>What Evolution Actually Built</h2>
+
+  <p>Evolution is not a designer. It is a process — one that preserves whatever works well enough to survive and reproduce, regardless of whether it makes people happy, fair, or wise. The result, in us, is a patchwork of systems built at different times for different environments, layered on top of each other, often in conflict with each other.</p>
+
+  <p>The oldest layer is shared with all vertebrates: a brainstem that regulates breathing, heartbeat, and fight-or-flight responses. Above it sits the limbic system — the emotional brain — shared with all mammals. And on top of both sits the neocortex, the distinctively large structure that enables abstract thought, language, and long-term planning. The critical insight is that these layers don't replace each other — they coexist. Your rational prefrontal cortex is always negotiating with a limbic system that has not changed much in 65 million years.</p>
+
+  <div class="definition">
+    <strong>Definition — The Triune Brain Model</strong>
+    <p>Neuroscientist Paul MacLean's influential (if now somewhat simplified) model proposed that the human brain has three evolutionary layers: the reptilian complex (basic survival and instinct), the limbic system (emotion, memory, social bonding), and the neocortex (reasoning, language, planning). While modern neuroscience has complicated this model, the core insight holds: our newest brain structures sit atop ancient ones, and the older systems often dominate when under stress, threat, or fatigue.</p>
+  </div>
+
+  <h2>The Social Brain Hypothesis</h2>
+
+  <p>For decades, scientists assumed that primate brains got bigger because of the challenges of finding food — navigating complex environments, remembering plant locations, using tools. Then British anthropologist Robin Dunbar proposed something different: primate brains got bigger primarily because of the challenges of managing social relationships.</p>
+
+  <p>Dunbar's evidence was striking. Across primate species, there is a remarkably consistent correlation between neocortex size and social group size. The species with the largest neocortex relative to body size — us — also live in the largest and most complex social groups. His model suggests that the fundamental computational challenge that drove human brain evolution was not environmental complexity but social complexity: keeping track of who is allied with whom, who owes whom, who can be trusted, who is bluffing, and how to navigate the shifting coalitions of a competitive social world.</p>
+
+  <div class="insight">
+    <strong>Insight — Dunbar's Number</strong>
+    <p>Based on the relationship between neocortex size and group size, Dunbar calculated that humans can maintain stable social relationships with approximately 150 people. This "Dunbar's number" has been validated repeatedly across very different contexts: hunter-gatherer band sizes, village sizes in traditional societies, effective military unit sizes, and the number of people most individuals actively keep up with on social media. The implication is sobering: our social brains evolved for a world of 150 people. We now live in cities of millions, connected to billions. The misfit between our evolved social architecture and our actual social environment is one of the defining tensions of modern life.</p>
+  </div>
+
+  <h2>Tribalism: The Original Operating System</h2>
+
+  <p>Of all the features of evolved human psychology, tribalism is the most consequential for understanding modern politics, conflict, and manipulation. We are a deeply tribal species — not in the sense of being incurably violent, but in the sense of having a powerful, automatic, largely unconscious tendency to categorise people into in-group and out-group, to treat in-group members with dramatically greater generosity and trust, and to view out-group members with suspicion, moral disregard, and sometimes active hostility.</p>
+
+  <p>This is not learned behaviour in any straightforward sense. Studies with infants as young as three months show preferences for faces that match their own ethnic group. Children as young as three spontaneously form coalitions and discriminate against outsiders. The speed with which humans assign strangers to in-group or out-group categories — less than a tenth of a second in some studies — suggests an automatic system operating well below conscious awareness.</p>
+
+  <p>Critically, the boundaries of "us" are remarkably flexible. Humans will tribally bond over almost anything: favourite sports teams, university affiliations, arbitrary colours assigned in a psychology experiment. The content of tribal identity matters less than its existence. What persists across all these variations is the underlying psychological architecture: we need to belong to a group, we will defend that group against outsiders, and we are vulnerable to leaders who offer us a compelling "us" and a frightening "them."</p>
+
+  <div class="story">
+    <strong>Real Story — The Robbers Cave Experiment</strong>
+    <p>In 1954, social psychologist Muzafer Sherif took 22 American boys to a summer camp in Oklahoma. All were white, middle-class, and mentally healthy. Without their knowledge, they were divided into two groups that initially didn't know of each other's existence. Within days of meeting, the groups — who had named themselves the Eagles and the Rattlers — had developed intense hostility. They raided each other's cabins, burned each other's flags, and engaged in escalating conflict that required adult intervention to prevent physical injury.</p>
+    <p>No one had told them to hate each other. No ideology was involved. No historical grievance. The simple act of being placed into a labelled group with an outgroup present was sufficient to generate intense tribal conflict within days. Sherif's experiment demonstrated that tribalism is not a cultural aberration — it is a baseline feature of human social psychology that requires active counter-pressure to suppress.</p>
+    <p>The second part of the experiment was equally revealing: Sherif could only reduce intergroup hostility by creating shared challenges that required cooperation between the groups — common enemies and shared goals that forced the Eagles and Rattlers to work together. Mere contact and exposure were not enough. This finding has enormous implications for understanding why multiculturalism sometimes fails and what conditions actually reduce tribalism.</p>
+  </div>
+
+  <h2>The Mediterranean and Collectivism: A Greek Lens</h2>
+
+  <p>Different human cultures have evolved different balances between individual and collective orientation — what cross-cultural psychologists call the individualism-collectivism axis. Northern European and Anglo-American cultures tend toward the individualist end: the individual is the primary unit of moral concern, personal achievement is valued, and social boundaries are relatively permeable. Mediterranean cultures, including Greece, tend toward the collectivist end: the family and community are primary, social obligations are strong, and in-group loyalty is a central virtue.</p>
+
+  <p>This is not a simple value judgment. Collectivist cultures typically show stronger family bonds, more social support for individuals in distress, and greater resistance to the atomisation and loneliness that characterise individualist societies. But they also show stronger in-group bias, greater resistance to institutional trust, and more intense hostility to perceived outsiders. Greece's famously fierce family loyalty and equally fierce political tribalism are two sides of the same evolutionary coin.</p>
+
+  <p>Understanding this cultural variation is essential for understanding why the same manipulation techniques work differently in different societies — and why Greece responded to the 2015 financial crisis with a kind of collective political identity shift (the Syriza phenomenon) that would have been less likely in a more individualist society.</p>
+
+  <h2>Cognitive Biases: The Bugs in the Operating System</h2>
+
+  <p>Alongside tribalism, human cognition comes pre-loaded with dozens of systematic biases — predictable errors in perception, memory, and reasoning that evolution tolerated because they were good enough in the ancestral environment, even if they cause systematic problems in the modern one. These are not character flaws. They are features of a brain optimised for a different world.</p>
+
+  <h3>Confirmation bias</h3>
+  <p>We seek out information that confirms our existing beliefs and discount information that challenges them. In an ancestral environment where snap judgments had to be made quickly and revised slowly, this was adaptive. In a modern information environment where we can choose our media, our social circle, and our algorithmic feeds, it enables the construction of hermetically sealed belief systems that become increasingly disconnected from reality.</p>
+
+  <h3>The availability heuristic</h3>
+  <p>We judge the likelihood of events by how easily examples come to mind. Dramatic, recent, or emotionally vivid events feel more probable than quiet, statistical ones. This is why people consistently overestimate the risk of plane crashes and terrorism while underestimating the risk of car accidents and poor diet. News media and political communication exploit this systematically — keeping certain threats vivid and available while keeping others invisible.</p>
+
+  <h3>Authority bias</h3>
+  <p>We are strongly inclined to defer to perceived authority figures. In the Milgram experiments of the 1960s, ordinary Americans administered what they believed were dangerous electric shocks to strangers simply because a man in a white coat told them to. The authority of the figure mattered more than the content of the instruction. In a small band where elder knowledge was genuinely valuable and challenge was socially costly, deference to authority made sense. In a world with fake experts, propaganda, and charismatic demagogues, it is a vulnerability.</p>
+
+  <div class="pullquote">
+    <p>"The human brain is not a rational calculator with emotional interference. It is an emotional system with a reasoning capacity bolted on."</p>
+    <cite>— Adapted from neuroscientist Antonio Damasio</cite>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="year">~7 million BCE</div>
+      <p>Last common ancestor of humans and chimpanzees. The social primate lineage begins.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~2 million BCE</div>
+      <p>Homo habilis. First stone tools. Brain size begins accelerating beyond other primates.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~800,000 BCE</div>
+      <p>Dramatic increase in neocortex size. Social brain hypothesis: managing complex coalitions drives brain growth.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~300,000 BCE</div>
+      <p>Anatomically modern Homo sapiens appears in Africa. Same brain we have today.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~70,000 BCE</div>
+      <p>Cognitive revolution: symbolic thought, complex language, long-distance trade networks. The social software upgrades.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="year">~12,000 BCE</div>
+      <p>Agriculture begins. The social environment changes radically. The brain does not.</p>
+    </div>
+  </div>
+
+  <h2>The Mismatch Problem</h2>
+
+  <p>Here is the central tension that runs through this entire tutorial. The human brain is a superb instrument for navigating the social world of a small, face-to-face community in a food-scarce, predator-rich environment. It is poorly equipped — in its default settings — for navigating nation-states, global media, algorithmic recommendation systems, or existential collective action problems like climate change.</p>
+
+  <p>The tribal heuristics that protected our ancestors now make us vulnerable to demagogues who can construct fictional "us vs them" narratives at scale. The authority bias that allowed us to learn from elders now makes us vulnerable to fake experts and propaganda. The availability heuristic that kept us alert to immediate threats now makes us vulnerable to media that profits from our fear. The reward systems that motivated our ancestors to seek calories, sex, and social status now make us vulnerable to designed addiction in food, pornography, and social media.</p>
+
+  <p>None of this makes us helpless. Understanding the architecture is the first step toward managing it. But the architecture has to be understood honestly — not as a set of bad habits we can simply choose to overcome, but as deep biological systems that require sustained, effortful counter-pressure to keep from running the show.</p>
+
+  <p>In the next chapter, we'll see how fire, tools, and language began the process of rewiring this architecture — and created the first large-scale human societies that would force the brain into social configurations it had never been designed for.</p>
+
+</main>
+
+<div class="chapter-body" style="padding-top:0;">
+  <div class="chapter-footer">
+    <a href="index.html">← Hub</a>
+    <a href="02-social-brain.html">Chapter 02: Social Brain →</a>
+  </div>
+</div>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>
