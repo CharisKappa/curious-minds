@@ -3,316 +3,322 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curious Minds — A Self-Directed Learning Library</title>
+<title>Curious Minds — Self-Directed Learning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared/styles.css">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Lora', serif; background: var(--paper, #faf7f2); color: var(--ink, #2c1a0e); }
-
-  /* HEADER */
-  .site-header {
-    background: var(--ink, #2c1a0e);
-    color: #faf7f2;
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-    position: sticky;
-    top: 0;
-    z-index: 200;
-  }
-  .site-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    color: #faf7f2;
-    text-decoration: none;
-  }
-  .site-logo span { color: var(--rust, #b5451b); }
-  .lang-toggle a {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    color: #faf7f2;
-    text-decoration: none;
-    padding: 6px 14px;
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 4px;
-    transition: all 0.2s;
-  }
-  .lang-toggle a:hover { background: var(--rust, #b5451b); border-color: var(--rust, #b5451b); }
-
-  /* HERO */
-  .site-hero {
-    background: linear-gradient(135deg, #1a0e05 0%, #2c1a0e 60%, #3d2612 100%);
-    color: #faf7f2;
-    padding: 100px 40px 80px;
+  /* ── Catalogue-specific styles ── */
+  .catalogue-hero {
+    padding: 5rem 2rem 4rem;
     text-align: center;
-    position: relative;
-    overflow: hidden;
+    max-width: 760px;
+    margin: 0 auto;
   }
-  .site-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 60%, rgba(181,69,27,0.2) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
+  .catalogue-hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--rust, #b5451b);
-    margin-bottom: 20px;
-    display: block;
+    color: var(--rust);
+    margin-bottom: 1.25rem;
   }
-  .hero-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 900;
+  .catalogue-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 300;
     line-height: 1.1;
-    margin-bottom: 24px;
-    color: #faf7f2;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
   }
-  .hero-subtitle {
-    font-family: 'Lora', serif;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: #d4c4b0;
-    max-width: 640px;
-    margin: 0 auto 40px;
+  .catalogue-hero h1 em {
+    font-style: italic;
+    color: var(--rust);
+  }
+  .catalogue-hero-desc {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
     line-height: 1.7;
-  }
-  .hero-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    color: #a08060;
-    letter-spacing: 0.08em;
+    color: var(--ink-light);
+    max-width: 560px;
+    margin: 0 auto;
   }
 
-  /* CATALOGUE */
+  /* ── Grid ── */
   .catalogue-section {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 80px 40px 100px;
+    padding: 0 2rem 6rem;
   }
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
+  .catalogue-section-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--rust, #b5451b);
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--paper-deep, #f0ebe0);
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
   }
   .catalogue-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 28px;
+    gap: 2rem;
   }
 
-  /* TUTORIAL CARD */
+  /* ── Tutorial card ── */
   .tutorial-card {
-    background: #fff;
-    border: 1.5px solid var(--paper-deep, #f0ebe0);
-    border-radius: 12px;
-    padding: 32px 28px 28px;
+    background: var(--paper-deep);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    transition: box-shadow 0.2s, transform 0.2s;
-    position: relative;
-    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+    color: inherit;
   }
   .tutorial-card:hover {
-    box-shadow: 0 8px 32px rgba(44,26,14,0.10);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
     transform: translateY(-2px);
   }
-  .card-number {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #a08060;
+  .tutorial-card-band {
+    height: 6px;
   }
-  .card-category {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--rust, #b5451b);
-    background: #fff5f0;
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 3px;
-    border: 1px solid #ffd4c4;
-    margin-bottom: 4px;
-  }
-  .card-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--ink, #2c1a0e);
-    line-height: 1.25;
-  }
-  .card-subtitle {
-    font-family: 'Lora', serif;
-    font-size: 0.92rem;
-    color: #6b5e4e;
-    font-style: italic;
-  }
-  .card-description {
-    font-family: 'Lora', serif;
-    font-size: 0.92rem;
-    line-height: 1.65;
-    color: #5a4a3a;
+  .tutorial-card-body {
+    padding: 1.75rem 1.75rem 1.5rem;
     flex: 1;
-  }
-  .card-meta {
     display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-top: 4px;
+    flex-direction: column;
   }
-  .card-meta span {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.06em;
-    color: #8a7a6a;
+  .tutorial-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
   }
-  .card-status {
-    font-family: 'JetBrains Mono', monospace;
+  .tutorial-card-num {
+    font-family: var(--font-mono);
     font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+  }
+  .tutorial-card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 3px;
-    display: inline-block;
-    margin-top: 2px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.2em 0.55em;
+    color: var(--ink-muted);
   }
-  .status-live { background: #e8f8ee; color: #1a7a3a; border: 1px solid #c0e8cc; }
-  .status-soon { background: #f5f5f5; color: #888; border: 1px solid #ddd; }
-  .card-link {
-    display: inline-block;
-    margin-top: 8px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: var(--rust, #b5451b);
-    text-decoration: none;
-    padding: 10px 20px;
-    border: 1.5px solid var(--rust, #b5451b);
-    border-radius: 6px;
-    transition: all 0.2s;
-    align-self: flex-start;
+  .tutorial-card-badge {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2em 0.55em;
+    border-radius: 2px;
+    margin-left: auto;
   }
-  .card-link:hover { background: var(--rust, #b5451b); color: #fff; }
+  .badge-live {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+  }
+  .tutorial-card-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .tutorial-card-title em {
+    font-style: italic;
+  }
+  .tutorial-card-desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-light);
+    flex: 1;
+    margin-bottom: 1.25rem;
+  }
+  .tutorial-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .tutorial-card-time {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+  .tutorial-card-cta {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--rust);
+  }
 
-  /* FOOTER */
-  .site-footer {
-    background: var(--ink, #2c1a0e);
-    color: #8a7a6a;
-    padding: 40px;
+  /* card accent bands */
+  .band-money   { background: linear-gradient(90deg, #8B4513, #D2691E); }
+  .band-tech    { background: linear-gradient(90deg, #1a3a5c, #2e6da4); }
+  .band-energy  { background: linear-gradient(90deg, #1b4332, #40916c); }
+  .band-human   { background: linear-gradient(90deg, #3b1f2b, #7b3f6e); }
+
+  /* ── Philosophy strip ── */
+  .philosophy-strip {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3.5rem 2rem;
     text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
+    margin-bottom: 4rem;
   }
-  .site-footer a { color: var(--rust, #b5451b); text-decoration: none; }
-
-  @media (max-width: 600px) {
-    .site-header { padding: 16px 20px; }
-    .site-hero { padding: 70px 20px 60px; }
-    .catalogue-section { padding: 60px 20px 80px; }
+  .philosophy-strip-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .philosophy-strip-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+  }
+  .philosophy-strip p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.8);
+  }
+  .philosophy-strip strong {
+    color: var(--paper);
   }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <a href="index.html" class="site-logo">Curious<span>Minds</span></a>
-  <div class="lang-toggle">
-    <a href="index-el.html">ΕΛ</a>
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">Curious Minds <em>— a learning library</em></a>
+    <nav class="site-nav">
+      <a href="index.html" class="current">Tutorials</a>
+      <div class="lang-toggle">
+        <a href="index.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="index-el.html">ΕΛ</a>
+      </div>
+    </nav>
   </div>
 </header>
 
-<section class="site-hero">
-  <span class="hero-eyebrow">A Self-Directed Learning Library</span>
-  <h1 class="hero-title">Understand the world.<br>Not just the facts.</h1>
-  <p class="hero-subtitle">Every tutorial here is built around one idea: nothing happens in isolation. History, economics, politics, human need — it all connects. We call it 360° learning.</p>
-  <p class="hero-meta">Long-form · Bilingual EN / ΕΛ · No ads · No distractions</p>
-</section>
+<div class="catalogue-hero">
+  <div class="catalogue-hero-eyebrow">A self-directed learning library</div>
+  <h1>Read the world<br><em>in context</em></h1>
+  <p class="catalogue-hero-desc">Long-form tutorials that explain not just what happened, but why — through every surrounding condition: geopolitical, economic, scientific, human. Read at your own pace, in English or Greek.</p>
+</div>
 
-<main class="catalogue-section">
-  <div class="section-label">Tutorial Catalogue</div>
+<div class="philosophy-strip">
+  <div class="philosophy-strip-inner">
+    <div class="philosophy-strip-label">The 360° principle</div>
+    <p>Every major moment worth understanding has surrounding conditions. <strong>Curious Minds</strong> insists on surfacing them — the economic climate, the energy constraints, the cultural mood, the human fear or desire that drove it. Context isn't decoration. It's the explanation.</p>
+  </div>
+</div>
+
+<div class="catalogue-section">
+  <div class="catalogue-section-label">All tutorials — 4 available</div>
   <div class="catalogue-grid">
 
-    <!-- TUTORIAL 01 -->
-    <div class="tutorial-card">
-      <div class="card-number">Tutorial 01</div>
-      <div class="card-category">Money &amp; Economics</div>
-      <h2 class="card-title">Money, Decoded</h2>
-      <p class="card-subtitle">The History of Money</p>
-      <p class="card-description">From cowrie shells to Bitcoin — the complete story of how money was invented, reinvented, weaponised, and why the system we have today is stranger than most people realise.</p>
-      <div class="card-meta">
-        <span>~40 min</span>
-        <span>4 chapters</span>
-        <span>EN · ΕΛ</span>
+    <!-- Tutorial 01 -->
+    <a href="tutorials/money-decoded/index.html" class="tutorial-card">
+      <div class="tutorial-card-band band-money"></div>
+      <div class="tutorial-card-body">
+        <div class="tutorial-card-meta">
+          <span class="tutorial-card-num">01</span>
+          <span class="tutorial-card-tag">Money &amp; Economics</span>
+          <span class="tutorial-card-badge badge-live">Live</span>
+        </div>
+        <div class="tutorial-card-title">Money,<br><em>Decoded</em></div>
+        <p class="tutorial-card-desc">From cowrie shells to cryptocurrency — the full history of money, why it took the forms it did, and how it remade power at every turn. 4 chapters, ~60 minutes.</p>
+        <div class="tutorial-card-footer">
+          <span class="tutorial-card-time">~60 min read · 4 chapters</span>
+          <span class="tutorial-card-cta">Read →</span>
+        </div>
       </div>
-      <span class="card-status status-live">✓ Live</span>
-      <a href="tutorials/money-decoded/index.html" class="card-link">Start Reading →</a>
-    </div>
+    </a>
 
-    <!-- TUTORIAL 02 -->
-    <div class="tutorial-card">
-      <div class="card-number">Tutorial 02</div>
-      <div class="card-category">Technology &amp; The Web</div>
-      <h2 class="card-title">Tech, Rewinding the Tape</h2>
-      <p class="card-subtitle">The History of Technology</p>
-      <p class="card-description">From the printing press to the smartphone — how each technological revolution reshaped power, work, culture, and what it means to be human.</p>
-      <div class="card-meta">
-        <span>~60 min</span>
-        <span>8 chapters</span>
-        <span>EN · ΕΛ</span>
+    <!-- Tutorial 02 -->
+    <a href="tutorials/tech-evolution/index.html" class="tutorial-card">
+      <div class="tutorial-card-band band-tech"></div>
+      <div class="tutorial-card-body">
+        <div class="tutorial-card-meta">
+          <span class="tutorial-card-num">02</span>
+          <span class="tutorial-card-tag">Technology</span>
+          <span class="tutorial-card-badge badge-live">Live</span>
+        </div>
+        <div class="tutorial-card-title">Tech, Rewinding<br><em>the Tape</em></div>
+        <p class="tutorial-card-desc">From fire and the first stone tool to AI — a complete history of technology as a history of conditions, bottlenecks, and the humans who shaped and were shaped by each shift. 8 chapters, ~5 hours.</p>
+        <div class="tutorial-card-footer">
+          <span class="tutorial-card-time">~5 hr read · 8 chapters</span>
+          <span class="tutorial-card-cta">Read →</span>
+        </div>
       </div>
-      <span class="card-status status-live">✓ Live</span>
-      <a href="tutorials/tech-evolution/index.html" class="card-link">Start Reading →</a>
-    </div>
+    </a>
 
-    <!-- TUTORIAL 03 -->
-    <div class="tutorial-card">
-      <div class="card-number">Tutorial 03</div>
-      <div class="card-category">Science &amp; Discovery</div>
-      <h2 class="card-title">Energy Decoded</h2>
-      <p class="card-subtitle">Fire to Fusion</p>
-      <p class="card-description">From the first campfire to nuclear reactors and solar panels — the complete story of how humanity learned to harness energy, and why every energy choice is also a political, economic, and civilisational one.</p>
-      <div class="card-meta">
-        <span>~60 min</span>
-        <span>8 chapters</span>
-        <span>EN · ΕΛ</span>
+    <!-- Tutorial 03 -->
+    <a href="tutorials/energy-decoded/index.html" class="tutorial-card">
+      <div class="tutorial-card-band band-energy"></div>
+      <div class="tutorial-card-body">
+        <div class="tutorial-card-meta">
+          <span class="tutorial-card-num">03</span>
+          <span class="tutorial-card-tag">Energy &amp; Resources</span>
+          <span class="tutorial-card-badge badge-live">Live</span>
+        </div>
+        <div class="tutorial-card-title">Energy,<br><em>Decoded</em></div>
+        <p class="tutorial-card-desc">From wood fires to fusion — how the energy source a civilisation uses shapes everything else about it. Wars, empires, revolutions and the clean energy transition, in full context. 8 chapters.</p>
+        <div class="tutorial-card-footer">
+          <span class="tutorial-card-time">~5 hr read · 8 chapters</span>
+          <span class="tutorial-card-cta">Read →</span>
+        </div>
       </div>
-      <span class="card-status status-live">✓ Live</span>
-      <a href="tutorials/energy-decoded/index.html" class="card-link">Start Reading →</a>
-    </div>
+    </a>
 
-
+    <!-- Tutorial 04 -->
+    <a href="tutorials/human-decoded/index.html" class="tutorial-card">
+      <div class="tutorial-card-band band-human"></div>
+      <div class="tutorial-card-body">
+        <div class="tutorial-card-meta">
+          <span class="tutorial-card-num">04</span>
+          <span class="tutorial-card-tag">Society &amp; Culture</span>
+          <span class="tutorial-card-badge badge-live">Live</span>
+        </div>
+        <div class="tutorial-card-title">Human,<br><em>Decoded</em></div>
+        <p class="tutorial-card-desc">Why do we think, feel and behave the way we do? Evolutionary psychology, cognitive biases, tribalism, hierarchy, mass manipulation — and where we might be headed. 8 chapters.</p>
+        <div class="tutorial-card-footer">
+          <span class="tutorial-card-time">~5 hr read · 8 chapters</span>
+          <span class="tutorial-card-cta">Read →</span>
+        </div>
+      </div>
+    </a>
 
   </div>
-</main>
+</div>
 
 <footer class="site-footer">
-  <p>Curious Minds · Self-directed learning for curious people · <a href="index-el.html">Ελληνικά</a></p>
+  <div class="site-footer-inner">
+    <p>CURIOUS MINDS · A SELF-DIRECTED LEARNING LIBRARY</p>
+    <p>BILINGUAL · ENGLISH AND GREEK · NO ADS · NO NOISE</p>
+    <p>BUILT FOR THE CURIOUS · READ AT YOUR OWN PACE</p>
+  </div>
 </footer>
 
 <script src="shared/script.js"></script>
