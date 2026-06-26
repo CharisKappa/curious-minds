@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 01 · The Idea Before the Machine — How AI Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .tooltip-term {
+    border-bottom: 1px dashed #b45309;
+    cursor: help;
+    position: relative;
+  }
+  .tooltip-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    width: 230px;
+    z-index: 100;
+    pointer-events: none;
+    white-space: normal;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tooltip-term:hover::after { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">How AI Thinks <em>— a guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">← Home</a>
+      <a href="index.html">Hub</a>
+      <a href="01-the-idea.html" class="current">01</a>
+      <a href="02-how-models-learn.html">02</a>
+      <a href="03-the-transformer.html">03</a>
+      <a href="04-data.html">04</a>
+      <a href="05-hardware.html">05</a>
+      <a href="06-shrinking.html">06</a>
+      <a href="07-local-setup.html">07</a>
+      <a href="08-open-closed.html">08</a>
+      <a href="09-where-heading.html">09</a>
+      <a href="10-what-it-means.html">10</a>
+      <div class="lang-toggle">
+        <a href="01-the-idea.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="01-the-idea-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 01</div>
+    <div class="toc-chapter-title">The Idea Before the Machine</div>
+    <ul class="toc-list">
+      <li><a href="#what-is-intelligence">What is intelligence, really?</a></li>
+      <li><a href="#dartmouth">Dartmouth 1956: the birth of AI</a></li>
+      <li><a href="#first-winter">The first AI winter</a></li>
+      <li><a href="#expert-systems">Expert systems and the second wave</a></li>
+      <li><a href="#second-winter">The second AI winter</a></li>
+      <li><a href="#what-changed">What finally changed</a></li>
+      <li><a href="#three-ingredients">The three ingredients</a></li>
+      <li><a href="#hinton">Hinton's long bet</a></li>
+      <li><a href="#imagenet">ImageNet: the shot heard round the world</a></li>
+      <li><a href="#context">360° context: the world in 2012</a></li>
+      <li><a href="#pattern">The pattern this follows</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 01 · 1950 → 2012</div>
+      <h1 class="chapter-title">The Idea Before <em>the Machine</em></h1>
+      <p class="chapter-lede">AI is not new. The dream of thinking machines is older than computers themselves. What's new is that it finally works — and understanding why it failed for sixty years tells you everything about why it works now.</p>
+      <div class="chapter-info">
+        <span>~40 min read</span>
+        <span>11 sections</span>
+        <span>1950 → 2012</span>
+      </div>
+    </header>
+
+    <section id="what-is-intelligence">
+      <h3>What is intelligence, really?</h3>
+      <p>Before you can build an intelligent machine, you need to define what intelligence is. It turns out this is far harder than it sounds — and the difficulty has haunted AI research for seventy years.</p>
+      <p>We use the word "intelligence" to cover an enormous range of capabilities: recognising a face, understanding a joke, planning a route, writing a poem, diagnosing an illness, playing chess, learning a language. None of these are the same thing. Some can be solved with simple rules. Others seem to require something more ineffable — pattern recognition, intuition, common sense — that is trivially easy for a three-year-old and has defeated computers for decades.</p>
+      <p>Alan Turing sidestepped the definition problem elegantly in 1950. Instead of asking "can a machine think?" he proposed what is now called the <span class="tooltip-term" data-tooltip="A test proposed by Alan Turing in 1950: if a human can't tell whether they're talking to a machine or another human, the machine can be said to be 'intelligent'.">Turing Test</span>: if a human interrogator can't reliably distinguish a machine's responses from a human's, the machine passes as intelligent. This was deliberately pragmatic — judge by outputs, not by inner workings. It also turned out to point in entirely the wrong direction for how AI would actually develop.</p>
+
+      <div class="insight">
+        <div class="insight-label">Why the Turing Test misled AI research</div>
+        <p>The Turing Test implied that the goal was human-like conversation. This pushed early AI toward symbolic reasoning, grammar rules and logical inference — the kind of intelligence that looks human to another human. What eventually worked was statistical pattern matching at massive scale, which looks nothing like how humans think but produces outputs that are strikingly useful. The lesson: optimising for a proxy metric (looking human) can point you away from the underlying goal (being useful).</p>
+      </div>
+    </section>
+
+    <section id="dartmouth">
+      <h3>Dartmouth 1956: the birth of AI</h3>
+      <p>In the summer of 1956, a group of mathematicians, computer scientists and cognitive scientists gathered at Dartmouth College in New Hampshire. The workshop was organised by John McCarthy, Marvin Minsky, Claude Shannon and Nathaniel Rochester. McCarthy coined the term "artificial intelligence" for the occasion. The proposal for the workshop contained a sentence that would haunt the field for decades: "We propose that a two-month, ten-man study of artificial intelligence be carried out based on the conjecture that every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it."</p>
+      <p>They believed they were a few years from solving the problem. They were not. But the field they named that summer attracted enormous investment, talent and optimism — and set up the first of two spectacular collapses.</p>
+
+      <div class="story">
+        <div class="story-label">360° context</div>
+        <div class="story-title">The world in 1956</div>
+        <div class="story-date">United States · 1956</div>
+        <p><strong>Geopolitical:</strong> The Cold War was at its height. The Soviet Union had just tested a hydrogen bomb. The US government was pouring money into anything that might give a technological edge — computing, communications, advanced mathematics.</p>
+        <p><strong>Technological:</strong> The transistor had been invented nine years earlier. Computers existed but filled rooms and cost millions. Programming meant feeding punched cards into a machine the size of a house.</p>
+        <p><strong>Economic:</strong> Post-war US prosperity was funding extraordinary scientific ambition. DARPA (then ARPA) was about to become the most important funder of early computing and AI research.</p>
+        <p><strong>Cultural:</strong> Science fiction had spent a decade imagining thinking machines — Asimov's robots, the mechanical brains of pulp covers. The public expected computers to be intelligent. The researchers absorbed that expectation and set targets accordingly.</p>
+      </div>
+    </section>
+
+    <section id="first-winter">
+      <h3>The first AI winter</h3>
+      <p>The 1960s were heady. AI programs played checkers, solved algebra problems, proved geometry theorems, and held rudimentary conversations. Each success was greeted with predictions that general intelligence was around the corner. In 1967, Marvin Minsky told Life magazine: "Within a generation, the problem of creating artificial intelligence will be substantially solved."</p>
+      <p>It wasn't. The problem was <span class="tooltip-term" data-tooltip="The phenomenon where an AI system performs well on simple examples but fails completely on more complex real-world ones, because it can't generalise beyond its training cases.">combinatorial explosion</span>. Techniques that worked on toy problems fell apart on real ones. A program that could prove simple geometry theorems couldn't handle anything beyond carefully constructed examples. The gap between "impressive demo" and "useful system" was immense and wasn't closing.</p>
+      <p>By the mid-1970s, funding committees on both sides of the Atlantic had noticed. The UK's Lighthill Report (1973) was particularly brutal — it concluded that AI had failed to deliver on its promises and recommended cutting most funding. DARPA cut AI funding sharply. The first AI winter had arrived: two to three years of genuine excitement followed by a decade of neglect.</p>
+    </section>
+
+    <section id="expert-systems">
+      <h3>Expert systems and the second wave</h3>
+      <p>The thaw came in the late 1970s with a different approach. Instead of trying to build general intelligence, researchers built <span class="tooltip-term" data-tooltip="AI systems that encode expert human knowledge as explicit rules: 'IF the patient has fever AND rash THEN consider measles'. They worked well in narrow domains but couldn't handle uncertainty or knowledge outside their rules.">expert systems</span> — narrow programs that encoded the knowledge of a human expert as a large set of rules. MYCIN could diagnose bacterial infections better than most doctors. XCON configured computer components for orders. R1 saved DEC millions of dollars annually.</p>
+      <p>The AI industry boomed. Companies bought expert system shells for millions of dollars. Japan launched a high-profile "fifth generation" computing project explicitly aimed at building thinking machines. The UK reversed its cuts. US investment returned. By the mid-1980s, the AI market was worth over a billion dollars annually.</p>
+      <p>Then it collapsed again. Expert systems were brittle — they only worked inside their narrow domain, broke unpredictably at the edges, and required enormous manual effort to maintain as knowledge changed. The hardware they ran on — specialised <span class="tooltip-term" data-tooltip="Dedicated computer hardware designed specifically to run Lisp, the programming language most AI systems of this era used. Expensive, proprietary, and made obsolete by cheaper general-purpose workstations.">Lisp machines</span> — was made obsolete overnight by cheaper general-purpose workstations. The second AI winter arrived around 1987 and was, if anything, deeper than the first.</p>
+    </section>
+
+    <section id="second-winter">
+      <h3>The second AI winter</h3>
+      <p>The second winter lasted through the late 1980s and most of the 1990s. "AI" became a dirty word in funding circles — attaching it to a project was more likely to get it rejected than funded. Serious researchers rebranded: "machine learning," "computational statistics," "pattern recognition." The field fragmented into sub-disciplines that avoided the term.</p>
+      <p>This matters for understanding the current moment. When ChatGPT launched in 2022 and the world acted as though AI had been invented overnight, it was missing sixty years of prior work, two complete boom-bust cycles, and the contributions of researchers who kept working through two winters when nobody was watching.</p>
+
+      <div class="definition">
+        <span class="definition-term">AI Winter</span>
+        <div class="definition-text">A period when AI funding, interest and progress collapse after overpromising failed to deliver. Two winters occurred: roughly 1974–1980 and 1987–1993. The term is now used to describe any period of reduced AI investment, though the field has not experienced a comparable collapse since the deep learning era began.</div>
+      </div>
+    </section>
+
+    <section id="what-changed">
+      <h3>What finally changed</h3>
+      <p>Three things converged in the late 2000s and early 2010s that had never converged before. They are the real explanation for why AI works now when it didn't before — and none of them are primarily about clever algorithms.</p>
+      <p>The first was <strong>data</strong>. Two decades of internet usage had produced unprecedented quantities of digitised human knowledge — text, images, audio, video. The web was, without anyone planning it, the world's largest training dataset. This simply did not exist in any prior era of AI research.</p>
+      <p>The second was <strong>compute</strong>. Graphics processing units (GPUs), designed for video games, turned out to be extraordinarily well-suited to the parallel matrix operations that neural networks require. Moore's Law had been running for fifty years, and hardware had become cheap enough that researchers could actually test the ideas that had been theoretically attractive for decades.</p>
+      <p>The third was <strong>algorithms</strong> — specifically, the rediscovery and refinement of deep neural networks by a small group of researchers who had maintained the approach through the second winter. But the algorithms were the least novel of the three. The architecture of a neural network in 2012 was not radically different from what had been proposed in the 1980s. What was different was that it could finally be trained on enough data with enough compute to actually work.</p>
+    </section>
+
+    <section id="three-ingredients">
+      <h3>The three ingredients</h3>
+      <p>This framing — data, compute, algorithms — is the single most useful mental model for understanding modern AI. It explains why AI didn't work before (missing the first two ingredients at scale). It explains why it works now. And it explains who has power in the AI industry: those who control data, those who control compute, and those who develop algorithms — in roughly that order of importance.</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1956</div>
+          <div class="timeline-content"><h5>Dartmouth Workshop</h5><p>AI named as a field. Optimistic predictions of near-term general intelligence. First major funding wave begins.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1974</div>
+          <div class="timeline-content"><h5>First AI Winter</h5><p>Lighthill Report. Funding cuts. Symbolic AI and rule-based systems hit their ceiling on real-world problems.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1980</div>
+          <div class="timeline-content"><h5>Expert Systems Boom</h5><p>Narrow AI works in specific domains. Billion-dollar industry emerges. Japan's Fifth Generation project.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1987</div>
+          <div class="timeline-content"><h5>Second AI Winter</h5><p>Expert systems prove brittle. Lisp machines made obsolete. "AI" becomes unfundable. Field rebrands as machine learning.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2006</div>
+          <div class="timeline-content"><h5>Deep Learning Revival</h5><p>Hinton publishes key papers. Neural networks show promise with pre-training. Quiet start of the current wave.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2012</div>
+          <div class="timeline-content"><h5>AlexNet / ImageNet</h5><p>Deep neural network beats all competitors by a margin that shocks the field. The current era begins.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hinton">
+      <h3>Hinton's long bet</h3>
+      <p>Geoffrey Hinton had believed in neural networks since the 1970s. Neural networks are loosely inspired by the brain — layers of interconnected nodes that adjust their connections based on feedback, gradually learning to recognise patterns in data. The approach had theoretical appeal but had failed in practice: networks were too shallow, data too scarce, computers too slow.</p>
+      <p>During the second AI winter, when most of the field had abandoned neural networks, Hinton kept working. He was funded primarily by Canadian government grants when US defence funding dried up. His group at the University of Toronto became one of the few places on earth where deep neural network research continued seriously through the 1990s and 2000s.</p>
+      <p>What Hinton understood, and what his critics doubted, was that neural networks were a fundamentally scalable approach — that given enough data and compute, deeper networks would work better, not just a little better but qualitatively better. This was a testable hypothesis that couldn't be properly tested until data and compute caught up. By 2006, they were getting close. Hinton published a series of papers showing that <span class="tooltip-term" data-tooltip="Neural networks with many layers (rather than just one or two). 'Deep' refers to the depth of the network — the number of layers between input and output. More layers allow the network to learn increasingly abstract representations.">deep networks</span> could be trained effectively with the right initialisation techniques. The field began to pay attention.</p>
+    </section>
+
+    <section id="imagenet">
+      <h3>ImageNet: the shot heard round the world</h3>
+      <p>ImageNet was a project by Stanford researcher Fei-Fei Li to build the largest labelled image dataset in history — eventually 14 million images across 20,000 categories, hand-labelled by workers on Amazon Mechanical Turk. From 2010, Li ran an annual competition: give research teams access to a subset of 1.2 million images in 1,000 categories, and see who could build the most accurate image classifier.</p>
+      <p>In 2012, a team from Hinton's Toronto lab — two of his PhD students, Alex Krizhevsky and Ilya Sutskever (later co-founder of OpenAI) — entered a deep convolutional neural network they called AlexNet. The results were not close. The second-place team achieved a 26% error rate using conventional computer vision techniques. AlexNet achieved 15.3%. A 10-percentage-point gap in a competition where previous year-on-year improvements had been measured in fractions of a percent.</p>
+      <p>The AI field registered the result with something close to shock. Within months, every major technology company had a deep learning research team. Google acquired a startup Hinton had founded. The current era of AI had begun.</p>
+
+      <div class="pullquote">"It was like someone had turned a light on in a dark room." <cite>— common description among researchers who witnessed the 2012 ImageNet results</cite></div>
+    </section>
+
+    <section id="context">
+      <h3>360° context: the world in 2012</h3>
+      <p>AlexNet didn't happen in a vacuum. Understanding what surrounded it explains why the breakthrough happened when it did and where it did.</p>
+
+      <div class="story">
+        <div class="story-label">360° context</div>
+        <div class="story-title">Why 2012 and not 2002 or 1992</div>
+        <div class="story-date">Global · 2012</div>
+        <p><strong>Data:</strong> By 2012, two decades of internet usage had produced a vast reservoir of labelled images — Flickr, Google Images, Facebook's photo uploads. ImageNet itself was only possible because of cheap internet-based labour through Mechanical Turk. Neither existed in 1992 or 2002.</p>
+        <p><strong>Compute:</strong> NVIDIA's CUDA platform (released 2007) made it straightforward to use GPU clusters for general computation. AlexNet was trained on two NVIDIA GTX 580 GPUs — consumer gaming hardware. This would have been impossible five years earlier.</p>
+        <p><strong>Economic:</strong> The smartphone revolution (iPhone launched 2007) had made image recognition commercially valuable. Identifying objects in photos, face recognition, visual search — these were worth hundreds of millions of dollars. Investment followed.</p>
+        <p><strong>Institutional:</strong> Canadian government funding (through CIFAR, the Canadian Institute for Advanced Research) had kept Hinton's lab alive through two decades when US military funding dried up. The breakthrough was built on publicly funded basic research that had no obvious commercial application for most of its life.</p>
+      </div>
+    </section>
+
+    <section id="pattern">
+      <h3>The pattern this follows</h3>
+      <p>The history of AI follows the same pattern we've seen throughout the history of technology: a promising idea appears, conditions aren't right, it fails, it's abandoned, conditions slowly change, it works, and everyone acts surprised. The idea is never as new as it seems. The conditions are everything.</p>
+      <p>Symbolic AI — rules and logic — was the right approach given 1960s hardware and data constraints. When you can't store much data and can't do much computation, explicit rules are the only option. Neural networks — the approach that works now — had been theoretically attractive since the 1950s but required orders of magnitude more data and compute than existed. They weren't wrong. They were early.</p>
+      <p>The same logic applies forward. There are almost certainly approaches being worked on right now that look impractical or too slow — that are waiting for a 10x improvement in compute or a new dataset that doesn't exist yet. The approaches that look like dead ends today may be the ones that define the next era.</p>
+
+      <div class="insight">
+        <div class="insight-label">What this chapter sets up</div>
+        <p>Everything that follows in this tutorial is downstream of what changed in 2012. The transformer architecture, the data centres, the local models, the open-source ecosystem — all of it is built on the proof of concept that deep neural networks, given enough data and compute, can learn to do things that rule-based systems never could. The next chapter opens the hood: what does "learning" actually mean when a machine does it?</p>
+      </div>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="02-how-models-learn.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 02</div>
+        <div class="chapter-next-title">How a Model <em>Learns</em></div>
+        <p class="chapter-next-blurb">Training data, loss functions, gradient descent — what "learning" actually means when there's no teacher, just a number that gets smaller.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="index.html">Back to tutorial hub</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>HOW AI THINKS · A GUIDE</p>
+    <p>CHAPTER 01 OF 10 · THE IDEA BEFORE THE MACHINE</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

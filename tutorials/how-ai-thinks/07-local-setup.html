@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 07 · Running Your Own LLM — How AI Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .tooltip-term {
+    border-bottom: 1px dashed #b45309;
+    cursor: help;
+    position: relative;
+  }
+  .tooltip-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    width: 230px;
+    z-index: 100;
+    pointer-events: none;
+    white-space: normal;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tooltip-term:hover::after { opacity: 1; }
+  .code-block {
+    background: #1a1a2e;
+    color: #e2e8f0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.8;
+    padding: 1.25rem 1.5rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    border-left: 3px solid #b45309;
+  }
+  .code-block .comment { color: #718096; font-style: italic; }
+  .code-block .cmd { color: #fbbf24; }
+  .code-block .output { color: #68d391; }
+  .step-block {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    background: var(--paper-deep);
+  }
+  .step-block-num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: #b45309;
+    margin-bottom: 0.5rem;
+  }
+  .step-block h5 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .step-block p {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    margin: 0;
+  }
+  .model-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+  }
+  .model-table th {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .model-table td {
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--ink-light);
+  }
+  .model-table tr:last-child td { border-bottom: none; }
+  .model-table td:first-child { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink); }
+  .tag-good { color: #2e7d32; font-weight: 600; }
+  .tag-ok { color: #b45309; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">How AI Thinks <em>— a guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">← Home</a>
+      <a href="index.html">Hub</a>
+      <a href="01-the-idea.html">01</a>
+      <a href="02-how-models-learn.html">02</a>
+      <a href="03-the-transformer.html">03</a>
+      <a href="04-data.html">04</a>
+      <a href="05-hardware.html">05</a>
+      <a href="06-shrinking.html">06</a>
+      <a href="07-local-setup.html" class="current">07</a>
+      <a href="08-open-closed.html">08</a>
+      <a href="09-where-heading.html">09</a>
+      <a href="10-what-it-means.html">10</a>
+      <div class="lang-toggle">
+        <a href="07-local-setup.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="07-local-setup-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 07</div>
+    <div class="toc-chapter-title">Running Your Own LLM</div>
+    <ul class="toc-list">
+      <li><a href="#why-local">Why run locally at all?</a></li>
+      <li><a href="#what-you-need">What you actually need</a></li>
+      <li><a href="#ollama">Ollama: the easiest starting point</a></li>
+      <li><a href="#install">Installing and running your first model</a></li>
+      <li><a href="#which-model">Which model for a 32 GB system</a></li>
+      <li><a href="#model-picker">Model picker: the full table</a></li>
+      <li><a href="#open-webui">Open WebUI: a browser interface</a></li>
+      <li><a href="#use-cases">Real use cases, honest assessments</a></li>
+      <li><a href="#rag">RAG: making the model know your documents</a></li>
+      <li><a href="#performance-tips">Performance tips</a></li>
+      <li><a href="#limitations">Honest limitations</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 07 · Practical setup</div>
+      <h1 class="chapter-title">Running <em>Your Own LLM</em></h1>
+      <p class="chapter-lede">This chapter is practical. By the end of it you'll have a local LLM running on your machine, understand which model to pick for your hardware, and know what you can realistically do with it — and what you can't.</p>
+      <div class="chapter-info">
+        <span>~45 min read</span>
+        <span>11 sections</span>
+        <span>Practical setup</span>
+      </div>
+    </header>
+
+    <section id="why-local">
+      <h3>Why run locally at all?</h3>
+      <p>Before investing time in setup, it's worth being clear about why local inference is worth doing. The cloud alternatives — ChatGPT, Claude, Gemini — are genuinely excellent and require no setup. If your goal is just to use AI effectively, a cloud subscription is the faster path.</p>
+      <p>Local LLMs make sense when one or more of these apply to you:</p>
+      <p><strong>Privacy.</strong> Your data stays on your machine. Nothing is sent to a third-party server. For legal documents, medical notes, proprietary business information, personal journals — local inference means zero data leakage by design. No privacy policy to trust. No server logs of your conversations.</p>
+      <p><strong>Cost at volume.</strong> Cloud APIs charge per token. At low usage, a subscription is fine. At high usage — processing thousands of documents, running automated pipelines, building tools for a team — local inference costs electricity, not per-query fees.</p>
+      <p><strong>Offline access.</strong> Once downloaded, a local model works without internet. Useful on planes, in areas with poor connectivity, or when you need guaranteed availability.</p>
+      <p><strong>Customisation.</strong> Local models can be fine-tuned on your own data, configured with custom system prompts, and integrated into local workflows in ways cloud APIs don't always support.</p>
+      <p><strong>Curiosity and understanding.</strong> Running a model locally gives you a visceral sense of what these systems actually are. You see the model file, you watch it load into memory, you feel the inference speed vary with prompt length. It's the difference between using a car and opening the bonnet.</p>
+    </section>
+
+    <section id="what-you-need">
+      <h3>What you actually need</h3>
+      <p>The minimum viable local LLM setup is lower than most people expect. Here's the honest picture for a 32 GB system:</p>
+
+      <div class="step-block">
+        <div class="step-block-num">HARDWARE</div>
+        <h5>32 GB system — what's possible</h5>
+        <p>On a <strong>Mac with 32 GB unified memory</strong> (M1/M2/M3/M4 Pro or Max): you can run a 32B model at Q4 comfortably, or a 13B at Q8. Apple Silicon's unified memory architecture means the GPU can use all 32 GB, not just a dedicated VRAM pool. This is genuinely the best value platform for local AI right now.</p>
+        <p style="margin-top:0.75rem">On a <strong>Windows/Linux machine with 32 GB RAM and an NVIDIA GPU with 12–16 GB VRAM</strong>: the GPU VRAM is the bottleneck, not total RAM. With a 16 GB GPU (e.g. RTX 4080), you can run a 13B model at Q4 fully on GPU. Larger models can partially offload layers to CPU RAM, but with significant speed penalty.</p>
+        <p style="margin-top:0.75rem">On a <strong>CPU-only machine with 32 GB RAM</strong>: inference will be slow (2–5 tokens per second for a 7B model), but it works. Useful for low-throughput tasks where you're not waiting in real time.</p>
+      </div>
+
+      <p><strong>Storage:</strong> Model files range from 4 GB (7B Q4) to 40 GB (70B Q4). Keep 50–100 GB free on a fast SSD. Model load time from an NVMe SSD is a few seconds; from a spinning hard drive, painfully slow.</p>
+      <p><strong>Software:</strong> Ollama (covered next) handles everything else. No manual driver configuration, no Python environment management, no CUDA setup beyond having up-to-date NVIDIA drivers.</p>
+    </section>
+
+    <section id="ollama">
+      <h3>Ollama: the easiest starting point</h3>
+      <p><span class="tooltip-term" data-tooltip="An open-source tool that makes running local LLMs as simple as running a single terminal command. Manages model downloads, GGUF conversion, GPU layer offloading, and serves a local API compatible with OpenAI's API format. Available for Mac, Linux and Windows.">Ollama</span> is the tool that made local LLMs accessible to non-engineers. It wraps llama.cpp in a clean interface, manages model downloads and storage, handles GPU detection and configuration, and exposes a local API that is compatible with OpenAI's API format — meaning any tool that works with ChatGPT's API can be pointed at Ollama with a URL change.</p>
+      <p>What Ollama does behind the scenes when you run a model: it downloads the GGUF file from its model library (hosted on its servers), detects your GPU capabilities, decides how many layers to offload to GPU vs CPU, loads the model into memory, and starts a local server at <code>http://localhost:11434</code> that accepts requests. You don't need to know any of this — it just works.</p>
+      <p>Other good options exist: <strong>LM Studio</strong> has an excellent GUI, is good for browsing and downloading models from Hugging Face, and gives fine-grained control over inference settings. <strong>Jan</strong> is an open-source ChatGPT-style interface that also manages local models. <strong>GPT4All</strong> is particularly beginner-friendly. This guide focuses on Ollama because it's the most flexible for power users and developers, but any of these will work for getting started.</p>
+    </section>
+
+    <section id="install">
+      <h3>Installing and running your first model</h3>
+      <p>The full setup takes about five minutes plus however long the model download takes.</p>
+
+      <div class="step-block">
+        <div class="step-block-num">STEP 1</div>
+        <h5>Install Ollama</h5>
+        <p>Go to <strong>ollama.com</strong> and download the installer for your platform (Mac, Windows, Linux). On Mac, drag to Applications. On Linux, one-line install:</p>
+      </div>
+
+      <div class="code-block">
+        <span class="comment"># Linux install</span><br>
+        <span class="cmd">curl -fsSL https://ollama.com/install.sh | sh</span>
+      </div>
+
+      <div class="step-block">
+        <div class="step-block-num">STEP 2</div>
+        <h5>Pull and run a model</h5>
+        <p>Open Terminal (Mac/Linux) or Command Prompt (Windows). Pull and run a model in one command:</p>
+      </div>
+
+      <div class="code-block">
+        <span class="comment"># Pull and chat with Llama 3.2 3B (fast, ~2 GB)</span><br>
+        <span class="cmd">ollama run llama3.2</span><br><br>
+        <span class="comment"># Or a larger model for a 32 GB system</span><br>
+        <span class="cmd">ollama run qwen2.5:32b</span><br><br>
+        <span class="comment"># The first run downloads the model — subsequent runs are instant</span>
+      </div>
+
+      <div class="step-block">
+        <div class="step-block-num">STEP 3</div>
+        <h5>Chat directly in terminal</h5>
+        <p>After the model loads, you'll see a <code>&gt;&gt;&gt;</code> prompt. Type your message and press Enter. That's it — you're talking to a local LLM.</p>
+      </div>
+
+      <div class="code-block">
+        <span class="output">&gt;&gt;&gt; </span><span class="cmd">Explain gradient descent in plain English</span><br><br>
+        <span class="output">Gradient descent is an optimisation algorithm used to find the minimum</span><br>
+        <span class="output">of a function. Imagine you're standing on a hilly landscape in thick fog...</span>
+      </div>
+
+      <div class="step-block">
+        <div class="step-block-num">STEP 4 (optional)</div>
+        <h5>Use the API</h5>
+        <p>Ollama runs a local server you can query from any language or tool:</p>
+      </div>
+
+      <div class="code-block">
+        <span class="comment"># Query via curl</span><br>
+        <span class="cmd">curl http://localhost:11434/api/generate -d '{</span><br>
+        <span class="cmd">  "model": "qwen2.5:32b",</span><br>
+        <span class="cmd">  "prompt": "What is a transformer in AI?",</span><br>
+        <span class="cmd">  "stream": false</span><br>
+        <span class="cmd">}'</span>
+      </div>
+    </section>
+
+    <section id="which-model">
+      <h3>Which model for a 32 GB system</h3>
+      <p>For a 32 GB Mac (M-series), the best general-purpose choice in mid-2025 is <strong>Qwen2.5 32B</strong> at Q4 quantisation. It fits comfortably (uses about 20 GB), runs at 15–25 tokens per second on M3/M4 Pro chips, and its quality is genuinely impressive — capable of multi-step reasoning, complex coding, document analysis, and extended conversation.</p>
+      <p>If reasoning tasks (mathematics, logic, step-by-step problem solving) are your priority, <strong>DeepSeek-R1-Distill-Qwen-32B</strong> is the better choice. It uses the same memory footprint but is specifically optimised for reasoning tasks, often dramatically outperforming general-purpose models on complex problems.</p>
+      <p>For a 32 GB Windows/Linux machine where GPU VRAM is the constraint (not total RAM), the picture changes: a 16 GB GPU runs a 13B model smoothly on GPU, with larger models requiring CPU offloading (slower). The sweet spot is a 13B model fully in GPU VRAM rather than a 32B model split between GPU and CPU.</p>
+    </section>
+
+    <section id="model-picker">
+      <h3>Model picker: the full table</h3>
+      <p>Use this table as a starting point. Models improve rapidly — treat it as a framework rather than a definitive ranking.</p>
+
+      <table class="model-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Size</th>
+            <th>Ollama tag</th>
+            <th>Best for</th>
+            <th>32 GB Mac?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Llama 3.3 70B</td>
+            <td>~40 GB Q4</td>
+            <td>llama3.3:70b</td>
+            <td>Best open general-purpose</td>
+            <td class="tag-ok">Needs 64 GB</td>
+          </tr>
+          <tr>
+            <td>Qwen2.5 32B</td>
+            <td>~20 GB Q4</td>
+            <td>qwen2.5:32b</td>
+            <td>Best for 32 GB — excellent reasoning</td>
+            <td class="tag-good">✓ Recommended</td>
+          </tr>
+          <tr>
+            <td>DeepSeek-R1 32B</td>
+            <td>~20 GB Q4</td>
+            <td>deepseek-r1:32b</td>
+            <td>Best reasoning/maths on 32 GB</td>
+            <td class="tag-good">✓ Recommended</td>
+          </tr>
+          <tr>
+            <td>Mistral Small 22B</td>
+            <td>~14 GB Q4</td>
+            <td>mistral-small</td>
+            <td>Fast, capable, multilingual</td>
+            <td class="tag-good">✓ Fits well</td>
+          </tr>
+          <tr>
+            <td>Llama 3.1 8B</td>
+            <td>~5 GB Q4</td>
+            <td>llama3.1</td>
+            <td>Fast daily use, low memory</td>
+            <td class="tag-good">✓ Very fast</td>
+          </tr>
+          <tr>
+            <td>Phi-4 14B</td>
+            <td>~9 GB Q4</td>
+            <td>phi4</td>
+            <td>Coding, reasoning, small size</td>
+            <td class="tag-good">✓ Efficient</td>
+          </tr>
+          <tr>
+            <td>Gemma 2 27B</td>
+            <td>~16 GB Q4</td>
+            <td>gemma2:27b</td>
+            <td>Google model, good instruction following</td>
+            <td class="tag-good">✓ Fits</td>
+          </tr>
+          <tr>
+            <td>Codestral 22B</td>
+            <td>~13 GB Q4</td>
+            <td>codestral</td>
+            <td>Code only — best local coding model</td>
+            <td class="tag-good">✓ For coders</td>
+          </tr>
+          <tr>
+            <td>Nomic-embed-text</td>
+            <td>~270 MB</td>
+            <td>nomic-embed-text</td>
+            <td>Embeddings for RAG — not a chat model</td>
+            <td class="tag-good">✓ Tiny</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="open-webui">
+      <h3>Open WebUI: a browser interface</h3>
+      <p>Typing in a terminal is functional but not pleasant for extended use. <span class="tooltip-term" data-tooltip="An open-source web interface for Ollama (and other local LLM backends). Provides a ChatGPT-style browser interface, supports multiple models, conversation history, file uploads, and image generation. Runs locally via Docker or direct install.">Open WebUI</span> gives you a ChatGPT-style browser interface running entirely locally. It connects to Ollama, shows all your installed models, persists conversation history, and supports file uploads for document analysis.</p>
+
+      <div class="code-block">
+        <span class="comment"># Install Open WebUI via Docker (simplest method)</span><br>
+        <span class="cmd">docker run -d -p 3000:8080 \</span><br>
+        <span class="cmd">  --add-host=host.docker.internal:host-gateway \</span><br>
+        <span class="cmd">  -v open-webui:/app/backend/data \</span><br>
+        <span class="cmd">  --name open-webui \</span><br>
+        <span class="cmd">  ghcr.io/open-webui/open-webui:main</span><br><br>
+        <span class="comment"># Then open http://localhost:3000 in your browser</span>
+      </div>
+
+      <p>If Docker is too much overhead, LM Studio is a native GUI alternative that doesn't require it — downloadable from lmstudio.ai and very polished.</p>
+    </section>
+
+    <section id="use-cases">
+      <h3>Real use cases, honest assessments</h3>
+      <p>Here's an honest assessment of where local LLMs (on a 32 GB system with a 32B model) are good, where they're acceptable, and where cloud models still win.</p>
+
+      <p><strong>Local LLMs are excellent for:</strong> Drafting and editing text (emails, documents, reports). Summarising documents you paste in. Answering questions about content you provide. General Q&A on topics with training coverage. Basic to intermediate coding tasks (writing functions, explaining code, debugging). Brainstorming. Translation for major languages.</p>
+
+      <p><strong>Local LLMs are acceptable for:</strong> Complex coding (they'll make mistakes on hard problems; cloud models make fewer). Extended reasoning chains (better with reasoning-optimised models like DeepSeek-R1). Multilingual tasks in non-English languages (quality drops for less-represented languages). Tasks requiring current information (knowledge cutoff applies; no internet access by default).</p>
+
+      <p><strong>Cloud models still win for:</strong> Tasks requiring very long context (hundreds of pages of documents). Latest current information. Vision tasks (analysing images, charts) — though multimodal local models are improving. Maximum quality on hard tasks. Tasks where speed matters more than privacy.</p>
+
+      <div class="insight">
+        <div class="insight-label">The honest comparison to cloud</div>
+        <p>A local Qwen2.5 32B is roughly comparable to GPT-3.5 Turbo or Claude Haiku in quality — capable for a wide range of everyday tasks, noticeably below GPT-4o or Claude Sonnet for hard problems. That gap will close over time. For now: local is good enough for the majority of daily AI use cases, and private by design. For your hardest, most important tasks, cloud models still have an edge.</p>
+      </div>
+    </section>
+
+    <section id="rag">
+      <h3>RAG: making the model know your documents</h3>
+      <p><span class="tooltip-term" data-tooltip="Retrieval-Augmented Generation — a technique where relevant documents are retrieved from a local database and included in the model's context window at query time. Lets the model answer questions about documents it wasn't trained on, without fine-tuning. Combines a vector database with an LLM.">RAG</span> (Retrieval-Augmented Generation) is how you make a local model knowledgeable about your own documents — your notes, your PDFs, your codebase — without retraining it.</p>
+      <p>The process: documents are split into chunks and converted to <span class="tooltip-term" data-tooltip="Dense numerical vectors that represent the semantic meaning of text. Similar texts produce similar embedding vectors. Used in RAG to find documents that are semantically related to a query, even if they don't share exact keywords.">embeddings</span> (numerical representations of meaning) using a small embedding model, then stored in a local vector database. When you ask a question, your question is also converted to an embedding, and the database retrieves the most semantically similar document chunks. Those chunks are included in the model's context window alongside your question.</p>
+      <p>Open WebUI has built-in RAG support — you can upload documents directly and the interface handles the embedding and retrieval. For more control, tools like Ollama + Chroma (a local vector database) + LangChain give you a full pipeline you can customise.</p>
+      <p>RAG is powerful but has limits: the retrieval step can miss relevant context that's phrased differently from your query, and very long documents require careful chunking strategy. It works well for factual retrieval ("what does clause 5.3 say?") and less well for synthesis across many documents ("summarise the key themes across all these reports").</p>
+    </section>
+
+    <section id="performance-tips">
+      <h3>Performance tips</h3>
+      <p>A few practical adjustments that make a meaningful difference:</p>
+      <p><strong>Set GPU layers explicitly.</strong> Ollama usually auto-detects, but for borderline cases you can force full GPU offload: <code>OLLAMA_NUM_GPU=99 ollama run qwen2.5:32b</code>. The 99 means "offload as many layers as fit in VRAM."</p>
+      <p><strong>Keep the model loaded.</strong> The first prompt after loading takes longer because the model is being loaded into memory. Subsequent prompts are faster. Ollama keeps models loaded for 5 minutes by default; set <code>OLLAMA_KEEP_ALIVE=1h</code> if you're doing sustained work.</p>
+      <p><strong>Use a shorter context window for speed.</strong> Longer context = slower generation. If you don't need 32K context, set a smaller value in the Modelfile or via the API: <code>"num_ctx": 8192</code>.</p>
+      <p><strong>Close other applications.</strong> On Apple Silicon, other apps compete for the same unified memory pool. Closing Chrome and other memory-hungry apps before running a large model measurably improves speed.</p>
+      <p><strong>Use an NVMe SSD.</strong> Model loading time scales with storage read speed. An NVMe SSD loads a 20 GB model in 5–10 seconds. A USB drive takes minutes.</p>
+    </section>
+
+    <section id="limitations">
+      <h3>Honest limitations</h3>
+      <p>Running a local LLM is rewarding but comes with genuine limitations worth being clear about before you invest time.</p>
+      <p><strong>Knowledge cutoff.</strong> The model knows nothing that happened after its training data cutoff. For Llama 3.3, that's roughly early 2024. For Qwen2.5, late 2024. For current news, prices, recent research — the model is wrong by default.</p>
+      <p><strong>No internet.</strong> By default, local models can't search the web. You can add tools and agents that give them web access (some Open WebUI configurations support this), but it's not automatic.</p>
+      <p><strong>Hallucinations.</strong> Local models hallucinate — generate plausible-sounding but wrong information — at rates comparable to cloud models of similar capability. Smaller models hallucinate more. Don't use local LLMs for tasks where factual accuracy is critical without verification.</p>
+      <p><strong>Speed.</strong> Even on a fast Mac, a 32B model generates 15–25 tokens per second — about as fast as you can comfortably read. Cloud models are often 2–5x faster. For real-time interactive use, speed is fine. For batch processing thousands of documents, the difference matters.</p>
+      <p>None of these limitations are dealbreakers. They're just the honest picture of where the technology is right now. Local LLMs are genuinely useful, private, free to run, and improving rapidly. They're not magic, and they're not trying to be.</p>
+
+      <div class="pullquote">"Running a local model is like having a very knowledgeable colleague who works for free, never sleeps, never shares your secrets — and occasionally makes things up with alarming confidence." <cite>— practical summary from the local AI community</cite></div>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="08-open-closed.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 08</div>
+        <div class="chapter-next-title">The Closed vs <em>Open Divide</em></div>
+        <p class="chapter-next-blurb">OpenAI vs Meta vs Mistral. What "open source" really means in AI, who's winning, and why the answer matters for the rest of the world.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="06-shrinking.html">Chapter 06</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>HOW AI THINKS · A GUIDE</p>
+    <p>CHAPTER 07 OF 10 · RUNNING YOUR OWN LLM</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

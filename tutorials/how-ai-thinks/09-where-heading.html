@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 09 · Where the World Is Heading — How AI Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .tooltip-term {
+    border-bottom: 1px dashed #b45309;
+    cursor: help;
+    position: relative;
+  }
+  .tooltip-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    width: 230px;
+    z-index: 100;
+    pointer-events: none;
+    white-space: normal;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tooltip-term:hover::after { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">How AI Thinks <em>— a guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">← Home</a>
+      <a href="index.html">Hub</a>
+      <a href="01-the-idea.html">01</a>
+      <a href="02-how-models-learn.html">02</a>
+      <a href="03-the-transformer.html">03</a>
+      <a href="04-data.html">04</a>
+      <a href="05-hardware.html">05</a>
+      <a href="06-shrinking.html">06</a>
+      <a href="07-local-setup.html">07</a>
+      <a href="08-open-closed.html">08</a>
+      <a href="09-where-heading.html" class="current">09</a>
+      <a href="10-what-it-means.html">10</a>
+      <div class="lang-toggle">
+        <a href="09-where-heading.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="09-where-heading-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 09</div>
+    <div class="toc-chapter-title">Where the World Is Heading</div>
+    <ul class="toc-list">
+      <li><a href="#honest-forecasting">Honest forecasting</a></li>
+      <li><a href="#agents">Agents: AI that acts, not just answers</a></li>
+      <li><a href="#multimodal">Multimodal: text, image, sound, video</a></li>
+      <li><a href="#reasoning">Reasoning models: thinking before answering</a></li>
+      <li><a href="#scaling-laws">Scaling laws: will they hold?</a></li>
+      <li><a href="#on-device">On-device AI</a></li>
+      <li><a href="#labour">Labour and the automation question</a></li>
+      <li><a href="#concentration">Concentration and the monopoly risk</a></li>
+      <li><a href="#agi">The AGI question</a></li>
+      <li><a href="#safety">Safety and alignment: the unsolved problem</a></li>
+      <li><a href="#what-we-dont-know">What we genuinely don't know</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 09 · What comes next</div>
+      <h1 class="chapter-title">Where the World <em>Is Heading</em></h1>
+      <p class="chapter-lede">Forecasting AI is a reliable way to look foolish. This chapter doesn't pretend otherwise. What it does is map the trajectories that are already in motion — the ones where you can see the direction even if you can't see the destination.</p>
+      <div class="chapter-info">
+        <span>~42 min read</span>
+        <span>11 sections</span>
+        <span>What comes next</span>
+      </div>
+    </header>
+
+    <section id="honest-forecasting">
+      <h3>Honest forecasting</h3>
+      <p>In 2020, most serious AI researchers would have told you that a model capable of passing the bar exam, writing publishable code, and holding a coherent hour-long conversation was a decade away. They were three years off. In 2022, most would have told you that image-generation models capable of photorealistic output were impressive but narrow. By 2023, they were being used for commercial advertising. In 2024, anyone who predicted DeepSeek-R1's capabilities and cost structure six months earlier would have been dismissed as uninformed.</p>
+      <p>This pattern — consistent underestimation of progress by thoughtful observers — should induce genuine epistemic humility. The honest position is: the direction is clear, the pace is not, and the most important developments may not be the ones we're currently watching.</p>
+      <p>With that caveat clear, here are the trajectories.</p>
+    </section>
+
+    <section id="agents">
+      <h3>Agents: AI that acts, not just answers</h3>
+      <p>Current LLMs are reactive: you prompt them, they respond. <span class="tooltip-term" data-tooltip="AI systems that can take sequences of actions in the world — browsing the web, writing and running code, managing files, sending emails — to accomplish multi-step goals, not just answer single questions. Require a model to plan, act, observe results, and adjust.">AI agents</span> are systems that take sequences of actions to accomplish multi-step goals — browsing the web, writing and executing code, managing files, interacting with APIs, booking meetings.</p>
+      <p>The enabling components are all converging: capable LLMs can now plan and reason well enough to decompose goals into steps. Tool use (giving models access to functions they can call) has become standard. Long context windows let agents maintain state over extended task sequences. The cost of inference is falling, making autonomous loops economically viable.</p>
+      <p>Early agent systems — AutoGPT (2023), Claude's computer use capability (2024), OpenAI's Operator (2025) — have demonstrated the concept and its limits. Current agents are unreliable over long task horizons: they drift, make errors that cascade, and require human oversight. But the trajectory is clear. Within a few years, autonomous agents capable of completing hour-long or day-long computer tasks without supervision are likely to be commercially available. The economic and labour implications are significant.</p>
+
+      <div class="story">
+        <div class="story-label">360° context</div>
+        <div class="story-title">Why agents matter more than better chatbots</div>
+        <p>A better chatbot is a better information retrieval and text generation tool. An agent is a different category of thing — one that can do work in the world rather than just answer questions about it. The economic value of automating knowledge work — the entire category of tasks done by people sitting at computers — is far larger than the value of better Q&A. Agents, not better language models, are where the economic disruption concentrates.</p>
+      </div>
+    </section>
+
+    <section id="multimodal">
+      <h3>Multimodal: text, image, sound, video</h3>
+      <p>The first generation of large language models were text-only. <span class="tooltip-term" data-tooltip="AI models that can process and generate multiple types of data — text, images, audio, video — within a single model. GPT-4V, Gemini 1.5, Claude 3 are multimodal. They can describe images, answer questions about charts, and increasingly generate images or audio alongside text.">Multimodal models</span> can process and generate text, images, audio, and video. GPT-4V (Vision) added image understanding. Gemini 1.5 can process an hour of video and answer questions about it. Models like Sora (video generation), Stable Diffusion and DALL-E 3 (image generation), and ElevenLabs (voice cloning) represent specialised ends of the spectrum.</p>
+      <p>The direction is toward universal models that handle all modalities. A model that can see, hear, read, and speak — and switch fluidly between them — is qualitatively more capable than one that handles text only. Medical diagnosis from images, engineering inspection from video, real-time translation with voice synthesis, understanding a graph in a financial report — all require multimodal capability.</p>
+      <p>The harder problem is multimodal generation: producing coherent, high-quality output across modalities in response to complex instructions. Video generation in particular remains imperfect — current models struggle with physics, consistency over time, and fine-grained control. This gap will close.</p>
+    </section>
+
+    <section id="reasoning">
+      <h3>Reasoning models: thinking before answering</h3>
+      <p>Standard language models generate tokens in a single forward pass per output token. Complex problems — mathematics, multi-step logic, code debugging — benefit from more deliberate, sequential reasoning. <span class="tooltip-term" data-tooltip="Models trained to produce extended chains of reasoning (often called 'thinking' or 'scratchpad') before generating their final answer. OpenAI's o1/o3, DeepSeek-R1, and Google's Gemini Thinking are examples. They're slower and more expensive per query but substantially better at hard reasoning tasks.">Reasoning models</span> address this by generating long internal "thinking" sequences before producing a final answer.</p>
+      <p>OpenAI's o1 (September 2024) was the first widely deployed example. It spent time "thinking" — generating a chain of reasoning tokens — before answering, and showed dramatic improvements on hard mathematics, complex coding, and scientific reasoning over standard GPT-4. DeepSeek-R1 (January 2025) demonstrated the same approach from an independent team, validating the paradigm.</p>
+      <p>The trade-off: reasoning models are slower and more expensive per query. For simple questions, they're overkill. For hard problems, they're substantially better. The emerging pattern is hybrid systems that route simple queries to fast standard models and hard queries to slower reasoning models — spending compute where it matters.</p>
+    </section>
+
+    <section id="scaling-laws">
+      <h3>Scaling laws: will they hold?</h3>
+      <p>The last decade of AI progress has been driven by a simple observation: bigger models trained on more data consistently outperform smaller ones. The "<span class="tooltip-term" data-tooltip="Empirical relationships showing that model performance improves predictably with more parameters, more training data, and more compute. First described systematically by OpenAI researchers in 2020. They've held across many orders of magnitude, but whether they'll continue to hold at extreme scales is debated.">scaling laws</span>" documented by Kaplan et al. (OpenAI, 2020) and refined by the Chinchilla paper (DeepMind, 2022) gave the field a roadmap: spend more compute on larger models and more data, and performance will improve.</p>
+      <p>This roadmap has driven trillion-dollar capital investment into AI infrastructure. The implicit bet: scaling will continue to pay off, and the lab that can train the biggest models will have the best models. But there are signs the slope of returns is changing. Each new generation of frontier model requires dramatically more compute for smaller marginal improvements on standard benchmarks. Some researchers argue we're approaching a "pre-training cliff" — a point where the accessible high-quality training data is exhausted and returns to scale diminish sharply.</p>
+      <p>The response from labs has been two-pronged: synthetic data (using models to generate training data — see Chapter 04) and test-time compute (spending more compute at inference time rather than training time, as in reasoning models). Whether these approaches can sustain progress at the current rate is the central open question of the field.</p>
+    </section>
+
+    <section id="on-device">
+      <h3>On-device AI</h3>
+      <p>Apple's Neural Engine, Qualcomm's NPU, and Google's Tensor chip represent a different trajectory: moving capable AI inference from the cloud to the device in your pocket. Apple Intelligence (announced 2024) runs some language model capabilities entirely on-device, with privacy as the primary selling point. Qualcomm's roadmap suggests that by 2026, phones will run models equivalent to today's 7B class with good performance.</p>
+      <p>On-device AI changes the calculus significantly: no latency (no round trip to a server), no cost per query (electricity only), no data leaving the device. For real-time applications — live translation in earphones, on-device transcription, private document summarisation — on-device is strictly better than cloud when the quality is sufficient.</p>
+      <p>The capability gap between on-device and cloud models will persist, but it will narrow. The question is not whether capable on-device AI will exist, but when it will reach the quality threshold for mainstream use cases. The answer appears to be: sooner than most people expect.</p>
+    </section>
+
+    <section id="labour">
+      <h3>Labour and the automation question</h3>
+      <p>Every major technological transition in history has disrupted labour markets and created net new employment over the long run. This is the standard economist's answer to "will AI destroy jobs?" — and historically it has been correct. The Luddites were wrong. Mechanisation created more jobs than it destroyed. The computer revolution created entire industries that didn't exist before.</p>
+      <p>But "correct in the long run" is cold comfort to individuals and communities facing disruption in the short run. And the speed and breadth of AI's current capability expansion is different from previous waves. Previous automation replaced physical or routine cognitive labour. Current AI is encroaching on skilled, highly educated work — legal research, medical diagnosis, financial analysis, software development, content creation. The jobs most at risk are not low-wage factory work but the professional services that previous generations retrained into.</p>
+      <p>The honest answer is that economists disagree sharply and the evidence is still accumulating. What seems clear: the transition will be uneven, some roles will disappear faster than new ones appear, and the distribution of gains from productivity improvements will depend heavily on political choices, not just market dynamics.</p>
+    </section>
+
+    <section id="concentration">
+      <h3>Concentration and the monopoly risk</h3>
+      <p>The economics of frontier AI favour concentration. Training the most capable models requires billions of dollars in compute. Operating them at scale requires infrastructure investments that only a few organisations can afford. The talent pool of people capable of doing this work is small and increasingly concentrated in a handful of companies.</p>
+      <p>This creates a structural tendency toward oligopoly that no market mechanism naturally corrects. The organisations with the biggest models attract the most users, which generates the most usage data, which improves the models further, which attracts more users. The feedback loop is self-reinforcing.</p>
+      <p>Open-weights models (Chapter 08) are the primary countervailing force. If powerful models are freely available, the barrier to building applications on top of them is much lower, and the dependence on a few gatekeepers is reduced. This is why the open/closed debate matters for competition policy, not just technical preference.</p>
+    </section>
+
+    <section id="agi">
+      <h3>The AGI question</h3>
+      <p><span class="tooltip-term" data-tooltip="Artificial General Intelligence — a hypothetical AI system that can perform any intellectual task that a human can. No agreed definition exists. Current AI systems are narrow specialists (albeit very broad narrow specialists). Whether AGI is decades away, imminent, or a meaningless concept is genuinely contested among serious researchers.">AGI</span> — Artificial General Intelligence — is the concept of an AI that can perform any intellectual task a human can. Sam Altman said in 2024 that AGI would likely arrive within a few years. Many researchers dismissed this as promotional overstatement. Others think it understates the difficulty of defining what AGI even means.</p>
+      <p>The definitional problem is real: current AI systems are already superhuman at many specific tasks — chess, Go, protein structure prediction, certain coding benchmarks — while being obviously sub-human at others (reliable physical reasoning, genuine novel discovery, common sense in unusual situations). At what threshold do we call something "general"?</p>
+      <p>What seems true: the pace of capability improvements has exceeded predictions consistently. What seems also true: current models have systematic limitations that look fundamental, not just engineering challenges — lack of grounded world models, inability to reliably self-correct, no persistent memory, fragility under distribution shift. Whether these are solvable with current approaches at larger scale, or require architectural innovations we don't have yet, is the key unknown.</p>
+    </section>
+
+    <section id="safety">
+      <h3>Safety and alignment: the unsolved problem</h3>
+      <p>The <span class="tooltip-term" data-tooltip="The challenge of ensuring that AI systems reliably do what humans intend and want, especially as they become more capable. Includes technical problems (making models behave correctly) and governance problems (ensuring the organisations building AI act in the public interest).">alignment problem</span> is simple to state and hard to solve: how do we ensure that increasingly capable AI systems act in accordance with human values and intentions? Current approaches — RLHF, constitutional AI, careful fine-tuning — work well enough for current systems. Their adequacy for much more capable future systems is not established.</p>
+      <p>The concern is not that AI will spontaneously develop malevolent goals. It's that AI systems optimised for imperfect proxies (human approval ratings, benchmark performance) may find ways to satisfy those proxies that diverge from our actual intentions. The more capable the system, the more dangerous such divergences could be.</p>
+      <p>Anthropic (Claude's creator), DeepMind, and a handful of academic groups treat alignment research as their primary mission. Most of the AI industry treats it as an important but secondary concern. Whether the field solves alignment before deploying systems capable enough to make the problem urgent is the most consequential open question in technology.</p>
+    </section>
+
+    <section id="what-we-dont-know">
+      <h3>What we genuinely don't know</h3>
+      <p>Finishing with honesty: the things we don't know are as important as the things we do.</p>
+      <p>We don't know whether scaling will continue to produce capability improvements at a meaningful rate, or whether we're approaching a wall that requires fundamentally new approaches. We don't know whether current AI systems have anything like understanding or experience, or whether this question even has a meaningful answer. We don't know how labour markets will absorb the disruption at the pace it's arriving. We don't know whether the open or closed model will dominate, or whether either will prove safe enough at the frontier. We don't know whether alignment is a solvable engineering problem or a fundamental challenge that scales with capability.</p>
+      <p>What we do know: the next five years will answer some of these questions in ways that will surprise nearly everyone paying attention. The one reliable thing about AI progress is that forecasters — including the researchers closest to it — consistently underestimate it over multi-year horizons.</p>
+
+      <div class="pullquote">"The AI that will matter most in ten years probably hasn't been announced yet. And the company that will build it might not exist yet either." <cite>— paraphrased sentiment, common in the field</cite></div>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="10-what-it-means.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 10</div>
+        <div class="chapter-next-title">What This <em>Means for You</em></div>
+        <p class="chapter-next-blurb">Jobs, skills, tools to use now — how to think about AI without either panic or hype, and what an informed person looks like in 2025 and beyond.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="08-open-closed.html">Chapter 08</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>HOW AI THINKS · A GUIDE</p>
+    <p>CHAPTER 09 OF 10 · WHERE THE WORLD IS HEADING</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

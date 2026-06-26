@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 02 · How a Model Learns — How AI Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .tooltip-term {
+    border-bottom: 1px dashed #b45309;
+    cursor: help;
+    position: relative;
+  }
+  .tooltip-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    width: 230px;
+    z-index: 100;
+    pointer-events: none;
+    white-space: normal;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tooltip-term:hover::after { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">How AI Thinks <em>— a guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">← Home</a>
+      <a href="index.html">Hub</a>
+      <a href="01-the-idea.html">01</a>
+      <a href="02-how-models-learn.html" class="current">02</a>
+      <a href="03-the-transformer.html">03</a>
+      <a href="04-data.html">04</a>
+      <a href="05-hardware.html">05</a>
+      <a href="06-shrinking.html">06</a>
+      <a href="07-local-setup.html">07</a>
+      <a href="08-open-closed.html">08</a>
+      <a href="09-where-heading.html">09</a>
+      <a href="10-what-it-means.html">10</a>
+      <div class="lang-toggle">
+        <a href="02-how-models-learn.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="02-how-models-learn-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 02</div>
+    <div class="toc-chapter-title">How a Model Learns</div>
+    <ul class="toc-list">
+      <li><a href="#what-learning-means">What learning means here</a></li>
+      <li><a href="#neural-network">The neural network as a machine</a></li>
+      <li><a href="#parameters">Parameters: the knobs</a></li>
+      <li><a href="#forward-pass">The forward pass</a></li>
+      <li><a href="#loss">Loss: measuring wrongness</a></li>
+      <li><a href="#backprop">Backpropagation</a></li>
+      <li><a href="#gradient-descent">Gradient descent</a></li>
+      <li><a href="#training-loop">The training loop</a></li>
+      <li><a href="#scale">Why scale changes everything</a></li>
+      <li><a href="#pretraining">Pre-training vs fine-tuning</a></li>
+      <li><a href="#what-it-knows">What the model actually knows</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 02 · The mechanics of learning</div>
+      <h1 class="chapter-title">How a Model <em>Learns</em></h1>
+      <p class="chapter-lede">There is no programmer writing rules for what a language model does. There is a number. The number measures how wrong the model is. Training is the process of making that number smaller — billions of times, over billions of examples. This chapter shows exactly how that works.</p>
+      <div class="chapter-info">
+        <span>~42 min read</span>
+        <span>11 sections</span>
+        <span>The mechanics of learning</span>
+      </div>
+    </header>
+
+    <section id="what-learning-means">
+      <h3>What learning means here</h3>
+      <p>When we say a child learns to recognise a cat, we mean something messy and hard to pin down — exposure, feedback, gradual refinement of some internal representation we can't directly inspect. When we say a model learns to recognise a cat (or complete a sentence, or write code), we mean something very specific and fully mechanical: the adjustment of numerical values inside the model, guided by a mathematical signal, until the model's outputs get closer to the desired outputs.</p>
+      <p>There is no mystery here. There is no ghost in the machine. What looks like understanding is the result of a process you could, in principle, follow step by step — it would just take you several trillion steps longer than a GPU cluster takes.</p>
+      <p>That said, the gap between "fully mechanical" and "we understand exactly what's happening" is larger than it looks. We can describe the training process precisely. We cannot fully explain why training a model on text prediction produces something that can reason about ethics, write poetry, or debug code. The mechanics are clear. The emergent behaviour is not. This tension runs through everything in AI right now.</p>
+    </section>
+
+    <section id="neural-network">
+      <h3>The neural network as a machine</h3>
+      <p>A neural network is a mathematical function — a very large, very nested mathematical function. It takes numbers in, does a lot of arithmetic, and produces numbers out. That's it.</p>
+      <p>The "neural" part refers to the loose inspiration from neuroscience: the basic unit is a <span class="tooltip-term" data-tooltip="The basic computational unit of a neural network. Takes several numerical inputs, multiplies each by a weight, adds them up, and passes the result through an activation function to produce an output.">neuron</span> (also called a node or unit), which takes several inputs, multiplies each by a weight, adds them together, and passes the result through a simple function. Neurons are organised into layers. The output of one layer feeds into the next. A "deep" network is simply one with many layers.</p>
+      <p>The genius of this architecture — and the reason it works at all — is that it's a <em>universal approximator</em>. Given enough neurons and enough layers, a neural network can approximate any function, including the extremely complex function that maps "a sequence of words" to "the next most likely word." You don't design the function. You design a structure capable of learning it.</p>
+    </section>
+
+    <section id="parameters">
+      <h3>Parameters: the knobs</h3>
+      <p>Every connection between neurons has a weight — a number. Every neuron has a bias — another number. These are the <span class="tooltip-term" data-tooltip="The numerical values inside a neural network — weights and biases — that are adjusted during training. A model with '7 billion parameters' contains 7 billion such numbers. More parameters generally means more capacity to learn complex patterns.">parameters</span> of the model. A small model might have a few million. GPT-3 has 175 billion. GPT-4 is estimated at over a trillion. Llama 3 70B has — as the name suggests — 70 billion.</p>
+      <p>Before training begins, these parameters are initialised to small random values. The model at this point is useless — it produces random outputs for any input. Training is the process of adjusting these billions of numbers, iteratively, until the model's outputs are consistently good.</p>
+
+      <div class="definition">
+        <span class="definition-term">Parameter</span>
+        <div class="definition-text">A single adjustable number inside a neural network. During training, every parameter is nudged slightly in a direction that reduces the model's error. A model described as "7B" has 7 billion such numbers. More parameters = more capacity to learn complex patterns, but also more compute and memory required.</div>
+      </div>
+    </section>
+
+    <section id="forward-pass">
+      <h3>The forward pass</h3>
+      <p>Take a concrete example. We want to train a model to predict the next word in a sentence. We feed it the text: "The cat sat on the ___". The model needs to predict "mat" (or something plausible).</p>
+      <p>The text is first converted to numbers — each word or word-fragment (a <span class="tooltip-term" data-tooltip="The basic unit of text that a language model processes. A token is roughly a word, though common words might be a single token while rare words might be split into several. 'Unbelievable' might be split into 'un', 'believ', 'able'. GPT-4 uses roughly 1 token per 0.75 words of English.">token</span>) is represented as a number from a fixed vocabulary. These numbers are fed into the network layer by layer. Each layer transforms the data — detects patterns, combines information. At the end, the model outputs a probability distribution over all possible next tokens. Maybe it assigns 40% probability to "mat," 15% to "floor," 10% to "chair," and so on.</p>
+      <p>This is the <strong>forward pass</strong>: input goes in, prediction comes out. It takes a fraction of a second and involves billions of multiplications and additions.</p>
+    </section>
+
+    <section id="loss">
+      <h3>Loss: measuring wrongness</h3>
+      <p>We know the correct answer: "mat." The model predicted "mat" with 40% probability. Is that good or bad? We need a precise, mathematical way to measure how wrong the model is. That measure is called the <span class="tooltip-term" data-tooltip="A number that measures how different the model's prediction is from the correct answer. High loss = the model is very wrong. Low loss = the model is accurate. Training is the process of minimising this number across millions of examples.">loss</span> (or loss function, or cost function).</p>
+      <p>For language models, the standard loss function is cross-entropy loss, which essentially asks: "how surprised was the model by the correct answer?" If the model assigned 40% probability to "mat" and "mat" was correct, it was somewhat surprised — loss is moderate. If it assigned 1% probability to "mat," it was very surprised — loss is high. If it assigned 95%, it was barely surprised — loss is low.</p>
+      <p>Training has one goal: make the average loss across all training examples as small as possible. Everything else — the architecture choices, the data curation, the compute budget — is in service of this single objective.</p>
+    </section>
+
+    <section id="backprop">
+      <h3>Backpropagation</h3>
+      <p>We have a loss number. We know the model was wrong by this much. Now what? We need to adjust the parameters to make the model less wrong. But there are billions of parameters. How do we know which ones to adjust, and in which direction?</p>
+      <p>The answer is <span class="tooltip-term" data-tooltip="An algorithm that calculates how much each parameter in the network contributed to the model's error. It works backwards from the output, layer by layer, computing the gradient of the loss with respect to each parameter. Essential for training neural networks efficiently.">backpropagation</span> — one of the most important algorithms in modern computing. After the forward pass produces a prediction and we calculate the loss, backpropagation runs the calculation in reverse. Using the chain rule from calculus, it computes for each parameter: "if I increase this parameter slightly, does the loss go up or down, and by how much?"</p>
+      <p>This gives us a <span class="tooltip-term" data-tooltip="A vector pointing in the direction that increases the loss most steeply. By moving parameters in the opposite direction (gradient descent), we reduce the loss. The gradient tells us both which direction to move and roughly how far.">gradient</span> for every parameter — a direction and magnitude. The gradient tells us how to adjust each number to reduce the error.</p>
+    </section>
+
+    <section id="gradient-descent">
+      <h3>Gradient descent</h3>
+      <p>Armed with gradients, we update every parameter by a small amount in the direction that reduces loss. This is <span class="tooltip-term" data-tooltip="The core optimisation algorithm for training neural networks. After each batch of training examples, every parameter is nudged slightly in the direction that reduces the loss function. Repeated billions of times, this guides the model toward accurate predictions.">gradient descent</span>. The "descent" refers to descending the loss landscape — imagine a hilly terrain where every point represents a possible set of parameter values and height represents loss. Gradient descent is how you roll downhill toward a valley.</p>
+      <p>The size of each update step is controlled by the <span class="tooltip-term" data-tooltip="A number that controls how large each parameter update step is during training. Too high: the model overshoots good solutions and training is unstable. Too low: training is extremely slow. Finding the right learning rate is one of the key practical challenges of training models.">learning rate</span> — one of the most important hyperparameters in training. Too large and the model overshoots — it bounces around without settling. Too small and training takes forever. Getting the learning rate right (and adjusting it over the course of training) is one of the core practical skills of training models.</p>
+    </section>
+
+    <section id="training-loop">
+      <h3>The training loop</h3>
+      <p>Put it all together and you have the training loop:</p>
+      <p><strong>1.</strong> Take a batch of training examples (maybe 1,000 text sequences). <strong>2.</strong> Run each through the network (forward pass). <strong>3.</strong> Calculate the loss for each example. <strong>4.</strong> Average the losses across the batch. <strong>5.</strong> Run backpropagation to get gradients. <strong>6.</strong> Update every parameter using those gradients. <strong>7.</strong> Repeat.</p>
+      <p>For a large language model, this loop runs billions of times. GPT-3 was trained on roughly 300 billion tokens of text — each token processed multiple times during training. The training run took months on thousands of GPUs running simultaneously. The loss, which started high (the model was guessing randomly), gradually fell as the model got better at predicting the next token.</p>
+
+      <div class="insight">
+        <div class="insight-label">Why predicting the next word produces something useful</div>
+        <p>It might seem like "predict the next word" is a trivial task with a trivial objective. It is not. To predict what word comes next in any arbitrary sentence, a model must implicitly learn grammar, facts, reasoning patterns, writing styles, logic, and a vast amount of world knowledge — because all of these affect what words typically follow what other words. The task is simple. What you have to learn to do it well is not.</p>
+      </div>
+    </section>
+
+    <section id="scale">
+      <h3>Why scale changes everything</h3>
+      <p>This training loop is not new. Neural networks trained with backpropagation and gradient descent have existed since the 1980s. What changed was scale — and scale changed the outcome qualitatively, not just quantitatively.</p>
+      <p>Small models trained on small data learn surface-level patterns. They can predict likely word completions in a narrow domain. Large models trained on vast data do something different: they appear to develop internal representations of concepts, facts and reasoning strategies. A model trained on enough text doesn't just memorise word sequences — it builds something like a compressed model of the world that generated that text.</p>
+      <p>This is why researchers talk about <span class="tooltip-term" data-tooltip="Capabilities that appear in large models but not in smaller ones — abilities that seem to arise suddenly as model scale increases rather than improving gradually. Examples include multi-step reasoning, basic arithmetic, and following complex instructions. Their origin is not fully understood.">emergent capabilities</span> — behaviours that appear in large models but not small ones, that weren't explicitly trained for and that surprised their creators. A model trained purely on next-token prediction can write code, translate languages it wasn't explicitly trained on, and perform multi-step reasoning. Why? We don't fully know. The training objective is simple. What it produces is not.</p>
+    </section>
+
+    <section id="pretraining">
+      <h3>Pre-training vs fine-tuning</h3>
+      <p>What we've described so far — training a model to predict next tokens on a massive text corpus — is called <span class="tooltip-term" data-tooltip="The initial, large-scale training phase where a model learns from a huge dataset (usually a large portion of the internet). This gives the model general knowledge and language ability. Expensive, slow, done once by well-resourced labs.">pre-training</span>. It produces a <em>base model</em> — a model with vast knowledge and capability but no particular personality or alignment. Ask it to complete "The best way to make a bomb is" and it might, because it's just predicting likely next tokens based on text it saw during training.</p>
+      <p>To make a model useful and safe, a second training phase is applied: <span class="tooltip-term" data-tooltip="Training a pre-trained model on a smaller, curated dataset to adapt it for a specific task or to make it behave in desired ways. Fine-tuning is cheaper and faster than pre-training. It's how base models become helpful assistants.">fine-tuning</span>. Fine-tuning uses the same gradient descent process but on a much smaller, carefully curated dataset of examples showing the model how to behave — how to answer questions helpfully, how to refuse harmful requests, how to follow instructions. This is combined with techniques like <span class="tooltip-term" data-tooltip="Reinforcement Learning from Human Feedback. A technique where human raters score model outputs, and those scores are used to train a 'reward model', which is then used to further train the language model to produce highly-rated outputs. Used to align models to human preferences.">RLHF</span> (Reinforcement Learning from Human Feedback) to align the model with human preferences. The result is what you interact with when you use ChatGPT or Claude.</p>
+    </section>
+
+    <section id="what-it-knows">
+      <h3>What the model actually knows</h3>
+      <p>A trained model is, in a sense, a compression of its training data. All those billions of parameters encode patterns extracted from trillions of words of text. But it's not a database — you can't look up "what did the model learn about Paris" and get a clean answer. The knowledge is distributed across billions of parameters in ways that are not human-readable.</p>
+      <p>This has important practical consequences. Models sometimes confidently state things that are wrong — not because they're lying, but because the pattern-matching process that produces plausible-sounding text sometimes generates plausible-sounding wrong text. This is called <span class="tooltip-term" data-tooltip="When a language model generates text that is fluent and confident but factually incorrect. The model isn't 'lying' — it's producing statistically plausible text that happens to be wrong. Hallucinations are a fundamental challenge with current LLM architectures.">hallucination</span>, and it's one of the fundamental challenges of current language models. The model's training objective was to produce plausible next tokens, not to produce truthful ones. These are usually the same thing. Sometimes they're not.</p>
+
+      <div class="insight">
+        <div class="insight-label">The strangeness of what you've built</div>
+        <p>Step back and notice what's strange about this. You started with a network of random numbers. You ran a mechanical optimisation process on billions of text examples. You ended up with something that can write essays, pass medical exams, explain quantum mechanics and compose poems. Nobody programmed any of those capabilities. They emerged from gradient descent on next-token prediction at sufficient scale. This is either the most impressive result in the history of computer science or an uncomfortable sign that we don't understand what we've built. Probably both.</p>
+      </div>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="03-the-transformer.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 03</div>
+        <div class="chapter-next-title">The <em>Transformer</em></div>
+        <p class="chapter-next-blurb">Tokens, embeddings, and the attention mechanism — the architecture that replaced everything else and made large language models possible.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="01-the-idea.html">Chapter 01</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>HOW AI THINKS · A GUIDE</p>
+    <p>CHAPTER 02 OF 10 · HOW A MODEL LEARNS</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

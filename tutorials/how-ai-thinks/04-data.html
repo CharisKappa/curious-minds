@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 04 · Data: the Real Ingredient — How AI Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .tooltip-term {
+    border-bottom: 1px dashed #b45309;
+    cursor: help;
+    position: relative;
+  }
+  .tooltip-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    width: 230px;
+    z-index: 100;
+    pointer-events: none;
+    white-space: normal;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tooltip-term:hover::after { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">How AI Thinks <em>— a guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">← Home</a>
+      <a href="index.html">Hub</a>
+      <a href="01-the-idea.html">01</a>
+      <a href="02-how-models-learn.html">02</a>
+      <a href="03-the-transformer.html">03</a>
+      <a href="04-data.html" class="current">04</a>
+      <a href="05-hardware.html">05</a>
+      <a href="06-shrinking.html">06</a>
+      <a href="07-local-setup.html">07</a>
+      <a href="08-open-closed.html">08</a>
+      <a href="09-where-heading.html">09</a>
+      <a href="10-what-it-means.html">10</a>
+      <div class="lang-toggle">
+        <a href="04-data.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="04-data-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 04</div>
+    <div class="toc-chapter-title">Data: the Real Ingredient</div>
+    <ul class="toc-list">
+      <li><a href="#data-is-the-moat">Data is the moat</a></li>
+      <li><a href="#what-goes-in">What goes into training data</a></li>
+      <li><a href="#common-crawl">Common Crawl: the accidental dataset</a></li>
+      <li><a href="#quality-vs-quantity">Quality vs quantity</a></li>
+      <li><a href="#filtering">How data is filtered</a></li>
+      <li><a href="#synthetic-data">Synthetic data</a></li>
+      <li><a href="#multilingual">The multilingual problem</a></li>
+      <li><a href="#bias">Bias: what the data teaches</a></li>
+      <li><a href="#copyright">The copyright question</a></li>
+      <li><a href="#data-walls">Data walls going up</a></li>
+      <li><a href="#who-controls">Who controls data controls AI</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 04 · Training data</div>
+      <h1 class="chapter-title">Data: <em>the Real Ingredient</em></h1>
+      <p class="chapter-lede">Algorithms get the attention. Hardware gets the funding. Data is the thing that actually determines what a model can do. This chapter examines what goes into a training dataset, why it matters more than most people realise, and who controls it.</p>
+      <div class="chapter-info">
+        <span>~38 min read</span>
+        <span>11 sections</span>
+        <span>Training data</span>
+      </div>
+    </header>
+
+    <section id="data-is-the-moat">
+      <h3>Data is the moat</h3>
+      <p>In competitive strategy, a "moat" is the advantage that protects a business from being copied. In the AI industry, data is increasingly that moat. You can copy an architecture — transformer models are well-described in public papers. You can buy compute — it's expensive but available. What you can't easily replicate is a high-quality, large-scale, carefully curated training dataset that took years to assemble.</p>
+      <p>This is why Google's biggest AI advantage is not its researchers or its chips — it's that every search query, every Gmail, every Google Doc has been providing signal about how humans use language for decades. Why Meta built LLaMA — it has a billion users whose interactions with Facebook and Instagram represent an unprecedented corpus of human communication. Why OpenAI's biggest secret is not its architecture but the specifics of its training data pipeline.</p>
+      <p>Data is also why the current generation of AI systems is predominantly English-speaking and Western in its knowledge and values. The internet is not evenly distributed, and neither is the training data scraped from it.</p>
+    </section>
+
+    <section id="what-goes-in">
+      <h3>What goes into training data</h3>
+      <p>The training data for a large language model is a carefully mixed cocktail of text sources. A typical large model is trained on some version of:</p>
+      <p><strong>Web pages</strong> — the largest component, usually sourced from <span class="tooltip-term" data-tooltip="A non-profit that crawls the web and makes the data available for research. Its dataset (also called Common Crawl) contains petabytes of web text from billions of web pages going back to 2008. It's the starting point for most large model training datasets.">Common Crawl</span>, a non-profit web crawl containing petabytes of text from billions of pages. This is filtered heavily because the raw web is full of spam, low-quality content and harmful material.</p>
+      <p><strong>Books</strong> — particularly important for long-form coherent reasoning, narrative structure, and domain knowledge. Various book datasets exist; some have been the subject of copyright litigation.</p>
+      <p><strong>Code</strong> — GitHub repositories, Stack Overflow, documentation. Even models not specifically designed for coding are trained on code because it improves structured reasoning ability.</p>
+      <p><strong>Wikipedia and reference text</strong> — high-quality, factual, encyclopaedic coverage of a vast range of topics.</p>
+      <p><strong>Scientific papers</strong> — ArXiv, PubMed. Important for scientific knowledge and reasoning.</p>
+      <p><strong>Curated high-quality sources</strong> — journalism, academic writing, specialist domain text. Often upweighted relative to their size because quality matters.</p>
+    </section>
+
+    <section id="common-crawl">
+      <h3>Common Crawl: the accidental dataset</h3>
+      <p>Common Crawl is the closest thing AI has to a public infrastructure resource. It's a non-profit that has been crawling the web since 2008, storing snapshots of web content and making them freely available. Its archive contains over 250 billion web pages — roughly 1,200 terabytes of compressed text.</p>
+      <p>Nobody built Common Crawl as a training resource for language models. It was built as an open research resource for web-scale analysis. The fact that it became the backbone of most large model training datasets is an accident of timing — it existed when the need arose.</p>
+      <p>The raw Common Crawl data is extremely noisy. Studies of unfiltered web text suggest that roughly 50% of it is low-quality, duplicated, spam or adult content. The art of building a training dataset from Common Crawl is in the filtering — which is why organisations like Together AI, EleutherAI, and the major labs put enormous engineering effort into data pipelines even though the raw source is free.</p>
+    </section>
+
+    <section id="quality-vs-quantity">
+      <h3>Quality vs quantity</h3>
+      <p>For many years, the prevailing assumption in AI was that more data was always better — that a model trained on a trillion tokens would always outperform one trained on 100 billion. This led to a race for scale that consumed astronomical quantities of low-quality web text.</p>
+      <p>More recent research has complicated this picture significantly. The Chinchilla paper (DeepMind, 2022) showed that many large models were significantly undertrained relative to their size — that a smaller model trained on more, higher-quality data could outperform a larger model trained on less. The optimal training recipe involves carefully balancing model size against data quantity and quality.</p>
+      <p>Mistral's 7B model, released in 2023, demonstrated this dramatically. It outperformed much larger models on many benchmarks by using a carefully curated dataset rather than simply maximising scale. <span class="tooltip-term" data-tooltip="A relatively small open-weights model from the French company Mistral AI, released in 2023. Remarkably capable for its size — outperforms many larger models on standard benchmarks. Demonstrated that careful data curation and architecture choices can substitute for sheer scale.">Mistral 7B</span> was a watershed moment for the industry's understanding of data quality.</p>
+
+      <div class="insight">
+        <div class="insight-label">The PhDs vs the internet analogy</div>
+        <p>Think of it this way: would you rather train a student by having them read all of Wikipedia once, or by having them read selected textbooks by domain experts ten times? Neither is strictly better — it depends on the task. But for developing deep reasoning ability rather than broad surface knowledge, curated high-quality text consistently beats raw scale. The AI industry is only beginning to act on this insight.</p>
+      </div>
+    </section>
+
+    <section id="filtering">
+      <h3>How data is filtered</h3>
+      <p>Building a training dataset from raw web crawls involves multiple layers of filtering. Common steps include deduplication (removing near-identical documents, which otherwise cause the model to overfit to repeated content), language identification (keeping only text in target languages), quality filtering (removing documents that are mostly boilerplate, navigation text, or garbled characters), and content filtering (removing harmful content — violence, explicit material, personally identifiable information).</p>
+      <p>The most important and difficult filter is quality. How do you automatically identify "high-quality" text at the scale of hundreds of billions of documents? Common approaches include training a classifier on examples of known-quality text (articles from respected news outlets, Wikipedia, academic papers) and using it to score and filter web text. This creates a subtle circularity: the definition of "quality" encodes the values and biases of whoever chose the positive examples.</p>
+    </section>
+
+    <section id="synthetic-data">
+      <h3>Synthetic data: models training on models</h3>
+      <p>A significant and controversial development in recent years is <span class="tooltip-term" data-tooltip="Training data generated by AI models rather than written by humans. Useful for filling gaps in real data coverage. Controversial because models trained on synthetic data risk amplifying existing model biases and limitations — 'model collapse'.">synthetic data</span> — using existing AI models to generate training data for new models. If you want a model to be better at mathematics, you can use GPT-4 to generate thousands of mathematics problems and solutions, then train a smaller model on those. If you want a model that's better at following instructions, you can use a capable model to generate instruction-following examples.</p>
+      <p>This approach has produced remarkable results. Meta's Llama 3 used synthetic data extensively. Phi-3 (Microsoft) achieved remarkable performance from a tiny model by training almost entirely on high-quality synthetic data rather than raw web text. The approach works — but it has limits. Models trained primarily on other model outputs risk "model collapse" — amplifying existing biases and drifting toward homogeneous outputs. The diversity and groundedness that comes from human-generated text appears genuinely important.</p>
+    </section>
+
+    <section id="multilingual">
+      <h3>The multilingual problem</h3>
+      <p>The web is not equally represented across languages. English dominates — roughly 55% of web content is in English, despite English speakers being only about 17% of the world's population. This means training datasets dramatically oversample English relative to other languages.</p>
+      <p>The practical consequence: large language models are substantially better in English than in other languages. A model trained on 50x more English than Greek text will perform 50x better on English tasks — not exactly, because there is cross-lingual transfer (patterns learned in English partially transfer to other languages), but substantially worse.</p>
+      <p>For Greece and Greek-speaking communities, this matters directly. Legal advice, medical information, educational content in Greek — all will be lower quality from AI systems than equivalent English content. This is not a technical limitation that's hard to fix. It's a data limitation that requires deliberate effort to address: collecting, curating and upweighting high-quality Greek text in training datasets. Some organisations are doing this. Most are not prioritising it.</p>
+    </section>
+
+    <section id="bias">
+      <h3>Bias: what the data teaches</h3>
+      <p>A model learns from its training data. If the training data reflects human biases — and it does, comprehensively — the model will learn those biases. This is not a theoretical concern; it has been demonstrated empirically in study after study.</p>
+      <p>Early image models associated "doctor" with images of men and "nurse" with images of women, because the images they were trained on did. Early text models associated crime with certain ethnic groups, because crime reporting in their training data did. Language models trained on internet text absorb the full range of human prejudice present on the internet.</p>
+      <p>Filtering and fine-tuning can reduce the most egregious manifestations of these biases. They cannot eliminate them — the biases are baked in at the pre-training stage, distributed across billions of parameters in ways that are extremely difficult to fully audit or correct. This is one of the central ethical challenges of deploying these systems at scale.</p>
+    </section>
+
+    <section id="copyright">
+      <h3>The copyright question</h3>
+      <p>When a model is trained on text or images from the web, does it require permission from the authors of that content? This is the subject of multiple active lawsuits, unresolved legal questions, and fierce debate.</p>
+      <p>The New York Times sued OpenAI and Microsoft in 2023, alleging that training on Times articles constitutes copyright infringement. Getty Images sued Stability AI for training image generation models on Getty's photo library. Authors including George R.R. Martin and John Grisham are part of class action suits against OpenAI.</p>
+      <p>The AI companies' legal argument is that training on text is "transformative" — the model doesn't copy the text, it learns patterns from it, similar to how a human learns from reading books. The content creators' argument is that the entire value of these systems derives from their creative work, and that value is being captured without compensation.</p>
+      <p>This will be resolved by courts and legislation over the coming years. The outcome will significantly shape how future models can be trained and whether smaller organisations without vast proprietary data resources can compete with the major labs.</p>
+    </section>
+
+    <section id="data-walls">
+      <h3>Data walls going up</h3>
+      <p>Since the launch of ChatGPT demonstrated the commercial value of web-scraped training data, the owners of that data have begun restricting access. Reddit updated its terms to require payment for bulk API access, then sold a data licensing deal to Google. Stack Overflow did the same. News organisations have added robots.txt blocks and launched lawsuits. Twitter (X) restricted its API severely.</p>
+      <p>The implication: the open web that trained GPT-3 and its contemporaries is closing. Future models that depend on free web crawls will have a diminishing data advantage over models trained on proprietary or licensed data. This favours organisations that have already built large proprietary datasets — which means, overwhelmingly, the largest technology companies.</p>
+    </section>
+
+    <section id="who-controls">
+      <h3>Who controls data controls AI</h3>
+      <p>Step back and see the pattern. The quality of an AI system is determined by its training data. The best training data is either derived from massive web crawls (accessible now but closing), proprietary user interaction data (owned by large platforms), or expensive licensed content (priced out of reach for smaller players). In each case, the advantage accrues to organisations that are already large, already rich in user data, already capable of paying for content.</p>
+      <p>This creates a structural tendency toward concentration. Not because AI is inherently monopolistic, but because the ingredient that matters most — data — has natural economies of scale and significant barriers to replication. The organisations that understand this are not primarily competing on algorithms. They're competing on data pipelines.</p>
+
+      <div class="pullquote">"The race in AI is not about who has the best model architecture. It's about who has the best training data — and most people haven't realised that yet." <cite>— common sentiment among senior AI researchers</cite></div>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="05-hardware.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 05</div>
+        <div class="chapter-next-title">The <em>Hardware Stack</em></div>
+        <p class="chapter-next-blurb">GPUs, TPUs, data centres, energy costs — the physical infrastructure that makes AI possible, and why it's creating a new kind of geopolitical competition.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="03-the-transformer.html">Chapter 03</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>HOW AI THINKS · A GUIDE</p>
+    <p>CHAPTER 04 OF 10 · DATA: THE REAL INGREDIENT</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

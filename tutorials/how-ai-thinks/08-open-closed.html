@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 08 · The Closed vs Open Divide — How AI Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .tooltip-term {
+    border-bottom: 1px dashed #b45309;
+    cursor: help;
+    position: relative;
+  }
+  .tooltip-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    width: 230px;
+    z-index: 100;
+    pointer-events: none;
+    white-space: normal;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tooltip-term:hover::after { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">How AI Thinks <em>— a guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">← Home</a>
+      <a href="index.html">Hub</a>
+      <a href="01-the-idea.html">01</a>
+      <a href="02-how-models-learn.html">02</a>
+      <a href="03-the-transformer.html">03</a>
+      <a href="04-data.html">04</a>
+      <a href="05-hardware.html">05</a>
+      <a href="06-shrinking.html">06</a>
+      <a href="07-local-setup.html">07</a>
+      <a href="08-open-closed.html" class="current">08</a>
+      <a href="09-where-heading.html">09</a>
+      <a href="10-what-it-means.html">10</a>
+      <div class="lang-toggle">
+        <a href="08-open-closed.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="08-open-closed-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 08</div>
+    <div class="toc-chapter-title">The Closed vs Open Divide</div>
+    <ul class="toc-list">
+      <li><a href="#the-split">The split that defines the industry</a></li>
+      <li><a href="#what-closed-means">What "closed" means</a></li>
+      <li><a href="#what-open-means">What "open" actually means</a></li>
+      <li><a href="#openai">OpenAI: the pivot that shocked the field</a></li>
+      <li><a href="#meta">Meta's bet on open weights</a></li>
+      <li><a href="#mistral">Mistral: European open AI</a></li>
+      <li><a href="#google">Google: playing both sides</a></li>
+      <li><a href="#china">Chinese models and the global picture</a></li>
+      <li><a href="#deepseek">DeepSeek: the shock from the east</a></li>
+      <li><a href="#why-it-matters">Why the open/closed divide matters</a></li>
+      <li><a href="#europe">Europe, regulation, and the AI Act</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 08 · The landscape</div>
+      <h1 class="chapter-title">The Closed vs <em>Open Divide</em></h1>
+      <p class="chapter-lede">The most important strategic question in AI right now is not which model is best. It is whether powerful models will be owned by a few closed companies or available to anyone. This divide shapes everything — who can build, who can access, who benefits.</p>
+      <div class="chapter-info">
+        <span>~40 min read</span>
+        <span>11 sections</span>
+        <span>The landscape</span>
+      </div>
+    </header>
+
+    <section id="the-split">
+      <h3>The split that defines the industry</h3>
+      <p>The AI industry is divided along a fault line that doesn't map neatly onto traditional open-source vs proprietary software distinctions. On one side: companies that train powerful models and make them available only through APIs, keeping weights and training details secret. On the other: companies that release model weights publicly, allowing anyone to run, modify, and build on them.</p>
+      <p>This is not a clean binary. The spectrum runs from fully open (open weights, open training data, open code, open training details — rare) to open weights with limited licensing (Meta's LLaMA) to open weights with significant restrictions (some Chinese models) to API-only with published research (Google's early Gemini papers) to fully closed (OpenAI's GPT-4 and above — no weights, minimal research disclosure).</p>
+      <p>The distinction matters because it determines who has access to what. A closed model can be accessed only through the provider's API, on their terms, at their prices, subject to their content policies. An open-weights model can be downloaded, run locally, fine-tuned, inspected, and deployed however the recipient chooses. The implications for power, privacy, competition and safety are substantial.</p>
+    </section>
+
+    <section id="what-closed-means">
+      <h3>What "closed" means</h3>
+      <p>A closed model means the weights — the billions of numbers that constitute the model — are never released. Users can query the model through an API but cannot run it themselves, inspect it, modify it, or deploy it outside the provider's infrastructure.</p>
+      <p>This gives the provider significant control. They can change the model's behaviour without notice. They can alter pricing. They can terminate access. They can apply content policies that restrict what the model will discuss. They can log interactions (subject to their privacy policy). None of this is necessarily sinister — providers have legitimate safety and commercial reasons for these policies — but the dependency it creates is real.</p>
+      <p>Closed models also keep safety-relevant information out of the hands of researchers who might identify and report problems. If a model has a systematic bias or a dangerous failure mode, independent researchers can probe the API but cannot examine the weights directly — limiting the depth of safety analysis possible.</p>
+    </section>
+
+    <section id="what-open-means">
+      <h3>What "open" actually means</h3>
+      <p>The term "<span class="tooltip-term" data-tooltip="In AI, 'open source' usually means 'open weights' — the model parameters are publicly released. It rarely means open training data (usually proprietary or not disclosed) or fully open training code. The Open Source Initiative's formal definition of open source doesn't neatly apply to AI models.">open source</span>" applied to AI models is contested and often misleading. Traditional open source software means the source code is available, modifiable, and redistributable under a permissive licence. For AI models, the analogous concept is <span class="tooltip-term" data-tooltip="Models whose trained parameters (weights) are publicly released, allowing anyone to download and run them. 'Open weights' doesn't necessarily mean open training data or open training code — just that the final trained model is available.">open weights</span> — releasing the trained parameters.</p>
+      <p>Most "open" models are not fully open. Meta's LLaMA models release weights but not training data. The training code and detailed training recipes are usually not fully disclosed. Usage is subject to a licence that may restrict commercial use at scale. Calling these models "open source" is generous; "open weights" is more accurate.</p>
+      <p>Truly open models — weights, training data, training code, all permissively licensed — are rare. EleutherAI's GPT-NeoX and the Pythia suite are genuine examples, as is the BLOOM model trained by BigScience. These are typically less capable than the frontier models but represent genuine openness. The dataset The Pile, assembled by EleutherAI, is one of the few fully documented, freely available large training datasets.</p>
+    </section>
+
+    <section id="openai">
+      <h3>OpenAI: the pivot that shocked the field</h3>
+      <p>OpenAI was founded in 2015 as a non-profit with an explicit mission to develop AI "for the benefit of humanity" — with the word "open" in the name signalling a commitment to research transparency. Its early papers and models were genuinely influential and shared freely. GPT-1 and GPT-2 were published with detailed research papers. GPT-2's weights were eventually released in full.</p>
+      <p>GPT-3 (2020) marked the turn. The weights were never released. The model was available only through an API. The accompanying paper was detailed, but the training data and code were not disclosed. With GPT-4 (2023), even the research paper was sparse — competitors noted that the "GPT-4 Technical Report" disclosed almost nothing about the model's architecture, training data, or parameter count.</p>
+      <p>Sam Altman's explanation: releasing powerful models openly creates risks — bad actors could use the weights to remove safety fine-tuning and produce unconstrained models. Critics (including co-founder Elon Musk, in a lawsuit) argued the shift was driven by commercial interest, not safety. Both things can be true simultaneously.</p>
+      <p>OpenAI's closure gave it a significant commercial advantage. Proprietary models that can only be accessed via API create recurring revenue and dependency. Open models, however capable, compete directly with every organisation that can host them. The incentive structure of closed AI is powerful and self-reinforcing.</p>
+    </section>
+
+    <section id="meta">
+      <h3>Meta's bet on open weights</h3>
+      <p>Meta's decision to release LLaMA (Large Language Model Meta AI) in February 2023 was one of the most consequential decisions in the history of AI development. The original release was technically restricted to researchers, but the weights leaked online within days. LLaMA became the foundation of the open local AI ecosystem — virtually every development in local LLMs traces back to it.</p>
+      <p>Why did Meta do this? The stated reason: openness is good for the ecosystem and for safety (more researchers can identify problems). The strategic reason: Meta doesn't sell AI as a product. Its business is advertising and social media. Commoditising AI models benefits Meta by keeping costs down and preventing any single competitor (read: OpenAI, Google) from achieving an unassailable moat. Yann LeCun, Meta's Chief AI Scientist, has consistently argued that open models are both safer and more democratising than closed ones.</p>
+      <p>Llama 2, Llama 3, and Llama 3.1/3.2/3.3 followed, each substantially more capable than the last. Llama 3.3 70B (released late 2024) is arguably the best open-weights model available in the 70B tier and competitive with GPT-4-class models on many benchmarks. Meta has now committed to keeping Llama open indefinitely.</p>
+    </section>
+
+    <section id="mistral">
+      <h3>Mistral: European open AI</h3>
+      <p>Mistral AI was founded in April 2023 by former Google DeepMind and Meta AI researchers based in Paris. It released its first model, Mistral 7B, in September 2023 — with no announcement, no paper, just a direct link to the weights on a Torrent file, posted on Twitter/X.</p>
+      <p>Mistral 7B immediately outperformed all existing 7B models and many larger ones. It was the first clear demonstration that careful data curation and architectural optimisation could produce models that punched far above their weight in terms of parameter count. It established Mistral's reputation and secured a $400 million Series A at a $2 billion valuation — making it Europe's most valuable AI startup.</p>
+      <p>Mistral's business model is layered: open models for community use and reputation, commercial API for enterprises, and enterprise licensing. This hybrid approach — giving away capable models while charging for frontier access, support, and customisation — has become a template for the open AI business model. Mistral Small, Mistral Medium, and Mistral Large are their commercial API tiers; Mistral 7B and Mixtral 8x7B are their open-weight releases.</p>
+    </section>
+
+    <section id="google">
+      <h3>Google: playing both sides</h3>
+      <p>Google occupies an unusual position in the open/closed landscape. Its commercial flagship — Gemini Ultra, Gemini Pro — is closed API only. But Google has also released several genuinely capable open-weights models: Gemma (a small but high-quality open model series) and, historically, many influential research models.</p>
+      <p>Google's incentive to play both sides is clear: closed models protect its commercial AI business (Google Cloud, Gemini API, Google Workspace integrations), while open models maintain its reputation with researchers and prevent Meta from owning the open ecosystem entirely. The tension between Google's commercial interests and its research culture — which historically favoured open publication — is visible in every product decision.</p>
+      <p>Gemma 2 (27B and 9B) are among the best models in their size class. They're open enough to use locally and good enough to compete with proprietary models at similar sizes. Google's strategy appears to be: release open models one tier behind the frontier, maintaining enough openness to avoid regulatory and reputational risk while protecting the commercial value of the cutting edge.</p>
+    </section>
+
+    <section id="china">
+      <h3>Chinese models and the global picture</h3>
+      <p>The US export controls on advanced chips (Chapter 05) were intended to slow Chinese AI development. The evidence suggests they slowed it but did not stop it. Chinese labs have adapted: training on older NVIDIA hardware (A100s acquired before controls), developing domestic chip alternatives (Huawei's Ascend), and finding algorithmic efficiencies that reduce compute requirements.</p>
+      <p>Alibaba's Qwen series — particularly Qwen2.5 — is competitive with or exceeds LLaMA 3 on many benchmarks and is openly released. Baidu's ERNIE, Zhipu AI's GLM, and dozens of other Chinese models represent a parallel AI development ecosystem that is largely independent of US infrastructure and largely invisible to Western practitioners.</p>
+      <p>The implication: the US attempt to maintain AI dominance through chip controls is at best a delay, not a permanent barrier. Algorithmic improvements that reduce compute requirements are inherently difficult to control. The global AI landscape will increasingly be multipolar.</p>
+    </section>
+
+    <section id="deepseek">
+      <h3>DeepSeek: the shock from the east</h3>
+      <p>In January 2025, DeepSeek — a Chinese AI lab that had been working quietly for less than two years — released DeepSeek-R1. The model matched GPT-4o and Claude 3.5 Sonnet on challenging reasoning benchmarks. The training cost was reported at approximately $5.6 million — a fraction of what equivalent US frontier models cost.</p>
+      <p>The release caused NVIDIA's stock to drop 17% in a single day — erasing $600 billion in market capitalisation. The reaction reflected a fear: if frontier AI can be trained for millions rather than hundreds of millions, the compute moat that had protected US AI companies disappears.</p>
+      <p>DeepSeek published a technical paper with unusual detail about their training approach — mixture-of-experts architecture, reinforcement learning techniques, efficiency innovations. Researchers worldwide read it within days. Many concluded the training cost claims, while perhaps understated, reflected genuine efficiency gains rather than deception. The paper itself became one of the most analysed documents in AI history in the weeks following publication.</p>
+      <p>DeepSeek's models are open weights. The distilled versions (covered in Chapter 06) run locally on consumer hardware. Whatever one thinks of the geopolitical context, the technical contribution was real and substantial.</p>
+    </section>
+
+    <section id="why-it-matters">
+      <h3>Why the open/closed divide matters</h3>
+      <p>The stakes of this divide extend well beyond which company profits. Consider three dimensions:</p>
+      <p><strong>Access and equity.</strong> Closed API models require payment, internet connectivity, and acceptance of terms that may be unavailable or unacceptable in many parts of the world. Open-weights models can be downloaded once and run anywhere, at any scale, without ongoing fees or censorship. For researchers in low-income countries, for organisations in restricted internet environments, for individuals who can't afford cloud subscriptions — open weights are the difference between having access to AI and not.</p>
+      <p><strong>Safety and oversight.</strong> This argument cuts both ways. Proponents of open weights argue that transparency enables better safety research — you can inspect, audit, and improve open models in ways you can't with black-box APIs. Proponents of closed models argue that releasing powerful weights to anyone enables bad actors to remove safety constraints and deploy uncensored models. Both concerns are legitimate. Neither side has won the argument.</p>
+      <p><strong>Power concentration.</strong> If only a handful of companies control access to the most powerful AI systems, they hold an unprecedented form of economic and informational power. Open weights distribute that power — imperfectly, unevenly, but substantially. The pattern from the history of technology is that concentrated control over critical infrastructure tends to produce bad outcomes over time.</p>
+    </section>
+
+    <section id="europe">
+      <h3>Europe, regulation, and the AI Act</h3>
+      <p>The European Union's AI Act, passed in 2024, is the world's first comprehensive AI regulation. It takes a risk-based approach: higher-risk uses (biometric surveillance, credit scoring, certain medical applications) face stricter requirements. The most powerful "general-purpose AI" models face transparency obligations.</p>
+      <p>For open-weights models below certain capability thresholds, the AI Act provides a lighter-touch regime — recognising that overly burdensome regulation of open models would primarily hurt European researchers and startups while doing little to constrain the large US and Chinese labs. This was partly the result of intense lobbying by Mistral and European research institutions.</p>
+      <p>The AI Act represents a genuine attempt at governance, but it was designed primarily for the 2023 technology landscape. The pace of AI development means the law may need updating before its key provisions take effect. The deeper challenge: AI regulation is inherently global in scope, but regulation is inherently national. No single jurisdiction can fully govern a technology whose training happens in one country, whose chips are made in another, and whose outputs are consumed everywhere.</p>
+
+      <div class="pullquote">"Open source won the last software war. Whether it wins the AI war depends on whether regulators understand what they're regulating." <cite>— common observation in the European AI policy community</cite></div>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="09-where-heading.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 09</div>
+        <div class="chapter-next-title">Where the World <em>Is Heading</em></div>
+        <p class="chapter-next-blurb">Agents, multimodal models, reasoning systems, AGI — what the next five years probably look like, and what we genuinely don't know.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="07-local-setup.html">Chapter 07</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>HOW AI THINKS · A GUIDE</p>
+    <p>CHAPTER 08 OF 10 · THE CLOSED VS OPEN DIVIDE</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

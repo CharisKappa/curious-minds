@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 05 · The Hardware Stack — How AI Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .tooltip-term {
+    border-bottom: 1px dashed #b45309;
+    cursor: help;
+    position: relative;
+  }
+  .tooltip-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    width: 230px;
+    z-index: 100;
+    pointer-events: none;
+    white-space: normal;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tooltip-term:hover::after { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">How AI Thinks <em>— a guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">← Home</a>
+      <a href="index.html">Hub</a>
+      <a href="01-the-idea.html">01</a>
+      <a href="02-how-models-learn.html">02</a>
+      <a href="03-the-transformer.html">03</a>
+      <a href="04-data.html">04</a>
+      <a href="05-hardware.html" class="current">05</a>
+      <a href="06-shrinking.html">06</a>
+      <a href="07-local-setup.html">07</a>
+      <a href="08-open-closed.html">08</a>
+      <a href="09-where-heading.html">09</a>
+      <a href="10-what-it-means.html">10</a>
+      <div class="lang-toggle">
+        <a href="05-hardware.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="05-hardware-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 05</div>
+    <div class="toc-chapter-title">The Hardware Stack</div>
+    <ul class="toc-list">
+      <li><a href="#why-hardware-matters">Why hardware matters this much</a></li>
+      <li><a href="#cpu-vs-gpu">CPU vs GPU: the fundamental difference</a></li>
+      <li><a href="#nvidia">NVIDIA's accidental monopoly</a></li>
+      <li><a href="#h100">The H100: the most important chip in the world</a></li>
+      <li><a href="#tpu">TPUs and the alternatives</a></li>
+      <li><a href="#memory">Memory: the real bottleneck</a></li>
+      <li><a href="#data-centres">Data centres at AI scale</a></li>
+      <li><a href="#energy">The energy cost of AI</a></li>
+      <li><a href="#water">Water: the hidden cost</a></li>
+      <li><a href="#geopolitics">Chip geopolitics</a></li>
+      <li><a href="#what-this-means">What this means for who runs AI</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 05 · Infrastructure</div>
+      <h1 class="chapter-title">The <em>Hardware Stack</em></h1>
+      <p class="chapter-lede">Behind every query to a language model is a physical machine, consuming physical power, sitting in a physical building, cooled by physical water. This chapter maps that infrastructure — and explains why it's become one of the most contested resources in global technology.</p>
+      <div class="chapter-info">
+        <span>~38 min read</span>
+        <span>11 sections</span>
+        <span>Infrastructure</span>
+      </div>
+    </header>
+
+    <section id="why-hardware-matters">
+      <h3>Why hardware matters this much</h3>
+      <p>Training a large language model is one of the most computationally intensive things humanity has ever done. GPT-4 is estimated to have cost over $100 million to train — not because of salaries or offices, but because of the electricity, cooling and hardware required to run thousands of specialised chips for months. A single training run for a frontier model consumes as much electricity as a small town uses in a year.</p>
+      <p>Running a model (called <span class="tooltip-term" data-tooltip="The process of running a trained model to generate outputs — answering a question, completing a sentence, generating an image. Inference is cheaper per query than training, but at the scale of millions of daily users, the cumulative cost is enormous.">inference</span>) is cheaper per query but adds up fast. Every time you type a message to ChatGPT or Claude, a data centre somewhere processes your request on specialised hardware. At a billion queries per day, inference costs rival training costs. The hardware is not an afterthought. It is the business.</p>
+    </section>
+
+    <section id="cpu-vs-gpu">
+      <h3>CPU vs GPU: the fundamental difference</h3>
+      <p>A <span class="tooltip-term" data-tooltip="Central Processing Unit — the main processor in a computer. Designed for fast, sequential computation with complex logic. Excellent for general-purpose tasks, operating systems, running applications. A high-end CPU has 16–64 cores.">CPU</span> (Central Processing Unit) is a general-purpose processor designed for sequential computation. It has a small number of very powerful cores — modern CPUs have 8 to 64 — each capable of complex logic, branching, and diverse operations. CPUs are excellent for running operating systems, web browsers, databases — tasks that involve varied, unpredictable computation.</p>
+      <p>A <span class="tooltip-term" data-tooltip="Graphics Processing Unit — originally designed for rendering 3D graphics, which requires doing the same calculation (transforming coordinates, applying lighting) on millions of points in parallel. This same parallel arithmetic is perfect for neural network training. High-end GPUs have thousands of cores.">GPU</span> (Graphics Processing Unit) was designed for a different problem: rendering 3D graphics, which requires doing the same mathematical operation (transform this point in space, apply this lighting calculation) on millions of pixels simultaneously. GPUs have thousands of simpler cores — an NVIDIA H100 has over 16,000 — each less powerful than a CPU core but massively parallel.</p>
+      <p>Neural network training is dominated by one operation: matrix multiplication. Multiplying large matrices is exactly the kind of massively parallel, uniform arithmetic that GPUs are designed for. A GPU that would struggle to run a modern web browser can perform a neural network training step hundreds of times faster than a CPU. This architectural match is why GPUs, not CPUs, power AI.</p>
+    </section>
+
+    <section id="nvidia">
+      <h3>NVIDIA's accidental monopoly</h3>
+      <p>NVIDIA was founded in 1993 to build chips for video games. For twenty years, it competed in the graphics card market — selling GPUs to gamers, game developers, and professional visualisation users. It was a successful niche company.</p>
+      <p>In 2006, NVIDIA released CUDA — a programming platform that allowed developers to use NVIDIA GPUs for general-purpose computation, not just graphics. Scientists and researchers quickly discovered that CUDA-enabled GPUs were dramatically faster than CPUs for scientific simulations, physics calculations, and — critically — neural network training.</p>
+      <p>NVIDIA did not foresee the AI boom. It benefited from it. By the time the deep learning era began in earnest around 2012, NVIDIA's CUDA platform had a multi-year head start over competitors. Researchers had built their frameworks — TensorFlow, PyTorch — to run on CUDA. Switching hardware meant rewriting software. The lock-in compounded year after year.</p>
+      <p>NVIDIA's market capitalisation grew from roughly $10 billion in 2015 to over $3 trillion in 2024 — surpassing Apple to briefly become the most valuable company in the world. This was not because NVIDIA built the best possible AI chip. It was because it built a good-enough chip with an excellent software ecosystem first, and the switching costs became prohibitive.</p>
+
+      <div class="story">
+        <div class="story-label">360° context</div>
+        <div class="story-title">NVIDIA's position in 2024</div>
+        <div class="story-date">Global · 2024</div>
+        <p><strong>Economic:</strong> NVIDIA's gross margins on AI chips exceed 70%. No company in history has held such dominant pricing power over a technology that is simultaneously this strategically important and this scarce.</p>
+        <p><strong>Geopolitical:</strong> The US government has placed export controls on advanced NVIDIA chips (specifically the H100 and A100) to China, recognising that AI compute is now a national security resource. NVIDIA sells modified, less capable chips to China — at lower margins, creating business pressure against the export controls.</p>
+        <p><strong>Competitive:</strong> Every major technology company is building or planning custom AI chips to reduce NVIDIA dependence — Google's TPUs, Amazon's Trainium, Apple's Neural Engine, Meta's MTIA. None have yet displaced NVIDIA for frontier model training. CUDA's ecosystem advantage is too large to overcome quickly.</p>
+      </div>
+    </section>
+
+    <section id="h100">
+      <h3>The H100: the most important chip in the world</h3>
+      <p>The NVIDIA H100, released in 2022, is the standard chip for training frontier AI models. A single H100 costs approximately $25,000–$40,000. It contains 80 gigabytes of high-bandwidth memory and can perform roughly 2,000 trillion operations per second on AI workloads (<span class="tooltip-term" data-tooltip="FLOPS — Floating Point Operations Per Second. The standard measure of computational performance. A trillion FLOPS = 1 teraFLOP. The H100 performs roughly 2 petaFLOPS (2,000 teraFLOPS) on AI workloads. Training GPT-4 required an estimated 10^25 FLOPS total.">FLOPS</span>).</p>
+      <p>Training a frontier model requires not one H100 but thousands. OpenAI's GPT-4 training run reportedly used over 25,000 A100s (the H100's predecessor) for roughly 100 days. Microsoft's Azure data centres hold tens of thousands of H100s. Meta has announced plans to acquire 350,000 H100s.</p>
+      <p>The waiting list for H100s in 2023–2024 was over a year. Cloud providers were rationing access. Startups that couldn't secure GPU allocations faced existential constraints — not because their models were bad, but because they couldn't afford to run the training compute to find out.</p>
+    </section>
+
+    <section id="tpu">
+      <h3>TPUs and the alternatives</h3>
+      <p>Google, recognising early that it would need enormous compute at lower cost than NVIDIA GPUs, developed its own chip: the <span class="tooltip-term" data-tooltip="Tensor Processing Unit — Google's custom chip designed specifically for neural network computation. Used internally for training and inference at Google. More efficient than GPUs for Google's specific workloads, but not available for external purchase — only accessible via Google Cloud.">TPU</span> (Tensor Processing Unit). The first TPU was deployed internally in 2015. Google now uses TPUs at massive scale for training Gemini and other models. TPUs are more energy-efficient than H100s for specific workloads, but they require different software and aren't available for general purchase — only accessible through Google Cloud.</p>
+      <p>The broader ecosystem of AI chips is expanding. AWS has Trainium (for training) and Inferentia (for inference). Intel, AMD, and a range of startups (Cerebras, Graphcore, Groq, SambaNova) are competing for AI chip market share. As of 2024, none have displaced NVIDIA for frontier model training, but the inference market — running already-trained models cheaply — is more competitive.</p>
+    </section>
+
+    <section id="memory">
+      <h3>Memory: the real bottleneck</h3>
+      <p>The primary constraint for running large models is not processing speed — it's memory. A model's parameters must all fit in the GPU's memory (called <span class="tooltip-term" data-tooltip="High-Bandwidth Memory — the very fast, expensive memory built directly onto a GPU. An H100 has 80GB of HBM. This is what determines the maximum model size you can run on a single chip — each parameter requires memory, so a 70B model needs roughly 140GB of memory at 16-bit precision.">VRAM</span>) during inference. Each parameter requires roughly 2 bytes of memory at 16-bit precision, or 4 bytes at 32-bit.</p>
+      <p>A 7 billion parameter model requires roughly 14 GB of VRAM at 16-bit precision — fitting on a single consumer GPU (if you have a high-end one). A 70 billion parameter model requires roughly 140 GB — needing two H100s. GPT-4, if the rumoured 1.8 trillion parameters are accurate, would require over 3,600 GB — more than 40 H100s just to hold the model in memory.</p>
+      <p>This is why memory, not raw compute speed, is the first question to ask when evaluating whether a model can run somewhere. Chapter 06 (and 07) will explain how quantisation and other techniques dramatically reduce memory requirements — making models that wouldn't fit on consumer hardware fit anyway.</p>
+    </section>
+
+    <section id="data-centres">
+      <h3>Data centres at AI scale</h3>
+      <p>A modern AI data centre is a purpose-built facility optimised for one thing: running GPU clusters at maximum utilisation. The engineering requirements are different from a traditional data centre.</p>
+      <p>Power density: a rack of H100s can consume 40–80 kilowatts — roughly 10x the power density of a standard server rack. Power delivery infrastructure must be designed accordingly. A large AI cluster might draw hundreds of megawatts — comparable to a small city's electrical demand.</p>
+      <p>Cooling: all that power becomes heat. Liquid cooling (running chilled water through chips) is replacing air cooling in AI data centres because it's more efficient at these densities. Some facilities use direct liquid cooling on every GPU; others use immersion cooling, submerging entire servers in dielectric fluid.</p>
+      <p>Networking: in a training run, thousands of GPUs must communicate with each other constantly — passing gradients, synchronising parameters. Network bandwidth between GPUs can be the limiting factor for training efficiency. Specialised high-speed interconnects (NVLink for within a node, InfiniBand for between nodes) are as important as the GPUs themselves.</p>
+    </section>
+
+    <section id="energy">
+      <h3>The energy cost of AI</h3>
+      <p>The energy consumption of AI is substantial, growing rapidly, and opaque. Training a frontier model consumes roughly as much electricity as a small town uses in a year. But training costs are one-time; inference costs are ongoing and scale with usage.</p>
+      <p>A single query to a large language model consumes roughly 10x more energy than a Google search. At a billion queries per day — a plausible scale for a popular AI assistant — that's the energy consumption of a small country, daily. Goldman Sachs estimated in 2024 that data centre electricity consumption would increase 160% by 2030, with AI being the primary driver.</p>
+      <p>The irony that is not lost on anyone: AI systems are being deployed to help solve climate change while the AI industry itself is a rapidly growing source of carbon emissions. The energy source matters enormously — a model trained and run on renewable energy has a very different carbon footprint from one running on coal-powered grids. This is one reason AI companies have been signing large renewable energy procurement contracts.</p>
+
+      <div class="definition">
+        <span class="definition-term">Inference vs Training energy</span>
+        <div class="definition-text">Training a model is expensive but done once. Inference (running the model) is cheaper per query but done billions of times. At scale, inference energy costs can exceed training costs. This is why "efficient inference" is one of the most commercially important research areas in AI — small reductions in per-query cost multiply into enormous savings and environmental impact.</div>
+      </div>
+    </section>
+
+    <section id="water">
+      <h3>Water: the hidden cost</h3>
+      <p>Data centres cool their hardware by evaporating water — cooling towers exchange heat with the atmosphere by evaporating large quantities of water. A large AI data centre can consume millions of litres of water per day. Microsoft disclosed that its data centres consumed 6.4 billion litres of water in 2022, a 34% increase from 2021, driven by AI growth.</p>
+      <p>This is a locational issue as much as a volume issue. Data centres built in water-stressed regions (Arizona, Nevada, parts of the US southwest) compete with agriculture, residents and ecosystems for scarce water. The invisible cost of a conversation with an AI assistant includes the water used to cool the machines that answered it.</p>
+    </section>
+
+    <section id="geopolitics">
+      <h3>Chip geopolitics</h3>
+      <p>In October 2022, the US government imposed export controls restricting the sale of advanced semiconductors and semiconductor manufacturing equipment to China. The restrictions were tightened in 2023 and 2024. The stated rationale: preventing China from using advanced chips to train AI models that could be used for military purposes.</p>
+      <p>The controls specifically targeted chips above certain performance thresholds — initially the A100 and H100, then expanding as NVIDIA created modified versions for China. The controls also targeted ASML's extreme ultraviolet (EUV) lithography machines, manufactured only in the Netherlands, which are the only technology capable of manufacturing the most advanced chips. The Netherlands, under US pressure, joined the export control regime.</p>
+      <p>This makes chip supply chains geopolitically significant in a way they've never been before. Taiwan Semiconductor Manufacturing Company (TSMC), which manufactures most of the world's advanced chips, is located 180 kilometres from mainland China. The vulnerability this creates is not lost on policymakers in Washington, Brussels or Beijing.</p>
+    </section>
+
+    <section id="what-this-means">
+      <h3>What this means for who runs AI</h3>
+      <p>Put all of this together and the picture is stark. The ability to train frontier AI models requires: access to thousands of advanced NVIDIA chips (scarce and rationed), massive capital to purchase or rent them (hundreds of millions of dollars per run), access to large amounts of cheap electricity (increasingly constrained), and the engineering expertise to run training runs at this scale (rare and expensive).</p>
+      <p>This is not a description of a competitive market accessible to a wide range of players. It is a description of an oligopoly. Frontier model training is accessible to approximately five organisations globally: OpenAI/Microsoft, Google/DeepMind, Meta, Amazon (AWS/Anthropic) and a handful of Chinese state-backed labs. Everyone else builds on top of their work — using their APIs or their open-weight models.</p>
+      <p>This concentration is not permanent — it reflects the current state of chip supply, capital requirements and expertise distribution. But it shapes everything about AI development right now: who sets the norms, who captures the value, and who decides what models can and can't do.</p>
+
+      <div class="pullquote">"Compute is the new oil. Except oil is spread across many countries. Most of the world's advanced AI chips are made in one building complex in Taiwan." <cite>— paraphrased from multiple analysts</cite></div>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="06-shrinking.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 06</div>
+        <div class="chapter-next-title">From Giant <em>to Your Desk</em></div>
+        <p class="chapter-next-blurb">Quantisation, distillation, GGUF — how a 70-billion parameter model shrinks enough to run on consumer hardware without falling apart.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="04-data.html">Chapter 04</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>HOW AI THINKS · A GUIDE</p>
+    <p>CHAPTER 05 OF 10 · THE HARDWARE STACK</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>

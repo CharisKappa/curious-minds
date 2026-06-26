@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 03 · The Transformer — How AI Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../shared/styles.css">
+<style>
+  .tooltip-term {
+    border-bottom: 1px dashed #b45309;
+    cursor: help;
+    position: relative;
+  }
+  .tooltip-term::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    width: 230px;
+    z-index: 100;
+    pointer-events: none;
+    white-space: normal;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tooltip-term:hover::after { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="site-logo">How AI Thinks <em>— a guide</em></a>
+    <nav class="site-nav">
+      <a href="../../index.html">← Home</a>
+      <a href="index.html">Hub</a>
+      <a href="01-the-idea.html">01</a>
+      <a href="02-how-models-learn.html">02</a>
+      <a href="03-the-transformer.html" class="current">03</a>
+      <a href="04-data.html">04</a>
+      <a href="05-hardware.html">05</a>
+      <a href="06-shrinking.html">06</a>
+      <a href="07-local-setup.html">07</a>
+      <a href="08-open-closed.html">08</a>
+      <a href="09-where-heading.html">09</a>
+      <a href="10-what-it-means.html">10</a>
+      <div class="lang-toggle">
+        <a href="03-the-transformer.html" class="active">EN</a>
+        <span class="lang-divider">·</span>
+        <a href="03-the-transformer-el.html">ΕΛ</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">On this page</button>
+
+<div class="chapter-page">
+
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-chapter-label">Chapter 03</div>
+    <div class="toc-chapter-title">The Transformer</div>
+    <ul class="toc-list">
+      <li><a href="#before-transformer">Before the transformer</a></li>
+      <li><a href="#the-paper">The paper that changed everything</a></li>
+      <li><a href="#tokens">Tokens: how text becomes numbers</a></li>
+      <li><a href="#embeddings">Embeddings: meaning in space</a></li>
+      <li><a href="#attention">Attention: the key idea</a></li>
+      <li><a href="#heads">Multiple heads</a></li>
+      <li><a href="#layers">Stacking layers</a></li>
+      <li><a href="#context-window">The context window</a></li>
+      <li><a href="#why-it-works">Why it works so well</a></li>
+      <li><a href="#variants">Variants: encoder, decoder, both</a></li>
+      <li><a href="#limits">What the transformer can't do</a></li>
+    </ul>
+  </aside>
+
+  <main class="chapter-content">
+
+    <header class="chapter-cover">
+      <div class="chapter-eyebrow">Chapter 03 · Architecture</div>
+      <h1 class="chapter-title">The <em>Transformer</em></h1>
+      <p class="chapter-lede">In 2017, eight Google researchers published a paper titled "Attention Is All You Need." The architecture they described — the transformer — became the skeleton of virtually every major AI system that followed. This chapter explains what it is and why it works.</p>
+      <div class="chapter-info">
+        <span>~40 min read</span>
+        <span>11 sections</span>
+        <span>Architecture</span>
+      </div>
+    </header>
+
+    <section id="before-transformer">
+      <h3>Before the transformer</h3>
+      <p>Before 2017, the dominant architecture for processing sequences of text was the <span class="tooltip-term" data-tooltip="Recurrent Neural Network — a neural network designed for sequential data. Processes text word by word, passing a 'hidden state' from each word to the next. Good at short sequences, poor at long ones because information from early in the sequence fades as it's passed along.">RNN</span> (Recurrent Neural Network) and its improved variant, the LSTM (Long Short-Term Memory network). These read text sequentially — word by word, token by token — passing information along a chain from left to right. To understand the last word in a long sentence, the network had to have successfully passed information from the first word through every intermediate step.</p>
+      <p>This worked, but badly at scale. Information from early in a sequence degraded as it passed through step after step. Long documents, long conversations, long code files — the network would "forget" context from pages back. And because processing was sequential, you couldn't parallelise it easily. Training was slow.</p>
+      <p>RNNs were also the best thing available, which is why the field used them. Then the transformer arrived and made them obsolete almost overnight.</p>
+    </section>
+
+    <section id="the-paper">
+      <h3>The paper that changed everything</h3>
+      <p>"Attention Is All You Need" was published in June 2017 by eight researchers at Google Brain and Google Research. The lead author was Ashish Vaswani. The paper proposed a completely new architecture for processing sequences — one that didn't process tokens sequentially at all, but looked at all tokens simultaneously and computed relationships between every pair.</p>
+      <p>The paper's title was deliberately provocative. RNNs had attention mechanisms added to them as a patch. The claim of the 2017 paper was that you could throw away the recurrent architecture entirely — you didn't need it. Attention was sufficient. The transformer proved this claim, and the rest of the field rapidly converged on the architecture.</p>
+      <p>GPT (OpenAI), BERT (Google), T5 (Google), PaLM (Google), LLaMA (Meta), Mistral, Claude (Anthropic), Gemini (Google) — every major language model of the last seven years is a transformer. The architecture has proven so general and so scalable that nothing has displaced it.</p>
+    </section>
+
+    <section id="tokens">
+      <h3>Tokens: how text becomes numbers</h3>
+      <p>Before a transformer can process text, the text must be converted to numbers. The first step is <span class="tooltip-term" data-tooltip="The process of breaking text into tokens — the basic units the model processes. Common words become single tokens. Rare words are split into subword pieces. 'Tokenisation' might become 'Token', 'isation'. The vocabulary (list of all possible tokens) is fixed at training time.">tokenisation</span>: breaking text into a sequence of tokens, where each token is mapped to a number from the model's vocabulary.</p>
+      <p>A vocabulary is a fixed list of all possible tokens — for most large models, between 30,000 and 100,000 entries. Common words like "the," "is," "cat" are each a single token. Rarer words are split into subword pieces: "unbelievable" might become "un" + "believ" + "able" (three tokens). This allows the model to handle any word, even ones not seen during training, by composing them from subword pieces it has seen.</p>
+      <p>As a rough guide: one token ≈ 0.75 English words. "Hello, how are you?" is 6 tokens. The entire text of War and Peace is about 580,000 tokens.</p>
+    </section>
+
+    <section id="embeddings">
+      <h3>Embeddings: meaning in space</h3>
+      <p>A token is now a number — say, token 4,521 out of a vocabulary of 50,000. But that number by itself carries no meaning. Token 4,521 isn't "similar" to token 4,522. We need a richer representation.</p>
+      <p>This is where <span class="tooltip-term" data-tooltip="A dense vector of numbers (e.g. 768 or 4096 numbers) that represents a token or concept in a high-dimensional space. Tokens with similar meanings end up with similar embedding vectors. The famous example: the embedding of 'king' minus 'man' plus 'woman' is close to the embedding of 'queen'.">embeddings</span> come in. Each token is mapped to a vector — a list of hundreds or thousands of numbers — that represents its meaning in a high-dimensional space. These vectors are learned during training. By the end of training, tokens with similar meanings end up with similar vectors. "Cat" and "kitten" are nearby in embedding space. "Paris" and "France" are nearby. "Bank" (financial) and "bank" (riverside) are different vectors because context shapes how they're used.</p>
+      <p>The famous demonstration: in a trained embedding space, the vector for "king" minus the vector for "man" plus the vector for "woman" is approximately equal to the vector for "queen." The geometry of the space encodes semantic relationships. This emerges from training — nobody designed it.</p>
+    </section>
+
+    <section id="attention">
+      <h3>Attention: the key idea</h3>
+      <p><span class="tooltip-term" data-tooltip="The mechanism at the core of the transformer. For each token, attention computes a weighted sum of all other tokens in the sequence, where the weights reflect how relevant each other token is. This lets the model consider all context simultaneously rather than sequentially.">Attention</span> is the central innovation of the transformer, and the hardest to explain intuitively. Here's the best plain-language version.</p>
+      <p>When you read the word "it" in the sentence "The trophy didn't fit in the suitcase because it was too big," you know "it" refers to the trophy, not the suitcase. How? You attended to "trophy" and "suitcase" and assessed which one "it" most plausibly refers to given the surrounding context. You weighted your attention toward "trophy."</p>
+      <p>Attention in transformers is the mathematical version of this. For each token, the model computes a score representing how much that token should "attend to" every other token in the sequence. High score = pay a lot of attention to that token. These scores are normalised into weights, and the token's representation is updated as a weighted sum of all other tokens' representations. The model can simultaneously process every token while also considering the full context from all other tokens.</p>
+      <p>This is why the transformer is so much better than RNNs at long documents. There is no chain of sequential steps through which early context can degrade. Every token can directly attend to every other token, regardless of distance.</p>
+    </section>
+
+    <section id="heads">
+      <h3>Multiple heads</h3>
+      <p>A single attention operation captures one kind of relationship between tokens. But words relate to each other in many ways simultaneously — grammatical agreement, semantic similarity, coreference (what "it" refers to), temporal sequence. The transformer uses <span class="tooltip-term" data-tooltip="Running multiple attention operations in parallel, each potentially capturing different kinds of relationships between tokens. One head might focus on syntactic relationships, another on semantic ones. The outputs are then combined.">multi-head attention</span>: multiple attention operations running in parallel, each potentially specialising in a different type of relationship. Their outputs are combined.</p>
+      <p>Large models might have 32 or 96 attention heads running in parallel per layer. What each head specialises in isn't designed — it emerges from training. Researchers have found heads that appear to track subject-verb agreement, heads that detect negation, heads that track coreference. But the model wasn't told to develop these specialisations. It found them useful.</p>
+    </section>
+
+    <section id="layers">
+      <h3>Stacking layers</h3>
+      <p>One round of attention produces a richer representation of each token — informed by all other tokens in the sequence. But one round isn't enough. The transformer stacks many such layers. In each layer, the representations from the previous layer are fed through another round of attention plus a feedforward network that processes each token independently.</p>
+      <p>Early layers tend to capture syntactic relationships — word order, grammatical structure. Middle layers capture semantic relationships — meaning, reference, inference. Later layers capture more abstract, task-specific patterns. This is a general observation from research, not a designed feature — it's what gradient descent produces when optimising for next-token prediction on enough data.</p>
+      <p>A large model might have 32, 64 or 96 layers. More layers = more capacity to learn complex patterns = more parameters = more compute required. Every architectural choice in a transformer is ultimately a tradeoff between capability and cost.</p>
+    </section>
+
+    <section id="context-window">
+      <h3>The context window</h3>
+      <p>The <span class="tooltip-term" data-tooltip="The maximum amount of text a model can process at once — its 'working memory'. Measured in tokens. Early GPT models had 2,048-token context windows. Current models range from 8,000 to over 1 million tokens. Larger context = can handle longer documents, but more compute per query.">context window</span> is the maximum sequence length the model can process in a single forward pass — its working memory. Everything you type in a conversation, plus the model's previous responses, must fit within this window. Tokens that fall outside it are simply not seen.</p>
+      <p>Early transformers had context windows of 512 or 2,048 tokens. GPT-3 had 4,096. Current models range from 8,000 (some local models) to 128,000 (GPT-4 Turbo) to over 1 million (Gemini 1.5 Pro). Larger context windows allow the model to handle entire codebases, long documents, extended conversations — but every token in the context window adds to the compute cost of each query.</p>
+      <p>The context window is why a model "forgets" things you told it early in a very long conversation — once the conversation exceeds the context window, older messages are silently dropped. The model doesn't remember them; they're simply not in the input anymore.</p>
+    </section>
+
+    <section id="why-it-works">
+      <h3>Why it works so well</h3>
+      <p>The transformer's dominance comes from two properties that compound each other: it parallelises extremely well, and it scales extremely well.</p>
+      <p>Parallelisation: because attention processes all tokens simultaneously rather than sequentially, the entire computation can be spread across thousands of GPU cores simultaneously. This is why training a transformer is much faster than training an equivalent RNN on modern hardware — hardware that is designed for exactly this kind of massively parallel arithmetic.</p>
+      <p>Scaling: as you add more parameters (deeper or wider networks), transformer performance continues to improve in predictable ways. This has been validated empirically across many orders of magnitude. Models with 10x more parameters are consistently and substantially better, not just marginally. This "scaling law" property is unusual — many architectures hit diminishing returns quickly. Transformers have not hit a clear ceiling yet.</p>
+
+      <div class="pullquote">"The transformer was not obviously going to take over everything. It was one of several competing architectures. It won because it parallelised, and because it scaled." <cite>— paraphrased from multiple researchers in the field</cite></div>
+    </section>
+
+    <section id="variants">
+      <h3>Variants: encoder, decoder, both</h3>
+      <p>Not all transformers are the same. The original 2017 architecture had two components: an encoder (which processes the input) and a decoder (which generates the output). Different tasks are better served by different configurations.</p>
+      <p><strong>Encoder-only models</strong> (e.g. BERT) process the full input bidirectionally — each token attends to all other tokens, both before and after. Good for classification, semantic search, understanding tasks. Not designed to generate text.</p>
+      <p><strong>Decoder-only models</strong> (e.g. GPT, LLaMA, Mistral, Claude) process tokens left-to-right — each token only attends to previous tokens, never future ones. This is what makes them generative: they can be run iteratively, producing one token at a time, each building on what came before. All the major chatbot-style models are decoder-only.</p>
+      <p><strong>Encoder-decoder models</strong> (e.g. T5, original GPT translation models) use both components. The encoder processes the full input; the decoder generates the output. Useful for translation, summarisation.</p>
+    </section>
+
+    <section id="limits">
+      <h3>What the transformer can't do</h3>
+      <p>The transformer is extraordinarily capable. It is not perfect. Understanding its limits is as important as understanding its strengths.</p>
+      <p>It has no persistent memory between conversations. Everything it "knows" in a conversation is in the context window. End the conversation, start a new one, and it has no recollection of the previous exchange (unless you provide it).</p>
+      <p>It doesn't reason step by step by default — it generates tokens in a single forward pass per token, which means long chains of reasoning can go wrong. Techniques like chain-of-thought prompting (asking the model to "think step by step") partly address this by giving the model space to externalise intermediate reasoning steps as tokens.</p>
+      <p>It can't learn from your conversation. Its parameters are fixed after training. When you chat with a model, you're not changing it — you're providing temporary context. The model that billions of people chat with every day is the same frozen set of weights it was when it left training.</p>
+
+      <div class="insight">
+        <div class="insight-label">The frozen model problem</div>
+        <p>One of the deepest limitations of current LLMs: you can talk to them, correct them, give them feedback — and none of it persists. Tomorrow's user gets the same model you started with today. The model that has interacted with hundreds of millions of people hasn't learned anything from those interactions. Its knowledge cutoff is the date its training data ended. This is a fundamental architectural constraint, not a design choice — and it's one of the areas of most active research.</p>
+      </div>
+    </section>
+
+    <div class="chapter-end">
+      <div class="chapter-end-label">Continue reading</div>
+      <a href="04-data.html" class="chapter-next-card">
+        <div class="chapter-next-eyebrow">Chapter 04</div>
+        <div class="chapter-next-title">Data: <em>the Real Ingredient</em></div>
+        <p class="chapter-next-blurb">What models are trained on, why data quality matters more than quantity, and how the internet accidentally became the world's largest training set.</p>
+        <div class="chapter-next-arrow">→</div>
+      </a>
+      <div class="chapter-prev">← <a href="02-how-models-learn.html">Chapter 02</a></div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p>HOW AI THINKS · A GUIDE</p>
+    <p>CHAPTER 03 OF 10 · THE TRANSFORMER</p>
+    <p>FOR THE CURIOUS · WRITTEN TO BE UNDERSTOOD</p>
+  </div>
+</footer>
+
+<script src="../../shared/script.js"></script>
+</body>
+</html>
